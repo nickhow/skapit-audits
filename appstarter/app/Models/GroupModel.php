@@ -8,7 +8,7 @@ class GroupModel extends Model
 
     protected $primaryKey = 'id';
     
-    protected $allowedFields = ['name','is_payable','payable_amount'];
+    protected $allowedFields = ['name','is_payable','payable_amount','uses_sub_groups', 'is_sub_group'];
     
 }
 

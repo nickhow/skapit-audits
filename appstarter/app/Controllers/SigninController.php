@@ -3,6 +3,7 @@
 namespace App\Controllers;  
 use CodeIgniter\Controller;
 use App\Models\UserModel;
+use App\Models\GroupModel;
   
 
 class SigninController extends Controller
@@ -18,11 +19,13 @@ class SigninController extends Controller
         $session = session();
 
         $userModel = new UserModel();
-
+        $groupModel = new GroupModel();
+        
         $username = $this->request->getVar('username');
         $password = $this->request->getVar('password');
         
         $data = $userModel->where('username', $username)->first();
+        $group = $groupModel->where('id',$data['group_id'])->first();
         
         if($data){
             $pass = $data['password'];
@@ -36,7 +39,8 @@ class SigninController extends Controller
                     'is_hotelcheck' => $data['is_hotelcheck'],
                     'group_id'=> $data['group_id'],
                     'account_id'=> $data['account_id'],
-                    'isLoggedIn' => TRUE
+                    'isLoggedIn' => TRUE,
+                    'enable_groups' => $group['uses_sub_groups']
                 ];
                 
                 $uri = new \CodeIgniter\HTTP\URI(getallheaders()['Referer']);

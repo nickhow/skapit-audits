@@ -19,6 +19,27 @@
                   </div>
                   
                 <?php if(session()->get('is_admin')): ?>
+                    <div class="pt-4 pb-2"><b>Group Configuration</b></div>
+                    <div class="form-group pt-2">
+                        <label>Sub-group settings</label>
+                        <select id="uses_sub_groups" name="uses_sub_groups" class="form-select">
+                            <option value='0' selected >Do not enable sub-groups</option>
+                            <option value='1' >Enable sub-groups</option>
+                            <option value='2' >This is a sub-group</option>
+                        </select>
+                        <small class="text-secondary">Sub-groups enable the group to create and manage their own groups, this may be used for separately operated sites within a group. We currently only support 1 additional group level. Sub-groups should only be enabled when required, not as standard.</small>
+                    </div>
+                    
+                    <div class="form-group pt-2" id="group_mapping_container" style="display:none;">
+                        <label>Which major group is this part of?</label>
+                        <select id="group_mapping" name="group_mapping" class="form-select" disabled>
+                            <?php foreach($groups as $group) { ?>
+                                <option value="<?php echo $group['id'] ?>"  <?php echo set_select('group_id',$group['id'] , ( !empty($data) && $data == $group['id']  ? TRUE : FALSE ));?>  ><?php echo  $group['name']  ?></option>
+                            <?php } ?>
+                            </select>
+                    </div>
+                
+                <div class="pt-4 pb-2"><b>Charge Settings</b></div>
                     <div class="form-group pt-2">
                         <label>Does this group pay for their audits?</label>
                         <select id="isPayable" name="is_payable" class="form-select">
@@ -37,9 +58,10 @@
                     </div>
                   </div>
                   
-                <?php endif; ?>
+
                   
-                  <h3>Group Manager Details</h3>
+                <?php endif; ?>
+                  <div class="pt-4 pb-2"><b>Group Manager Details</b></div>
                     <div class="form-group pt-2">
                         <label>Group Manager Name</label>
                         <input type="text" name="group_manager_name" placeholder="Name" value="<?= set_value('group_manager_name') ?>" class="form-control" >
@@ -86,3 +108,22 @@
       document.getElementById('isPayable').addEventListener("change", hideAmount);
       hideAmount();
   </script>
+  
+  <?php if(session()->get('is_admin')): ?>
+    <script>
+
+        function updateGroupForm(){
+            let subGroups = document.getElementById('uses_sub_groups');
+            let mainGroupContainer = document.getElementById('group_mapping_container');
+            let mainGroup = document.getElementById('group_mapping');
+            if(subGroups.value == "2"){
+                mainGroup.disabled = false;
+                mainGroupContainer.style.display="block";
+            } else {
+                mainGroup.disabled = true;
+                mainGroupContainer.style.display="none";
+            }
+        }
+        document.getElementById('uses_sub_groups').addEventListener("change",updateGroupForm);
+    </script>
+  <?php endif ?>

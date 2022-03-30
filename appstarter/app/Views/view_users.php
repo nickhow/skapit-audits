@@ -1,6 +1,6 @@
 <div class="container mt-4 bg-white p-4 rounded">
     <h2>Users</h2>
-    <?php if(session()->get('is_admin')): ?>
+    <?php if(session()->get('is_admin') || session()->get('enable_groups') ): ?>
         <div class="d-flex justify-content-end">
             <a href="<?php echo site_url('/signup') ?>" class="btn btn-success mb-2">Add A New User</a>
     	</div>
@@ -43,7 +43,11 @@
                     </div>
                       -->
                      <div class="col-6 text-center">
+                         <?php if(session()->get('id') == $user['id']): ?>
+                         <a class="text-secondary"><i class="far fa-trash-alt fa-2x"></i></a>
+                         <?php else: ?>
                           <a href="<?php echo base_url('user/'.$user['id'].'/delete');?>" class="text-danger"><i class="far fa-trash-alt fa-2x"></i></a>
+                          <?php endif ?>
                       </div>
                   </div>
               </td>

@@ -11,8 +11,8 @@
 
 <body>
     <div class="container mt-5">
-        <div class="row justify-content-md-center">
-            <div class="col-5">
+        <div class="row justify-content-md-center ">
+          <div class="col-10 col-md-8 col-lg-6 p-4 bg-white rounded">
                 <h2>Register User</h2>
 
                 <?php if(isset($validation)):?>
@@ -56,7 +56,7 @@
                     </div>
 
                     <div class="d-grid p-3">
-                        <button type="submit" class="btn btn-dark">Signup</button>
+                        <button type="submit" class="btn btn-primary btn-block">Signup</button>
                     </div>
                 </form>
             </div>

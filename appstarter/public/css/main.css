@@ -2,3 +2,14 @@
     background-color:#1598159e;
     color: white;
 }
+
+.completed-error {
+    background-color:#9815159e;
+    color: white;
+}
+
+.completed-error:not(.collapsed) {
+    color: #e40c0c;
+    background-color: #ffe7e7;
+    box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%);
+}

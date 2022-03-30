@@ -4,6 +4,7 @@ namespace App\Controllers;
 use CodeIgniter\Controller;
 use App\Models\UserModel;
 use App\Models\GroupModel;
+use App\Models\GroupMappingModel;
 use App\Models\AccountModel;
 
 class ProfileController extends Controller
@@ -11,6 +12,7 @@ class ProfileController extends Controller
     public function index()
     {
         $userModel = new UserModel();
+        $groupMappingModel = new GroupMappingModel();
         $session = session();
         $db = db_connect();
         $admin = $session->get('is_admin');
@@ -20,6 +22,10 @@ class ProfileController extends Controller
         
         if($admin){
             echo view('templates/header');
+        } elseif($session->get('enable_groups')) {
+            $groups = $groupMappingModel->where('group_id',$group_id)->findColumn('sub_group_id');
+            $sql.=" AND users.group_id IN (".$group_id."," . implode(',', $groups) . ")";       //gets the current user (parent group) id and the sub groups so we show all users.
+            echo view('templates/header-group');
         } else {
             $sql.=" AND users.group_id = '".$group_id."'";
             echo view('templates/header-group');
@@ -33,6 +39,7 @@ class ProfileController extends Controller
     
     public function delete($id = null){
         $userModel = new UserModel();
+        $groupMappingModel = new GroupMappingModel();
         $session = session();
         $admin = $session->get('is_admin');
         $group_id = $session->get('group_id');
@@ -41,7 +48,18 @@ class ProfileController extends Controller
 
         if(!$admin){
             if($user['group_id'] != $group_id || $user['group_id'] == 0) {  // 0 is admin or account level
-                return $this->response->redirect(site_url('/users'));
+                
+                //not the direct owner, is it the group owner
+                $subGroups = $groupMappingModel->where('group_id',$group_id)->findColumn('sub_group_id');
+                
+                $access = false;
+                foreach($subGroups as $group){
+                    if($group == $user['group_id']) { $access = true;}
+                }
+                
+                if($access == false){
+                    return $this->response->redirect(site_url('/users'));
+                }
             }
         }
         

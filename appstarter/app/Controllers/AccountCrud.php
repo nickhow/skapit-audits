@@ -4,6 +4,7 @@ use App\Models\AccountModel;
 use App\Models\AuditModel;
 use App\Models\AccountAuditModel;
 use App\Models\GroupModel;
+use App\Models\GroupMappingModel;
 use App\Models\EmailModel;
 use App\Models\ContactModel;
 use App\Models\UserModel;
@@ -15,6 +16,7 @@ class AccountCrud extends Controller
     // show accounts list
     public function index(){
         $accountModel = new AccountModel();
+        $groupMappingModel = new GroupMappingModel();
         //Gets the AccountModel -> no join so shows the IDs rather than names
         //$data['accounts'] = $accountModel->orderBy('id', 'DESC')->findAll();
         
@@ -28,6 +30,10 @@ class AccountCrud extends Controller
         if($admin){
             $data['accounts'] = $accountModel->getAccountsWithGroup();
             echo view('templates/header');
+            
+        } elseif($session->get('enable_groups')){
+            $data['accounts'] = $accountModel->getAccountsWithGroupsById($user['group_id']);
+            echo view('templates/header-group');
         } else {
             $data['accounts'] = $accountModel->getAccountsWithGroupById($user['group_id']);
             echo view('templates/header-group');
@@ -42,14 +48,20 @@ class AccountCrud extends Controller
     // add account form
     public function create(){
         $groupModel = new GroupModel();
-        $data['groups'] = $groupModel->findAll();
+        $groupMappingModel = new GroupMappingModel();
+        $data = [];
         
         helper(['form']);
         
         if(session()->get('is_admin')){
             echo view('templates/header');
+            $data['groups'] = $groupModel->findAll();
         }else{
             echo view('templates/header-group');
+            
+            $subGroups = $groupMappingModel->where('group_id',session()->get('group_id'))->findColumn('sub_group_id');
+            $data['groups'] = $groupModel->whereIn('id',$subGroups)->orderBy('id','DESC')->findAll();
+            
         }
         
         echo view('add_account',$data);
@@ -61,6 +73,7 @@ class AccountCrud extends Controller
         $accountModel = new AccountModel();
         $auditModel = new AuditModel();
         $accountAuditModel = new AccountAuditModel();
+        $groupMappingModel = new GroupMappingModel();
         $groupModel = new GroupModel();
         $session = session();
         $db = db_connect();
@@ -112,8 +125,12 @@ class AccountCrud extends Controller
         //could put in a check here that the group id wasn't modified
         if(!$session->get('is_admin')){
             if($session->get('group_id') !== $this->request->getVar('group_id')) {
-                $session->setFlashdata('msg', 'Failed to connect account with your group, please try again.');
-                return $this->response->redirect(site_url('/accounts'));
+                
+                //check if sub groups are enabled 
+                if(!$session->get('enable_groups')){
+                    $session->setFlashdata('msg', 'Failed to connect account with your group, please try again. mapping id'.$mapping['group_id'].' login group id: '.$this->request->getVar('group_id'));
+                    return $this->response->redirect(site_url('/accounts'));
+                }
             }
         }
             
@@ -160,7 +177,14 @@ class AccountCrud extends Controller
             $isPayable = 0;
             $payableAmount = '0.00';
             if(!$session->get('is_admin')){ //if it's not admin, it's based on the group.
+            
                 $group = $groupModel->where('id',$data['account']['group_id'])->first();
+                if($group['is_sub_group']){
+                    $mapping = $groupMappingModel->where('sub_group_id',$group['id'])->first();
+                    //overwrite  $group with master group
+                    $group = $groupModel->where('id',$mapping['group_id'])->first();
+                }
+                
                 $isPayable = $group['is_payable'];
                 if($isPayable){
                     $payableAmount = $group['payable_amount'];
@@ -223,6 +247,7 @@ class AccountCrud extends Controller
     public function singleAccount($id = null){
         $accountModel = new AccountModel();
         $groupModel = new GroupModel();
+        $groupMappingModel = new GroupMappingModel();
         $auditModel = new AuditModel();
         $contactModel = new ContactModel();
         $accountAuditModel = new AccountAuditModel();
@@ -237,13 +262,35 @@ class AccountCrud extends Controller
             $userModel = new UserModel();
             $user = $userModel->where('id', $session->get('id'))->first();
             if(!($user['group_id'] == $data['account_obj']['group_id'])){
-                return $this->response->redirect(site_url('/accounts'));
+                
+                //not the direct owner, is it the group owner
+                $subGroups = $groupMappingModel->where('group_id',$user['group_id'])->findColumn('sub_group_id');
+                
+                $access = false;
+                foreach($subGroups as $group){
+                    if($group == $data['account_obj']['group_id']) { $access = true;}
+                }
+                
+                if($access == false){
+                    return $this->response->redirect(site_url('/accounts'));
+                }
             }
         }
 
         
         //Get all the groups, for the drop down
-        $data['group_objects'] = $groupModel->orderBy('id', 'DESC')->findAll();
+        if(session()->get('is_admin')){
+            echo view('templates/header');
+            $data['group_objects'] = $groupModel->orderBy('id', 'DESC')->findAll();
+        }else{
+            echo view('templates/header-group');
+            
+            $subGroups = $groupMappingModel->where('group_id',session()->get('group_id'))->findColumn('sub_group_id');
+            $data['group_objects'] = $groupModel->whereIn('id',$subGroups)->orderBy('id','DESC')->findAll();
+            
+        }
+        
+        
         
         //Get this accounts latest audit
         $db = db_connect();
@@ -258,11 +305,6 @@ class AccountCrud extends Controller
         $query = $db->table('audits')->join('account_audits','audits.id = account_audits.audit_id', 'inner')->where('account_audits.account_id',$id)->get();
         $data['audits'] = $query->getResultArray();
         
-        if(session()->get('is_admin')){
-            echo view('templates/header');
-        }else{
-            echo view('templates/header-group');
-        }
         
         echo view('single-account', $data);
         echo view('templates/footer');
@@ -272,6 +314,7 @@ class AccountCrud extends Controller
     public function update(){
         $accountModel = new AccountModel();
         $accountAuditModel = new AccountAuditModel();
+        $groupMappingModel = new GroupMappingModel();
         $auditModel = new AuditModel();
         $session = session();
         
@@ -282,14 +325,25 @@ class AccountCrud extends Controller
             $group = $session->get('group_id');
             $account = $accountModel->where('id',$id)->first();
             if($account['group_id'] !== $group){
-                return $this->response->redirect(site_url('/accounts'));
+                
+                //not the direct owner, is it the group owner
+                $subGroups = $groupMappingModel->where('group_id',$group)->findColumn('sub_group_id');
+                
+                $access = false;
+                foreach($subGroups as $subGroup){
+                    if($subGroup == $account['group_id']) { $access = true;}
+                }
+                
+                if($access == false){
+                    return $this->response->redirect(site_url('/accounts'));
+                }
             }
         }
         
         $data = [
             'name' => $this->request->getVar('name'),
             'email'  => $this->request->getVar('email'),
-            'group_id'  => $this->request->getVar('group_id'),
+            
          //   'is_group_manager'  => $this->request->getVar('is_group_manager'),   //doesn't really do anything.
             'phone'  => $this->request->getVar('phone'),
             'accommodation_name'  => $this->request->getVar('accommodation_name'),
@@ -297,6 +351,13 @@ class AccountCrud extends Controller
             'country'  => $this->request->getVar('country'),
             'notes'  => $this->request->getVar('notes'),
         ];
+        
+        if($session->get('is_admin') || $session->get('uses_groups')){
+            $data += [
+                'group_id'  => $this->request->getVar('group_id'),
+            ];
+        }
+        
         $accountModel->update($id, $data);
         
         //update all the audits to the new last contact time
@@ -323,7 +384,17 @@ class AccountCrud extends Controller
             $group = $session->get('group_id');
             $account = $accountModel->where('id',$id)->first();
             if($account['group_id'] !== $group){
-                return $this->response->redirect(site_url('/accounts'));
+                //not the direct owner, is it the group owner
+                $subGroups = $groupMappingModel->where('group_id',$group)->findColumn('sub_group_id');
+                
+                $access = false;
+                foreach($subGroups as $group){
+                    if($group == $data['account_obj']['group_id']) { $access = true;}
+                }
+                
+                if($access == false){
+                    return $this->response->redirect(site_url('/accounts'));
+                }
             }
         }
         

@@ -83,8 +83,7 @@ class Filters extends BaseConfig
     public $filters = [
         'isAdmin' => ['before' => 
             	        ['submit-account-form',
-            	        'group/*','groups', 'update-group', 'submit-group-form',
-            	        'signup', 'profile','profile/*',
+            	        'profile','profile/*',
             	        'question','question/*','questions','questions/*','update-question',
             	        'chases','chases/*','refresh-stats',]
             	    ],
@@ -92,7 +91,9 @@ class Filters extends BaseConfig
                         ['audit/*/review','comment-*',]
     	               ],
 	   'isGroup' => ['before' =>
-                        ['audit/new','audit/reviewed', 'audit/expiring', 'audit/*/edit', 'audit/*/delete','accounts','account/*', 'update-account', 'users/', 'user/*', 'user/*/delete',]
+                        ['audit/new','audit/reviewed', 'audit/expiring', 'audit/*/edit', 'audit/*/delete','accounts','account/*', 'update-account', 'users/', 'user/*', 'user/*/delete','signup',
+                        'group/*','groups', 'update-group', 'submit-group-form',
+                        ]
 	                ],
 	   'authguard' => ['before' => 
                         ['','audits','audit',]

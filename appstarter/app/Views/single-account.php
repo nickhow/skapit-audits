@@ -21,8 +21,10 @@
       </div>
       <div class="form-group pt-2">
         <label>Group</label>
-        <select name="group_id" id="group_id" class="form-select">
-            <option value="0" <?php if( $account_obj['group_id'] == "0"){echo "selected";} ?>>No Group</option>
+        <select name="group_id" id="group_id" class="form-select" <?php if(!session()->get('is_admin') && !session()->get('enable_groups')){echo "disabled";} ?> >
+            <?php if(session()->get('is_admin')):?>
+                <option value="0" <?php if( $account_obj['group_id'] == "0"){echo "selected";} ?>>No Group</option>
+            <?php endif; ?>
             <?php
                 foreach($group_objects as $group) {
                     $selected = "";

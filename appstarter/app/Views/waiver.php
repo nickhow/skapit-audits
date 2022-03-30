@@ -50,10 +50,12 @@
                     <label class="pb-2"><b><?php echo ucfirst($text['waiver_job_title']) ?></b></label>
                     <input name="waiver_job_title" id="waiver_job_title" class="form-control"/>
                 </div>
+                <!-- remove email from here, it's currently unused.
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($text['waiver_email']) ?></b></label>
+                    <label class="pb-2"><b><?php // echo ucfirst($text['waiver_email']) ?></b></label>
                     <input name="waiver_email" id="waiver_email" class="form-control"/>
                 </div>
+                -->
             </div>   
         </div>
 
