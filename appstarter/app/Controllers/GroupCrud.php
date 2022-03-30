@@ -1,6 +1,7 @@
 <?php 
 namespace App\Controllers;
 use App\Models\GroupModel;
+use App\Models\GroupMappingModel;
 use App\Models\UserModel;
 use CodeIgniter\Controller;
 
@@ -9,9 +10,19 @@ class GroupCrud extends Controller
     // show groups list
     public function index(){
         $groupModel = new GroupModel();
-        $data['groups'] = $groupModel->orderBy('id', 'DESC')->findAll();
+        $groupMappingModel = new GroupMappingModel();
         
-        echo view('templates/header');
+        if(session()->get('is_admin')){
+            $data['groups'] = $groupModel->orderBy('id', 'DESC')->findAll();
+            echo view('templates/header');
+        } elseif(session()->get('enable_groups')) {
+            $subGroups = $groupMappingModel->where('group_id',session()->get('group_id'))->findColumn('sub_group_id');
+            $data['groups'] = $groupModel->whereIn('id',$subGroups)->orderBy('id','DESC')->findAll();
+            echo view('templates/header-group');
+        }else{
+            return $this->response->redirect(site_url());
+        }
+        
         echo view('view_groups', $data);
         echo view('templates/footer');
     }
@@ -20,9 +31,15 @@ class GroupCrud extends Controller
     public function create(){
                 
         helper(['form']);
+        $groupModel = new GroupModel();
         $data = [];
         
-        echo view('templates/header');
+        if(session()->get('is_admin')){
+            $data['groups'] = $groupModel->where('uses_sub_groups', '1')->findAll();
+            echo view('templates/header');
+        } else {
+            echo view('templates/header-group');
+        }
         echo view('add_group', $data);
         echo view('templates/footer');
     }
@@ -30,6 +47,7 @@ class GroupCrud extends Controller
     // insert data
     public function store() {
         $groupModel = new GroupModel();
+        $groupMappingModel = new GroupMappingModel();
         $session = session();
         
         helper(['form']);
@@ -72,21 +90,58 @@ class GroupCrud extends Controller
         
         if($this->validate($rules, $errors)){
             
-            $data = [
-                'name' => $this->request->getVar('group_name'),
-                'is_payable' => $this->request->getVar('is_payable'),
-            ];
-            
-            if($this->request->getVar('is_payable')){
-                $data += [ 
-                    'payable_amount' => $this->request->getVar('payable_amount'),
+            if(session()->get('is_admin')){
+                $data = [
+                    'name' => $this->request->getVar('group_name'),
+                    'is_payable' => $this->request->getVar('is_payable'),
                 ];
-            } // for now we'll leave any old data here rather than resetting this to 0.
-            
+                
+                $uses_sub_groups = 0;
+                $is_sub_group = 0;
+                $master_group_id = $this->request->getVar('group_mapping');
+                if($this->request->getVar('uses_sub_groups')){
+                    if($this->request->getVar('uses_sub_groups') == 1){
+                        $uses_sub_groups = 1;
+                    } elseif($this->request->getVar('uses_sub_groups') == 2) {
+                        $is_sub_group = 1;
+                    }
+                }
+                $data += [
+                    'uses_sub_groups' => $uses_sub_groups,
+                    'is_sub_group' => $is_sub_group,
+                    ];
+                
+                if($this->request->getVar('is_payable')){
+                    $data += [ 
+                        'payable_amount' => $this->request->getVar('payable_amount'),
+                    ];
+                } // for now we'll leave any old data here rather than resetting this to 0.
+            } else { //not admin, must be sub group
+                $is_sub_group = 1;
+                $master_group_id = session()->get('group_id');
+                $data = [
+                    'name' => $this->request->getVar('group_name'),
+                    'is_payable' => 0,
+                    'payable_amount' => 0,
+                    'uses_sub_groups' => 0,
+                    'is_sub_group' => 1,
+                ];
+            }
             
             $groupModel->insert($data);
-            $group_id = $groupModel->select('id')->where('name', $this->request->getVar('group_name'))->first();
+            $group_id = $groupModel->where('name', $this->request->getVar('group_name'))->first();   //  $groupModel->select('id')->where ...
             
+            
+            // If it is a sub group, add the mapping in now.
+            if($is_sub_group == 1){
+                $mappingData = [
+                    'group_id' =>  $master_group_id,
+                    'sub_group_id' => $group_id['id']
+                    ];
+                
+               $groupMappingModel->insert($mappingData);
+            }
+
             $userModel = new UserModel();
             $data = [
                 'name'     => $this->request->getVar('group_manager_name'),
@@ -101,6 +156,9 @@ class GroupCrud extends Controller
             
         }else{
             $data['validation'] = $this->validator;
+            $groupModel = new GroupModel();
+            $data['groups'] = $groupModel->where('uses_sub_groups', '1')->findAll();
+            
             echo view('templates/header');
             echo view('add_group', $data);
             echo view('templates/footer');
@@ -112,10 +170,38 @@ class GroupCrud extends Controller
 
     // show single group
     public function singleGroup($id = null){
+        helper(['form']);
         $groupModel = new GroupModel();
-        $data['group_obj'] = $groupModel->where('id', $id)->first();
+        $groupMappingModel = new GroupMappingModel();
+        //are you admin
+        if(!session()->get('is_admin')){ 
+            //is it your group
+            if(session()->get('group_id') !== $id){
+                //is it one of your sub groups
+                $subGroups = $groupMappingModel->where('group_id',session()->get('group_id'))->findColumn('sub_group_id');
+                $access = false;
+                foreach($subGroups as $subGroup){
+                    if($subGroup == $id) { $access = true;}
+                }
+                if($access == false){
+                    return $this->response->redirect(site_url('/groups'));
+                }
+            }
+            
+        }
         
-        echo view('templates/header');
+        $data['groups'] = $groupModel->where('uses_sub_groups', '1')->findAll();
+        $data['group_obj'] = $groupModel->where('id', $id)->first();
+        if($data['group_obj']['is_sub_group']) {
+            $mapping = $groupMappingModel->where('sub_group_id',$id)->first();
+            $data['parent_group'] = $groupModel->where('id',$mapping['group_id'])->first();
+        }
+        
+        if(session()->get('is_admin')){ 
+            echo view('templates/header');
+        } else {
+            echo view('templates/header-group');
+        }
         echo view('single-group', $data);
         echo view('templates/footer');
     }
@@ -125,27 +211,107 @@ class GroupCrud extends Controller
         $groupModel = new GroupModel();
         $session = session();
         $id = $this->request->getVar('id');
-        $data = [
+        $groupMappingModel = new GroupMappingModel();
+        
+    //can I edit
+        //are you admin
+        if(!session()->get('is_admin')){ 
+            //is it your group
+            if(session()->get('group_id') !== $id){
+                //is it one of your sub groups
+                $subGroups = $groupMappingModel->where('group_id',session()->get('group_id'))->findColumn('sub_group_id');
+                $access = false;
+                foreach($subGroups as $subGroup){
+                    if($subGroup == $id) { $access = true;}
+                }
+                if($access == false){
+                    return $this->response->redirect(site_url('/groups'));
+                }
+            }
+        }
+
+        
+        // admin or group group - name only
+        $data = [    
             'name' => $this->request->getVar('name'),
-            'is_payable' => $this->request->getVar('is_payable'),
         ];
         
-        if($this->request->getVar('is_payable')){
-            $data += [ 
-                'payable_amount' => $this->request->getVar('payable_amount'),
-            ];
-        } // for now we'll leave any old data here rather than resetting this to 0.
+        // admin + is_payable and if payable then amount
+        if(session()->get('is_admin')) {
             
+            //if it is a parent we have the sub-group and charge settings
+            $uses_sub_groups = 0;
+            $is_sub_group = 0;
+            $master_group_id = $this->request->getVar('group_mapping');
+            if($this->request->getVar('uses_sub_groups')){
+                if($this->request->getVar('uses_sub_groups') == 1){
+                    $uses_sub_groups = 1;
+                } elseif($this->request->getVar('uses_sub_groups') == 2) {
+                    $is_sub_group = 1;
+                }
+            }
+            $data += [
+                'uses_sub_groups' => $uses_sub_groups,
+                'is_sub_group' => $is_sub_group,
+                'is_payable' => $this->request->getVar('is_payable'),
+            ];
+        
+            if($this->request->getVar('is_payable')){
+                $data += [ 
+                    'payable_amount' => $this->request->getVar('payable_amount'),
+                ];
+            } // for now we'll leave any old data here rather than resetting this to 0.
+        }
+
         $groupModel->update($id, $data);
         $session->setFlashdata('msg', 'Group updated.');
+        
+        
+        // If it is a sub group, add the mapping in now.
+        if($is_sub_group == 1){
+            $mappingData = [
+                'group_id' =>  $master_group_id,
+                'sub_group_id' => $id
+            ];
+            
+            //is there already a row to update
+            $mapping = $groupMappingModel->where('sub_group_id',$id)->first();
+            if(!$mapping['id'] || $mapping['id'] == null){
+                $groupMappingModel->insert($mappingData);
+            } else {
+                $groupMappingModel->update($mapping['id'], $mappingData);
+            }
+        }
+        
+        
         return $this->response->redirect(site_url('/groups'));
     }
  
     // delete group
     public function delete($id = null){
         $groupModel = new GroupModel();
+        $groupMappingModel = new GroupMappingModel();
         $userModel = new UserModel();
         $session = session();
+        
+        
+    //can I delete
+        //are you admin
+        if(!session()->get('is_admin')){ 
+            //is it your group
+            if(session()->get('group_id') !== $id){
+                //is it one of your sub groups
+                $subGroups = $groupMappingModel->where('group_id',session()->get('group_id'))->findColumn('sub_group_id');
+                $access = false;
+                foreach($subGroups as $subGroup){
+                    if($subGroup == $id) { $access = true;}
+                }
+                if($access == false){
+                    return $this->response->redirect(site_url('/groups'));
+                }
+            }
+        }
+        
 
         $data['users'] = $userModel->where('group_id', $id)->delete();
                 

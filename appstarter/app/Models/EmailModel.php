@@ -158,9 +158,13 @@ class EmailModel extends Model
     
     //used for cron job
     function csvEmail(){
+        
+        $emailaddresses = (getenv('alex'));
+        
         $email = \Config\Services::email();
         $email->setFrom('contact@skapit.com', 'Ski API Technolgies');
-        $email->setTo('a.lopez@hotelcheck-hsaudits.com');  // can be single, comma-delimited list 'a@me.com, b@me.com' or array ['a@me.com','b@me.com']
+        //$email->setTo('a.lopez@hotelcheck-hsaudits.com');  // can be single, comma-delimited list 'a@me.com, b@me.com' or array ['a@me.com','b@me.com']
+        $email->setTo($emailaddresses);
         $email->setSubject('Reviewed Audit Order');
         $email->setMessage('Audit order document attached.');
         $email->attach('uploads/reviewed-audits.csv');        

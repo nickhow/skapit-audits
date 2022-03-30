@@ -4,6 +4,7 @@ namespace App\Controllers;
 use CodeIgniter\Controller;
 use App\Models\UserModel;
 use App\Models\GroupModel;
+use App\Models\GroupMappingModel;
 
 class SignupController extends Controller
 {
@@ -13,14 +14,25 @@ class SignupController extends Controller
         $data = [];
         
         $groupModel = new GroupModel();
+        $groupMappingModel = new GroupMappingModel();
         $session = session();
         $admin = $session->get('is_admin');
         
         if($admin){ //admin - get all accounts
             $data['groups'] = $groupModel->orderBy('id', 'DESC')->findAll();
+            echo view('templates/header');
+        } elseif($session->get('enable_groups')){
+            
+            $groups = $groupMappingModel->where('group_id',$session->get('group_id'))->findColumn('sub_group_id');
+            array_push($groups, $session->get('group_id'));
+            $data['groups'] = $groupModel->whereIn('id',$groups)->orderBy('id', 'DESC')->findAll();
+           
+            echo view('templates/header-group');
+        } else {
+            return $this->response->redirect(site_url('/'));
         }
         
-        echo view('templates/header');
+
         echo view('signup', $data);
         echo view('templates/footer');
     }

@@ -12,6 +12,7 @@ use App\Models\TextModel;
 use App\Models\ContactModel;
 use App\Models\UserModel;
 use App\Models\GroupModel;
+use App\Models\GroupMappingModel;
 
 use CodeIgniter\Controller;
 use CodeIgniter\I18n\Time;
@@ -189,13 +190,24 @@ class AuditCrud extends Controller
             $data['with_hotel']['progress'] = $db->query($sql)->getResultArray();
         
         } elseif ($group_id !== '0') {
-            $sql = "
-                SELECT audits.id AS 'id', audits.type AS 'type', audits.status AS 'status', audits.result_ba AS 'result_ba', audits.result_abta AS 'result_abta', accounts.id AS 'account_id', accounts.accommodation_name AS 'accommodation_name', audits.last_updated AS 'last_updated', audits.sent_date AS 'sent_date', audits.created_date AS 'created_date'
-                FROM audits
-                INNER JOIN account_audits on account_audits.audit_id = audits.id
-                INNER JOIN accounts on account_audits.account_id = accounts.id
-                WHERE account_audits.group_id = '".$group_id."'
-            ";
+            
+            if(session()->get('enable_groups')){
+                $sql = "
+                    SELECT audits.id AS 'id', audits.type AS 'type', audits.status AS 'status', audits.result_ba AS 'result_ba', audits.result_abta AS 'result_abta', accounts.id AS 'account_id', accounts.accommodation_name AS 'accommodation_name', audits.last_updated AS 'last_updated', audits.sent_date AS 'sent_date', audits.created_date AS 'created_date'
+                    FROM audits
+                    INNER JOIN account_audits on account_audits.audit_id = audits.id
+                    INNER JOIN accounts on account_audits.account_id = accounts.id
+                    WHERE account_audits.group_id IN (SELECT sub_group_id FROM group_mapping WHERE group_id = '".$group_id."')
+                ";
+            } else {
+                $sql = "
+                    SELECT audits.id AS 'id', audits.type AS 'type', audits.status AS 'status', audits.result_ba AS 'result_ba', audits.result_abta AS 'result_abta', accounts.id AS 'account_id', accounts.accommodation_name AS 'accommodation_name', audits.last_updated AS 'last_updated', audits.sent_date AS 'sent_date', audits.created_date AS 'created_date'
+                    FROM audits
+                    INNER JOIN account_audits on account_audits.audit_id = audits.id
+                    INNER JOIN accounts on account_audits.account_id = accounts.id
+                    WHERE account_audits.group_id = '".$group_id."'
+                ";
+            }
         
         $data['audits'] = $db->query($sql)->getResultArray();
         } else { // should be an account user
@@ -305,6 +317,7 @@ class AuditCrud extends Controller
     // add audit form
     public function create(){
         $accountModel = new AccountModel();
+        $groupMappingModel = new GroupMappingModel();
         $session = session();
         $admin = $session->get('is_admin');
         $group = $session->get('group_id');
@@ -313,7 +326,13 @@ class AuditCrud extends Controller
             $data['accounts'] = $accountModel->orderBy('id', 'DESC')->findAll();
             echo view('templates/header');
         } else { //otherwise get ones for this group
-            $data['accounts'] = $accountModel->where('group_id',$group)->orderBy('id', 'DESC')->findAll();
+        
+            if(session()->get('enable_groups')){
+                $subGroups = $groupMappingModel->where('group_id',session()->get('group_id'))->findColumn('sub_group_id');
+                $data['accounts'] = $accountModel->whereIn('group_id',$subGroups)->orderBy('id','DESC')->findAll();
+            } else {
+                $data['accounts'] = $accountModel->where('group_id',$group)->orderBy('id', 'DESC')->findAll();
+            }
              echo view('templates/header-group');
         }
         
@@ -328,6 +347,7 @@ class AuditCrud extends Controller
         $accountAuditModel = new AccountAuditModel();
         $accountModel = new AccountModel();
         $groupModel = new GroupModel();
+        $groupMappingModel = new GroupMappingModel();
         $session = session();
         
         $id = $auditModel->generateID();
@@ -338,8 +358,15 @@ class AuditCrud extends Controller
         $payableAmount = '0.00';
         if(!$session->get('is_admin')){ //if it's not admin, it's based on the group.
             $group = $groupModel->where('id',$data['account']['group_id'])->first();
+            
+            if($group['is_sub_group']){ //we need to look at the parent for the charge settings
+                $mapping = $groupMappingModel->where('sub_group_id',$group['id'])->first();
+                $group = $groupModel->where('id',$mapping['group_id'])->first();
+            }
+            
             $isPayable = $group['is_payable'];
             $payableAmount = $group['payable_amount'];
+            
         } else { //if it is admin it is set per audit.
             $isPayable = $this->request->getVar('is_payable');
             if($isPayable){
@@ -636,14 +663,29 @@ class AuditCrud extends Controller
     public function editSingleAudit($id = null){
         $auditModel = new AuditModel();
         $accountAuditModel = new AccountAuditModel();
+        $groupMappingModel = new GroupMappingModel();
         $session= session();
         
         if(!$session->get('is_admin')){
             $group = $session->get('group_id');
             $accountAudit = $accountAuditModel->where('audit_id',$id)->first();
+
             if($accountAudit['group_id'] !== $group){
-                return $this->response->redirect(site_url('/audits'));
+                
+                //not the direct owner, is it the group owner
+                $subGroups = $groupMappingModel->where('group_id',$group)->findColumn('sub_group_id');
+                
+                $access = false;
+                foreach($subGroups as $subGroup){
+                    if($subGroup == $accountAudit['group_id']) { $access = true;}
+                }
+                
+                if($access == false){
+                    return $this->response->redirect(site_url('/audits'));
+                }
             }
+            
+            
         }
         
         $data['audit_obj'] = $auditModel->where('id', $id)->first();
@@ -826,6 +868,7 @@ class AuditCrud extends Controller
     public function edit(){  
         $auditModel = new AuditModel();
         $accountAuditModel = new AccountAuditModel();
+        $groupMappingModel = new GroupMappingModel();
         $session = session();
         $id = $this->request->getVar('id');
         
@@ -833,7 +876,18 @@ class AuditCrud extends Controller
             $group = $session->get('group_id');
             $accountAudit = $accountAuditModel->where('audit_id',$id)->first();
             if($accountAudit['group_id'] !== $group){
-                return $this->response->redirect(site_url('/audits'));
+                
+                //not the direct owner, is it the group owner
+                $subGroups = $groupMappingModel->where('group_id',$group)->findColumn('sub_group_id');
+                
+                $access = false;
+                foreach($subGroups as $subGroup){
+                    if($subGroup == $accountAudit['group_id']) { $access = true;}
+                }
+                
+                if($access == false){
+                    return $this->response->redirect(site_url('/audits'));
+                }
             }
         }
         

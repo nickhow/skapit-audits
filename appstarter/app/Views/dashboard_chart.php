@@ -38,18 +38,21 @@ var data = {  //was const -- breaks with reload
     backgroundColor: 'rgb(255, 99, 132)',
     borderColor: 'rgb(255, 99, 132)',
     data: cData.sent,
+    tension: 0.4
   },
   {
     label: 'open',
     backgroundColor: 'rgb(2, 123, 42)',
     borderColor: 'rgb(2, 123, 42)',
     data: cData.open,
+    tension: 0.4
   },
   {
     label: 'In Progress',
     backgroundColor: 'rgb(122, 33, 132)',
     borderColor: 'rgb(122, 33, 132)',
     data: cData.progress,
+    tension: 0.4
   }]
 };
 

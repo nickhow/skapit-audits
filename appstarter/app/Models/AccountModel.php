@@ -26,7 +26,17 @@ class AccountModel extends Model
                                FROM $this->table
                                LEFT JOIN groups
                                ON ($this->table.group_id = groups.id)
-                               WHERE group_id = '".$id."'");
+                               WHERE group_id = '".$id."'");  //changed group_id = .. to group_id IN to use array
+        return $query->getResultArray();
+        
+    }
+    
+         public function getAccountsWithGroupsById($id){
+        $query = $this->db->query("SELECT $this->table.*, groups.name AS group_name
+                               FROM $this->table
+                               LEFT JOIN groups
+                               ON ($this->table.group_id = groups.id)
+                               WHERE group_id IN ( SELECT sub_group_id FROM group_mapping WHERE group_id = ".$id.")"); 
         return $query->getResultArray();
         
     }

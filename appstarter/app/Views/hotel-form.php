@@ -2,10 +2,10 @@
   <link href="<?php echo base_url('css/main.css') ?>" rel="stylesheet">
   
   <style>
-.completed {
+/* .completed {
     background-color:#1598159e;
     color: white;
-}
+} */
 .collapsing {
     transition: none;
 }
@@ -1763,7 +1763,11 @@
                                         if($answer['id'] === $question['response']['answer_id']){ echo "selected"; } 
                                     } 
                                     echo ">" . ucfirst($answer['answer']) . "</option>";
-                                } 
+                                    
+                           //         echo ("<script>console.log('opt = q_ans_id ".$answer['id']." - r_ans_id".$question['response']['answer_id']."');</script>");
+                                }
+                            //    echo ("<script>document.getElementById('Q37').value = ".$question['response']['answer_id']."; console.log('set 37 = '+".$question['response']['answer_id'].");</script>");
+                           //     echo ("console.log('set 37 = '+".$question['response']['answer_id'].");</script>");
                             }
                         ?>
                         </select>
@@ -6080,12 +6084,14 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/additional-methods.min.js"></script>
+    
     <script> var isLocked = <?php if( session()->getFlashdata('locked')) { echo"true";}else{echo"false";} ?></script>
+    
     <script src="<?php echo base_url('js/main.js') ?>"></script>
 
     <?php if(session()->getFlashdata('failed_complete')){ echo "<script>document.addEventListener('load',formValidation());</script>"; }  ?>
     
-    <?php if(session()->getFlashdata('locked')){ echo "
+    <?php if(session()->getFlashdata('locked')): ?>
         <script>
             window.addEventListener('load',function(){
                 var questions = document.querySelectorAll('select, input');
@@ -6101,13 +6107,13 @@
             var responses;
             
                 $.ajax({
-                    url: '". site_url('/audit/responses/'.$audit_obj['id']) ."',
+                    url: '<?php echo site_url('/audit/responses/'.$audit_obj['id']) ?>',
                     type: 'GET',
                     success: function(data) {
                         responses = JSON.parse(data);
                         questions.forEach(function(question){
                             var qid = question.getAttribute('name');
-                            if(isNaN(qid) || responses[qid]['answer_id'] == '8888'){
+                            if(isNaN(qid) || responses[qid]['answer_id'] == "8888"){  //8888 is a skipped question
                         	//nothing
                             } else {
                                 var parent = question.parentElement;
@@ -6130,8 +6136,11 @@
                                 }
                                 if( responses[qid]['score_ba'] <= -100015 || responses[qid]['score_abta'] <= -100015){
                                     question.parentElement.parentElement.style.backgroundColor='rgb(203 0 0 / 50%)';
+                                    
+                                    //make the accordion red
+                                    var list = question.closest(".accordion-item").getElementsByClassName('accordion-button');
+                                    for(btn of list){btn.classList.add('completed-error')};
                                 }
-                                
                             }
 
                         }); 
@@ -6139,20 +6148,20 @@
                     }               
                 });
         </script>
-    "; }  ?>
-     <?php if(session()->get('is_admin')){ echo "
+    <?php endif;  ?>
+     <?php if(session()->get('is_admin') && session()->getFlashdata('locked')) : ?>
              <script>
             var questions = document.querySelectorAll('select, input');
             var responses;
             
                 $.ajax({
-                    url: '". site_url('/audit/responses/'.$audit_obj['id']) ."',
+                    url:  '<?php echo site_url('/audit/responses/'.$audit_obj['id']) ?>',
                     type: 'GET',
                     success: function(data) {
                         responses = JSON.parse(data);
                         questions.forEach(function(question){
                             var qid = question.getAttribute('name');
-                            if(isNaN(qid) || responses[qid]['answer_id'] == '8888' ){
+                             if(isNaN(qid) || responses[qid]['answer_id'] == '8888'){  //8888 is a skipped question
                         	//nothing
                             } else {
                                 var parent = question.parentElement;
@@ -6168,6 +6177,10 @@
                                 }
                                 if( responses[qid]['score_ba'] <= -100015 || responses[qid]['score_abta'] <= -100015){
                                     question.parentElement.parentElement.style.backgroundColor='rgb(203 0 0 / 50%)';
+                                    
+                                    //make the accordion red
+                                    var list = question.closest(".accordion-item").getElementsByClassName('accordion-button');
+                                    for(btn of list){btn.classList.add('completed-error')};
                                 }
                                 
                             }
@@ -6177,4 +6190,4 @@
                     }               
                 });
         </script>
-        "; }  ?>
+        <?php endif; ?>
