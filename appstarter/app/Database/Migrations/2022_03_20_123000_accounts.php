@@ -24,7 +24,7 @@ class AddAccounts extends Migration
                 'constraint' => '11',
             ],
             'is_group_manager' => [
-                'type'       => 'tiny_int',
+                'type'       => 'tinyint',
                 'constraint' => '1',
             ],
             'email'       => [
