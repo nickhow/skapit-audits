@@ -24,7 +24,7 @@ class AddContacts extends Migration
             #    'default'    => 'CURRENT_TIMESTAMP',
             #    'on_update' => 'CURRENT_TIMESTAMP',
             #],
-            'date datetime default current_timestamp on update current_timestamp',
+            'date timestamp default current_timestamp on update current_timestamp',
             'account_id' => [
                 'type'       => 'int',
                 'constraint' => '11',

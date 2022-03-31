@@ -18,43 +18,16 @@ class AddAudits extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '32',
             ],
-            'sent_date'       => [
-                'type'       => 'TIMESTAMP',
-                'default' => 'CURRENT_TIMESTAMP',
-            ],
-            'last_updated'       => [
-                'type'       => 'TIMESTAMP',
-                'default' => 'CURRENT_TIMESTAMP',
-            ],
-            'sent_date'       => [
-                'type'       => 'TIMESTAMP',
-                'default' => 'CURRENT_TIMESTAMP',
-            #    'default' => '1970-01-01 00:00:00',
-            ],
+            'sent_date timestamp default current_timestamp',
+            'last_updated timestamp default 0000-00-00',
             'waiver_signed' => [
                 'type'       => 'tiny_int',
                 'constraint' => '1',
             ],
-            'waiver_signed_date'       => [
-                'type'       => 'TIMESTAMP',
-                'default' => 'CURRENT_TIMESTAMP',
-            #    'default' => '1970-01-01 00:00:00',
-            ],
-            'completed_date'       => [
-                'type'       => 'TIMESTAMP',
-                'default' => 'CURRENT_TIMESTAMP',
-            #    'default' => '1970-01-01 00:00:00',
-            ],
-            'audited_date'       => [
-                'type'       => 'TIMESTAMP',
-                'default' => 'CURRENT_TIMESTAMP',
-            #    'default' => '1970-01-01 00:00:00',
-            ],
-            'expiry_date_ba'       => [
-                'type'       => 'TIMESTAMP',
-                'default' => 'CURRENT_TIMESTAMP',
-            #    'default' => '1970-01-01 00:00:00',
-            ],
+            'waiver_signed_date timestamp default 0000-00-00',
+            'completed_date timestamp default 0000-00-00',
+            'audited_date timestamp default 0000-00-00',
+            'expiry_date_ba timestamp default 0000-00-00',
             'status' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '300',
@@ -79,10 +52,7 @@ class AddAudits extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '2',
             ],
-            'created_date'       => [
-                'type'       => 'TIMESTAMP',
-                'default' => 'CURRENT_TIMESTAMP',
-            ],
+            'created_date timestamp default current_timestamp',
             'next_chase' => [
                 'type'       => 'int',
                 'constraint' => '1',
@@ -95,11 +65,7 @@ class AddAudits extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '300',
             ],
-            'expiry_date_abta'       => [
-                'type'       => 'TIMESTAMP',
-                'default' => 'CURRENT_TIMESTAMP',
-            #    'default' => '1970-01-01 00:00:00',
-            ],
+            'expiry_date_abta timestamp default 0000-00-00',
             'waiver_extra_info_included' => [
                 'type'       => 'tinyint',
                 'constraint' => '1',
