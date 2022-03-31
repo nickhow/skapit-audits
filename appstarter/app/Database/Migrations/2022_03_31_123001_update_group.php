@@ -17,12 +17,12 @@ class UpdateGroup extends Migration
                 'constraint' => '11',
             ],
         ];
-        $this->forge->add_column('groups', $fields);
+        $this->forge->addColumn('groups', $fields);
     }
 
     public function down()
     {
-        $this->forge->add_column('groups', $fields);
+        $this->forge->dropColumn('groups', $fields);
     }
 }
 ?>
