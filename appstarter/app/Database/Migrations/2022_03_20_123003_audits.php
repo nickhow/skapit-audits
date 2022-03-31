@@ -12,6 +12,7 @@ class AddAudits extends Migration
             'id'          => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '32',
+                'unique'         => true,
             ],
             'type' => [
                 'type'       => 'VARCHAR',
@@ -130,7 +131,6 @@ class AddAudits extends Migration
                 'constraint' => '10,2',
             ],
         ]);
-        $this->forge->addUnique('id', true);
         $this->forge->createTable('audits');
     }
 
