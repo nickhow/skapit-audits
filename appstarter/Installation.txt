@@ -1,0 +1,32 @@
+
+
+## ** NEW INSTALLATION **
+
+## Cpanel Git Version control
+Clone URL: https://github.com/nickhow/skapit-audits.git
+Path: audits/dev
+Repository Name: Dev (or whatever)
+
+## Cpanel Terminal 
+cd audits/dev/appstarter
+composer update
+
+php spark migrate
+php spark migrate:rollback (if needed)
+
+import sql file for data
+
+
+
+## ** UPDATE **
+
+Git update - use Git Controller pull from remote
+
+## Cpanel Terminal - If there are things to update or add via composer
+cd audits/dev/appstarter
+composer update
+
+## If there are DB changes to deploy
+php spark migrate
+php spark migrate:rollback (if needed)
+
