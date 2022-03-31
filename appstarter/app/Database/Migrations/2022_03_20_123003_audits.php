@@ -131,6 +131,7 @@ class AddAudits extends Migration
                 'constraint' => '10,2',
             ],
         ]);
+        $this->forge->addKey('id', true);
         $this->forge->createTable('audits');
     }
 
