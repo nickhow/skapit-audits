@@ -19,12 +19,11 @@ class AddContacts extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '32',
             ],
-            #'date'       => [
-            #    'type'       => 'TIMESTAMP',
-            #    'default'    => 'CURRENT_TIMESTAMP',
-            #    'on_update' => 'CURRENT_TIMESTAMP',
-            #],
             'date timestamp default current_timestamp on update current_timestamp',
+            'comment' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '2000',
+            ],
             'account_id' => [
                 'type'       => 'int',
                 'constraint' => '11',
