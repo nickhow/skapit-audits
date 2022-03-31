@@ -7,7 +7,7 @@ class UpdateGroup extends Migration
 {
     public function up()
     {
-        $fields ([
+        $fields = [
             'uses_sub_groups'       => [
                 'type'       => 'tinyint',
                 'constraint' => '1',
@@ -16,7 +16,7 @@ class UpdateGroup extends Migration
                 'type'       => 'int',
                 'constraint' => '11',
             ],
-        ]);
+        ];
         $this->forge->add_column('groups', $fields);
     }
 
