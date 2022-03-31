@@ -21,7 +21,7 @@ class AddContacts extends Migration
             ],
             'date'       => [
                 'type'       => 'TIMESTAMP',
-                'attributes' => 'on update CURRENT_TIMESTAMP'
+                'attributes' => 'on update CURRENT_TIMESTAMP',
                 'default' => 'CURRENT_TIMESTAMP',
                 'extra' => 'ON UPDATE CURRENT_TIMESTAMP',
             ],
