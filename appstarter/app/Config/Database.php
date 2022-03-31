@@ -33,9 +33,9 @@ class Database extends Config
     public $default = [
         'DSN'      => '',
         'hostname' => 'localhost',
-		'username' => 'skiapite_test_migrate',
+		'username' => 'skiapite_dev',
 		'password' => 'fx6QhvFWa8Sya4j',
-		'database' => 'skiapite_dev_audit',
+		'database' => 'skiapite_test_migrate',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
         'pConnect' => false,
