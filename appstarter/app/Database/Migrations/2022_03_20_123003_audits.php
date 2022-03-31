@@ -28,7 +28,7 @@ class AddAudits extends Migration
             ],
             'sent_date'       => [
                 'type'       => 'TIMESTAMP',
-                'default' => '0',
+                'default' => null,
             ],
             'waiver_signed' => [
                 'type'       => 'tiny_int',
@@ -36,19 +36,19 @@ class AddAudits extends Migration
             ],
             'waiver_signed_date'       => [
                 'type'       => 'TIMESTAMP',
-                'default' => '0',
+                'default' => null,
             ],
             'completed_date'       => [
                 'type'       => 'TIMESTAMP',
-                'default' => '0',
+                'default' => null,
             ],
             'audited_date'       => [
                 'type'       => 'TIMESTAMP',
-                'default' => '0',
+                'default' => null,
             ],
             'expiry_date_ba'       => [
                 'type'       => 'TIMESTAMP',
-                'default' => '0',
+                'default' => null,
             ],
             'status' => [
                 'type'       => 'VARCHAR',
@@ -92,7 +92,7 @@ class AddAudits extends Migration
             ],
             'expiry_date_abta'       => [
                 'type'       => 'TIMESTAMP',
-                'default' => '0',
+                'default' => null,
             ],
             'waiver_extra_info_included' => [
                 'type'       => 'tinyint',
