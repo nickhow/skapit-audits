@@ -31,4 +31,5 @@ class AddAccountAudits extends Migration
         $this->forge->addKey('id', true);
         $this->forge->createTable('account_audits');
     }
+}
 ?>
