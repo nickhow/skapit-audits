@@ -31,5 +31,10 @@ class AddAccountAudits extends Migration
         $this->forge->addKey('id', true);
         $this->forge->createTable('account_audits');
     }
+    public function down()
+    {
+        $this->forge->dropTable('account_audits');
+    }
+}
 }
 ?>
