@@ -36,5 +36,4 @@ class AddAccountAudits extends Migration
         $this->forge->dropTable('account_audits');
     }
 }
-}
 ?>
