@@ -28,6 +28,7 @@ class AddAudits extends Migration
             ],
             'sent_date'       => [
                 'type'       => 'TIMESTAMP',
+                'default' => 'CURRENT_TIMESTAMP',
             #    'default' => '1970-01-01 00:00:00',
             ],
             'waiver_signed' => [
@@ -36,18 +37,22 @@ class AddAudits extends Migration
             ],
             'waiver_signed_date'       => [
                 'type'       => 'TIMESTAMP',
+                'default' => 'CURRENT_TIMESTAMP',
             #    'default' => '1970-01-01 00:00:00',
             ],
             'completed_date'       => [
                 'type'       => 'TIMESTAMP',
+                'default' => 'CURRENT_TIMESTAMP',
             #    'default' => '1970-01-01 00:00:00',
             ],
             'audited_date'       => [
                 'type'       => 'TIMESTAMP',
+                'default' => 'CURRENT_TIMESTAMP',
             #    'default' => '1970-01-01 00:00:00',
             ],
             'expiry_date_ba'       => [
                 'type'       => 'TIMESTAMP',
+                'default' => 'CURRENT_TIMESTAMP',
             #    'default' => '1970-01-01 00:00:00',
             ],
             'status' => [
@@ -92,6 +97,7 @@ class AddAudits extends Migration
             ],
             'expiry_date_abta'       => [
                 'type'       => 'TIMESTAMP',
+                'default' => 'CURRENT_TIMESTAMP',
             #    'default' => '1970-01-01 00:00:00',
             ],
             'waiver_extra_info_included' => [
