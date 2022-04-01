@@ -18,7 +18,7 @@ class ProfileController extends Controller
         $admin = $session->get('is_admin');
         $group_id = $session->get('group_id');
         
-        $sql = "SELECT users.id, users.name as 'name', username, users.group_id, users.account_id, groups.name as 'group_name', accounts.accommodation_name as 'account_name' FROM users LEFT JOIN groups ON users.group_id = groups.id LEFT JOIN accounts ON users.account_id = accounts.id WHERE users.is_admin <> '1' AND users.is_hotelcheck <> '1'";
+        $sql = "SELECT users.id, users.name as 'name', username, users.group_id, users.account_id, users.created_date, groups.name as 'group_name', accounts.accommodation_name as 'account_name' FROM users LEFT JOIN groups ON users.group_id = groups.id LEFT JOIN accounts ON users.account_id = accounts.id WHERE users.is_admin <> '1' AND users.is_hotelcheck <> '1'";
         
         if($admin){
             echo view('templates/header');
