@@ -22,7 +22,7 @@
           <?php foreach($groups as $group): ?>
           <tr>
              <td><?php echo $group['name']; ?></td>
-             <td><?php echo $group['created_date']; ?></td>
+             <td><?php echo date('d/m/Y', strtotime($group['created_date'])); ?></td>
              <td>
                   <div class="row">
                       <div class="col-6 text-center">
