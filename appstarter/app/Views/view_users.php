@@ -69,7 +69,8 @@
 <script>
     $(document).ready( function () {
       $('#users-list').DataTable({
-          responsive: true
+          responsive: true,
+          "order": [[ 3, "desc" ]]
       });
   } );
 </script>
