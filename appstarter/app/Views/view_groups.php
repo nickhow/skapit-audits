@@ -13,6 +13,7 @@
        <thead>
           <tr>
              <th>Name</th>
+             <th>Created On</th>
              <th>Actions</th>
           </tr>
        </thead>
@@ -21,6 +22,7 @@
           <?php foreach($groups as $group): ?>
           <tr>
              <td><?php echo $group['name']; ?></td>
+             <td><?php echo $group['created_date']; ?></td>
              <td>
                   <div class="row">
                       <div class="col-6 text-center">
@@ -48,7 +50,7 @@
     $(document).ready( function () {
       $('#groups-list').DataTable({
           responsive: true,
-          "order": [[ 3, "desc" ]]
+          "order": [[ 1, "desc" ]]
       });
   } );
 </script>

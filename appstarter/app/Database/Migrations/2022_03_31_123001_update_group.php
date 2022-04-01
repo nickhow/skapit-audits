@@ -3,7 +3,7 @@
 namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
-class UpdateGroup extends Migration
+class AddSubGroupsToGroups extends Migration
 {
     public function up()
     {
@@ -11,10 +11,12 @@ class UpdateGroup extends Migration
             'uses_sub_groups'       => [
                 'type'       => 'tinyint',
                 'constraint' => '1',
+                'default'    => '0',
             ],
             'is_sub_group' => [
                 'type'       => 'int',
                 'constraint' => '11',
+                'default'    => '0',
             ],
         ];
         $this->forge->addColumn('groups', $fields);

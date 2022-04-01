@@ -8,7 +8,7 @@ class AccountModel extends Model
 
     protected $primaryKey = 'id';
     
-    protected $allowedFields = ['name', 'email', 'group_id','is_group_manager', 'phone', 'accommodation_name', 'resort', 'country', 'notes' ];
+    protected $allowedFields = ['name', 'email', 'group_id','is_group_manager', 'phone', 'accommodation_name', 'resort', 'country', 'notes','created_date', ];
     
     //Return data with groups table joined to show group name rather than group_id
     public function getAccountsWithGroup(){

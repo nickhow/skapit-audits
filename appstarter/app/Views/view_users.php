@@ -19,6 +19,7 @@
              <th>Name</th>
              <th>Username</th>
              <th>Group / Property</th>
+             <th>Created On</th>
              <th>Action</th>
           </tr>
        </thead>
@@ -36,6 +37,7 @@
                 <?php endif; ?>
              </td>
              <td>
+             <td><?php echo $user['created_date']; ?></td>
                <div class="row">
                     <!--  Remove for now - to buggy.
                     <div class="col-6 text-center">
