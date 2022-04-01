@@ -19,18 +19,19 @@ class AddAudits extends Migration
                 'constraint' => '32',
             ],
             'sent_date timestamp default current_timestamp ',
-            'last_updated timestamp default current_timestamp ',
+            'last_updated timestamp NOT NULL DEFAULT "0000-00-00 00:00:00"',
             'waiver_signed' => [
                 'type'       => 'tinyint',
                 'constraint' => '1',
             ],
-            'waiver_signed_date timestamp default current_timestamp ',
-            'completed_date timestamp default current_timestamp ',
-            'audited_date timestamp default current_timestamp ',
-            'expiry_date_ba timestamp default current_timestamp ',
+            'waiver_signed_date timestamp NOT NULL DEFAULT "0000-00-00 00:00:00" COMMENT "date the waiver was signed"',
+            'completed_date timestamp NOT NULL DEFAULT "0000-00-00 00:00:00" COMMENT "date the form was submitted"',
+            'audited_date timestamp NOT NULL DEFAULT "0000-00-00 00:00:00" COMMENT "date the form was scored"',
+            'expiry_date_ba timestamp NOT NULL DEFAULT "0000-00-00 00:00:00" COMMENT "date the result expires"',
             'status' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '300',
+                'comment'    => 'form completion status',
             ],
             'result_ba' => [
                 'type'       => 'VARCHAR',
@@ -39,23 +40,28 @@ class AddAudits extends Migration
             'comment' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '500',
+                'comment'    => 'overall comment',
             ],
             'total_score_ba' => [
                 'type'       => 'int',
                 'constraint' => '11',
+                'comment'    => 'HC score for BA',
             ],
             'total_score_abta' => [
                 'type'       => 'int',
                 'constraint' => '11',
+                'comment'    => 'HC score for ABTA',
             ],
             'language' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '2',
+                'default'    => 'en',
             ],
             'created_date timestamp default current_timestamp',
             'next_chase' => [
                 'type'       => 'int',
                 'constraint' => '1',
+                'default'    => '1',
             ],
             'paid' => [
                 'type'       => 'tinyint',
@@ -65,7 +71,7 @@ class AddAudits extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '300',
             ],
-            'expiry_date_abta timestamp default current_timestamp',
+            'expiry_date_abta timestamp NOT NULL DEFAULT "0000-00-00 00:00:00"',
             'waiver_extra_info_included' => [
                 'type'       => 'tinyint',
                 'constraint' => '1',

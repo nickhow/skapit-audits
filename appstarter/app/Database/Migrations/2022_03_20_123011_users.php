@@ -42,6 +42,7 @@ class AddUsers extends Migration
             'account_id' => [
                 'type'       => 'int',
                 'constraint' => '1',
+                'comment'    => 'For account level users',
             ],
         ]);
         $this->forge->addKey('id', true);

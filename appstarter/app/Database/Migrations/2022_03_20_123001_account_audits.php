@@ -18,14 +18,17 @@ class AddAccountAudits extends Migration
             'account_id' => [
                 'type'       => 'int',
                 'constraint' => '11',
+                'comment'    => 'account owner id',
             ],
             'audit_id'       => [
                 'type'       => 'VARCHAR',
                 'constraint' => '32',
+                
             ],
             'group_id' => [
                 'type'       => 'int',
                 'constraint' => '11',
+                'comment'    => 'account owner id',
             ],
         ]);
         $this->forge->addKey('id', true);
