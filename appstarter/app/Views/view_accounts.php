@@ -59,7 +59,8 @@
 <script>
     $(document).ready( function () {
       $('#accounts-list').DataTable({
-          responsive: true
+          responsive: true,
+          "order": [[ 3, "desc" ]]
       });
   } );
 </script>

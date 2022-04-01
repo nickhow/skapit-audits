@@ -38,14 +38,17 @@ class AddResponses extends Migration
             'score_ba' => [
                 'type'       => 'int',
                 'constraint' => '11',
+                'default'    => null,
             ],
             'score_abta' => [
                 'type'       => 'int',
                 'constraint' => '11',
+                'default'    => null,
             ],
             'comment' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '500',
+                'comment'    => 'Hotel Check comment',
             ],
             'custom_answer' => [
                 'type'       => 'VARCHAR',

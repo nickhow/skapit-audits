@@ -26,12 +26,12 @@ class AddAnswers extends Migration
             'score_ba' => [
                 'type'       => 'int',
                 'constraint' => '11',
-                'default' => null,
+                'comment'    => 'suggested BA score',
             ],
             'score_abta' => [
                 'type'       => 'int',
                 'constraint' => '11',
-                'default' => null,
+                'comment'    => 'suggested ABTA score',
             ],
             'en'       => [
                 'type'       => 'VARCHAR',
