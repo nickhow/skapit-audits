@@ -20,6 +20,7 @@
              <th>Accommodation Name</th>
              <th>Resort</th>
              <th>Country</th>
+             <th>Created On</th>
              <th>Action</th>
           </tr>
        </thead>
@@ -33,6 +34,7 @@
              <td><?php echo $account['accommodation_name']; ?></td>
              <td><?php echo $account['resort']; ?></td>
              <td><?php echo $account['country']; ?></td>
+             <td><?php echo $account['created_date']; ?></td>
              <td>
                <div class="row">
                       <div class="col-6 text-center">
@@ -60,7 +62,7 @@
     $(document).ready( function () {
       $('#accounts-list').DataTable({
           responsive: true,
-          "order": [[ 3, "desc" ]]
+          "order": [[ 6, "desc" ]]
       });
   } );
 </script>
