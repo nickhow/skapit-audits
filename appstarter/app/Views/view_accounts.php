@@ -34,7 +34,7 @@
              <td><?php echo $account['accommodation_name']; ?></td>
              <td><?php echo $account['resort']; ?></td>
              <td><?php echo $account['country']; ?></td>
-             <td><?php echo $account['created_date']; ?></td>
+             <td><?php echo date('d/m/Y', strtotime($account['created_date'])); ?></td>
              <td>
                <div class="row">
                       <div class="col-6 text-center">
