@@ -36,8 +36,8 @@
                     <a href="<?php echo base_url('account/'.$user['account_id']);?>" target="_blank"><?php echo $user['account_name']; ?></a>
                 <?php endif; ?>
              </td>
-             <td>
              <td><?php echo $user['created_date']; ?></td>
+             <td>
                <div class="row">
                     <!--  Remove for now - to buggy.
                     <div class="col-6 text-center">
