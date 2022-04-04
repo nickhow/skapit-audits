@@ -28,14 +28,17 @@ class Database extends Config
     /**
      * The default database connection.
      *
+     * skiapite_dev
+     * fx6QhvFWa8Sya4j
+     * 
      * @var array
      */
     public $default = [
         'DSN'      => '',
         'hostname' => 'localhost',
-		'username' => 'skiapite_dev',
-		'password' => 'fx6QhvFWa8Sya4j',
-		'database' => 'skiapite_test_migrate',
+		'username' => 'skiapite_audit',
+		'password' => 'zPcQNtRCCw8iyfH',
+		'database' => 'skiapite_audit',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
         'pConnect' => false,
