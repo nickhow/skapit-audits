@@ -50,6 +50,9 @@
 <script type="text/javascript" src="https://cdn.datatables.net/plug-ins/1.11.5/sorting/datetime-moment.js"></script>
 <script>
     $(document).ready( function () {
+      
+      $.fn.dataTable.moment( 'DD MM YYYY', 'en' );
+
       $('#groups-list').DataTable({
           responsive: true,
           "order": [[ 1, "desc" ]],
@@ -59,7 +62,7 @@
                 null,
           ],
       });
-      $.fn.dataTable.moment( 'DD MM YYYY', 'en' );
+      
   } );
 </script>
 
