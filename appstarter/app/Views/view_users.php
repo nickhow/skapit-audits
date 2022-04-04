@@ -68,6 +68,7 @@
 <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
 <script>
     $(document).ready( function () {
+      $.fn.dataTable.moment( 'D/M/YYYY' ); 
       $('#users-list').DataTable({
           responsive: true,
           "order": [[ 3, "desc" ]]
