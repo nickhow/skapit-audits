@@ -34,3 +34,4 @@ php spark migrate:rollback (if needed)
 Update the files to use the right URL and env settings
 .env
 /Config/App.php
+/Config/Database.php
