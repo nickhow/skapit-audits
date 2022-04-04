@@ -50,7 +50,12 @@
     $(document).ready( function () {
       $('#groups-list').DataTable({
           responsive: true,
-          "order": [[ 1, "desc" ]]
+          "order": [[ 1, "desc" ]],
+          "columns": [
+              null,
+                { "type": "date" },
+                null,
+          ],
       });
   } );
 </script>
