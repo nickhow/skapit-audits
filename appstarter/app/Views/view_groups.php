@@ -56,11 +56,9 @@
       $('#groups-list').DataTable({
           responsive: true,
           "order": [[ 1, "desc" ]],
-          "columns": [
-              null,
-                { "type": "date" },
-                null,
-          ],
+          "columnDefs": [
+                { "type": "date", "targets": 1 }
+          ]
       });
       
   } );
