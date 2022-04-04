@@ -46,6 +46,8 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css">
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/plug-ins/1.11.5/sorting/datetime-moment.js"></script>
 <script>
     $(document).ready( function () {
       $('#groups-list').DataTable({
@@ -57,6 +59,7 @@
                 null,
           ],
       });
+      $.fn.dataTable.moment( 'DD MM YYYY', 'en' );
   } );
 </script>
 
