@@ -51,7 +51,7 @@
 <script>
     $(document).ready( function () {
       
-      $.fn.dataTable.moment('DD MM YYYY');
+      $.fn.dataTable.moment( 'D/M/YYYY' ); 
 
       $('#groups-list').DataTable({
           responsive: true,
