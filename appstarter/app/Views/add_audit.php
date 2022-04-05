@@ -48,7 +48,26 @@
                     <input type="number" name="payable_amount" id="payableAmount" class="form-control" value="50.00" min="1" placeholder="Charge amount" aria-describedby="currency"/>
                 </div>
               </div>
+
+    <!-- Custom Text Section -->
+    
+              <div class="form-group pt-2">
+                <label>Add a custom introduction to the email?</label>
+                <select name="custom_intro" id="custom_intro" class="form-select">
+                    <option value='0'  selected >No</option>
+                    <option value='1'  >Yes</option>
+                </select>
+              </div>
+
+            
+              <div class="form-group pt-2" id="payableAmountContainer">
+                <label>Custom Introduction Text</label>
+                <text-area name="custom_intro_text" id="custom_intro_text" class="form-control" rows="3"></text-area>
+
+    <!-- Custom Text Section -->
+
             <?php endif; ?>
+
               <div class="form-group p-3 text-center">
                 <button type="submit" class="btn btn-primary btn-block">Send Audit</button>
               </div>

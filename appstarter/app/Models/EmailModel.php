@@ -17,7 +17,7 @@ class EmailModel extends Model
      *  Email address - Can be single, comma-delimited list
      *  Array containing : Account name, Audit URL, Property name, resort & country
      **/
-    public function sendNewAudit($language="en", $emailAddresses, $values=[]){
+    public function sendNewAudit($language="en", $emailAddresses, $values=[], $intro=""){
         $whereCondition = array('type'=>'new_audit','language'=>$language);
         $email = $this->where($whereCondition)->first();
             
@@ -25,6 +25,9 @@ class EmailModel extends Model
         $subject = $email['subject'];
         $message = $email['html'];
         $text = $email['text'];
+
+        //custom intro ahead of main email
+        $message = str_replace("__custom_intro__",$intro,$message);
         
         //Tags to search the text for -> this needs to be aligned to the $values[] Array
         $tags = array("__name__", "__url__","__propertyname__","__resort__","__country__");
