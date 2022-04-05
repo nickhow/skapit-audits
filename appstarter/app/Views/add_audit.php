@@ -60,7 +60,7 @@
               </div>
 
             
-              <div class="form-group pt-2" id="payableAmountContainer">
+              <div class="form-group pt-2" id="custom_intro_text_container">
                 <label>Custom Introduction Text</label>
                 <textarea name="custom_intro_text" id="custom_intro_text" class="form-control" rows="3"></textarea>
 
@@ -97,12 +97,13 @@
         function hideShowEmailText(){
           let custom_intro = document.getElementById('custom_intro');
           let custom_intro_text = document.getElementById('custom_intro_text');
+          let custom_intro_text_container = document.getElementById('custom_intro_text_container');
           if(document.getElementById('custom_intro').value == 0){
               custom_intro_text.disabled = true;
-              custom_intro_text.style.display="none";
+              custom_intro_text_container.style.display="none";
           } else {
               custom_intro_text.disabled = false;
-              custom_intro_text.style.display="block";
+              custom_intro_text_container.style.display="block";
           }
         }
         document.getElementById('custom_intro').addEventListener("change", hideShowEmailText);
