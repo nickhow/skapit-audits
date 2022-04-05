@@ -61,9 +61,9 @@
 
             
               <div class="form-group pt-2" id="custom_intro_text_container">
-                <label>Custom Introduction Text</label>
+                <label>Custom introduction text</label>
                 <textarea name="custom_intro_text" id="custom_intro_text" class="form-control" rows="3"></textarea>
-
+             </div>
     <!-- Custom Text Section -->
 
             <?php endif; ?>
