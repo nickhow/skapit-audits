@@ -23,7 +23,7 @@ class App extends BaseConfig
      *
      * @var string
      */
-    public $baseURL = 'https://audit.ski-api-technologies.com/';
+    public $baseURL = 'https://audit-dev.ski-api-technologies.com/';
 
     /**
      * --------------------------------------------------------------------------
