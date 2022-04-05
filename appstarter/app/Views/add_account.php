@@ -132,7 +132,7 @@
               </div>
 
     <!-- Custom Text Section -->
-
+             <div id="custom_text_container" style="display: none;">
               <div class="form-group pt-2">
                 <label>Add a custom introduction to the email?</label>
                 <select name="custom_intro" id="custom_intro" class="form-select">
@@ -145,6 +145,7 @@
               <div class="form-group pt-2" id="custom_intro_text_container">
                 <label>Custom introduction text</label>
                 <textarea name="custom_intro_text" id="custom_intro_text" class="form-control" rows="3"></textarea>
+              </div>
               </div>
     <!-- Custom Text Section -->
         
@@ -239,6 +240,14 @@
         }
         //hideAmount();
     }
+
+    function updateCustomText(){
+      if(a_lang.value !== "") {
+        document.getElementById('custom_text_container').style.display="block";
+      }else{
+        document.getElementById('custom_text_container').style.display="none";
+      }
+    }
     
     function hideAmount(){
         let amount = document.getElementById('payableAmount');
@@ -262,7 +271,6 @@
     g_manager.addEventListener('change', function(){ updateForm( g_manager, 'isGroupManager' ) });
     
     g_id.addEventListener('change', function(){ updatePayable() });
-    a_lang.addEventListener('change', function(){ updatePayable(); });
-
+    a_lang.addEventListener('change', function(){ updatePayable(); updateCustomText(); });
    
   </script>
