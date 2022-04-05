@@ -50,7 +50,7 @@
               </div>
 
     <!-- Custom Text Section -->
-    
+
               <div class="form-group pt-2">
                 <label>Add a custom introduction to the email?</label>
                 <select name="custom_intro" id="custom_intro" class="form-select">
@@ -62,7 +62,7 @@
             
               <div class="form-group pt-2" id="payableAmountContainer">
                 <label>Custom Introduction Text</label>
-                <text-area name="custom_intro_text" id="custom_intro_text" class="form-control" rows="3"></text-area>
+                <textarea name="custom_intro_text" id="custom_intro_text" class="form-control" rows="3"></textarea>
 
     <!-- Custom Text Section -->
 
@@ -80,6 +80,14 @@
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/additional-methods.min.js"></script>
+
+
+  <script src='https://cdn.tiny.cloud/1/storhqrnsr6cvl7y316t629se8numd9vx3eejd804dxjmzz6/tinymce/5/tinymce.min.js' referrerpolicy="origin"></script>
+  <script>
+  tinymce.init({
+    selector: '#custom_intro_text'
+  });
+  </script>
 
     <?php if(session()->get('is_admin')): ?>
       <script>
