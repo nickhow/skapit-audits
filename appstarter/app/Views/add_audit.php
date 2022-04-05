@@ -83,13 +83,33 @@
 
 
   <script src='https://cdn.tiny.cloud/1/storhqrnsr6cvl7y316t629se8numd9vx3eejd804dxjmzz6/tinymce/5/tinymce.min.js' referrerpolicy="origin"></script>
-  <script>
-  tinymce.init({
-    selector: '#custom_intro_text'
-  });
-  </script>
+
 
     <?php if(session()->get('is_admin')): ?>
+
+    <script>
+      tinymce.init({
+        selector: '#custom_intro_text'
+      });
+    </script>
+
+    <script>
+        function hideShowEmailText(){
+          let custom_intro = document.getElementById('custom_intro');
+          let custom_intro_text = document.getElementById('custom_intro_text');
+          if(document.getElementById('custom_intro').value == 0){
+              custom_intro_text.disabled = true;
+              custom_intro_text.style.display="none";
+          } else {
+              custom_intro_text.disabled = false;
+              custom_intro_text.style.display="block";
+          }
+        }
+        document.getElementById('custom_intro').addEventListener("change", hideShowEmailText);
+        hideShowEmailText();
+    </script>
+
+
       <script>
           function hideAmount(){
             let amount = document.getElementById('payableAmount');
