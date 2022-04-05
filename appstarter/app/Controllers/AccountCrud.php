@@ -228,12 +228,18 @@ class AccountCrud extends Controller
             $auditModel->insert($auditData);
             $accountAuditModel->insert($accountAuditData);
            
+            //Custom intro for the email
+            $intro = "";
+            if($this->request->getVar('custom_intro')){
+                $intro = $this->request->getVar('custom_intro_text');
+            }
+
             //Email the account about the audit
             $url =  site_url("/audit/".$id);
             $values = array($data['name'], $url,$data['accommodation_name'],$data['resort'],$data['country']);
             
             $emailModel = new EmailModel();
-            $emailModel->sendNewAudit($auditData['language'],$data['email'],$values);
+            $emailModel->sendNewAudit($auditData['language'],$data['email'],$values,$intro);
             
             $session->setFlashdata('msg', 'Account created. Audit '.$id.' also created.');
             
