@@ -130,6 +130,24 @@
                   </div>
               
               </div>
+
+    <!-- Custom Text Section -->
+             <div id="custom_text_container" style="display: none;">
+              <div class="form-group pt-2">
+                <label>Add a custom introduction to the email?</label>
+                <select name="custom_intro" id="custom_intro" class="form-select">
+                    <option value='0'  selected >No</option>
+                    <option value='1'  >Yes</option>
+                </select>
+              </div>
+
+            
+              <div class="form-group pt-2" id="custom_intro_text_container">
+                <label>Custom introduction text</label>
+                <textarea name="custom_intro_text" id="custom_intro_text" class="form-control" rows="3"></textarea>
+              </div>
+              </div>
+    <!-- Custom Text Section -->
         
               <div class="form-group p-3 text-center">
                 <button type="submit" class="btn btn-primary btn-block">Add Property</button>
@@ -145,6 +163,32 @@
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/additional-methods.min.js"></script>
+  <script src='https://cdn.tiny.cloud/1/storhqrnsr6cvl7y316t629se8numd9vx3eejd804dxjmzz6/tinymce/5/tinymce.min.js' referrerpolicy="origin"></script>
+
+  <script>
+      tinymce.init({
+        selector: '#custom_intro_text'
+      });
+    </script>
+
+    <script>
+        function hideShowEmailText(){
+          let custom_intro = document.getElementById('custom_intro');
+          let custom_intro_text = document.getElementById('custom_intro_text');
+          let custom_intro_text_container = document.getElementById('custom_intro_text_container');
+          if(document.getElementById('custom_intro').value == 0){
+              custom_intro_text.disabled = true;
+              custom_intro_text_container.style.display="none";
+          } else {
+              custom_intro_text.disabled = false;
+              custom_intro_text_container.style.display="block";
+          }
+        }
+        document.getElementById('custom_intro').addEventListener("change", hideShowEmailText);
+        hideShowEmailText();
+    </script>
+
+
   <script>
     if ($("#add_create").length > 0) {
       $("#add_create").validate({
@@ -196,6 +240,14 @@
         }
         //hideAmount();
     }
+
+    function updateCustomText(){
+      if(a_lang.value !== "") {
+        document.getElementById('custom_text_container').style.display="block";
+      }else{
+        document.getElementById('custom_text_container').style.display="none";
+      }
+    }
     
     function hideAmount(){
         let amount = document.getElementById('payableAmount');
@@ -219,7 +271,6 @@
     g_manager.addEventListener('change', function(){ updateForm( g_manager, 'isGroupManager' ) });
     
     g_id.addEventListener('change', function(){ updatePayable() });
-    a_lang.addEventListener('change', function(){ updatePayable(); });
-
+    a_lang.addEventListener('change', function(){ updatePayable(); updateCustomText(); });
    
   </script>

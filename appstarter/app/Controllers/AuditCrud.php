@@ -394,11 +394,16 @@ class AuditCrud extends Controller
         $auditModel->insert($auditData);
         $accountAuditModel->insert($accountAuditData);
         
+        $intro = "";
+        if($this->request->getVar('custom_intro')){
+            $intro = $this->request->getVar('custom_intro_text');
+        }
+
         $url =  site_url("/audit/".$id);
         $values = array($data['account']['name'], $url,$data['account']['accommodation_name'],$data['account']['resort'],$data['account']['country']);
         
         $emailModel = new EmailModel();
-        $emailModel->sendNewAudit($auditData['language'],$data['account']['email'],$values);
+        $emailModel->sendNewAudit($auditData['language'],$data['account']['email'],$values,$intro);
         
         $session->setFlashdata('msg', 'Audit created and sent.');
         return $this->response->redirect(site_url('/audits'));

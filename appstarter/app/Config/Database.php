@@ -30,15 +30,20 @@ class Database extends Config
      *
      * skiapite_dev
      * fx6QhvFWa8Sya4j
+     * skiapite_dev_audit
+     * 
+     * skiapite_audit
+     * zPcQNtRCCw8iyfH
+     * skiapite_audit
      * 
      * @var array
      */
     public $default = [
         'DSN'      => '',
         'hostname' => 'localhost',
-		'username' => 'skiapite_audit',
-		'password' => 'zPcQNtRCCw8iyfH',
-		'database' => 'skiapite_audit',
+		'username' => 'skiapite_dev',
+		'password' => 'fx6QhvFWa8Sya4j',
+		'database' => 'skiapite_dev_audit',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
         'pConnect' => false,

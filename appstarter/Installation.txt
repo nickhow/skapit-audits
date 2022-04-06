@@ -7,6 +7,9 @@ Clone URL: https://github.com/nickhow/skapit-audits.git
 Path: audits/dev
 Repository Name: Dev (or whatever)
 
+## Env
+Create the .env file
+
 ## Cpanel Terminal 
 cd audits/dev/appstarter
 composer update
