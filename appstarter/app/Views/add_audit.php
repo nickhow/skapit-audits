@@ -49,6 +49,8 @@
                 </div>
               </div>
 
+            <?php endif; ?>
+
     <!-- Custom Text Section -->
 
               <div class="form-group pt-2">
@@ -66,8 +68,6 @@
              </div>
     <!-- Custom Text Section -->
 
-            <?php endif; ?>
-
               <div class="form-group p-3 text-center">
                 <button type="submit" class="btn btn-primary btn-block">Send Audit</button>
               </div>
@@ -84,10 +84,7 @@
 
   <script src='https://cdn.tiny.cloud/1/storhqrnsr6cvl7y316t629se8numd9vx3eejd804dxjmzz6/tinymce/5/tinymce.min.js' referrerpolicy="origin"></script>
 
-
-    <?php if(session()->get('is_admin')): ?>
-
-    <script>
+  <script>
       tinymce.init({
         selector: '#custom_intro_text'
       });
@@ -109,7 +106,8 @@
         document.getElementById('custom_intro').addEventListener("change", hideShowEmailText);
         hideShowEmailText();
     </script>
-
+    
+    <?php if(session()->get('is_admin')): ?>
 
       <script>
           function hideAmount(){
