@@ -81,14 +81,14 @@
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
+  <div class="modal-dialog" style="max-width:min-content">
+    <div class="modal-content" style="width:min-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Email Preview</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
-        <div class="col-10 border p-4">
+      <div class="modal-body bg-light">
+        <div class="col border p-4">
             <div id="showEmail"></div>
         </div>
       </div>
