@@ -121,7 +121,7 @@ $routes->post('update-question', 'QuestionController::update');
 
 //emails
 $routes->get('email/(:segment)/(:alpha)', 'EmailController::getEmailHtml/$1/$2');
-
+$routes->post('email/(:segment)/(:alpha)', 'EmailController::getEmailHtml/$1/$2');
 // custom routes
 //$routes->get('/', 'SignupController::index');
 $routes->get('/signup', 'SignupController::index');
