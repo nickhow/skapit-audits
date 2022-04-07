@@ -11,6 +11,13 @@ use App\Models\UserModel;
 use CodeIgniter\I18n\Time;
 use CodeIgniter\Controller;
 
+
+helper('filesystem');
+
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
+
+
 class AccountCrud extends Controller
 {
     // show accounts list
@@ -456,12 +463,12 @@ class AccountCrud extends Controller
             ini_set('auto_detect_line_endings',TRUE);
             $handle = fopen('uploads/accounts/'.$filename,'r');
             while ( ($data = fgetcsv($handle) ) !== FALSE ) {
-            //process
-            $csv_lines[] = $data
+                //process
+                $csv_lines[] = $data
             }
             fclose($handle);
             ini_set('auto_detect_line_endings',FALSE);
-        }
+        };
         
         
         //Insert the data
