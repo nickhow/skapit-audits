@@ -458,7 +458,6 @@ class AccountCrud extends Controller
         $file = $this->request->getFile('property_upload');
 
         //store original name + set new random one
-        $original_name = $file->getClientName();
         $filename = $file->getRandomName();
 
         $csv_lines = [];
