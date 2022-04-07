@@ -470,7 +470,7 @@ class AccountCrud extends Controller
             ini_set('auto_detect_line_endings',TRUE);
             $handle = fopen('uploads/accounts/'.$filename,'r');
             while ( ($data = fgetcsv($handle) ) !== FALSE ) {
-                if(count($line) != $expected_col_count) {
+                if(count($data) != $expected_col_count) {
                     echo ("bad data");
                 break;
                 }
