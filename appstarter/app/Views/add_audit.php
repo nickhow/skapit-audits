@@ -147,7 +147,10 @@ function getEmailHtml(){
       var intro;
       if(document.getElementById('custom_intro').value == 0){
         intro = "";
+        console.log('no intro');
       } else {
+        console.log('has intro');
+        tinymce.triggerSave();
         intro = document.getElementById('custom_intro_text').value;
       }
       emailHtml.replace('__custom_intro__', intro)
