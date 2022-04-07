@@ -215,7 +215,7 @@ class EmailModel extends Model
 
     function getEmailHtml($type = 'new_audit', $lang='en'){
         $whereCondition = array('type'=>$type,'language'=>$lang);
-        $html[] = $this->where($whereCondition)->first();
+        $html = $this->where($whereCondition)->first();
         return $html;
     }
 }
