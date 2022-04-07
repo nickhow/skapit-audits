@@ -53,7 +53,7 @@
 
     <!-- Custom Text Section -->
     <div class="row pt-2 g-3">
-        <div class="col-12 col-lg-6">
+        <div class="col-12 col-md-6">
               <div class="form-group pt-2">
                 <label>Add a custom introduction to the email?</label>
                 <select name="custom_intro" id="custom_intro" class="form-select">
@@ -62,7 +62,7 @@
                 </select>
               </div>
         </div>
-        <div class="d-none d-lg-block col-6 align-self-end">
+        <div class="d-none d-md-block col-6 align-self-end">
               <div class="form-group pt-2 text-end">
                 <!-- Button trigger modal -->
                 <button id="view_email" type="button" class="btn btn-outline-secondary" >Preview Email</button> <!-- data-bs-toggle="modal" data-bs-target="#exampleModal" -->
@@ -134,36 +134,27 @@
     </script>
     
 <script>
-var emailHtml;
-var intro;
+
 function getEmailHtml(){
   var myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
   var lang = document.getElementById('language').value;
-//  myModal.hide()
+
   $.ajax({
     url: '<?php echo base_url(); ?>/email/new_audit/'+lang,
     type: 'get',
     success: function(emailResponse) {
       emailResponse = JSON.parse(emailResponse);
-      /* var */ emailHtml = emailResponse.html;
-      //var intro;
+       var  emailHtml = emailResponse.html;
+
       if(document.getElementById('custom_intro').value == 0){
         intro = "";
-     //   emailHtml.replace('__custom_intro__', intro);
       } else {
         tinymce.triggerSave();
         intro = document.getElementById('custom_intro_text').value;
-        console.log('has intro'+intro);
-        
       }
-      
-      //console.log(emailHtml);
       emailHtml = emailHtml.replace('__custom_intro__', intro);
       document.getElementById('showEmail').innerHTML = emailHtml;
-     // setTimeout(() => {
-        myModal.show();
-     // }, 2000);
-      
+      myModal.show();
     }               
   });
   
