@@ -132,13 +132,23 @@
               </div>
 
     <!-- Custom Text Section -->
-             <div id="custom_text_container" style="display: none;">
-              <div class="form-group pt-2">
-                <label>Add a custom introduction to the email?</label>
-                <select name="custom_intro" id="custom_intro" class="form-select">
-                    <option value='0'  selected >No</option>
-                    <option value='1'  >Yes</option>
-                </select>
+            <div id="custom_text_container" style="display: none;">
+
+              <div class="row pt-2 g-3">
+                <div class="col-12 col-md-6">
+                  <div class="form-group pt-2">
+                    <label>Add a custom introduction to the email?</label>
+                    <select name="custom_intro" id="custom_intro" class="form-select">
+                      <option value='0'  selected >No</option>
+                      <option value='1'  >Yes</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="d-none d-md-block col-6 align-self-end">
+                <div class="form-group pt-2 text-end">
+                  <!-- Button trigger modal -->
+                  <button id="view_email" type="button" class="btn btn-outline-secondary" >Preview Email</button> <!-- data-bs-toggle="modal" data-bs-target="#exampleModal" -->
+                </div>
               </div>
 
             
@@ -146,7 +156,7 @@
                 <label>Custom introduction text</label>
                 <textarea name="custom_intro_text" id="custom_intro_text" class="form-control" rows="3"></textarea>
               </div>
-              </div>
+            </div>
     <!-- Custom Text Section -->
         
               <div class="form-group p-3 text-center">
@@ -154,6 +164,25 @@
               </div>
             </form>  
           </div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" >
+    <div class="modal-content" >
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Email Preview</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body bg-white">
+        <div class="col border p-4 bg-light">
+            <div id="showEmail"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
       </div> 
 
       </div>
@@ -274,3 +303,30 @@
     a_lang.addEventListener('change', function(){ updatePayable(); updateCustomText(); });
    
   </script>
+<script>
+
+function getEmailHtml(){
+  var myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
+  var lang = document.getElementById('language').value;
+
+  $.ajax({
+    url: '<?php echo base_url(); ?>/email/new_audit/'+lang,
+    type: 'get',
+    success: function(emailResponse) {
+      emailResponse = JSON.parse(emailResponse);
+       var  emailHtml = emailResponse.html;
+
+      if(document.getElementById('custom_intro').value == 0){
+        intro = "";
+      } else {
+        tinymce.triggerSave();
+        intro = document.getElementById('custom_intro_text').value;
+      }
+      emailHtml = emailHtml.replace('__custom_intro__', intro);
+      document.getElementById('showEmail').innerHTML = emailHtml;
+      myModal.show();
+    }               
+  });
+}
+document.getElementById('view_email').addEventListener("click", getEmailHtml);
+</script>
