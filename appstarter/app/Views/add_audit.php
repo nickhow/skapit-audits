@@ -157,7 +157,6 @@ function getEmailHtml(){
       myModal.show();
     }               
   });
-  
 }
 document.getElementById('view_email').addEventListener("click", getEmailHtml);
 </script>
