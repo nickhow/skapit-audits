@@ -17,7 +17,7 @@
                 <div class="p2"></div> 
 
                 <div>
-                    <form method="post" id="add_create" name="add_create" action="<?= site_url('/account/upload') ?>">
+                    <form method="post" id="add_create" enctype="multipart/form-data" name="add_create" action="<?= site_url('/account/upload') ?>">
                         <h3>Upload Properties</h3>
 
                         <div class="form-group pt-2">
@@ -32,7 +32,7 @@
                             <label>Send out audits for these properties?</label>
                             <input type="file" name="property_upload" />
                         </div>
-                        
+
                         <div class="form-group p-3 text-center">
                             <button type="submit" class="btn btn-primary btn-block">Create Properties</button>
                         </div>
