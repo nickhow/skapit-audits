@@ -160,9 +160,9 @@ function getEmailHtml(){
       //console.log(emailHtml);
       document.getElementById('showEmail').innerHTML = emailHtml;
       setTimeout(() => {
-        console.log('waiting..');
+        myModal.show();
       }, 500);
-      myModal.show();
+      
     }               
   });
   
