@@ -117,7 +117,7 @@ function getEmailHtml(){
                     type: 'get',
                     success: function(html) {
                        // console.log(msg);
-                        document.getElementById('showEmail').innerHtML(html);
+                        document.getElementById('showEmail').innerHtML(html['html']);
                     }               
                 });
 }

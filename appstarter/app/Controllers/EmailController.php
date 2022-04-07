@@ -8,7 +8,7 @@ class EmailController extends Controller
     // Get Email HTML
     public function getEmailHtml($type,$lang) {
         $emailModel = new EmailModel();
-        print_r ($emailModel->getEmailHtml($type,$lang));
+        return ($emailModel->getEmailHtml($type,$lang));
     }
     
 }
