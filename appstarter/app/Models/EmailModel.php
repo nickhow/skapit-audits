@@ -158,7 +158,7 @@ class EmailModel extends Model
             return ($data);
        }
     }
-    
+
     //used for cron job
     function csvEmail(){
         
@@ -211,6 +211,12 @@ class EmailModel extends Model
             print_r($data);
             $session->setFlashdata('msg', 'Email failed to send.');
        }
+    }
+
+    function getEmailHtml($type = 'new_audit', $lang='en'){
+        $whereCondition = array('type'=>$type,'language'=>$lang);
+        $html = $this->where($whereCondition)->first();
+        return $html;
     }
 }
 
