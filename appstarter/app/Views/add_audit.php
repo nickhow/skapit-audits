@@ -135,7 +135,7 @@
     
 <script>
 function getEmailHtml(){
-  var myModal = new bootstrap.Modal(document.getElementById('exampleModal');
+  var myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
   var lang = document.getElementById('language').value;
   myModal.hide()
   $.ajax({
