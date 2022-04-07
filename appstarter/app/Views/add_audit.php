@@ -139,7 +139,7 @@ var intro;
 function getEmailHtml(){
   var myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
   var lang = document.getElementById('language').value;
-  myModal.hide()
+//  myModal.hide()
   $.ajax({
     url: '<?php echo base_url(); ?>/email/new_audit/'+lang,
     type: 'get',
@@ -161,7 +161,7 @@ function getEmailHtml(){
       document.getElementById('showEmail').innerHTML = emailHtml;
       setTimeout(() => {
         myModal.show();
-      }, 500);
+      }, 2000);
       
     }               
   });
