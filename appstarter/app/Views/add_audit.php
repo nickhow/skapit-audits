@@ -141,12 +141,19 @@ function getEmailHtml(){
     type: 'get',
     success: function(emailResponse) {
       emailResponse = JSON.parse(emailResponse);
-      document.getElementById('showEmail').innerHTML = emailResponse.html;
+      var emailHtml = emailResponse.html;
+      var intro;
+      if(document.getElementById('custom_intro').value == 0){
+        intro = "";
+      } else {
+        intro = document.getElementById('custom_intro_text').value;
+      }
+      emailHtml.replace('__custom_intro__', intro)
+      document.getElementById('showEmail').innerHTML = emailHtml;
     }               
   });
 }
-document.getElementById('language').addEventListener("change", getEmailHtml);
-getEmailHtml();
+document.getElementById('exampleModalLabel').addEventListener("click", getEmailHtml);
 </script>
 
 
