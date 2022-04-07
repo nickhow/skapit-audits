@@ -65,7 +65,7 @@
         <div class="d-none d-lg-block col-6 align-self-end">
               <div class="form-group pt-2 text-end">
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">Preview Email</button>
+                <button type="button" class="btn btn-outline-secondary" >Preview Email</button> <!-- data-bs-toggle="modal" data-bs-target="#exampleModal" -->
               </div>
         </div>
     </div>  
