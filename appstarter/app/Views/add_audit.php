@@ -159,6 +159,9 @@ function getEmailHtml(){
       
       //console.log(emailHtml);
       document.getElementById('showEmail').innerHTML = emailHtml;
+      setTimeout(() => {
+        console.log('waiting..');
+      }, 500);
       myModal.show();
     }               
   });
