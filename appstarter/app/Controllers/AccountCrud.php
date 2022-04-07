@@ -449,6 +449,11 @@ class AccountCrud extends Controller
         return json_encode($response);
     }
 
+
+    public function uploadAccounts(){
+        return view('add_account_upload'); 
+    }
+
     public function upload(){
         $file = $this->request->getFile('property_upload');
 

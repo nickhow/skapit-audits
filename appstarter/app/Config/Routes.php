@@ -61,7 +61,7 @@ $routes->post('update-account', 'AccountCrud::update');
 $routes->get('account/(:num)/delete', 'AccountCrud::delete/$1');
 $routes->post('account/charge-settings', 'AccountCrud::chargeSettings');
 $routes->post('account/upload', 'AccountCrud::upload');
-$routes->get('account/upload', 'AccountCrud::upload');
+$routes->get('account/upload', 'AccountCrud::uploadAccount');
 
 //audits
 $routes->get('audits', 'AuditCrud::index');
