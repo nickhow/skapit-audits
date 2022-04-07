@@ -1,5 +1,5 @@
   <div class="container mt-5">
-        <div class="row justify-content-md-center ">
+        <div class="row justify-content-center ">
           <div class="col-10 col-md-8 col-lg-6 p-4 bg-white rounded h-100">
               <h2>Create new Health and Safety audit</h2>
 
@@ -52,7 +52,7 @@
             <?php endif; ?>
 
     <!-- Custom Text Section -->
-    <div class="row row g-3">
+    <div class="row pt-2 g-3">
         <div class="col-12 col-lg-6">
               <div class="form-group pt-2">
                 <label>Add a custom introduction to the email?</label>
@@ -62,10 +62,10 @@
                 </select>
               </div>
         </div>
-        <div class="d-none d-lg-block col-6">
-              <div class="form-group pt-2">
+        <div class="d-none d-lg-block col-6 align-self-end">
+              <div class="form-group pt-2 text-end">
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">Preview Email</button>
+                <button type="button" class="btn btn-secondary-outline" data-bs-toggle="modal" data-bs-target="#exampleModal">Preview Email</button>
               </div>
         </div>
     </div>  
