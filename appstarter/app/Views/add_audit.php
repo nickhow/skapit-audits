@@ -149,13 +149,15 @@ function getEmailHtml(){
       //var intro;
       if(document.getElementById('custom_intro').value == 0){
         intro = "";
+        emailHtml.replace('__custom_intro__', intro);
       } else {
         tinymce.triggerSave();
         intro = document.getElementById('custom_intro_text').value;
         console.log('has intro'+intro);
+        emailHtml.replace('__custom_intro__', intro);
       }
-      emailHtml.replace('__custom_intro__', intro);
-      console.log(emailHtml);
+      
+      //console.log(emailHtml);
       document.getElementById('showEmail').innerHTML = emailHtml;
     }               
   });
