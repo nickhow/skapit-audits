@@ -113,7 +113,7 @@
 <script>
 function getEmailHtml(){
   $.ajax({
-                    url: '<?php echo base_url(); ?>/email/?type=new_audit&lang=en',
+                    url: '<?php echo base_url(); ?>/email/new_audit/en',
                     type: 'get',
                     success: function(html) {
                        // console.log(msg);
