@@ -83,7 +83,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" style="max-width:min-content">
+  <div class="modal-dialog model-lg" style="max-width:min-content">
     <div class="modal-content" style="width:min-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Email Preview</h5>
@@ -135,7 +135,9 @@
     
 <script>
 function getEmailHtml(){
+  var myModal = new bootstrap.Modal(document.getElementById('exampleModal');
   var lang = document.getElementById('language').value;
+  myModal.hide()
   $.ajax({
     url: '<?php echo base_url(); ?>/email/new_audit/'+lang,
     type: 'get',
@@ -152,6 +154,7 @@ function getEmailHtml(){
       document.getElementById('showEmail').innerHTML = emailHtml;
     }               
   });
+  myModal.show();
 }
 document.getElementById('exampleModalLabel').addEventListener("click", getEmailHtml);
 </script>
