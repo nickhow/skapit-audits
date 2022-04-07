@@ -456,14 +456,14 @@ class AccountCrud extends Controller
 
     public function upload(){
         $file = $this->request->getFile('property_upload');
-
-        //store original name + set new random one
-        $filename = $file->getRandomName();
-
-        $csv_lines = [];
-
-        $file->move('uploads/accounts/',$filename);
         if ( $file->isValid()) {
+            //store original name + set new random one
+            $filename = $file->getRandomName();
+
+            $csv_lines = [];
+
+            $file->move('uploads/accounts/',$filename);
+        
             ini_set('auto_detect_line_endings',TRUE);
             $handle = fopen('uploads/accounts/'.$filename,'r');
             while ( ($data = fgetcsv($handle) ) !== FALSE ) {
@@ -472,6 +472,9 @@ class AccountCrud extends Controller
             }
             fclose($handle);
             ini_set('auto_detect_line_endings',FALSE);
+        }else{
+            echo ("invalid file");
+            return;
         };
         
         
