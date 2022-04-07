@@ -450,7 +450,7 @@ class AccountCrud extends Controller
     }
 
 
-    public function uploadAccounts(){
+    public function uploadAccount(){
         return view('add_account_upload'); 
     }
 
