@@ -159,9 +159,10 @@ function getEmailHtml(){
       
       //console.log(emailHtml);
       document.getElementById('showEmail').innerHTML = emailHtml;
+      myModal.show();
     }               
   });
-  myModal.show();
+  
 }
 document.getElementById('view_email').addEventListener("click", getEmailHtml);
 </script>
