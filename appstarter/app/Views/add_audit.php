@@ -73,9 +73,14 @@
               </div>
             </form>
         </div>
-        <div class="col-3">
-        <div id="showEmail"></div>
+
+        <div class="d-none d-lg-block col-5">
+          <h3>Email Preview</h3>
+          <div class="col-12">
+            <div id="showEmail"></div>
+          </div>
         </div>
+        
     </div>
   </div>
 
@@ -113,13 +118,13 @@
 <script>
 function getEmailHtml(){
   $.ajax({
-                    url: '<?php echo base_url(); ?>/email/new_audit/en',
-                    type: 'get',
-                    success: function(emailResponse) {
-                      emailResponse = JSON.parse(emailResponse);
-                      document.getElementById('showEmail').innerHTML = emailResponse.html;
-                    }               
-                });
+    url: '<?php echo base_url(); ?>/email/new_audit/en',
+    type: 'get',
+    success: function(emailResponse) {
+      emailResponse = JSON.parse(emailResponse);
+      document.getElementById('showEmail').innerHTML = emailResponse.html;
+    }               
+  });
 }
 getEmailHtml();
 </script>
