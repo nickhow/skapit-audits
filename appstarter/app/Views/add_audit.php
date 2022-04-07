@@ -1,6 +1,6 @@
   <div class="container mt-5">
         <div class="row justify-content-md-center ">
-          <div class="col-10 col-md-8 col-lg-6 p-4 bg-white rounded">
+          <div class="col-10 col-md-8 col-lg-6 p-4 bg-white rounded h-100">
               <h2>Create new Health and Safety audit</h2>
 
             <form method="post" id="add_create" name="add_create" 
@@ -76,11 +76,11 @@
 
         <div class="d-none d-lg-block col-5">
           <h3>Email Preview</h3>
-          <div class="col-12">
+          <div class="col-12 border p-4">
             <div id="showEmail"></div>
           </div>
         </div>
-        
+
     </div>
   </div>
 
