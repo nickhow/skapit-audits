@@ -464,7 +464,7 @@ class AccountCrud extends Controller
             $handle = fopen('uploads/accounts/'.$filename,'r');
             while ( ($data = fgetcsv($handle) ) !== FALSE ) {
                 //process
-                $csv_lines[] = $data
+                $csv_lines[] = $data;
             }
             fclose($handle);
             ini_set('auto_detect_line_endings',FALSE);
