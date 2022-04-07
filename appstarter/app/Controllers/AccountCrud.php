@@ -457,6 +457,9 @@ class AccountCrud extends Controller
     public function upload(){
         $file = $this->request->getFile('property_upload');
         if ( $file->isValid()) {
+
+            $expected_col_count = 9;
+
             //store original name + set new random one
             $filename = $file->getRandomName();
 
@@ -467,6 +470,10 @@ class AccountCrud extends Controller
             ini_set('auto_detect_line_endings',TRUE);
             $handle = fopen('uploads/accounts/'.$filename,'r');
             while ( ($data = fgetcsv($handle) ) !== FALSE ) {
+                if(count($line) != $expected_col_count) {
+                    echo ("bad data");
+                break;
+                }
                 //process
                 $csv_lines[] = $data;
             }
