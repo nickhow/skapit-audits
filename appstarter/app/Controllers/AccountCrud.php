@@ -441,5 +441,54 @@ class AccountCrud extends Controller
         ];
         return json_encode($response);
     }
+
+    public function upload(){
+        $file = $this->request->getFile('property_upload');
+
+        //store original name + set new random one
+        $original_name = $file->getClientName();
+        $filename = $file->getRandomName();
+
+        $csv_lines = [];
+
+        $file->move('uploads/accounts/',$filename);
+        if ( $file->isValid()) {
+            ini_set('auto_detect_line_endings',TRUE);
+            $handle = fopen('uploads/accounts/'.$filename,'r');
+            while ( ($data = fgetcsv($handle) ) !== FALSE ) {
+            //process
+            $csv_lines[] = $data
+            }
+            fclose($handle);
+            ini_set('auto_detect_line_endings',FALSE);
+        }
+        
+        
+        //Insert the data
+
+       /* $line = [
+            'name' => $id,   
+            'group_id' =>  $file->getName(),   
+            'is_group_manager'  => '0',  // always no when uploading
+            'email'  => $file->getClientMimeType(),
+            'phone' => $description,
+            'accommodation_name' => $description,
+            'resort' => $description,
+            'country' => $description,
+            'notes' => $description,
+        ];
+        */
+
+        //delete the file
+        if(unlink('uploads/accounts/'.$filename)){
+            echo "file deleted";
+        } else {
+            return;
+        };  
+
+        print_r ($csv_lines);
+        return ;
+
+    }
 }
 ?>
