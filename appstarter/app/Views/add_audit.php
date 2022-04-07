@@ -8,7 +8,7 @@
               
               <div class="form-group pt-2">
                 <label>Language</label>
-                <select name="language" class="form-select">
+                <select name="language" id="language" class="form-select">
                     <option value="en">English</option>
                     <option value="fr">French</option>
                     <option value="de">German</option>
@@ -65,7 +65,7 @@
         <div class="d-none d-lg-block col-6 align-self-end">
               <div class="form-group pt-2 text-end">
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-secondary-outline" data-bs-toggle="modal" data-bs-target="#exampleModal">Preview Email</button>
+                <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">Preview Email</button>
               </div>
         </div>
     </div>  
@@ -135,8 +135,9 @@
     
 <script>
 function getEmailHtml(){
+  var lang = document.getElementById('language').value;
   $.ajax({
-    url: '<?php echo base_url(); ?>/email/new_audit/en',
+    url: '<?php echo base_url(); ?>/email/new_audit/'+lang,
     type: 'get',
     success: function(emailResponse) {
       emailResponse = JSON.parse(emailResponse);
@@ -144,6 +145,7 @@ function getEmailHtml(){
     }               
   });
 }
+document.getElementById('language').addEventListener("change", getEmailHtml);
 getEmailHtml();
 </script>
 
