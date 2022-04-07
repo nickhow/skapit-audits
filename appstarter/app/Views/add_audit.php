@@ -134,6 +134,8 @@
     </script>
     
 <script>
+var emailHtml;
+var intro;
 function getEmailHtml(){
   var myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
   var lang = document.getElementById('language').value;
@@ -143,8 +145,8 @@ function getEmailHtml(){
     type: 'get',
     success: function(emailResponse) {
       emailResponse = JSON.parse(emailResponse);
-      var emailHtml = emailResponse.html;
-      var intro;
+      /* var */ emailHtml = emailResponse.html;
+      //var intro;
       if(document.getElementById('custom_intro').value == 0){
         intro = "";
       } else {
