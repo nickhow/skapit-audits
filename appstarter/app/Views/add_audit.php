@@ -73,6 +73,9 @@
               </div>
             </form>
         </div>
+        <div class="col-3">
+        <div id="showEmail"></div>
+        </div>
     </div>
   </div>
 
@@ -107,6 +110,20 @@
         hideShowEmailText();
     </script>
     
+<script>
+function getEmailHtml(){
+  $.ajax({
+                    url: '<?php echo base_url(); ?>/email/?type=new_audit&lang=en',
+                    type: 'get',
+                    success: function(html) {
+                       // console.log(msg);
+                        document.getElementById('showEmail').innerHtML(html);
+                    }               
+                });
+}
+</script>
+
+
     <?php if(session()->get('is_admin')): ?>
 
       <script>
