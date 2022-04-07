@@ -116,8 +116,8 @@ function getEmailHtml(){
                     url: '<?php echo base_url(); ?>/email/new_audit/en',
                     type: 'get',
                     success: function(emailResponse) {
-                        console.log(emailResponse.html);
-                        document.getElementById('showEmail').innerHTML = emailResponse.html;
+                      emailResponse = JSON.parse(emailResponse);
+                      document.getElementById('showEmail').innerHTML = emailResponse.html;
                     }               
                 });
 }
