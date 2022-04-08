@@ -494,7 +494,7 @@ class AccountCrud extends Controller
                 }
                 //group
                 if(session()->get('is_admin') || session()->get('enable_groups') ){
-                    if(!is_integer($data[$pointer])){ 
+                    if(!is_numeric($data[$pointer])){ 
                         echo ("Incorrect value for Group Id on line: ".$line_counter.". Expecting a number recieved: ".$data[$pointer]); 
                     } else { 
                         $property_data = ['group_id'=>$data[$pointer]];
@@ -514,7 +514,7 @@ class AccountCrud extends Controller
                     $pointer++; 
                 }
                 //phone
-                if(!is_integer($data[$pointer])){ 
+                if(!is_numeric($data[$pointer])){ 
                     echo ("Incorrect value for Phone on line: ".$line_counter.". Expecting a number, for country codes use 00 instead of + i.e. 0033 rather than +33. You had: ".$data[$pointer]);
                     break;
                 } else { 
