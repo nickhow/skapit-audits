@@ -572,9 +572,18 @@ class AccountCrud extends Controller
             return;
         };        
         
-        //Insert the data
+        foreach($csv_lines as $insert_data){
+            //Insert the data
+            $accountModel->insert($insert_data);
+                            
+            //Get the ID
+            $account_id = $db->insertID();
 
-
+            //If sending the audits now, then do this here
+            if($this->request->getFile('send_audits')){
+                echo ("I would send the audits now");
+            }
+        }
 
         //delete the file
         if(unlink('uploads/accounts/'.$filename)){
