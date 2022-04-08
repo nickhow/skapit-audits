@@ -474,7 +474,7 @@ class AccountCrud extends Controller
         // check it is a csv
         if($file->guessExtension() != 'csv'){
             $session->setFlashdata('msg', "Incorrect file type, please ensure the uploaded file is a CSV file.");
-            return $this->response->redirect(site_url('/account/upload'))
+            return $this->response->redirect(site_url('/account/upload'));
         }
 
         if ( $file->isValid()) {
