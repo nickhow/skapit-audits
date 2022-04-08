@@ -11,8 +11,8 @@
                 <?php endif;?>
                 
             <div class="row py-2">
-              <div class="col align-self-end">
-                  <a href="<?= site_url('/account/upload') ?>"><div class="btn btn-outline-secondary">Upload multiple properties</div>
+              <div class="col text-end">
+                  <a href="<?= site_url('/account/upload') ?>"><div class="btn btn-outline-secondary">Upload multiple properties</div></a>
               </div>
             </div>
             <form method="post" id="add_create" name="add_create" action="<?= site_url('/account/new') ?>">
