@@ -27,7 +27,40 @@
                                 <option value='1' >Yes</option>
                             </select>
                         </div>
-                        <div class="form-group pt-2">
+
+
+        <?php if(session()->get('is_admin')): ?>
+
+                        <div id="isPayableContainer" style="display: none;">
+                            <div class="row">
+                                <div class="col-12 col-md-6">
+                                    <div class="form-group pt-2">
+                                        <label>Does this audit require payment?</label>
+                                        <select id="isPayable" name="is_payable" class="form-select">
+                                            <option value='0'   >No</option>
+                                            <option value='1' selected >Yes</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">            
+                                    <div class="form-group pt-2" id="payableAmountContainer">
+                                        <label>What is the cost for the audit (EUR)?</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" style="border-radius:0.25rem 0 0 0.25rem!important" id="currency">€</span>
+                                            </div>
+                                            <input type="number" name="payable_amount" id="payableAmount" class="form-control" value="50.00" min="1" placeholder="Charge amount" aria-describedby="currency" disabled="disabled"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        <?php endif; ?>
+
+                    <!-- Custom Text Section -->
+                    <div id="email_container" style="display: none;">
+
+                    <div class="form-group pt-2">
                             <label>Language</label>
                             <select id="language" name="language" class="form-select">
                                 <option value="en">English</option>
@@ -37,34 +70,6 @@
                                 <option value="es">Spanish</option>
                             </select>
                         </div>
-
-        <?php if(session()->get('is_admin')): ?>
-
-                        <div id="isPayableContainer" style="display: none;">
-        
-                            <div class="form-group pt-2">
-                            <label>Does this audit require payment?</label>
-                            <select id="isPayable" name="is_payable" class="form-select">
-                                <option value='0'   >No</option>
-                                <option value='1' selected >Yes</option>
-                            </select>
-                            </div>
-                            
-                            <div class="form-group pt-2" id="payableAmountContainer">
-                            <label>What is the cost for the audit (EUR)?</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" style="border-radius:0.25rem 0 0 0.25rem!important" id="currency">€</span>
-                                </div>
-                                <input type="number" name="payable_amount" id="payableAmount" class="form-control" value="50.00" min="1" placeholder="Charge amount" aria-describedby="currency" disabled="disabled"/>
-                            </div>
-                            </div>
-                        
-                        </div>
-        <?php endif; ?>
-
-                    <!-- Custom Text Section -->
-                    <div id="custom_text_container" style="display: none;">
 
                         <div class="row pt-2 g-3">
                         <div class="col-12 col-md-6">
@@ -156,17 +161,17 @@
         let send_audits = document.getElementById('send_audits');
 
         function updateCustomText(){
-            if(send_audits.value) {
-                document.getElementById('custom_text_container').style.display="block";
+            if(send_audits.value == 1) {
+                document.getElementById('email_container').style.display="block";
             }else{
-                document.getElementById('custom_text_container').style.display="none";
+                document.getElementById('email_container').style.display="none";
             }
         }
     
     <?php if(session()->get('is_admin')):?>        
     
             function updatePayable(){
-                if(send_audits.value) {
+                if(send_audits.value == 1) {
                     document.getElementById('isPayableContainer').style.display="block";
                     document.getElementById('isPayable').removeAttribute("disabled");
                     hideAmount();
