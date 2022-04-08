@@ -477,7 +477,7 @@ class AccountCrud extends Controller
                 if(count($data) != $expected_col_count) {
 
 //Make this an exception we handle
-                    echo ("Incorrect number of fields on line: ".$line_counter);
+                    echo ("Incorrect number of fields on line: ".$line_counter.". Expeced: ".$expected." but had ".count($data));
 
                 break;
                 }
