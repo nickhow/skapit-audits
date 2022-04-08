@@ -496,7 +496,7 @@ class AccountCrud extends Controller
                     echo ("Incorrect value for Name on line: ".$line_counter.". Expecting a string/text value.");
                     break;
                 } else { 
-                    $property_data = ['name'=>$data[$pointer]]; 
+                    $property_data += ['name'=>$data[$pointer]]; 
                     $pointer++; 
                 }
                 //group
@@ -504,20 +504,20 @@ class AccountCrud extends Controller
                     if(!is_numeric($data[$pointer])){ 
                         echo ("Incorrect value for Group Id on line: ".$line_counter.". Expecting a number recieved: ".$data[$pointer]); 
                     } else { 
-                        $property_data = ['group_id'=>$data[$pointer]];
+                        $property_data += ['group_id'=>$data[$pointer]];
                         $pointer++;
                     }
                 } else {
                     $property_data = ['group_id'=>session()->get('group_id')];
                 }
                 //is group manager - always 0 (no)
-                $property_data = ['is_group_manager'=>0];          
+                $property_data += ['is_group_manager'=>0];          
                 //email
                 if(!is_string($data[$pointer])){ 
                     echo ("Incorrect value for Email on line: ".$line_counter.". Expecting a string/text value recieved: ".$data[$pointer]);
                     break;
                 } else { 
-                    $property_data = ['email'=>$data[$pointer]]; 
+                    $property_data += ['email'=>$data[$pointer]]; 
                     $pointer++; 
                 }
                 //phone
@@ -525,7 +525,7 @@ class AccountCrud extends Controller
                     echo ("Incorrect value for Phone on line: ".$line_counter.". Expecting a number, for country codes use 00 instead of + i.e. 0033 rather than +33. You had: ".$data[$pointer]);
                     break;
                 } else { 
-                    $property_data = ['phone'=>$data[$pointer]]; 
+                    $property_data += ['phone'=>$data[$pointer]]; 
                     $pointer++; 
                 }
                 //accommodation name
@@ -533,7 +533,7 @@ class AccountCrud extends Controller
                     echo ("Incorrect value for Accommodation Name on line: ".$line_counter.". Expecting a string/text value recieved: ".$data[$pointer]);
                     break;
                 } else { 
-                    $property_data = ['accommodation_name'=>$data[$pointer]]; 
+                    $property_data += ['accommodation_name'=>$data[$pointer]]; 
                     $pointer++; 
                 }
                 //resort
@@ -541,7 +541,7 @@ class AccountCrud extends Controller
                     echo ("Incorrect value for Resort on line: ".$line_counter.". Expecting a string/text value recieved: ".$data[$pointer]);
                     break;
                 } else { 
-                    $property_data = ['resort'=>$data[$pointer]]; 
+                    $property_data += ['resort'=>$data[$pointer]]; 
                     $pointer++; 
                 }
                 //country
@@ -549,7 +549,7 @@ class AccountCrud extends Controller
                     echo ("Incorrect value for Country on line: ".$line_counter.". Expecting a string/text value recieved: ".$data[$pointer]);
                     break;
                 } else { 
-                    $property_data = ['country'=>$data[$pointer]]; 
+                    $property_data += ['country'=>$data[$pointer]]; 
                     $pointer++; 
                 }
                 //notes
@@ -557,7 +557,7 @@ class AccountCrud extends Controller
                     echo ("Incorrect value for Notes on line: ".$line_counter.". Expecting a string/text value recieved: ".$data[$pointer]);
                     break;
                 } else { 
-                    $property_data = ['notes'=>$data[$pointer]]; 
+                    $property_data += ['notes'=>$data[$pointer]]; 
                     $pointer++; 
                 }
 
