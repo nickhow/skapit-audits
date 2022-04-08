@@ -156,7 +156,7 @@
         let send_audits = document.getElementById('send_audits');
 
         function updateCustomText(){
-            if(send_audits) {
+            if(send_audits.value) {
                 document.getElementById('custom_text_container').style.display="block";
             }else{
                 document.getElementById('custom_text_container').style.display="none";
@@ -166,7 +166,7 @@
     <?php if(session()->get('is_admin')):?>        
     
             function updatePayable(){
-                if(send_audits) {
+                if(send_audits.value) {
                     document.getElementById('isPayableContainer').style.display="block";
                     document.getElementById('isPayable').removeAttribute("disabled");
                     hideAmount();
