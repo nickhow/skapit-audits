@@ -456,6 +456,8 @@ class AccountCrud extends Controller
 
     public function upload(){
         $accountModel = new AccountModel();
+        $db = db_connect();
+        
         $file = $this->request->getFile('property_upload');
 
         // check it is a csv
