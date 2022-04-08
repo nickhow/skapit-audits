@@ -482,7 +482,7 @@ class AccountCrud extends Controller
                 break;
                 }
                 //process
-                $property_data[];
+                $property_data = [];
                 $pointer = 0; //counts the array position to avoid hard coded position issues with admin having extra data
                 //name
                 if(!is_string($data[$pointer])){ 
