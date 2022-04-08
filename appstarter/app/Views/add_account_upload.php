@@ -20,6 +20,13 @@
                     <form method="post" id="add_create" enctype="multipart/form-data" name="add_create" action="<?= site_url('/account/upload') ?>">
                         <h3>Upload Properties</h3>
 
+                        <div class="form-group pt-4">
+                            <label>Upload the CSV file</label>
+                            <input type="file" name="property_upload" />
+                        </div>
+
+                        <h3 class="pt-4"> Audit Settings</h3>
+
                         <div class="form-group pt-2">
                             <label>Send out audits for these properties?</label>
                             <select id="send_audits" name="send_audits" class="form-select">
@@ -97,10 +104,7 @@
                         </div>
                         <!-- Custom Text Section -->
 
-                        <div class="form-group pt-4">
-                            <label>Upload the CSV file</label>
-                            <input type="file" name="property_upload" />
-                        </div>
+
 
                         <div class="form-group p-3 text-center">
                             <button type="submit" class="btn btn-primary btn-block">Create Properties</button>
