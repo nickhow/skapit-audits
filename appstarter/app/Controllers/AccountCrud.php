@@ -462,6 +462,11 @@ class AccountCrud extends Controller
 
     public function upload(){
         $accountModel = new AccountModel();
+        $auditModel = new AuditModel();
+        $accountAuditModel = new AccountAuditModel();
+        $groupMappingModel = new GroupMappingModel();
+        $groupModel = new GroupModel();
+        $session = session();
         $db = db_connect();
 
         $file = $this->request->getFile('property_upload');
