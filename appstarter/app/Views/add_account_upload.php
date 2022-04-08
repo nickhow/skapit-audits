@@ -57,46 +57,47 @@
                         </div>
         <?php endif; ?>
 
-                    <!-- Custom Text Section -->
-                    <div id="email_container" style="display: none;">
+                        <!-- Custom Text Section -->
+                        <div id="email_container" style="display: none;">
 
-                    <div class="form-group pt-2">
-                            <label>Language</label>
-                            <select id="language" name="language" class="form-select">
-                                <option value="en">English</option>
-                                <option value="fr">French</option>
-                                <option value="de">German</option>
-                                <option value="it">Italian</option>
-                                <option value="es">Spanish</option>
-                            </select>
-                        </div>
-
-                        <div class="row pt-2 g-3">
-                        <div class="col-12 col-md-6">
                             <div class="form-group pt-2">
-                            <label>Add a custom introduction to the email?</label>
-                            <select name="custom_intro" id="custom_intro" class="form-select">
-                                <option value='0'  selected >No</option>
-                                <option value='1'  >Yes</option>
-                            </select>
+                                <label>Language</label>
+                                <select id="language" name="language" class="form-select">
+                                    <option value="en">English</option>
+                                    <option value="fr">French</option>
+                                    <option value="de">German</option>
+                                    <option value="it">Italian</option>
+                                    <option value="es">Spanish</option>
+                                </select>
+                            </div>
+
+                            <div class="row pt-2 g-3">
+                                <div class="col-12 col-md-6">
+                                    <div class="form-group pt-2">
+                                        <label>Add a custom introduction to the email?</label>
+                                        <select name="custom_intro" id="custom_intro" class="form-select">
+                                            <option value='0'  selected >No</option>
+                                            <option value='1'  >Yes</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="d-none d-md-block col-6 align-self-end">
+                                    <div class="form-group pt-2 text-end">
+                                        <!-- Button trigger modal -->
+                                        <button id="view_email" type="button" class="btn btn-outline-secondary" >Preview Email</button> <!-- data-bs-toggle="modal" data-bs-target="#exampleModal" -->
+                                    </div>
+                                </div>
+
+                        
+                                <div class="form-group pt-2" id="custom_intro_text_container">
+                                    <label>Custom introduction text</label>
+                                    <textarea name="custom_intro_text" id="custom_intro_text" class="form-control" rows="3"></textarea>
+                                </div>
                             </div>
                         </div>
-                        <div class="d-none d-md-block col-6 align-self-end">
-                        <div class="form-group pt-2 text-end">
-                            <!-- Button trigger modal -->
-                            <button id="view_email" type="button" class="btn btn-outline-secondary" >Preview Email</button> <!-- data-bs-toggle="modal" data-bs-target="#exampleModal" -->
-                        </div>
-                        </div>
+                        <!-- Custom Text Section -->
 
-                    
-                        <div class="form-group pt-2" id="custom_intro_text_container">
-                        <label>Custom introduction text</label>
-                        <textarea name="custom_intro_text" id="custom_intro_text" class="form-control" rows="3"></textarea>
-                        </div>
-                    </div>
-                    <!-- Custom Text Section -->
-
-                        <div class="form-group pt-2">
+                        <div class="form-group pt-4">
                             <label>Upload the CSV file</label>
                             <input type="file" name="property_upload" />
                         </div>
