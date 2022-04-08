@@ -514,7 +514,7 @@ class AccountCrud extends Controller
                     $pointer++; 
                 }
                 //phone
-                if(!is_($data[$pointer])){ 
+                if(!is_integer($data[$pointer])){ 
                     echo ("Incorrect value for Phone on line: ".$line_counter.". Expecting a number, for country codes use 00 instead of + i.e. 0033 rather than +33.");
                     break;
                 } else { 
@@ -522,7 +522,7 @@ class AccountCrud extends Controller
                     $pointer++; 
                 }
                 //accommodation name
-                if(!is_($data[$pointer])){ 
+                if(!is_string($data[$pointer])){ 
                     echo ("Incorrect value for Accommodation Name on line: ".$line_counter.". Expecting a string/text value");
                     break;
                 } else { 
@@ -530,7 +530,7 @@ class AccountCrud extends Controller
                     $pointer++; 
                 }
                 //resort
-                if(!is_($data[$pointer])){ 
+                if(!is_string($data[$pointer])){ 
                     echo ("Incorrect value for Resort on line: ".$line_counter.". Expecting a string/text value.");
                     break;
                 } else { 
@@ -538,7 +538,7 @@ class AccountCrud extends Controller
                     $pointer++; 
                 }
                 //country
-                if(!is_($data[$pointer])){ 
+                if(!is_string($data[$pointer])){ 
                     echo ("Incorrect value for Country on line: ".$line_counter.". Expecting a string/text value.");
                     break;
                 } else { 
@@ -546,7 +546,7 @@ class AccountCrud extends Controller
                     $pointer++; 
                 }
                 //notes
-                if(!is_($data[$pointer])){ 
+                if(!is_string($data[$pointer])){ 
                     echo ("Incorrect value for Notes on line: ".$line_counter.". Expecting a string/text value.");
                     break;
                 } else { 
