@@ -451,7 +451,13 @@ class AccountCrud extends Controller
 
 
     public function uploadAccount(){
-        return view('add_account_upload'); 
+        if(session()->get('is_admin')){
+            echo view('templates/header');
+        }else{
+            echo view('templates/header-group');            
+        }
+        echo view('add_account_upload');
+        echo view('templates/footer');
     }
 
     public function upload(){
@@ -590,7 +596,6 @@ class AccountCrud extends Controller
                 
                 //IF- do Audit now ...
                 $lang = $this->request->getVar('language');
-                if(isset($lang) && $lang !== ""){
                     
                     //Generate the ID
                     $id = $auditModel->generateID();
@@ -644,7 +649,7 @@ class AccountCrud extends Controller
                     $accountAuditData = [
                         'audit_id' => $id,
                         'account_id' => $account_id,
-                        'group_id' => $this->request->getVar('group_id'),
+                        'group_id' => $insert_data['group_id'],
                     ];
                     
                     //Insert data for the audit        
@@ -663,8 +668,6 @@ class AccountCrud extends Controller
                     
                     $emailModel = new EmailModel();
                     $emailModel->sendNewAudit($auditData['language'],$data['email'],$values,$intro);
-                    
-                    $session->setFlashdata('msg', 'Account created. Audit '.$id.' also created.');
                     
                 }
             }

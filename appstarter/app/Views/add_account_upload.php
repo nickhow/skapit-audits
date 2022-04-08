@@ -30,7 +30,6 @@
                         <div class="form-group pt-2">
                             <label>Language</label>
                             <select id="language" name="language" class="form-select">
-                                <option value="" selected>Don't send an audit yet</option>
                                 <option value="en">English</option>
                                 <option value="fr">French</option>
                                 <option value="de">German</option>
@@ -63,7 +62,7 @@
                         
                         </div>
         <?php endif; ?>
-        
+
                     <!-- Custom Text Section -->
                     <div id="custom_text_container" style="display: none;">
 
@@ -154,9 +153,10 @@
     
     <script>
         let a_lang = document.getElementById('language');
+        let send_audits = document.getElementById('send_audits');
 
         function updateCustomText(){
-            if(a_lang.value !== "") {
+            if(send_audits) {
                 document.getElementById('custom_text_container').style.display="block";
             }else{
                 document.getElementById('custom_text_container').style.display="none";
@@ -166,7 +166,7 @@
     <?php if(session()->get('is_admin')):?>        
     
             function updatePayable(){
-                if(a_lang.value !== "") {
+                if(send_audits) {
                     document.getElementById('isPayableContainer').style.display="block";
                     document.getElementById('isPayable').removeAttribute("disabled");
                     hideAmount();
@@ -192,7 +192,8 @@
             document.getElementById('isPayable').addEventListener("change", hideAmount);
     <?php endif; ?>    
 
-    a_lang.addEventListener('change', function(){ updatePayable(); updateCustomText(); });
+    send_audits.addEventListener('change', function(){ updatePayable(); updateCustomText(); });
+    a_lang.addEventListener('change', function(){ updateCustomText(); });
         
     </script>
 
