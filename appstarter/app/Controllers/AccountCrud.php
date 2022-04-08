@@ -457,7 +457,7 @@ class AccountCrud extends Controller
     public function upload(){
         $accountModel = new AccountModel();
         $db = db_connect();
-        
+
         $file = $this->request->getFile('property_upload');
 
         // check it is a csv
@@ -584,7 +584,7 @@ class AccountCrud extends Controller
             $account_id = $db->insertID();
 
             //If sending the audits now, then do this here
-            if($this->request->getFile('send_audits')){
+            if($this->request->getVar('send_audits')){
                 echo ("I would send the audits now");
             }
         }
