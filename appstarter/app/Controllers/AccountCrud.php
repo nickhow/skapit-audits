@@ -457,6 +457,10 @@ class AccountCrud extends Controller
     public function upload(){
         $file = $this->request->getFile('property_upload');
 // check it is a csv
+        if($file->guessExtension() != 'csv'){
+            echo ('Not a CSV file.');
+            return;
+        }
 
         if ( $file->isValid()) {
 
