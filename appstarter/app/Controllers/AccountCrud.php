@@ -463,7 +463,7 @@ class AccountCrud extends Controller
             // name, group id (admin, sub-group groups), email, phone, accom name, resort, country, notes
             $expected_col_count = 7;
             if(session()->get('is_admin') || session()->get('enable_groups')){
-                $expected_col_count = 8
+                $expected_col_count = 8;
             }
 
             //store original name + set new random one
