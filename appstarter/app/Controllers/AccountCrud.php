@@ -669,7 +669,7 @@ class AccountCrud extends Controller
 
                     //Email the account about the audit
                     $url =  site_url("/audit/".$id);
-                    $values = array($data['name'], $url,$data['accommodation_name'],$data['resort'],$data['country']);
+                    $values = array($insert_data['name'], $url,$insert_data['accommodation_name'],$insert_data['resort'],$insert_data['country']);
                     
                     $emailModel = new EmailModel();
                     $emailModel->sendNewAudit($auditData['language'],$data['email'],$values,$intro);
