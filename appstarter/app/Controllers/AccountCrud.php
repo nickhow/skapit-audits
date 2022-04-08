@@ -497,12 +497,14 @@ class AccountCrud extends Controller
             $line_counter = 1;
             while ( ($data = fgetcsv($handle) ) !== FALSE ) {
                 if(count($data) != $expected_col_count) {
-
                     $session->setFlashdata('msg', "Incorrect number of fields on line: ".$line_counter.". Expeced: ".$expected_col_count." but had ".count($data));
                     return $this->response->redirect(site_url('/account/upload'));
-
-                break;
                 }
+
+                if($data[0] == 'NAME'){
+                    continue; // this is probably the title row, skip it
+                }
+
                 //process
                 $property_data = [];
                 $pointer = 0; //counts the array position to avoid hard coded position issues with admin having extra data
@@ -673,7 +675,7 @@ class AccountCrud extends Controller
                     
                 }
             }
-            
+
         //Clearing up, delete the file
         if(unlink('uploads/accounts/'.$filename)){
             //file deleted
