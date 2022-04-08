@@ -456,8 +456,11 @@ class AccountCrud extends Controller
 
     public function upload(){
         $file = $this->request->getFile('property_upload');
+// check it is a csv
+
         if ( $file->isValid()) {
 
+// 9 is including group id - that's admin only!
             $expected_col_count = 9;
 
             //store original name + set new random one
@@ -469,21 +472,98 @@ class AccountCrud extends Controller
         
             ini_set('auto_detect_line_endings',TRUE);
             $handle = fopen('uploads/accounts/'.$filename,'r');
+            $line_counter = 1;
             while ( ($data = fgetcsv($handle) ) !== FALSE ) {
                 if(count($data) != $expected_col_count) {
-                    echo ("bad data");
+
+//Make this an exception we handle
+                    echo ("Incorrect number of fields on line: ".$line_counter);
+
                 break;
                 }
                 //process
+                $property_data[];
+                $pointer = 0; //counts the array position to avoid hard coded position issues with admin having extra data
+                //name
+                if(!is_string($data[$pointer])){ 
+                    echo ("Incorrect value for Name on line: ".$line_counter.". Expecting a string/text value.");
+                    break;
+                } else { 
+                    $property_data = ['name'=>$data[$pointer]]; 
+                    $pointer++; 
+                }
+                //group
+                if(session()->get('is_admin') || session()->get('enable_groups') ){
+                    if(!is_integer($data[$pointer])){ 
+                        echo ("Incorrect value for Group Id on line: ".$line_counter.". Expecting a number."); 
+                    } else { 
+                        $property_data = ['group_id'=>$data[$pointer]];
+                        $pointer++;
+                    }
+                } else {
+                    $property_data = ['group_id'=>session()->get('group_id')];
+                }
+                //is group manager - always 0 (no)
+                $property_data = ['is_group_manager'=>0];          
+                //email
+                if(!is_string($data[$pointer])){ 
+                    echo ("Incorrect value for Email on line: ".$line_counter.". Expecting a string/text value.");
+                    break;
+                } else { 
+                    $property_data = ['email'=>$data[$pointer]]; 
+                    $pointer++; 
+                }
+                //phone
+                if(!is_($data[$pointer])){ 
+                    echo ("Incorrect value for Phone on line: ".$line_counter.". Expecting a number, for country codes use 00 instead of + i.e. 0033 rather than +33.");
+                    break;
+                } else { 
+                    $property_data = ['phone'=>$data[$pointer]]; 
+                    $pointer++; 
+                }
+                //accommodation name
+                if(!is_($data[$pointer])){ 
+                    echo ("Incorrect value for Accommodation Name on line: ".$line_counter.". Expecting a string/text value");
+                    break;
+                } else { 
+                    $property_data = ['accommodation_name'=>$data[$pointer]]; 
+                    $pointer++; 
+                }
+                //resort
+                if(!is_($data[$pointer])){ 
+                    echo ("Incorrect value for Resort on line: ".$line_counter.". Expecting a string/text value.");
+                    break;
+                } else { 
+                    $property_data = ['resort'=>$data[$pointer]]; 
+                    $pointer++; 
+                }
+                //country
+                if(!is_($data[$pointer])){ 
+                    echo ("Incorrect value for Country on line: ".$line_counter.". Expecting a string/text value.");
+                    break;
+                } else { 
+                    $property_data = ['country'=>$data[$pointer]]; 
+                    $pointer++; 
+                }
+                //notes
+                if(!is_($data[$pointer])){ 
+                    echo ("Incorrect value for Notes on line: ".$line_counter.". Expecting a string/text value.");
+                    break;
+                } else { 
+                    $property_data = ['notes'=>$data[$pointer]]; 
+                    $pointer++; 
+                }
+
                 $csv_lines[] = $data;
+                $line_counter++;
             }
             fclose($handle);
             ini_set('auto_detect_line_endings',FALSE);
         }else{
+//Make this an exception we handle
             echo ("invalid file");
             return;
-        };
-        
+        };        
         
         //Insert the data
 
