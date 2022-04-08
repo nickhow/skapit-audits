@@ -451,6 +451,9 @@ class AccountCrud extends Controller
 
 
     public function uploadAccount(){
+        
+        helper('filesystem');
+
         if(session()->get('is_admin')){
             echo view('templates/header');
         }else{

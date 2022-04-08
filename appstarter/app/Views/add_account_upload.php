@@ -28,7 +28,7 @@
                         Please remove from the template file the example row of data. You can keep or remove the row of titles, they will not be added in the import.
                     </div>
                 </div>
-                <div class="p2"></div> 
+                <div class="py-2"></div> 
 
                 <div>
                     <form method="post" id="add_create" enctype="multipart/form-data" name="add_create" action="<?= site_url('/account/upload') ?>">
