@@ -204,7 +204,9 @@
 
     send_audits.addEventListener('change', function(){ updatePayable(); updateCustomText(); });
     a_lang.addEventListener('change', function(){ updateCustomText(); });
-        
+    
+    updatePayable(); 
+    updateCustomText();
     </script>
 
     <script>

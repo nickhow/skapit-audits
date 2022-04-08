@@ -672,7 +672,7 @@ class AccountCrud extends Controller
                     $values = array($insert_data['name'], $url,$insert_data['accommodation_name'],$insert_data['resort'],$insert_data['country']);
                     
                     $emailModel = new EmailModel();
-                    $emailModel->sendNewAudit($auditData['language'],$data['email'],$values,$intro);
+                    $emailModel->sendNewAudit($auditData['language'],$insert_data['email'],$values,$intro);
                     
                 }
             }
