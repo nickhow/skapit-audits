@@ -491,8 +491,8 @@ class AccountCrud extends Controller
             $csv_lines = [];
 
             $file->move('uploads/accounts/',$filename);
-        
-            ini_set('auto_detect_line_endings',TRUE);
+
+            ini_set('auto_detect_line_endings',1);
             $handle = fopen('uploads/accounts/'.$filename,'r');
             $line_counter = 1;
             while ( ($data = fgetcsv($handle) ) !== FALSE ) {
@@ -583,7 +583,6 @@ class AccountCrud extends Controller
             fclose($handle);
             ini_set('auto_detect_line_endings',FALSE);
         }else{
-//Make this an exception we handle
             $session->setFlashdata('msg', 'Error processing the file. Please ensure it is a correctly formatted CSV file.');
             return $this->response->redirect(site_url('/account/upload'));
         };        
