@@ -561,7 +561,7 @@ class AccountCrud extends Controller
                     $pointer++; 
                 }
 
-                $csv_lines[] = $data;
+                $csv_lines[] = $property_data;
                 $line_counter++;
             }
             fclose($handle);
@@ -574,18 +574,7 @@ class AccountCrud extends Controller
         
         //Insert the data
 
-       /* $line = [
-            'name' => $id,   
-            'group_id' =>  $file->getName(),   
-            'is_group_manager'  => '0',  // always no when uploading
-            'email'  => $file->getClientMimeType(),
-            'phone' => $description,
-            'accommodation_name' => $description,
-            'resort' => $description,
-            'country' => $description,
-            'notes' => $description,
-        ];
-        */
+
 
         //delete the file
         if(unlink('uploads/accounts/'.$filename)){
