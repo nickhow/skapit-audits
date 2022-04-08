@@ -10,6 +10,11 @@
                 </div>
                 <?php endif;?>
                 
+            <div class="row py-2">
+              <div class="col align-self-end">
+                  <a href="<?= site_url('/account/upload') ?>"><div class="btn btn-outline-secondary">Upload multiple properties</div>
+              </div>
+            </div>
             <form method="post" id="add_create" name="add_create" action="<?= site_url('/account/new') ?>">
             <h3>Property Contact Details</h3>
               <div class="form-group">
@@ -145,16 +150,17 @@
                   </div>
                 </div>
                 <div class="d-none d-md-block col-6 align-self-end">
-                <div class="form-group pt-2 text-end">
-                  <!-- Button trigger modal -->
-                  <button id="view_email" type="button" class="btn btn-outline-secondary" >Preview Email</button> <!-- data-bs-toggle="modal" data-bs-target="#exampleModal" -->
+                  <div class="form-group pt-2 text-end">
+                    <!-- Button trigger modal -->
+                    <button id="view_email" type="button" class="btn btn-outline-secondary" >Preview Email</button> <!-- data-bs-toggle="modal" data-bs-target="#exampleModal" -->
+                  </div>
                 </div>
-              </div>
 
             
-              <div class="form-group pt-2" id="custom_intro_text_container">
-                <label>Custom introduction text</label>
-                <textarea name="custom_intro_text" id="custom_intro_text" class="form-control" rows="3"></textarea>
+                <div class="form-group pt-2" id="custom_intro_text_container">
+                  <label>Custom introduction text</label>
+                  <textarea name="custom_intro_text" id="custom_intro_text" class="form-control" rows="3"></textarea>
+                </div>
               </div>
             </div>
     <!-- Custom Text Section -->
