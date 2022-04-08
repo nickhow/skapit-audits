@@ -589,7 +589,9 @@ class AccountCrud extends Controller
         
         foreach($csv_lines as $insert_data){
             //Insert the data
-            $accountModel->insert($insert_data);
+        print_r ($csv_lines);
+
+        //    $accountModel->insert($insert_data);
                             
             //Get the ID
             $account_id = $db->insertID();
@@ -673,6 +675,8 @@ class AccountCrud extends Controller
                     
                 }
             }
+
+            return;
 
         //Clearing up, delete the file
         if(unlink('uploads/accounts/'.$filename)){
