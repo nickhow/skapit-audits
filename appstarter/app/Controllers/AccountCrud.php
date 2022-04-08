@@ -685,11 +685,11 @@ class AccountCrud extends Controller
         };  
 
         //Finished, return to the accounts page 
-        $msg;
+        $msg = "";
         if($this->request->getVar('send_audits')){
             $msg = 'The uploaded accounts have been created and the audits sent out.';
         } else {
-            'The uploaded accounts have been created.';
+            $msg = 'The uploaded accounts have been created.';
         }
         $session->setFlashdata('msg', $msg);
         return $this->response->redirect(site_url('/accounts'));
