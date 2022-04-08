@@ -524,7 +524,7 @@ class AccountCrud extends Controller
                         $pointer++;
                     }
                 } else {
-                    $property_data = ['group_id'=>session()->get('group_id')];
+                    $property_data += ['group_id'=>session()->get('group_id')];
                 }
                 //is group manager - always 0 (no)
                 $property_data += ['is_group_manager'=>0];          
@@ -589,12 +589,10 @@ class AccountCrud extends Controller
         
         foreach($csv_lines as $insert_data){
             //Insert the data
-        print_r ($csv_lines);
-
-        //    $accountModel->insert($insert_data);
+            $accountModel->insert($insert_data);
                             
             //Get the ID
-        //    $account_id = $db->insertID();
+            $account_id = $db->insertID();
 
             //If sending the audits now, then do this here
             if($this->request->getVar('send_audits')){
@@ -675,9 +673,7 @@ class AccountCrud extends Controller
                     
                 }
             }
-
-            return;
-
+            
         //Clearing up, delete the file
         if(unlink('uploads/accounts/'.$filename)){
             //file deleted
