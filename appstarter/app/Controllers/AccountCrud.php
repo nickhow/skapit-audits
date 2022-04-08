@@ -586,10 +586,91 @@ class AccountCrud extends Controller
             //If sending the audits now, then do this here
             if($this->request->getVar('send_audits')){
                 echo ("I would send the audits now");
+
+                
+                //IF- do Audit now ...
+                $lang = $this->request->getVar('language');
+                if(isset($lang) && $lang !== ""){
+                    
+                    //Generate the ID
+                    $id = $auditModel->generateID();
+                    //$account_id = $this->request->getVar('account');        
+                    $data['account'] = $accountModel->where('id', $account_id)->first();
+                    
+                    $isPayable = 0;
+                    $payableAmount = '0.00';
+                    if(!$session->get('is_admin')){ //if it's not admin, it's based on the group.
+                    
+                        $group = $groupModel->where('id',$data['account']['group_id'])->first();
+                        if($group['is_sub_group']){
+                            $mapping = $groupMappingModel->where('sub_group_id',$group['id'])->first();
+                            //overwrite  $group with master group
+                            $group = $groupModel->where('id',$mapping['group_id'])->first();
+                        }
+                        
+                        $isPayable = $group['is_payable'];
+                        if($isPayable){
+                            $payableAmount = $group['payable_amount'];
+                        }
+                            
+                    } else { //if it is admin it is set per audit.
+                        if(null !== ($this->request->getVar('is_payable'))) {
+                            $isPayable = $this->request->getVar('is_payable');
+                            if($isPayable){
+                                $payableAmount = $this->request->getVar('payable_amount');
+                            }
+                        } else {
+                            $group = $groupModel->where('id',$this->request->getVar('group_id'))->first();
+                            $isPayable = $group['is_payable'];
+                            if($isPayable){
+                                $payableAmount = $group['payable_amount'];
+                            }
+                        }
+                    }
+                
+                
+                    //Collect audit data
+                    $auditData = [
+                        'id' => $id,
+                        'language' => $this->request->getVar('language'),
+                        'sent_date' => Time::now('Europe/London', 'en_GB'),
+                        'created_date' => Time::now('Europe/London', 'en_GB'),
+                        'status' => 'sent',
+                        'is_payable' => $isPayable,
+                        'payable_amount' => $payableAmount,
+                    ];
+
+                    //Collect accountAudit data
+                    $accountAuditData = [
+                        'audit_id' => $id,
+                        'account_id' => $account_id,
+                        'group_id' => $this->request->getVar('group_id'),
+                    ];
+                    
+                    //Insert data for the audit        
+                    $auditModel->insert($auditData);
+                    $accountAuditModel->insert($accountAuditData);
+                
+                    //Custom intro for the email
+                    $intro = "";
+                    if($this->request->getVar('custom_intro')){
+                        $intro = $this->request->getVar('custom_intro_text');
+                    }
+
+                    //Email the account about the audit
+                    $url =  site_url("/audit/".$id);
+                    $values = array($data['name'], $url,$data['accommodation_name'],$data['resort'],$data['country']);
+                    
+                    $emailModel = new EmailModel();
+                    $emailModel->sendNewAudit($auditData['language'],$data['email'],$values,$intro);
+                    
+                    $session->setFlashdata('msg', 'Account created. Audit '.$id.' also created.');
+                    
+                }
             }
         }
 
-        //delete the file
+        //Clearing up, delete the file
         if(unlink('uploads/accounts/'.$filename)){
             echo "file deleted";
         } else {
@@ -598,6 +679,8 @@ class AccountCrud extends Controller
 
         print_r ($csv_lines);
         return ;
+        //Finished, return to the accounts page 
+    //    return $this->response->redirect(site_url('/accounts'));
 
     }
 }
