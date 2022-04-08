@@ -495,7 +495,7 @@ class AccountCrud extends Controller
                 //group
                 if(session()->get('is_admin') || session()->get('enable_groups') ){
                     if(!is_integer($data[$pointer])){ 
-                        echo ("Incorrect value for Group Id on line: ".$line_counter.". Expecting a number."); 
+                        echo ("Incorrect value for Group Id on line: ".$line_counter.". Expecting a number recieved: ".$data[$pointer]); 
                     } else { 
                         $property_data = ['group_id'=>$data[$pointer]];
                         $pointer++;
@@ -507,7 +507,7 @@ class AccountCrud extends Controller
                 $property_data = ['is_group_manager'=>0];          
                 //email
                 if(!is_string($data[$pointer])){ 
-                    echo ("Incorrect value for Email on line: ".$line_counter.". Expecting a string/text value.");
+                    echo ("Incorrect value for Email on line: ".$line_counter.". Expecting a string/text value recieved: ".$data[$pointer]);
                     break;
                 } else { 
                     $property_data = ['email'=>$data[$pointer]]; 
@@ -515,7 +515,7 @@ class AccountCrud extends Controller
                 }
                 //phone
                 if(!is_integer($data[$pointer])){ 
-                    echo ("Incorrect value for Phone on line: ".$line_counter.". Expecting a number, for country codes use 00 instead of + i.e. 0033 rather than +33.");
+                    echo ("Incorrect value for Phone on line: ".$line_counter.". Expecting a number, for country codes use 00 instead of + i.e. 0033 rather than +33. You had: ".$data[$pointer]);
                     break;
                 } else { 
                     $property_data = ['phone'=>$data[$pointer]]; 
@@ -523,7 +523,7 @@ class AccountCrud extends Controller
                 }
                 //accommodation name
                 if(!is_string($data[$pointer])){ 
-                    echo ("Incorrect value for Accommodation Name on line: ".$line_counter.". Expecting a string/text value");
+                    echo ("Incorrect value for Accommodation Name on line: ".$line_counter.". Expecting a string/text value recieved: ".$data[$pointer]);
                     break;
                 } else { 
                     $property_data = ['accommodation_name'=>$data[$pointer]]; 
@@ -531,7 +531,7 @@ class AccountCrud extends Controller
                 }
                 //resort
                 if(!is_string($data[$pointer])){ 
-                    echo ("Incorrect value for Resort on line: ".$line_counter.". Expecting a string/text value.");
+                    echo ("Incorrect value for Resort on line: ".$line_counter.". Expecting a string/text value recieved: ".$data[$pointer]);
                     break;
                 } else { 
                     $property_data = ['resort'=>$data[$pointer]]; 
@@ -539,7 +539,7 @@ class AccountCrud extends Controller
                 }
                 //country
                 if(!is_string($data[$pointer])){ 
-                    echo ("Incorrect value for Country on line: ".$line_counter.". Expecting a string/text value.");
+                    echo ("Incorrect value for Country on line: ".$line_counter.". Expecting a string/text value recieved: ".$data[$pointer]);
                     break;
                 } else { 
                     $property_data = ['country'=>$data[$pointer]]; 
@@ -547,7 +547,7 @@ class AccountCrud extends Controller
                 }
                 //notes
                 if(!is_string($data[$pointer])){ 
-                    echo ("Incorrect value for Notes on line: ".$line_counter.". Expecting a string/text value.");
+                    echo ("Incorrect value for Notes on line: ".$line_counter.". Expecting a string/text value recieved: ".$data[$pointer]);
                     break;
                 } else { 
                     $property_data = ['notes'=>$data[$pointer]]; 
