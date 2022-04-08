@@ -594,7 +594,7 @@ class AccountCrud extends Controller
         //    $accountModel->insert($insert_data);
                             
             //Get the ID
-            $account_id = $db->insertID();
+        //    $account_id = $db->insertID();
 
             //If sending the audits now, then do this here
             if($this->request->getVar('send_audits')){
