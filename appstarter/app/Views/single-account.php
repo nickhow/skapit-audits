@@ -61,7 +61,7 @@
                     if(!empty($audit_objects)){ 
                         echo date('Y-m-d', strtotime($audit_objects[0]->sent_date));
                     } else {
-                         echo date('Y-m-d', strtotime('1970-01-01'); 
+                         echo date('Y-m-d', strtotime('1970-01-01')); 
                     }
                 ?>
             ">
