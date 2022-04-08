@@ -473,8 +473,8 @@ class AccountCrud extends Controller
 
         // check it is a csv
         if($file->guessExtension() != 'csv'){
-            echo ('Not a CSV file.');
-            return;
+            $session->setFlashdata('msg', "Incorrect file type, please ensure the uploaded file is a CSV file.");
+            return $this->response->redirect(site_url('/account/upload'))
         }
 
         if ( $file->isValid()) {
@@ -498,8 +498,8 @@ class AccountCrud extends Controller
             while ( ($data = fgetcsv($handle) ) !== FALSE ) {
                 if(count($data) != $expected_col_count) {
 
-//Make this an exception we handle
-                    echo ("Incorrect number of fields on line: ".$line_counter.". Expeced: ".$expected_col_count." but had ".count($data));
+                    $session->setFlashdata('msg', "Incorrect number of fields on line: ".$line_counter.". Expeced: ".$expected_col_count." but had ".count($data));
+                    return $this->response->redirect(site_url('/account/upload'));
 
                 break;
                 }
@@ -508,8 +508,8 @@ class AccountCrud extends Controller
                 $pointer = 0; //counts the array position to avoid hard coded position issues with admin having extra data
                 //name
                 if(!is_string($data[$pointer])){ 
-                    echo ("Incorrect value for Name on line: ".$line_counter.". Expecting a string/text value.");
-                    break;
+                    $session->setFlashdata('msg', "Incorrect value for Name on line: ".$line_counter.". Expecting a string/text value.");
+                    return $this->response->redirect(site_url('/account/upload'));
                 } else { 
                     $property_data += ['name'=>$data[$pointer]]; 
                     $pointer++; 
@@ -517,7 +517,8 @@ class AccountCrud extends Controller
                 //group
                 if(session()->get('is_admin') || session()->get('enable_groups') ){
                     if(!is_numeric($data[$pointer])){ 
-                        echo ("Incorrect value for Group Id on line: ".$line_counter.". Expecting a number recieved: ".$data[$pointer]); 
+                        $session->setFlashdata('msg', "Incorrect value for Group Id on line: ".$line_counter.". Expecting a number recieved: ".$data[$pointer]);
+                        return $this->response->redirect(site_url('/account/upload'));
                     } else { 
                         $property_data += ['group_id'=>$data[$pointer]];
                         $pointer++;
@@ -529,48 +530,48 @@ class AccountCrud extends Controller
                 $property_data += ['is_group_manager'=>0];          
                 //email
                 if(!is_string($data[$pointer])){ 
-                    echo ("Incorrect value for Email on line: ".$line_counter.". Expecting a string/text value recieved: ".$data[$pointer]);
-                    break;
+                    $session->setFlashdata('msg', "Incorrect value for Email on line: ".$line_counter.". Expecting a string/text value recieved: ".$data[$pointer]);
+                    return $this->response->redirect(site_url('/account/upload'));
                 } else { 
                     $property_data += ['email'=>$data[$pointer]]; 
                     $pointer++; 
                 }
                 //phone
                 if(!is_numeric($data[$pointer])){ 
-                    echo ("Incorrect value for Phone on line: ".$line_counter.". Expecting a number, for country codes use 00 instead of + i.e. 0033 rather than +33. You had: ".$data[$pointer]);
-                    break;
+                    $session->setFlashdata('msg', "Incorrect value for Phone on line: ".$line_counter.". Expecting a number, for country codes use 00 instead of + i.e. 0033 rather than +33. You had: ".$data[$pointer]);
+                    return $this->response->redirect(site_url('/account/upload'));
                 } else { 
                     $property_data += ['phone'=>$data[$pointer]]; 
                     $pointer++; 
                 }
                 //accommodation name
                 if(!is_string($data[$pointer])){ 
-                    echo ("Incorrect value for Accommodation Name on line: ".$line_counter.". Expecting a string/text value recieved: ".$data[$pointer]);
-                    break;
+                    $session->setFlashdata('msg', "Incorrect value for Accommodation Name on line: ".$line_counter.". Expecting a string/text value recieved: ".$data[$pointer]);
+                    return $this->response->redirect(site_url('/account/upload'));
                 } else { 
                     $property_data += ['accommodation_name'=>$data[$pointer]]; 
                     $pointer++; 
                 }
                 //resort
                 if(!is_string($data[$pointer])){ 
-                    echo ("Incorrect value for Resort on line: ".$line_counter.". Expecting a string/text value recieved: ".$data[$pointer]);
-                    break;
+                    $session->setFlashdata('msg', "Incorrect value for Resort on line: ".$line_counter.". Expecting a string/text value recieved: ".$data[$pointer]);
+                    return $this->response->redirect(site_url('/account/upload'));
                 } else { 
                     $property_data += ['resort'=>$data[$pointer]]; 
                     $pointer++; 
                 }
                 //country
                 if(!is_string($data[$pointer])){ 
-                    echo ("Incorrect value for Country on line: ".$line_counter.". Expecting a string/text value recieved: ".$data[$pointer]);
-                    break;
+                    $session->setFlashdata('msg', "Incorrect value for Country on line: ".$line_counter.". Expecting a string/text value recieved: ".$data[$pointer]);
+                    return $this->response->redirect(site_url('/account/upload'));
                 } else { 
                     $property_data += ['country'=>$data[$pointer]]; 
                     $pointer++; 
                 }
                 //notes
                 if(!is_string($data[$pointer])){ 
-                    echo ("Incorrect value for Notes on line: ".$line_counter.". Expecting a string/text value recieved: ".$data[$pointer]);
-                    break;
+                    $session->setFlashdata('msg', "Incorrect value for Notes on line: ".$line_counter.". Expecting a string/text value recieved: ".$data[$pointer]);
+                    return $this->response->redirect(site_url('/account/upload'));
                 } else { 
                     $property_data += ['notes'=>$data[$pointer]]; 
                     $pointer++; 
@@ -583,8 +584,8 @@ class AccountCrud extends Controller
             ini_set('auto_detect_line_endings',FALSE);
         }else{
 //Make this an exception we handle
-            echo ("invalid file");
-            return;
+            $session->setFlashdata('msg', 'Error processing the file. Please ensure it is a correctly formatted CSV file.');
+            return $this->response->redirect(site_url('/account/upload'));
         };        
         
         foreach($csv_lines as $insert_data){
@@ -596,10 +597,7 @@ class AccountCrud extends Controller
 
             //If sending the audits now, then do this here
             if($this->request->getVar('send_audits')){
-                echo ("I would send the audits now");
 
-                
-                //IF- do Audit now ...
                 $lang = $this->request->getVar('language');
                     
                     //Generate the ID
@@ -676,19 +674,25 @@ class AccountCrud extends Controller
                     
                 }
             }
-        
 
         //Clearing up, delete the file
         if(unlink('uploads/accounts/'.$filename)){
-            echo "file deleted";
+            //file deleted
         } else {
-            return;
+            //log the error
+            log_message('error', 'Failed to delete a file of uploaded accounts: uploads/accounts/'.$filename);
+            return $this->response->redirect(site_url('/accounts'));
         };  
 
-        print_r ($csv_lines);
-        return ;
         //Finished, return to the accounts page 
-    //    return $this->response->redirect(site_url('/accounts'));
+        $msg;
+        if($this->request->getVar('send_audits')){
+            $msg = 'The uploaded accounts have been created and the audits sent out.';
+        } else {
+            'The uploaded accounts have been created.';
+        }
+        $session->setFlashdata('msg', $msg);
+        return $this->response->redirect(site_url('/accounts'));
 
     }
 }

@@ -9,6 +9,11 @@
                    <?= $validation->listErrors() ?>
                 </div>
                 <?php endif;?>
+                <?php if(session()->getFlashdata('msg')):?>
+                    <div class="alert alert-warning">
+                        <?= session()->getFlashdata('msg') ?>
+                    </div>
+                <?php endif;?>
 
                 <div>
                     <h3>Download template</h3>
