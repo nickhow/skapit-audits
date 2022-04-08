@@ -671,7 +671,7 @@ class AccountCrud extends Controller
                     
                 }
             }
-        }
+        
 
         //Clearing up, delete the file
         if(unlink('uploads/accounts/'.$filename)){
