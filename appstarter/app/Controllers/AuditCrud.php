@@ -1270,6 +1270,54 @@ class AuditCrud extends Controller
         echo view('templates/footer');
         
     }
+
+    public function salesforceResultPDF($audit_id = null){
+        $auditModel = New AuditModel();
+        $accountModel = New AccountModel();
+        $accountAuditModel = New AccountAuditModel();
+
+        $audit = $auditModel->where('id',$audit_id)->first();
+        $accountAudit = $accountAuditModel->where('audit_id', $audit)->first();
+        $account = $accountModel->where('id',$accountAudit['account_id'])->first();
+
+        $query = $db->query("SELECT id, en AS 'question', hide_for_1, hide_for_2, hide_for_3, hide_for_4, hide_for_5, question_number, has_custom_answer FROM questions ORDER BY question_number ASC");
+        $results = array();
+    
+        foreach ($query->getResultArray() as $row){
+            $row['answers'] = $db->query("SELECT id, question_id, answer AS 'en_ans'  FROM answers WHERE question_id = '".$row['id']."' ORDER BY precedence ASC")->getResultArray();
+            $row['response'] = $responseModel->where(['audit_id' => $audit_id, 'question_id' => $row['id']])->first();
+            $results[] = $row;
+        }
+    
+        $data['audit'] = $audit;
+        $data['account'] = $account;
+        $data['questions'] = $results;
+
+
+        $html = view('salesforce-results-pdf',$data);
+            
+        $dompdf = new \Dompdf\Dompdf();
+        
+        $options = $dompdf->getOptions();
+        $options->setDefaultFont('Roboto');
+        $options->setIsRemoteEnabled('true');
+        $options->setIsHtml5ParserEnabled('true');
+        $dompdf->setOptions($options);
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+               
+        $fileatt = $dompdf->output();
+
+        $email_content = "Test";
+        $emailaddresses = "nick@skapit.com";
+        $account_values = ""
+
+        $emailModel = new EmailModel();
+        //update $emailaddresses to the account email
+        $emailModel->pdfEmail("en", $email_content, $emailaddresses,$account_values,$fileatt);
+
+    }
     
 }
 ?>
