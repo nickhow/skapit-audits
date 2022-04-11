@@ -282,8 +282,7 @@ class AuditCrud extends Controller
                 INNER JOIN accounts on account_audits.account_id = accounts.id
                 WHERE status = 'reviewed'
                 AND (result_ba='suitable' OR result_abta='suitable') 
-                AND(DATEDIFF('".$today."', `expiry_date_ba`) > -30) 
-                OR (DATEDIFF('".$today."', `expiry_date_abta`) > -30)
+                AND ( (DATEDIFF('".$today."', `expiry_date_ba`) > -30) OR (DATEDIFF('".$today."', `expiry_date_abta`) > -30) )
         ";
         
         if(!$admin){
