@@ -1285,15 +1285,22 @@ class AuditCrud extends Controller
         $query = $db->query("SELECT id, en AS 'question', hide_for_1, hide_for_2, hide_for_3, hide_for_4, hide_for_5, question_number, has_custom_answer FROM questions ORDER BY question_number ASC");
         $results = array();
     
-        foreach ($query->getResultArray() as $row){
-            $row['answers'] = $db->query("SELECT id, question_id, ".$audit['language']." as answer, answer AS 'en_ans'  FROM answers WHERE question_id = '".$row['id']."' ORDER BY precedence ASC")->getResultArray();
-            $row['response'] = $responseModel->where(['audit_id' => $audit_id, 'question_id' => $row['id']])->first();
-            $results[] = $row;
-        }
+    //    foreach ($query->getResultArray() as $row){
+    //        $row['answers'] = $db->query("SELECT id, question_id, ".$audit['language']." as answer, answer AS 'en_ans'  FROM answers WHERE question_id = '".$row['id']."' ORDER BY precedence ASC")->getResultArray();
+    //        $row['response'] = $responseModel->where(['audit_id' => $audit_id, 'question_id' => $row['id']])->first();
+    //        $results[] = $row;
+    //    }
+
+        $responses = $responseModel->select('responses.*, questions.question, questions.question_number, questions.id AS question_id, answers.en AS answer')->where('audit_id', $audit_id)->join('questions','questions.id = responses.question_id', 'inner')->join('answers','answers.id = responses.answer_id', 'inner')->findALL();
+        
+    //    $data = [];
+    //    foreach($responses as $response){
+    //        $data[$response['question_id']] = $response;
+    //    }
     
         $data['audit'] = $audit;
         $data['account'] = $account;
-        $data['questions'] = $results;
+        $data['questions'] = $responses;
 
 
         return view('salesforce-results-pdf',$data);
