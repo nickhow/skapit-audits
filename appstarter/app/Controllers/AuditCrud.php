@@ -1298,7 +1298,7 @@ class AuditCrud extends Controller
             $answer;
             $comment;
 
-            if(! $row['answer_id'] == "9999" && ! $row['answer_id'] == "8888")
+            if(! $row['answer_id'] == "9999" && ! $row['answer_id'] == "8888"){
                 $question = $row['question'];
                 $answer = $row['en'];
                 $comment = $row['comment'];
