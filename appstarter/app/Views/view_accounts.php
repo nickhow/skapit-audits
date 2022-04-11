@@ -18,6 +18,7 @@
              <th>Email</th>
              <th>Phone</th>
              <th>Accommodation Name</th>
+             <th>Group</th>
              <th>Resort</th>
              <th>Country</th>
              <th>Created On</th>
@@ -32,6 +33,7 @@
              <td><?php echo $account['email']; ?></td>
              <td><?php echo $account['phone']; ?></td>
              <td><?php echo $account['accommodation_name']; ?></td>
+             <td><?php echo $account['group_name']; ?></td>
              <td><?php echo $account['resort']; ?></td>
              <td><?php echo $account['country']; ?></td>
              <td><?php echo date('d/m/Y', strtotime($account['created_date'])); ?></td>
