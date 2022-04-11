@@ -1286,7 +1286,7 @@ class AuditCrud extends Controller
         $results = array();
     
         foreach ($query->getResultArray() as $row){
-            $row['answers'] = $db->query("SELECT id, question_id, answer AS 'en_ans'  FROM answers WHERE question_id = '".$row['id']."' ORDER BY precedence ASC")->getResultArray();
+            $row['answers'] = $db->query("SELECT id, question_id, ".$audit['language']." answer AS 'en_ans'  FROM answers WHERE question_id = '".$row['id']."' ORDER BY precedence ASC")->getResultArray();
             $row['response'] = $responseModel->where(['audit_id' => $audit_id, 'question_id' => $row['id']])->first();
             $results[] = $row;
         }
