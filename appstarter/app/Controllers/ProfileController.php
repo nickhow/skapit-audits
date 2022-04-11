@@ -46,6 +46,11 @@ class ProfileController extends Controller
         
         $user = $userModel->where('id', $id)->first();
 
+        if($id = session()->get('id')) {
+            //you can't delete yourself
+            $this->response->redirect(site_url('/users'));
+        }
+
         if(!$admin){
             if($user['group_id'] != $group_id || $user['group_id'] == 0) {  // 0 is admin or account level
                 
