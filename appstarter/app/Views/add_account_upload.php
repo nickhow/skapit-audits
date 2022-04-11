@@ -31,6 +31,21 @@
                 <div class="row">
                     <div class="col">
                         <?php print_r($groups);?>
+                        <table>
+                            <tr>
+                                <th>Group Name</th>
+                                <th>Group ID</th>
+                            </tr>
+                        <?php
+                            if(is_array ($groups)){
+                                foreach($groups as $group){
+                                    echo ("<tr>");
+                                    echo ("<td>".$group['name']."</td>");
+                                    echo ("<td>".$group['id']."</td>");
+                                    echo ("</tr>")
+                                };
+                            }
+                        ?>
                     </div>
                 </div>
                 <div class="py-2"></div> 
