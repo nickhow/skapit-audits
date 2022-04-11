@@ -48,7 +48,7 @@ class ProfileController extends Controller
 
         if($id = session()->get('id')) {
             //you can't delete yourself
-            $this->response->redirect(site_url('/users'));
+            return $this->response->redirect(site_url('/users'));
         }
 
         if(!$admin){
