@@ -36,6 +36,7 @@ $routes->get('/', 'AuditCrud::index');
 $routes->get('', 'AuditCrud::index');
 $routes->get('/html-to-pdf','PDF::index');
 $routes->post('audit/send/pdf/(:alphanum)','AuditCrud::salesforceResultPDF/$1');
+$routes->get('audit/send/pdf/(:alphanum)','AuditCrud::salesforceResultPDF/$1');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
