@@ -115,7 +115,7 @@
       $('#account').selectize({
         sortField: 'text',
         onChange: function() {
-          getChargeSettings;
+          getChargeSettings();
         }
       });
   });
