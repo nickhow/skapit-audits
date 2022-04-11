@@ -1277,7 +1277,7 @@ class AuditCrud extends Controller
         $accountAuditModel = New AccountAuditModel();
 
         $audit = $auditModel->where('id',$audit_id)->first();
-        $accountAudit = $accountAuditModel->where('audit_id', $audit)->first();
+        $accountAudit = $accountAuditModel->where('audit_id', $audit_id)->first();
         $account = $accountModel->where('id',$accountAudit['account_id'])->first();
 
         $query = $db->query("SELECT id, en AS 'question', hide_for_1, hide_for_2, hide_for_3, hide_for_4, hide_for_5, question_number, has_custom_answer FROM questions ORDER BY question_number ASC");
