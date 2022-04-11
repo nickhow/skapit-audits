@@ -29,6 +29,9 @@
                 <li class="nav-item">
                   <a class="nav-link" href="<?= site_url('/accounts') ?>">Properties</a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link" target="_blank" href="https://skapit.freshdesk.com/support/solutions">Support</a>
+                </li>
                 <?php if(session()->get('enable_groups')): ?>
                   <li class="nav-item">
                     <a class="nav-link" href="<?= site_url('/groups') ?>">Groups</a>
