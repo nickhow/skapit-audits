@@ -289,7 +289,7 @@
     var button = document.getElementById('groups_button');
     
     function showHideText(){   
-        if(button.classList.contains(collapsed)){
+        if(button.classList.contains('collapsed')){
             button.innerHTML = "Show group IDs";
         } else {
             button.innerHTML = "Hide group IDs";
