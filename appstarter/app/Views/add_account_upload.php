@@ -28,28 +28,42 @@
                         Please remove from the template file the example row of data. You can keep or remove the row of titles, they will not be added in the import.
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <?php print_r($groups);?>
-                        <?php if(is_array($groups)): ?>
-                            <table>
-                                <tr>
-                                    <th>Group Name</th>
-                                    <th>Group ID</th>
-                                </tr>
 
-                        <?php
-                                foreach($groups as $group){
-                                    echo ("<tr>");
-                                    echo ("<td>".$group['name']."</td>");
-                                    echo ("<td>".$group['id']."</td>");
-                                    echo ("</tr>");
-                                };
-                                echo ("</table");   
-                            endif; ?>
-                        ?>
+                <?php if(is_array($groups)): ?>
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Show / Hide group IDs
+                            </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Group Name</th>
+                                                <th scope="col">Group ID</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        <?php
+                                            foreach($groups as $group){
+                                                echo ("<tr>");
+                                                echo ("<td>".$group['name']."</td>");
+                                                echo ("<td>".$group['id']."</td>");
+                                                echo ("</tr>");
+                                            };
+                                            echo ("</tbody></table");  
+                                        ?> 
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                <?php    endif; ?>
+
                 <div class="py-2"></div> 
 
                 <div>
