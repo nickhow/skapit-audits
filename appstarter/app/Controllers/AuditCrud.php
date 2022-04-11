@@ -1294,22 +1294,23 @@ class AuditCrud extends Controller
     
         foreach ($query->getResultArray() as $row){
 
+            $line = [];
             $question;
             $answer;
             $comment;
 
-            if(! $row['answer_id'] == "9999" && ! $row['answer_id'] == "8888"){
-                $question = $row['question'];
-                $answer = $row['en'];
-                $comment = $row['comment'];
+            if(!$row['answer_id'] == "9999" && !$row['answer_id'] == "8888"){
+                $line['question'] = $row['question'];
+                $line['answer'] = $row['en'];
+                $line['comment'] = $row['comment'];
             } elseif( $row['answer_id'] == "9999" ){
-                    $question = $row['question'];
-                    $answer = $row['custom_answer'];
-                    $comment = $row['comment'];
+                $line['question'] = $row['question'];
+                $line['answer'] = $row['custom_answer'];
+                $line['comment'] = $row['comment'];
             } else {
                 continue;
             }
-            $results[] = $row;
+            $results[] = $line;
         }
 
     
