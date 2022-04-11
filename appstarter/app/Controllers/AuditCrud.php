@@ -1284,23 +1284,38 @@ class AuditCrud extends Controller
 
         $query = $db->query("SELECT id, en AS 'question', hide_for_1, hide_for_2, hide_for_3, hide_for_4, hide_for_5, question_number, has_custom_answer FROM questions ORDER BY question_number ASC");
         $results = array();
-    
-    //    foreach ($query->getResultArray() as $row){
-    //        $row['answers'] = $db->query("SELECT id, question_id, ".$audit['language']." as answer, answer AS 'en_ans'  FROM answers WHERE question_id = '".$row['id']."' ORDER BY precedence ASC")->getResultArray();
-    //        $row['response'] = $responseModel->where(['audit_id' => $audit_id, 'question_id' => $row['id']])->first();
-    //        $results[] = $row;
-    //    }
 
-        $responses = $responseModel->select('responses.*, questions.question, questions.question_number, questions.id AS question_id, answers.en AS answer')->where('audit_id', $audit_id)->join('questions','questions.id = responses.question_id', 'inner')->join('answers','answers.id = responses.answer_id', 'inner')->findALL();
-        
-    //    $data = [];
-    //    foreach($responses as $response){
-    //        $data[$response['question_id']] = $response;
-    //    }
+        $query = $db->query("
+        SELECT questions.question, answers.en, responses.comment, responses.answer_id, responses.custom_answer 
+        FROM `responses` 
+        INNER JOIN questions ON questions.id = responses.question_id 
+        INNER JOIN answers ON answers.id = responses.answer_id 
+        WHERE audit_id = '".$audit_id."'");
+    
+        foreach ($query->getResultArray() as $row){
+
+            $question;
+            $answer;
+            $comment;
+
+            if(! $row['answer_id'] == "9999" && ! $row['answer_id'] == "8888")
+                $question = $row['question'];
+                $answer = $row['en'];
+                $comment = $row['comment'];
+            } elseif( $row['answer_id'] == "9999" ){
+                    $question = $row['question'];
+                    $answer = $row['custom_answer'];
+                    $comment = $row['comment'];
+            } else {
+                continue;
+            }
+            $results[] = $row;
+        }
+
     
         $data['audit'] = $audit;
         $data['account'] = $account;
-        $data['questions'] = $responses;
+        $data['questions'] = $results;
 
 
         return view('salesforce-results-pdf',$data);
