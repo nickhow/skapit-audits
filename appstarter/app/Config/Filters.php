@@ -92,7 +92,7 @@ class Filters extends BaseConfig
     	               ],
 	   'isGroup' => ['before' =>
                         ['audit/new','audit/reviewed', 'audit/expiring', 'audit/*/edit', 'audit/*/delete','accounts','account/*', 'update-account', 'users/', 'user/*', 'user/*/delete','signup',
-                        'group/*','groups', 'update-group', 'submit-group-form',
+                        'group/*','groups', 'update-group', 'submit-group-form', 'email/*',
                         ]
 	                ],
 	   'authguard' => ['before' => 

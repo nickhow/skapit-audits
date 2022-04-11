@@ -56,7 +56,13 @@
       
       <div class="form-group pt-2">
         <label>Last Contact</label>
-        <input type="date" name="sent_date" class="form-control" value="<?php echo date('Y-m-d', strtotime($audit_objects[0]->sent_date)); ?>">
+        <input type="date" name="sent_date" class="form-control" value="<?php 
+                    if(!empty($audit_objects)){ 
+                        echo date('Y-m-d', strtotime($audit_objects[0]->sent_date));
+                    } else {
+                         echo date('Y-m-d', strtotime('1970-01-01')); 
+                    }
+                ?>">
       </div>
    
       <div class="form-group pt-2">

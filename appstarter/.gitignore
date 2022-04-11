@@ -48,6 +48,9 @@ app/Config/App.php
 app/Config/Database.php
 
 
+
+!uploads/templates/*
+
 #-------------------------
 # Temporary Files
 #-------------------------

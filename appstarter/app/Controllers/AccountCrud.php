@@ -11,6 +11,13 @@ use App\Models\UserModel;
 use CodeIgniter\I18n\Time;
 use CodeIgniter\Controller;
 
+
+helper('filesystem');
+
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
+
+
 class AccountCrud extends Controller
 {
     // show accounts list
@@ -440,6 +447,259 @@ class AccountCrud extends Controller
             'payable_amount' => $payable_amount
         ];
         return json_encode($response);
+    }
+
+
+    public function uploadAccount(){
+        $groupModel = New GroupModel();
+        helper('filesystem');
+
+        if(session()->get('is_admin')){
+            echo view('templates/header');
+        }else{
+            echo view('templates/header-group');            
+        }
+        $data['groups'] = $groupModel->getAllGroups();
+
+        echo view('add_account_upload',$data);
+        echo view('templates/footer');
+    }
+
+    public function upload(){
+        $accountModel = new AccountModel();
+        $auditModel = new AuditModel();
+        $accountAuditModel = new AccountAuditModel();
+        $groupMappingModel = new GroupMappingModel();
+        $groupModel = new GroupModel();
+        $session = session();
+        $db = db_connect();
+
+        $file = $this->request->getFile('property_upload');
+
+        // check it is a csv
+        if($file->guessExtension() != 'csv'){
+            $session->setFlashdata('msg', "Incorrect file type, please ensure the uploaded file is a CSV file.");
+            return $this->response->redirect(site_url('/account/upload'));
+        }
+
+        if ( $file->isValid()) {
+
+            // name, group id (admin, sub-group groups), email, phone, accom name, resort, country, notes
+            $expected_col_count = 7;
+            if(session()->get('is_admin') || session()->get('enable_groups')){
+                $expected_col_count = 8;
+            }
+
+            //store original name + set new random one
+            $filename = $file->getRandomName();
+
+            $csv_lines = [];
+
+            $file->move('uploads/accounts/',$filename);
+
+            ini_set('auto_detect_line_endings',1);
+            $handle = fopen('uploads/accounts/'.$filename,'r');
+            $line_counter = 1;
+            while ( ($data = fgetcsv($handle) ) !== FALSE ) {
+                if(count($data) != $expected_col_count) {
+                    $session->setFlashdata('msg', "Incorrect number of fields on line: ".$line_counter.". Expeced: ".$expected_col_count." but had ".count($data));
+                    return $this->response->redirect(site_url('/account/upload'));
+                }
+
+                if($data[0] == 'NAME'){
+                    continue; // this is probably the title row, skip it
+                }
+
+                //process
+                $property_data = [];
+                $pointer = 0; //counts the array position to avoid hard coded position issues with admin having extra data
+                //name
+                if(!is_string($data[$pointer])){ 
+                    $session->setFlashdata('msg', "Incorrect value for Name on line: ".$line_counter.". Expecting a string/text value.");
+                    return $this->response->redirect(site_url('/account/upload'));
+                } else { 
+                    $property_data += ['name'=>$data[$pointer]]; 
+                    $pointer++; 
+                }
+                //group
+                if(session()->get('is_admin') || session()->get('enable_groups') ){
+                    if(!is_numeric($data[$pointer])){ 
+                        $session->setFlashdata('msg', "Incorrect value for Group Id on line: ".$line_counter.". Expecting a number recieved: ".$data[$pointer]);
+                        return $this->response->redirect(site_url('/account/upload'));
+                    } else { 
+                        $property_data += ['group_id'=>$data[$pointer]];
+                        $pointer++;
+                    }
+                } else {
+                    $property_data += ['group_id'=>session()->get('group_id')];
+                }
+                //is group manager - always 0 (no)
+                $property_data += ['is_group_manager'=>0];          
+                //email
+                if(!is_string($data[$pointer])){ 
+                    $session->setFlashdata('msg', "Incorrect value for Email on line: ".$line_counter.". Expecting a string/text value recieved: ".$data[$pointer]);
+                    return $this->response->redirect(site_url('/account/upload'));
+                } else { 
+                    $property_data += ['email'=>$data[$pointer]]; 
+                    $pointer++; 
+                }
+                //phone
+                if(!is_numeric($data[$pointer])){ 
+                    $session->setFlashdata('msg', "Incorrect value for Phone on line: ".$line_counter.". Expecting a number, for country codes use 00 instead of + i.e. 0033 rather than +33. You had: ".$data[$pointer]);
+                    return $this->response->redirect(site_url('/account/upload'));
+                } else { 
+                    $property_data += ['phone'=>$data[$pointer]]; 
+                    $pointer++; 
+                }
+                //accommodation name
+                if(!is_string($data[$pointer])){ 
+                    $session->setFlashdata('msg', "Incorrect value for Accommodation Name on line: ".$line_counter.". Expecting a string/text value recieved: ".$data[$pointer]);
+                    return $this->response->redirect(site_url('/account/upload'));
+                } else { 
+                    $property_data += ['accommodation_name'=>$data[$pointer]]; 
+                    $pointer++; 
+                }
+                //resort
+                if(!is_string($data[$pointer])){ 
+                    $session->setFlashdata('msg', "Incorrect value for Resort on line: ".$line_counter.". Expecting a string/text value recieved: ".$data[$pointer]);
+                    return $this->response->redirect(site_url('/account/upload'));
+                } else { 
+                    $property_data += ['resort'=>$data[$pointer]]; 
+                    $pointer++; 
+                }
+                //country
+                if(!is_string($data[$pointer])){ 
+                    $session->setFlashdata('msg', "Incorrect value for Country on line: ".$line_counter.". Expecting a string/text value recieved: ".$data[$pointer]);
+                    return $this->response->redirect(site_url('/account/upload'));
+                } else { 
+                    $property_data += ['country'=>$data[$pointer]]; 
+                    $pointer++; 
+                }
+                //notes
+                if(!is_string($data[$pointer])){ 
+                    $session->setFlashdata('msg', "Incorrect value for Notes on line: ".$line_counter.". Expecting a string/text value recieved: ".$data[$pointer]);
+                    return $this->response->redirect(site_url('/account/upload'));
+                } else { 
+                    $property_data += ['notes'=>$data[$pointer]]; 
+                    $pointer++; 
+                }
+
+                $csv_lines[] = $property_data;
+                $line_counter++;
+            }
+            fclose($handle);
+            ini_set('auto_detect_line_endings',FALSE);
+        }else{
+            $session->setFlashdata('msg', 'Error processing the file. Please ensure it is a correctly formatted CSV file.');
+            return $this->response->redirect(site_url('/account/upload'));
+        };        
+        
+        foreach($csv_lines as $insert_data){
+            //Insert the data
+            $accountModel->insert($insert_data);
+                            
+            //Get the ID
+            $account_id = $db->insertID();
+
+            //If sending the audits now, then do this here
+            if($this->request->getVar('send_audits')){
+
+                $lang = $this->request->getVar('language');
+                    
+                    //Generate the ID
+                    $id = $auditModel->generateID();
+                    //$account_id = $this->request->getVar('account');        
+                    $data['account'] = $accountModel->where('id', $account_id)->first();
+                    
+                    $isPayable = 0;
+                    $payableAmount = '0.00';
+                    if(!$session->get('is_admin')){ //if it's not admin, it's based on the group.
+                    
+                        $group = $groupModel->where('id',$data['account']['group_id'])->first();
+                        if($group['is_sub_group']){
+                            $mapping = $groupMappingModel->where('sub_group_id',$group['id'])->first();
+                            //overwrite  $group with master group
+                            $group = $groupModel->where('id',$mapping['group_id'])->first();
+                        }
+                        
+                        $isPayable = $group['is_payable'];
+                        if($isPayable){
+                            $payableAmount = $group['payable_amount'];
+                        }
+                            
+                    } else { //if it is admin it is set per audit.
+                        if(null !== ($this->request->getVar('is_payable'))) {
+                            $isPayable = $this->request->getVar('is_payable');
+                            if($isPayable){
+                                $payableAmount = $this->request->getVar('payable_amount');
+                            }
+                        } else {
+                            $group = $groupModel->where('id',$this->request->getVar('group_id'))->first();
+                            $isPayable = $group['is_payable'];
+                            if($isPayable){
+                                $payableAmount = $group['payable_amount'];
+                            }
+                        }
+                    }
+                
+                
+                    //Collect audit data
+                    $auditData = [
+                        'id' => $id,
+                        'language' => $this->request->getVar('language'),
+                        'sent_date' => Time::now('Europe/London', 'en_GB'),
+                        'created_date' => Time::now('Europe/London', 'en_GB'),
+                        'status' => 'sent',
+                        'is_payable' => $isPayable,
+                        'payable_amount' => $payableAmount,
+                    ];
+
+                    //Collect accountAudit data
+                    $accountAuditData = [
+                        'audit_id' => $id,
+                        'account_id' => $account_id,
+                        'group_id' => $insert_data['group_id'],
+                    ];
+                    
+                    //Insert data for the audit        
+                    $auditModel->insert($auditData);
+                    $accountAuditModel->insert($accountAuditData);
+                
+                    //Custom intro for the email
+                    $intro = "";
+                    if($this->request->getVar('custom_intro')){
+                        $intro = $this->request->getVar('custom_intro_text');
+                    }
+
+                    //Email the account about the audit
+                    $url =  site_url("/audit/".$id);
+                    $values = array($insert_data['name'], $url,$insert_data['accommodation_name'],$insert_data['resort'],$insert_data['country']);
+                    
+                    $emailModel = new EmailModel();
+                    $emailModel->sendNewAudit($auditData['language'],$insert_data['email'],$values,$intro);
+                    
+                }
+            }
+
+        //Clearing up, delete the file
+        if(unlink('uploads/accounts/'.$filename)){
+            //file deleted
+        } else {
+            //log the error
+            log_message('error', 'Failed to delete a file of uploaded accounts: uploads/accounts/'.$filename);
+            return $this->response->redirect(site_url('/accounts'));
+        };  
+
+        //Finished, return to the accounts page 
+        $msg = "";
+        if($this->request->getVar('send_audits')){
+            $msg = 'The uploaded accounts have been created and the audits sent out.';
+        } else {
+            $msg = 'The uploaded accounts have been created.';
+        }
+        $session->setFlashdata('msg', $msg);
+        return $this->response->redirect(site_url('/accounts'));
+
     }
 }
 ?>
