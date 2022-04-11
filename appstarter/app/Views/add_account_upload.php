@@ -30,14 +30,14 @@
                 </div>
 
                 <?php if(is_array($groups)): ?>
-                    <div class="accordion" id="accordionExample">
+                    <div class="accordion pt-4" id="accordionExample">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                Show / Hide group IDs
+                            <button id="groups_button" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Show group IDs
                             </button>
                             </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     
                                     <table class="table">
@@ -285,3 +285,15 @@
         }
         document.getElementById('view_email').addEventListener("click", getEmailHtml);
     </script>
+<script>
+    var button = document.getElementById('groups_button');
+    
+    function showHideText(){   
+        if(button.classList.contains(collapsed)){
+            button.innerHTML = "Show group IDs";
+        } else {
+            button.innerHTML = "Hide group IDs";
+        }
+    }
+    button.addEventListener('click', showHideText);
+</script>
