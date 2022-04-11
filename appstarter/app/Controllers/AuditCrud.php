@@ -1305,7 +1305,7 @@ class AuditCrud extends Controller
                 $line['answer'] = $row['custom_answer'];
                 $line['comment'] = $row['comment'];
             } else {
-             //   continue;
+                continue;
             }
             $results[] = $line;
         }
