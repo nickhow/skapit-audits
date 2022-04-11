@@ -1,6 +1,6 @@
 
   <div class="container mt-5">
-        <div class="row justify-content-md-center ">
+        <div class="row justify-content-center ">
           <div class="col-10 col-md-8 col-lg-6 p-4 bg-white rounded">
               <h2>Upload Multiple Properties</h2>
                 
@@ -19,7 +19,7 @@
                     <h3>Download template</h3>
                 </div>
                 <div class="row">
-                    <div class="col-12 col-md-5 col-lg-3">
+                    <div class="col-12 col-md-5 col-lg-3 align-self-center">
                         <a href="<?php if(session()->get('is_admin')||session()->get('enable_groups')){echo base_url()."/uploads/templates/template_admin.csv";}else{echo base_url()."/uploads/templates/template.csv";} ?>" download >
                             <div class="btn btn-outline-secondary m-2">
                                 <i class="fas fa-download"></i> Download
@@ -28,7 +28,7 @@
                     </div>
                     <div class="col-12 col-md-7 col-lg-9">
                         <div class="form-text">
-                            Please remove from the template file the example row of data. You can keep or remove the row of titles, they will not be added in the import.
+                            Please remove the example row of data from the template file before uploading. You can keep or remove the row of titles, they will not be added during the import.
                         </div>
                     </div>
                 </div>
