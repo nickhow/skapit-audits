@@ -88,7 +88,7 @@
 
         <!-- per question -->
 
-        <?php  print_r( $questions[0]['question' ); ?>
+        <?php  print_r( $questions[0]['question'] ); ?>
         <?php //  print_r( $questions ); ?>
        
         <?php foreach($questions as $question) : ?>
