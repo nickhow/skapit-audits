@@ -429,6 +429,8 @@ class AccountCrud extends Controller
         
         $accountModel = new AccountModel();
         $groupModel = new GroupModel();
+        $groupMappingModel = new GroupMappingModel();
+        
         $account = $accountModel->where('id',$id)->first();
         
         $group_id = $account['group_id'];
@@ -437,8 +439,19 @@ class AccountCrud extends Controller
         
         if( $account['group_id'] > 0 ) {
             $group = $groupModel->where('id',$account['group_id'])->first();
-            $is_payable = $group['is_payable'];
-            $payable_amount = $group['payable_amount']; 
+
+            //is it a sub-group? If it is we use the parent settings
+            if( $group['is_sub_group'] ){
+                $mapping = $groupMappingModel->where('sub_group_id',$group_id)->first();
+                $parent = $groupModel->where('id',$mapping['group_id'])->first();
+
+                $is_payable = $parent['is_payable'];
+                $payable_amount = $parent['payable_amount']; 
+                
+            } else { //otherwise use the settings for this group
+                $is_payable = $group['is_payable'];
+                $payable_amount = $group['payable_amount']; 
+            }
         }
         
         $response = [

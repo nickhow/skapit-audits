@@ -11,13 +11,13 @@
                     <label>Language</label>
                     <select name="language" class="form-control">
                         <option value="en" <?php if( $audit_obj['language'] == "en"){echo "selected";} ?> >English</option>
-                        <option value="fr" <?php if( $audit_obj['language'] == "fr"){echo "selected";} ?> >French</option>
-                        <option value="de" <?php if( $audit_obj['language'] == "de"){echo "selected";} ?> >German</option>
-                        <option value="it" <?php if( $audit_obj['language'] == "it"){echo "selected";} ?> >Italian</option>
-                        <option value="es" <?php if( $audit_obj['language'] == "es"){echo "selected";} ?> >Spanish</option>
+                        <option value="fr" <?php if( $audit_obj['language'] == "fr"){echo "selected";} ?> >Français</option>
+                        <option value="de" <?php if( $audit_obj['language'] == "de"){echo "selected";} ?> >Deutsch</option>
+                        <option value="it" <?php if( $audit_obj['language'] == "it"){echo "selected";} ?> >Italiano</option>
+                        <option value="es" <?php if( $audit_obj['language'] == "es"){echo "selected";} ?> >Español</option>
                     </select>
                   </div>
-                  
+
                 <?php if(session()->get('is_admin')): ?>
                     <div class="form-group pt-2">
                         <label>Does this audit require payment?</label>

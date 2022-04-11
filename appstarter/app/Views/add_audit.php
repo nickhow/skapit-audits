@@ -3,6 +3,12 @@
           <div class="col-10 col-md-8 col-lg-6 p-4 bg-white rounded h-100">
               <h2>Create new Health and Safety audit</h2>
 
+              <?php if(session()->getFlashdata('msg')):?>
+                  <div class="alert alert-warning">
+                      <?= session()->getFlashdata('msg') ?>
+                  </div>
+              <?php endif;?>
+
             <form method="post" id="add_create" name="add_create" 
             action="<?= site_url('/submit-audit-form') ?>">
               
@@ -10,16 +16,16 @@
                 <label>Language</label>
                 <select name="language" id="language" class="form-select">
                     <option value="en">English</option>
-                    <option value="fr">French</option>
-                    <option value="de">German</option>
-                    <option value="it">Italian</option>
-                    <option value="es">Spanish</option>
+                    <option value="fr">Français</option>
+                    <option value="de">Deutsch</option>
+                    <option value="it">Italiano</option>
+                    <option value="es">Español</option>
                 </select>
               </div>
               
                 <div class="form-group pt-2">
                 <label>Property</label>
-                <select id="account" name="account" class="form-select">
+                <select id="account" name="account" class="">
                     <?php 
                         foreach($accounts as $account){
                             echo "<option value=".$account['id'].">".$account['accommodation_name']."</option>";
@@ -106,9 +112,20 @@
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/additional-methods.min.js"></script>
-
-
   <script src='https://cdn.tiny.cloud/1/storhqrnsr6cvl7y316t629se8numd9vx3eejd804dxjmzz6/tinymce/5/tinymce.min.js' referrerpolicy="origin"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.5/js/standalone/selectize.min.js" integrity="sha512-JFjt3Gb92wFay5Pu6b0UCH9JIOkOGEfjIi7yykNWUwj55DBBp79VIJ9EPUzNimZ6FvX41jlTHpWFUQjog8P/sw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.5/css/selectize.bootstrap5.min.css" integrity="sha512-w4sRMMxzHUVAyYk5ozDG+OAyOJqWAA+9sySOBWxiltj63A8co6YMESLeucKwQ5Sv7G4wycDPOmlHxkOhPW7LRg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <script>
+  $(document).ready(function () {
+      $('#account').selectize({
+        sortField: 'text',
+        onChange: function() {
+          getChargeSettings();
+        }
+      });
+  });
+  </script>
 
   <script>
       tinymce.init({

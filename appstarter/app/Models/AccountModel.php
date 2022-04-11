@@ -21,7 +21,7 @@ class AccountModel extends Model
         
     }
     
-     public function getAccountsWithGroupById($id){
+    public function getAccountsWithGroupById($id){
         $query = $this->db->query("SELECT $this->table.*, groups.name AS group_name
                                FROM $this->table
                                LEFT JOIN groups
@@ -31,7 +31,7 @@ class AccountModel extends Model
         
     }
     
-         public function getAccountsWithGroupsById($id){
+    public function getAccountsWithGroupsById($id){
         $query = $this->db->query("SELECT $this->table.*, groups.name AS group_name
                                FROM $this->table
                                LEFT JOIN groups

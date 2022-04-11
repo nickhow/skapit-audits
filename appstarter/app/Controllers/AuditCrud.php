@@ -280,8 +280,9 @@ class AuditCrud extends Controller
                 FROM audits
                 INNER JOIN account_audits on account_audits.audit_id = audits.id
                 INNER JOIN accounts on account_audits.account_id = accounts.id
-                WHERE (DATEDIFF('".$today."', `expiry_date_ba`) > -30) 
-                OR (DATEDIFF('".$today."', `expiry_date_abta`) > -30)
+                WHERE status = 'reviewed'
+                AND (result_ba='suitable' OR result_abta='suitable') 
+                AND ( (DATEDIFF('".$today."', `expiry_date_ba`) > -30) OR (DATEDIFF('".$today."', `expiry_date_abta`) > -30) )
         ";
         
         if(!$admin){
@@ -351,7 +352,13 @@ class AuditCrud extends Controller
         $session = session();
         
         $id = $auditModel->generateID();
-        $account_id = $this->request->getVar('account');        
+        $account_id = $this->request->getVar('account');      
+        
+        if($account_id == ""){
+            $session->setFlashdata('msg', "Can't send an audit without a property, please create a property first. </br> <a href=".site_url('/account/new').">Create New Property</a>");
+            return $this->response->redirect(site_url('/audit/new'));
+        }
+
         $data['account'] = $accountModel->where('id', $account_id)->first();
         
         $isPayable;

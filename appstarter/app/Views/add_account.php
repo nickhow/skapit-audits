@@ -107,10 +107,10 @@
                 <select id="language" name="language" class="form-select">
                     <option value="" selected>Don't send an audit yet</option>
                     <option value="en">English</option>
-                    <option value="fr">French</option>
-                    <option value="de">German</option>
-                    <option value="it">Italian</option>
-                    <option value="es">Spanish</option>
+                    <option value="fr">Français</option>
+                    <option value="de">Deutsch</option>
+                    <option value="it">Italiano</option>
+                    <option value="es">Español</option>
                 </select>
               </div>
               
