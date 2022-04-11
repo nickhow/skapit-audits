@@ -459,7 +459,7 @@ class AccountCrud extends Controller
         }else{
             echo view('templates/header-group');            
         }
-        $data = $groupModel->getAllGroups();
+        $data['groups'] = $groupModel->getAllGroups();
 
         echo view('add_account_upload',$data);
         echo view('templates/footer');

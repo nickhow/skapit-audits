@@ -30,7 +30,7 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <?php print_r($data);?>
+                        <?php print_r($groups);?>
                     </div>
                 </div>
                 <div class="py-2"></div> 
