@@ -113,7 +113,8 @@
   <script>
   $(document).ready(function () {
       $('#account').selectize({
-        sortField: 'text'
+        sortField: 'text',
+        on("change", getChargeSettings),
       });
   });
   </script>
