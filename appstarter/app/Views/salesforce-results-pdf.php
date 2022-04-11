@@ -88,19 +88,19 @@
 
         <!-- per question -->
 
-        <?php print_r($questions); ?>
+        <?php // print_r($questions); ?>
 
         <?php foreach($questions as $question) : ?>
         <div class="row p-4">
             <div class="col-12">
                 <div class="form-group"> 
                     <label class="pb-2">
-                        <b><?php // $responses['question'] ?></b>
+                        <b><?php  $question['question'] ?></b>
                     </label>
-                    <input type="text" class="form-control" value="<?php // $response['answers']['en_ans'] ?>" disabled="">
+                    <input type="text" class="form-control" value="<?php $question['answer'] ?>" disabled="">
                     <div class="text-secondary">
                         <small>
-                            <b><i>Feedback: </i></b><i><?php // $response['response']['comment'] ?></i>
+                            <b><i>Feedback: </i></b><i><?php $question['comment'] ?></i>
                         </small>
                     </div>
                 </div>
