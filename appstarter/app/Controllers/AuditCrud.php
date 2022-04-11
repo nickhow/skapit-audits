@@ -1311,7 +1311,7 @@ class AuditCrud extends Controller
 
         $email_content = "Test";
         $emailaddresses = "nick@skapit.com";
-        $account_values = ""
+        $account_values = "";
 
         $emailModel = new EmailModel();
         //update $emailaddresses to the account email
