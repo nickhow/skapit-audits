@@ -1275,6 +1275,8 @@ class AuditCrud extends Controller
         $auditModel = New AuditModel();
         $accountModel = New AccountModel();
         $accountAuditModel = New AccountAuditModel();
+        $resposeModel = New ResponseModel();
+
         $db = db_connect(); 
         $audit = $auditModel->where('id',$audit_id)->first();
         $accountAudit = $accountAuditModel->where('audit_id', $audit_id)->first();
