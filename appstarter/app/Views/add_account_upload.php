@@ -18,17 +18,20 @@
                 <div>
                     <h3>Download template</h3>
                 </div>
-                <div class="col">
-                    <a href="<?php if(session()->get('is_admin')||session()->get('enable_groups')){echo base_url()."/uploads/templates/template_admin.csv";}else{echo base_url()."/uploads/templates/template.csv";} ?>" download >
-                        <div class="btn btn-outline-secondary m-2">
-                            <i class="fas fa-download"></i> Download
+                <div class="row">
+                    <div class="col-12 col-md-4 col-lg-3">
+                        <a href="<?php if(session()->get('is_admin')||session()->get('enable_groups')){echo base_url()."/uploads/templates/template_admin.csv";}else{echo base_url()."/uploads/templates/template.csv";} ?>" download >
+                            <div class="btn btn-outline-secondary m-2">
+                                <i class="fas fa-download"></i> Download
+                            </div>
+                        </a>
+                    <div>
+                    <div class="col-12 col-md-8 col-lg-9">
+                        <div class="form-text">
+                            Please remove from the template file the example row of data. You can keep or remove the row of titles, they will not be added in the import.
                         </div>
-                    </a>
-                    <div class="form-text">
-                        Please remove from the template file the example row of data. You can keep or remove the row of titles, they will not be added in the import.
                     </div>
                 </div>
-
                 <?php if(is_array($groups)): ?>
                     <div class="accordion pt-4" id="accordionExample">
                         <div class="accordion-item">
