@@ -444,6 +444,10 @@ class AccountCrud extends Controller
             if( $group['is_sub_group'] ){
                 $mapping = $groupMappingModel->where('sub_group_id',$group_id)->first();
                 $parent = $groupModel->where('id',$mapping['group_id'])->first();
+
+                $is_payable = $parent['is_payable'];
+                $payable_amount = $parent['payable_amount']; 
+                
             } else { //otherwise use the settings for this group
                 $is_payable = $group['is_payable'];
                 $payable_amount = $group['payable_amount']; 
