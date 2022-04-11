@@ -88,7 +88,6 @@
 
         <!-- per question -->
 
-        <?php  print_r( $questions[0]['question'] ); ?>
         <?php //  print_r( $questions ); ?>
        
         <?php foreach($questions as $question) : ?>
@@ -96,12 +95,12 @@
             <div class="col-12">
                 <div class="form-group"> 
                     <label class="pb-2">
-                        <b><?php  $question['question'] ?></b>
+                        <b><?php echo $question['question'] ?></b>
                     </label>
-                    <input type="text" class="form-control" value="<?php $question['answer'] ?>" disabled="">
+                    <input type="text" class="form-control" value="<?php echo $question['answer'] ?>" disabled="">
                     <div class="text-secondary">
                         <small>
-                            <b><i>Feedback: </i></b><i><?php $question['comment'] ?></i>
+                            <b><i>Feedback: </i></b><i><?php echo $question['comment'] ?></i>
                         </small>
                     </div>
                 </div>
