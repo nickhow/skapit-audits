@@ -19,7 +19,7 @@
               
                 <div class="form-group pt-2">
                 <label>Property</label>
-                <select id="account" name="account" class="form-select">
+                <select id="account" name="account" class="">
                     <?php 
                         foreach($accounts as $account){
                             echo "<option value=".$account['id'].">".$account['accommodation_name']."</option>";
