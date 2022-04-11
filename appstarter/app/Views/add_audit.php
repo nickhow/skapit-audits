@@ -114,7 +114,9 @@
   $(document).ready(function () {
       $('#account').selectize({
         sortField: 'text',
-        on("change", getChargeSettings),
+        onChange: function() {
+          getChargeSettings;
+        }
       });
   });
   </script>
