@@ -29,6 +29,12 @@
                 <li class="nav-item">
                   <a class="nav-link" href="<?= site_url('/accounts') ?>">Properties</a>
                 </li>
+                <?php if(session()->get('enable_groups')): ?>
+                  <li class="nav-item">
+                    <a class="nav-link" href="<?= site_url('/groups') ?>">Groups</a>
+                  </li>
+                <?php endif; ?>
+
                 <li class="nav-item">
                   <a class="nav-link" href="<?= site_url('/users') ?>">Users</a>
                 </li>
