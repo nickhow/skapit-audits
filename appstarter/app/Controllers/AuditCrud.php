@@ -354,7 +354,7 @@ class AuditCrud extends Controller
         $id = $auditModel->generateID();
         $account_id = $this->request->getVar('account');      
         
-        if($account_id = ""){
+        if($account_id == ""){
             $session->setFlashdata('msg', "Can't send an audit without a property, please create a property first.");
             return $this->response->redirect(site_url('/audit/new'));
         }
