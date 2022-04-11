@@ -22,7 +22,7 @@ class GroupModel extends Model
             $related_groups = $groupMappingModel->getAllRelatedGroups(session()->get('group_id'));
             $groups = [];
             foreach($related_groups as $group){
-                $groups[] += $this->where('id',$group['sub_group_id'])->first();
+                array_push($groups, $this->where('id',$group['sub_group_id'])->first());
             }
             return $groups;
         }
