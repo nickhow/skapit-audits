@@ -429,6 +429,8 @@ class AccountCrud extends Controller
         
         $accountModel = new AccountModel();
         $groupModel = new GroupModel();
+        $groupMappingModel = new GroupMappingModel();
+        
         $account = $accountModel->where('id',$id)->first();
         
         $group_id = $account['group_id'];
