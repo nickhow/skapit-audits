@@ -42,7 +42,7 @@
                                     echo ("<tr>");
                                     echo ("<td>".$group['name']."</td>");
                                     echo ("<td>".$group['id']."</td>");
-                                    echo ("</tr>")
+                                    echo ("</tr>");
                                 };
                             }
                         ?>
