@@ -28,6 +28,11 @@
                         Please remove from the template file the example row of data. You can keep or remove the row of titles, they will not be added in the import.
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col">
+                        <?php print_r($data);?>
+                    </div>
+                </div>
                 <div class="py-2"></div> 
 
                 <div>

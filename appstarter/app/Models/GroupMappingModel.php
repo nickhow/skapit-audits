@@ -10,6 +10,9 @@ class GroupMappingModel extends Model
     
     protected $allowedFields = ['group_id','sub_group_id'];
     
+    function getAllRelatedGroups($parent){
+        return $this->where('group_id',$parent)->findAll();
+    }
 }
 
 ?>

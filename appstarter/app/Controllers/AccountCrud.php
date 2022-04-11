@@ -451,7 +451,7 @@ class AccountCrud extends Controller
 
 
     public function uploadAccount(){
-        
+        $groupModel = New GroupModel();
         helper('filesystem');
 
         if(session()->get('is_admin')){
@@ -459,7 +459,9 @@ class AccountCrud extends Controller
         }else{
             echo view('templates/header-group');            
         }
-        echo view('add_account_upload');
+        $data = $groupModel->getAllGroups();
+
+        echo view('add_account_upload',$data);
         echo view('templates/footer');
     }
 
