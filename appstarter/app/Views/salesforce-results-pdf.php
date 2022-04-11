@@ -104,6 +104,7 @@
                 </div>
             </div>
         </div>
+        <?php endforeach; ?>
 
         <!-- end of per question -->
     </div>
