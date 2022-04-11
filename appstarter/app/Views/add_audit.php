@@ -111,9 +111,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.5/css/selectize.bootstrap5.min.css" integrity="sha512-w4sRMMxzHUVAyYk5ozDG+OAyOJqWAA+9sySOBWxiltj63A8co6YMESLeucKwQ5Sv7G4wycDPOmlHxkOhPW7LRg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <script>
-    $(function () {
-      $("select").selectize(options);
-    });
+  $(document).ready(function () {
+      $('select').selectize({
+        sortField: 'text'
+      });
+  });
   </script>
 
   <script>
