@@ -280,7 +280,9 @@ class AuditCrud extends Controller
                 FROM audits
                 INNER JOIN account_audits on account_audits.audit_id = audits.id
                 INNER JOIN accounts on account_audits.account_id = accounts.id
-                WHERE (DATEDIFF('".$today."', `expiry_date_ba`) > -30) 
+                WHERE status = 'reviewed'
+                AND (result_ba='suitable' OR result_abta='suitable') 
+                AND(DATEDIFF('".$today."', `expiry_date_ba`) > -30) 
                 OR (DATEDIFF('".$today."', `expiry_date_abta`) > -30)
         ";
         
