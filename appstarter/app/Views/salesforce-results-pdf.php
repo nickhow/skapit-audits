@@ -88,7 +88,7 @@
 
         <!-- per question -->
 
-        <?php // print_r($questions); ?>
+        <?php  print_r($questions); ?>
 
         <?php foreach($questions as $question) : ?>
         <div class="row p-4">
