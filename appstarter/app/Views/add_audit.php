@@ -112,7 +112,7 @@
 
   <script>
   $(document).ready(function () {
-      $('select').selectize({
+      $('#account').selectize({
         sortField: 'text'
       });
   });
