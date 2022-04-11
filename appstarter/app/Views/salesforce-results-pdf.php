@@ -95,7 +95,7 @@
             <div class="col-12">
                 <div class="form-group"> 
                     <label class="pb-2">
-                        <b><?php $response['question'] ?></b>
+                        <b><?php// $responses['question'] ?></b>
                     </label>
                     <input type="text" class="form-control" value="<?php // $response['answers']['en_ans'] ?>" disabled="">
                     <div class="text-secondary">
