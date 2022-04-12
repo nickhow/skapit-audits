@@ -14,7 +14,7 @@ use App\Models\UserModel;
 use App\Models\GroupModel;
 use App\Models\GroupMappingModel;
 
-use mikehaertl\wkhtmlto\Pdf;
+use Mpdf\Mpdf;
 
 use CodeIgniter\Controller;
 use CodeIgniter\I18n\Time;
@@ -1322,17 +1322,11 @@ class AuditCrud extends Controller
 
 
         $html = view('salesforce-results-pdf',$data);
-        $options = array(
-            'binary' => './vendor/h4cc/wkhtmltopdf-i386/bin/wkhtmltopdf-i386'
-        );
-        $pdf = new Pdf($html);
-        $pdf->setOptions($options);
 
-        if (!$pdf->send()) {
-           $error = $pdf->getError();
-            
-            echo $error;
-       }
+        $pdf = new Mpdf();
+        $pdf->WriteHTML($html)
+
+        $pdf->Output();
 
 
     //    $email_content = "Test";
