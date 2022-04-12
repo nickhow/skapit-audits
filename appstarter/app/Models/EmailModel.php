@@ -120,7 +120,7 @@ class EmailModel extends Model
         $message = str_replace($tags,$values,$message);
         $text = str_replace($tags,$values,$text);
                 
-        return ( $this->sendEmailWithAttachment($emailAddresses, $message, $text, $subject,$attachment) );
+        return ( $this->sendEmailWithAttachment($emailAddresses, $message, $text, $subject, $attachment) );
     }
     
 
@@ -145,7 +145,9 @@ class EmailModel extends Model
         
         $message = str_replace($tags,$values,$message);
         
-        $email = New \Config\Services::email();
+        $email->clear(true); //reset $email to empty state (true - include attachments)
+
+        $email = \Config\Services::email();
         $email->setFrom('contact@skapit.com', 'Ski API Technolgies');
         $email->setTo($emailAddresses);  
         $email->setSubject($subject);
@@ -165,6 +167,8 @@ class EmailModel extends Model
         
         $emailaddresses = (getenv('alex'));
         
+        $email->clear(true); //reset $email to empty state (true - include attachments)
+
         $email = \Config\Services::email();
         $email->setFrom('contact@skapit.com', 'Ski API Technolgies');
         //$email->setTo('a.lopez@hotelcheck-hsaudits.com');  // can be single, comma-delimited list 'a@me.com, b@me.com' or array ['a@me.com','b@me.com']
@@ -183,7 +187,10 @@ class EmailModel extends Model
     
     function sendEmail($emailaddress="nick@skapit.com", $message = "" , $text = "", $subject =""){
         $session = session();
+
         $email = \Config\Services::email();
+        $email->clear(true); //reset $email to empty state (true - include attachments)
+        
         $email->setFrom('contact@skapit.com', 'Ski API Technolgies');
         
         $email->setTo($emailaddress);  // can be single, comma-delimited list 'a@me.com, b@me.com' or array ['a@me.com','b@me.com']
@@ -216,7 +223,11 @@ class EmailModel extends Model
 
     function sendEmailWithAttachment($emailaddress="nick@skapit.com", $message = "" , $text = "", $subject ="", $attachment=""){
         $session = session();
+        
         $email = \Config\Services::email();
+
+        $email->clear(true); //reset $email to empty state (true - include attachments)
+
         $email->setFrom('contact@skapit.com', 'Ski API Technolgies');
         
         $email->setTo($emailaddress);  // can be single, comma-delimited list 'a@me.com, b@me.com' or array ['a@me.com','b@me.com']
