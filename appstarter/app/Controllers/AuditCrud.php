@@ -1332,13 +1332,13 @@ class AuditCrud extends Controller
         }
 
 
-        $email_content = "Test";
-        $emailaddresses = "nick@skapit.com";
-        $account_values = "";
+    //    $email_content = "Test";
+     //   $emailaddresses = "nick@skapit.com";
+     //   $account_values = "";
 
-        $emailModel = new EmailModel();
+     //   $emailModel = new EmailModel();
         //update $emailaddresses to the account email
-        $emailModel->pdfEmail("en", $email_content, $emailaddresses,$account_values,$fileatt);
+     //   $emailModel->pdfEmail("en", $email_content, $emailaddresses,$account_values,$fileatt);
 
     }
     
