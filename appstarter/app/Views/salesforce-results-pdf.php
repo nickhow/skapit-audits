@@ -12,14 +12,14 @@
         <table>
             <tr>
                 <td rowspan="5"><img src="<?= site_url() ?>/images/ski-api-technologies.png" alt="" width="200"></td>
-                <td><p class="py-2 text-end">Reviewed Date: <?php echo date('d-m-Y', strtotime($audit['audited_date'])); ?></p></td>
+                <td><p class="py-2" style="text-align: right!important;">Reviewed Date: <?php echo date('d-m-Y', strtotime($audit['audited_date'])); ?></p></td>
             </tr>
             <tr>
                 <td style="width:70%" colspan="2"><p style="font-size: xx-large;"><?php echo $account['accommodation_name'] ."</p> <p>" .$account['resort'].", ".$account['country']; ?></p></td>
             <tr>
             <tr>
                 <td colspan="2">
-                    <table style="width:100%; text-align:center;">
+                    <table style="width:100%;">
                         <thead class="border-bottom">
                             <tr>
                                 <th>Standard</th>
@@ -49,7 +49,7 @@
             </tr>
         </table>
 
-        <div class="row p-4">
+        <div class="row p-2">
             <div>
                 <p style="font-size: xx-large;">Audit</p>
             </div>
@@ -60,7 +60,7 @@
         <?php //  print_r( $questions ); ?>
        
         <?php foreach($questions as $question) : ?>
-        <div class="row p-4">
+        <div class="row p-2">
             <div class="col-12">
                 <div class="form-group"> 
                     <label class="pb-2">
