@@ -104,7 +104,7 @@ class EmailModel extends Model
      * 
      * TODO : Add to the tags / values the btn url so that is also env specific - currently hardcoded in email template to the live url
      **/
-    public function sendReviewedAudit($language="en", $emailAddresses, $values=[]){
+    public function sendReviewedAudit($language="en", $emailAddresses, $values=[],$audit_id){
         $whereCondition = array('type'=>'audit_reviewed','language'=>$language);
         $email = $this->where($whereCondition)->first();
             
@@ -112,15 +112,15 @@ class EmailModel extends Model
         $subject = $email['subject'];
         $message = $email['html'];
         $text = $email['text'];
+        $attachment = $audit_id.".pdf";
         
         //Tags to search the text for -> this needs to be aligned to the $values[] Array
         $tags = array("__name__","__type__","__resort__","__result_ba__","__result_abta__","__url__");
         
         $message = str_replace($tags,$values,$message);
         $text = str_replace($tags,$values,$text);
-            
-        $this->sendEmail($emailAddresses, $message, $text, $subject);
-        
+                
+        return ( $this->sendEmailWithAttachment($emailAddresses, $message, $text, $subject,$attachment) );
     }
     
     //used for email audit complete
@@ -212,6 +212,41 @@ class EmailModel extends Model
             $session->setFlashdata('msg', 'Email failed to send.');
        }
     }
+
+    function sendEmailWithAttachment($emailaddress="nick@skapit.com", $message = "" , $text = "", $subject ="", $attachment=""){
+        $session = session();
+        $email = \Config\Services::email();
+        $email->setFrom('contact@skapit.com', 'Ski API Technolgies');
+        
+        $email->setTo($emailaddress);  // can be single, comma-delimited list 'a@me.com, b@me.com' or array ['a@me.com','b@me.com']
+       
+        if($subject == "") {
+                $subject = "Test Email";
+        }
+        $email->setSubject($subject);
+        
+        if($message == "") {
+            $message = "Test Email message";
+        }
+        $email->setMessage($message);
+
+        if($text == "") {
+            $text = "Test Email message";
+        }
+        $email->setAltMessage($text);
+        
+        $email->attach($attachment, 'application/pdf');
+        
+       if($email->send()){
+          echo "ok"; 
+          $session->setFlashdata('msg', 'Email sent.');
+       } else {
+            $data = $email->printDebugger(['headers']);
+            print_r($data);
+            $session->setFlashdata('msg', 'Email failed to send.');
+       }
+    }
+
 
     function getEmailHtml($type = 'new_audit', $lang='en'){
         $whereCondition = array('type'=>$type,'language'=>$lang);

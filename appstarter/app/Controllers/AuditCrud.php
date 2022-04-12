@@ -612,7 +612,7 @@ class AuditCrud extends Controller
         
         if($this->request->getVar('complete')){
             $data = [
-                'status' => 'reviewed',
+            //    'status' => 'reviewed',
                 'audited_date' => Time::now('Europe/London', 'en_GB'),
             ];
             $auditModel->update($audit_id, $data);
@@ -626,9 +626,16 @@ class AuditCrud extends Controller
                 
             $url =  site_url('/audit/'.$audit_id);
             $values = array( $account['accommodation_name'], $audit['type'], $account['resort'],$audit['result_ba'],$audit['result_abta'], $url);
-                
+            
+            //generates the PDF
+            $this->salesforceResultPDF($audit_id); 
+
+            //send the email
             $emailModel = new EmailModel();
-            $emailModel->sendReviewedAudit("en",$emailaddresses,$values);
+            $emailModel->sendReviewedAudit("en",$emailaddresses,$values,$audit_id);
+
+            //delete the file now it's been sent
+            unlink($audit_id.".pdf");
             
             $data['audit'] = $audit;
             $data['account'] = $account;
@@ -1331,27 +1338,7 @@ class AuditCrud extends Controller
         $mpdf->WriteHTML($html);
 
         $mpdf->Output($audit_id.'.pdf', 'F');
-        
-        $this->emailPDF($audit_id);
 
-    }
-
-    function emailPDF($audit_id){
-        $email = \Config\Services::email();
-        $email->setFrom('contact@skapit.com', 'Ski API Technolgies');
-        $email->setTo("nick@skapit.com");  
-        $email->setSubject("PDF Results");
-        $email->setMessage("Test");
-        $email->attach('https://audit-staging.ski-api-technologies.com/0BlLuoxVMi2QbjvzIA9aTKgm6wRDdZnU.pdf', 'application/pdf');
-        
-       if($email->send()){
-            unlink($audit_id.".pdf");        
-            return "ok"; 
-       } else {
-            $data = $email->printDebugger(['headers']);
-            return ($data);
-       }
-    }
-    
+    }    
 }
 ?>
