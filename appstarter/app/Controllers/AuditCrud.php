@@ -1334,7 +1334,7 @@ class AuditCrud extends Controller
         ]);
         $mpdf->WriteHTML($html);
 
-        $fileatt = $mpdf->Output($audit_id.'.pdf', 'S');
+        $fileatt = $mpdf->Output($audit_id.'.pdf', 'F');
 
         $message = "Test";
         $emailaddresses = "nick@skapit.com";
@@ -1350,7 +1350,8 @@ class AuditCrud extends Controller
         $email->attach($fileatt, 'attachment', 'AuditResults.pdf', 'application/pdf');
         
        if($email->send()){
-          return "ok"; 
+            unlink('uploads/'.$audit_id.".pdf");        
+            return "ok"; 
        } else {
             $data = $email->printDebugger(['headers']);
             return ($data);
