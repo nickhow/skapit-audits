@@ -657,9 +657,7 @@ class AuditCrud extends Controller
             
             $account_values = array( $account['name'], $account_url);
 
-            //update $emailaddresses to the account email
-            $emailaddresses = $accountp['email'];
-            $emailModel->pdfEmail("en", $email_content, $emailaddresses,$account_values,$fileatt);
+            $emailModel->pdfEmail("en", $email_content, $account['email'],$account_values,$fileatt);
     
             $session->setFlashdata('msg', 'Audit review submitted.');
                 
