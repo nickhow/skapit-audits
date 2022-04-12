@@ -637,26 +637,14 @@ class AuditCrud extends Controller
             //delete the file now it's been sent
             unlink($audit_id.".pdf");
             
-            $data['audit'] = $audit;
-            $data['account'] = $account;
-            $html = view('pdf_index',$data);
-            
-            $dompdf = new \Dompdf\Dompdf();
-        
-            $options = $dompdf->getOptions();
-            $options->setDefaultFont('Roboto');
-            $options->setIsRemoteEnabled('true');
-            $options->setIsHtml5ParserEnabled('true');
-            $dompdf->setOptions($options);
-            $dompdf->loadHtml($html);
-            $dompdf->setPaper('A4', 'portrait');
-            $dompdf->render();
-                
-            $fileatt = $dompdf->output();
+            // now we send the email to the hotel 
+            //get the PDF
+            $fileatt = hotelResultPDF($audit, $account)
             
             $email_content;
             $account_url;
             
+            //get the correct email
             if($account_audit['group_id'] == 0){
                 //no group, offer an account.
                 $email_content = "account";
@@ -680,6 +668,25 @@ class AuditCrud extends Controller
         }
     }
     
+    public function hotelResultPDF($audit, $account){
+        $data['audit'] = $audit;
+            $data['account'] = $account;
+            $html = view('pdf_index',$data);
+            
+            $dompdf = new \Dompdf\Dompdf();
+        
+            $options = $dompdf->getOptions();
+            $options->setDefaultFont('Roboto');
+            $options->setIsRemoteEnabled('true');
+            $options->setIsHtml5ParserEnabled('true');
+            $dompdf->setOptions($options);
+            $dompdf->loadHtml($html);
+            $dompdf->setPaper('A4', 'portrait');
+            $dompdf->render();
+                
+            return $dompdf->output();
+    }
+
     // show single audit ->for editing as admin/manager
     public function editSingleAudit($id = null){
         $auditModel = new AuditModel();
