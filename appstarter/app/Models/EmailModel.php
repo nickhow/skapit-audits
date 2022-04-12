@@ -251,7 +251,7 @@ class EmailModel extends Model
         }
         $email->setAltMessage($text);
         
-        $email->attach($attachment, 'application/pdf');
+        $email->attach($attachment, 'application/pdf' , 'audit-results.pdf');
         
        if($email->send()){
           echo "ok"; 

@@ -612,7 +612,7 @@ class AuditCrud extends Controller
         
         if($this->request->getVar('complete')){
             $data = [
-            //    'status' => 'reviewed',
+                'status' => 'reviewed',
                 'audited_date' => Time::now('Europe/London', 'en_GB'),
             ];
             $auditModel->update($audit_id, $data);
@@ -634,10 +634,9 @@ class AuditCrud extends Controller
             $emailModel = new EmailModel();
             $emailModel->sendReviewedAudit("en",$emailaddresses,$values,$audit_id);
             
+
             // now we send the email to the hotel 
-            //get the PDF
-        //    $fileatt = $this->hotelResultPDF($audit, $account);
-            
+
             //get the correct email body
             $email_content;
             $account_url;
@@ -665,26 +664,6 @@ class AuditCrud extends Controller
         }
     }
     
-    //generate the PDF for the hotel owner
-    public function hotelResultPDF($audit, $account){
-        $data['audit'] = $audit;
-        $data['account'] = $account;
-        $html = view('pdf_index',$data);
-           
-        $dompdf = new \Dompdf\Dompdf();
-        
-        $options = $dompdf->getOptions();
-        $options->setDefaultFont('Roboto');
-        $options->setIsRemoteEnabled('true');
-        $options->setIsHtml5ParserEnabled('true');
-        $dompdf->setOptions($options);
-        $dompdf->loadHtml($html);
-        $dompdf->setPaper('A4', 'portrait');
-        $dompdf->render();
-                
-        return $dompdf->output();
-    }
-
     // show single audit ->for editing as admin/manager
     public function editSingleAudit($id = null){
         $auditModel = new AuditModel();
