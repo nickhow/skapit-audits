@@ -612,7 +612,7 @@ class AuditCrud extends Controller
         
         if($this->request->getVar('complete')){
             $data = [
-                'status' => 'reviewed',
+            //    'status' => 'reviewed',
                 'audited_date' => Time::now('Europe/London', 'en_GB'),
             ];
             $auditModel->update($audit_id, $data);
@@ -639,7 +639,7 @@ class AuditCrud extends Controller
             
             // now we send the email to the hotel 
             //get the PDF
-            $fileatt = $this->hotelResultPDF($audit, $account);
+        //    $fileatt = $this->hotelResultPDF($audit, $account);
             
             //get the correct email
             $email_content;
@@ -657,7 +657,7 @@ class AuditCrud extends Controller
             $account_values = array( $account['name'], $account_url);
 
             //send the email to the property account
-            $emailModel->pdfEmail("en", $email_content, $account['email'],$account_values,$fileatt);
+            $emailModel->pdfEmail("en", $email_content, $account['email'],$account_values,$audit_id);
     
             $session->setFlashdata('msg', 'Audit review submitted.');
                 

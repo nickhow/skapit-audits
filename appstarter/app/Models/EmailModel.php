@@ -125,7 +125,7 @@ class EmailModel extends Model
     
 
     //used for email audit complete
-    function pdfEmail($language="en", $email_content, $emailAddresses="nick@skapit.com", $values=[], $file){
+    function pdfEmail($language="en", $email_content, $emailAddresses="nick@skapit.com", $values=[], $audit_id){
         
         $whereCondition;
         if($email_content == "account"){
@@ -153,7 +153,10 @@ class EmailModel extends Model
         $email->setTo($emailAddresses);  
         $email->setSubject($subject);
         $email->setMessage($message);
-        $email->attach($file, 'attachment', 'AuditResults.pdf', 'application/pdf');
+
+        $attachment = $audit_id.".pdf";
+
+        $email->attach($attachment,'attachment', 'report.pdf', 'application/pdf');
         
        if($email->send()){
           return "ok"; 
