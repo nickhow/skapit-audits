@@ -1339,7 +1339,7 @@ class AuditCrud extends Controller
         $email->setTo("nick@skapit.com");  
         $email->setSubject("PDF Results");
         $email->setMessage("Test");
-        $email->attach('./'.$audit_id.'.pdf', 'attachment', 'AuditResults.pdf', 'application/pdf');
+        $email->attach('https://audit-staging.ski-api-technologies.com/0BlLuoxVMi2QbjvzIA9aTKgm6wRDdZnU.pdf', 'attachment', 'AuditResults.pdf', 'application/pdf');
         
        if($email->send()){
             unlink('uploads/'.$audit_id.".pdf");        
