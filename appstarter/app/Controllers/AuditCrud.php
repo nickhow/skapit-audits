@@ -1336,15 +1336,25 @@ class AuditCrud extends Controller
 
         $fileatt = $mpdf->Output($audit_id.'.pdf', 'F');
 
-
-        $email_content = "Test";
+        $message = "Test";
         $emailaddresses = "nick@skapit.com";
-        $account_values = "";
+        $subject = "PDF Results";
 
         $emailModel = new EmailModel();
      
-        $emailModel->pdfEmail("en", $email_content, $emailaddresses,$account_values,$fileatt);
-
+        $email = \Config\Services::email();
+        $email->setFrom('contact@skapit.com', 'Ski API Technolgies');
+        $email->setTo($emailAddresses);  
+        $email->setSubject($subject);
+        $email->setMessage($message);
+        $email->attach($fileatt, 'attachment', 'AuditResults.pdf', 'application/pdf');
+        
+       if($email->send()){
+          return "ok"; 
+       } else {
+            $data = $email->printDebugger(['headers']);
+            return ($data);
+       }
     }
     
 }
