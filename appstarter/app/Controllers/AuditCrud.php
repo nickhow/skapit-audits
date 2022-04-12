@@ -1323,13 +1323,13 @@ class AuditCrud extends Controller
 
         $html = view('salesforce-results-pdf',$data);
         
-        $pdf = new Pdf($html);
+    //    $pdf = new Pdf($html);
 
-        if (!$pdf->send()) {
-            $error = $pdf->getError();
+    //    if (!$pdf->send()) {
+    //        $error = $pdf->getError();
             
-            echo $error;
-        }
+   //         echo $error;
+    //    }
 
 
     //    $email_content = "Test";
