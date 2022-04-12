@@ -11,11 +11,11 @@
 
         <table>
             <tr>
-                <td rowspan="4"><img src="<?= site_url() ?>/images/ski-api-technologies.png" alt="" width="200"></td>
+                <td rowspan="5"><img src="<?= site_url() ?>/images/ski-api-technologies.png" alt="" width="200"></td>
                 <td><p class="py-2 text-end">Reviewed Date: <?php echo date('d-m-Y', strtotime($audit['audited_date'])); ?></p></td>
             </tr>
             <tr>
-                <td colspan="2"><p style="font-size: xx-large;"><?php echo $account['accommodation_name'] ."</p> <p>" .$account['resort'].", ".$account['country']; ?></p></td>
+                <td style="width:70%" colspan="2"><p style="font-size: xx-large;"><?php echo $account['accommodation_name'] ."</p> <p>" .$account['resort'].", ".$account['country']; ?></p></td>
             <tr>
             <tr>
                 <td colspan="2">
