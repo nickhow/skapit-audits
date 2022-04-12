@@ -633,9 +633,6 @@ class AuditCrud extends Controller
             //send the email to Fraser
             $emailModel = new EmailModel();
             $emailModel->sendReviewedAudit("en",$emailaddresses,$values,$audit_id);
-
-            //delete the file now it's been sent
-           // unlink("./".$audit_id."/results.pdf");
             
             // now we send the email to the hotel 
             //get the PDF
@@ -660,6 +657,9 @@ class AuditCrud extends Controller
             $emailModel->pdfEmail("en", $email_content, $account['email'],$account_values,$audit_id);
     
             $session->setFlashdata('msg', 'Audit review submitted.');
+
+            //delete the file now it's been sent
+            unlink($audit_id."/results.pdf");
                 
             return $this->response->redirect(site_url('/audits'));
         }
@@ -1274,7 +1274,7 @@ class AuditCrud extends Controller
         ]);
         $mpdf->WriteHTML($html);
 
-        $filename = $audit_id."/results.pdf";
+        $filename = $audit_id.".pdf";
 
         $mpdf->Output($filename, 'F');
 
