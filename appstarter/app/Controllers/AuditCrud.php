@@ -635,7 +635,7 @@ class AuditCrud extends Controller
             $emailModel->sendReviewedAudit("en",$emailaddresses,$values,$audit_id);
 
             //delete the file now it's been sent
-            unlink("/".$audit_id."/results.pdf");
+            unlink("./".$audit_id."/results.pdf");
             
             // now we send the email to the hotel 
             //get the PDF
@@ -1274,7 +1274,7 @@ class AuditCrud extends Controller
         ]);
         $mpdf->WriteHTML($html);
 
-        $mpdf->Output('/'.$audit_id.'/results.pdf', 'F');
+        $mpdf->Output('./'.$audit_id.'/results.pdf', 'F');
 
     }    
 }
