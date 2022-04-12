@@ -68,7 +68,7 @@
         <?php foreach($questions as $question) : ?>
         <div class="row p-2">
             <div class="col-12">
-                <div class="form-group <? if($question['highlight'] == "fail"){ echo "bg-error text-dark bg-opacity-10"; } elseif($question['highlight'] == "pass") { echo "bg-success text-dark bg-opacity-10"; }  ?>"> 
+                <div class="form-group" style="<? if($question['highlight'] == "fail"){ echo "background-color: rgba(141, 0, 0, 0.5);"; } elseif($question['highlight'] == "pass") { echo "background-color: rgba(0, 141, 11, 0.5);"; }  ?>"> 
                     <label class="pb-2">
                         <b><?php echo $question['question'] ?></b>
                     </label>
@@ -87,3 +87,4 @@
     </div>
 </body>
 </html>
+
