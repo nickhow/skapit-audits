@@ -145,9 +145,10 @@ class EmailModel extends Model
         
         $message = str_replace($tags,$values,$message);
         
+        $email = \Config\Services::email();
+        
         $email->clear(true); //reset $email to empty state (true - include attachments)
 
-        $email = \Config\Services::email();
         $email->setFrom('contact@skapit.com', 'Ski API Technolgies');
         $email->setTo($emailAddresses);  
         $email->setSubject($subject);
@@ -190,7 +191,7 @@ class EmailModel extends Model
 
         $email = \Config\Services::email();
         $email->clear(true); //reset $email to empty state (true - include attachments)
-        
+
         $email->setFrom('contact@skapit.com', 'Ski API Technolgies');
         
         $email->setTo($emailaddress);  // can be single, comma-delimited list 'a@me.com, b@me.com' or array ['a@me.com','b@me.com']
