@@ -1330,7 +1330,7 @@ class AuditCrud extends Controller
         ]);
         $mpdf->WriteHTML($html);
 
-    //    $mpdf->Output($audit_id.'.pdf', 'F');
+        $mpdf->Output($audit_id.'.pdf', 'F');
         
         $this->emailPDF($audit_id);
 
@@ -1342,7 +1342,7 @@ class AuditCrud extends Controller
         $email->setTo("nick@skapit.com");  
         $email->setSubject("PDF Results");
         $email->setMessage("Test");
-        $email->attach('https://audit-staging.ski-api-technologies.com/0BlLuoxVMi2QbjvzIA9aTKgm6wRDdZnU.pdf', 'attachment', 'AuditResults.pdf', 'application/pdf');
+        $email->attach('https://audit-staging.ski-api-technologies.com/0BlLuoxVMi2QbjvzIA9aTKgm6wRDdZnU.pdf', 'application/pdf');
         
        if($email->send()){
             unlink($audit_id.".pdf");        
