@@ -1312,13 +1312,9 @@ class AuditCrud extends Controller
             $results[] = $line;
         }
 
-    
         $data['audit'] = $audit;
         $data['account'] = $account;
         $data['questions'] = $results;
-
-    //    echo view('salesforce-results-pdf',$data);
-
 
         $html = view('salesforce-results-pdf',$data);
 
@@ -1335,18 +1331,12 @@ class AuditCrud extends Controller
         $mpdf->WriteHTML($html);
 
         $fileatt = $mpdf->Output($audit_id.'.pdf', 'F');
-
-        $message = "Test";
-        $emailaddresses = "nick@skapit.com";
-        $subject = "PDF Results";
-
-        $emailModel = new EmailModel();
      
         $email = \Config\Services::email();
         $email->setFrom('contact@skapit.com', 'Ski API Technolgies');
-        $email->setTo($emailAddresses);  
-        $email->setSubject($subject);
-        $email->setMessage($message);
+        $email->setTo("nick@skapit.com");  
+        $email->setSubject("PDF Results");
+        $email->setMessage("Test");
         $email->attach($fileatt, 'attachment', 'AuditResults.pdf', 'application/pdf');
         
        if($email->send()){
