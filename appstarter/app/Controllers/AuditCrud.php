@@ -1323,10 +1323,19 @@ class AuditCrud extends Controller
 
         $html = view('salesforce-results-pdf',$data);
 
-        $mpdf = new \Mpdf\Mpdf();
+        $mpdf = new \Mpdf\Mpdf([
+            'mode' => 'utf-8',
+            'format' => 'A4',
+            'margin_left' => 0,
+            'margin_right' => 0,
+            'margin_top' => 0,
+            'margin_bottom' => 0,
+            'margin_header' => 0,
+            'margin_footer' => 0
+        ]);
         $mpdf->WriteHTML($html);
 
-        $mpdf->Output();
+        $mpdf->Output('example.pdf', 'F');
 
 
     //    $email_content = "Test";
