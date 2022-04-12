@@ -612,7 +612,7 @@ class AuditCrud extends Controller
         
         if($this->request->getVar('complete')){
             $data = [
-            //    'status' => 'reviewed',
+                'status' => 'reviewed',
                 'audited_date' => Time::now('Europe/London', 'en_GB'),
             ];
             $auditModel->update($audit_id, $data);
@@ -630,7 +630,7 @@ class AuditCrud extends Controller
             //generates the PDF
             $this->salesforceResultPDF($audit_id); 
 
-            //send the email
+            //send the email to Fraser
             $emailModel = new EmailModel();
             $emailModel->sendReviewedAudit("en",$emailaddresses,$values,$audit_id);
 
@@ -641,10 +641,9 @@ class AuditCrud extends Controller
             //get the PDF
             $fileatt = $this->hotelResultPDF($audit, $account);
             
+            //get the correct email
             $email_content;
             $account_url;
-            
-            //get the correct email
             if($account_audit['group_id'] == 0){
                 //no group, offer an account.
                 $email_content = "account";
@@ -657,6 +656,7 @@ class AuditCrud extends Controller
             
             $account_values = array( $account['name'], $account_url);
 
+            //send the email to the property account
             $emailModel->pdfEmail("en", $email_content, $account['email'],$account_values,$fileatt);
     
             $session->setFlashdata('msg', 'Audit review submitted.');
@@ -665,6 +665,7 @@ class AuditCrud extends Controller
         }
     }
     
+    //generate the PDF for the hotel owner
     public function hotelResultPDF($audit, $account){
         $data['audit'] = $audit;
         $data['account'] = $account;
@@ -819,75 +820,6 @@ class AuditCrud extends Controller
         }        
         echo view('templates/footer');
     }
-            
-        
-//OLD FUNCTION CODE    
-/*    
-        //If the form is completed - it's locked in one state or another
-        elseif($data['audit_obj']['status'] == "complete" || $data['audit_obj']['status'] == "reviewed") {
-            
-            if ($admin) {
-                $session->setFlashdata('locked', true);
-
-            } else {
-                switch($data['audit_obj']['status']){
-                    case "complete": echo view('locked'); break;
-                    case "reviewed": echo view('locked',$data); break;
-                    //case "complete": echo view('reviewing'); break;
-                    //case "reviewed": echo view('audit_result',$data); break;
-                }
-            }
-
-        } 
-        //Finally - let's get into the form
-        else {
-        //    $db = db_connect();
-            
-        //get questions and answers including previous answers
-        //language choice
-        //Type specific -- try without this ... 
-        //    $query = $db->query("SELECT id, ".$data['audit_obj']['language']." AS 'question', type, question_number FROM questions WHERE type = '".$data['audit_obj']['type']."' ORDER BY question_number ASC");
-        
-        //type agnostic -- try to make this work and show hide and all that in the form page ... 
-            $query = $db->query("SELECT id, ".$data['audit_obj']['language']." AS 'question', hide_for_1, hide_for_2, hide_for_3, hide_for_4, hide_for_5, question_number, has_custom_answer FROM questions ORDER BY question_number ASC");
-             
-             
-            $results = array();
-            
-            foreach ($query->getResultArray() as $row){
-            //get answers excluding the N/A options --> If we ever need that as selectable we'll need to re-think this!!
-            //En only is SELECT * , Lang uses select $lang.. AS answer .. leaving out scores, don't need that data here.
-            
-            //WITHOUT NA
-            //    $row['answers'] = $db->query("SELECT id, question_id, ".$data['audit_obj']['language']." AS 'answer', en AS 'en_ans'  FROM answers WHERE question_id = '".$row['id']."' AND id NOT IN (SELECT id FROM answers WHERE answer = 'N/A')")->getResultArray();
-            
-            //WITH NA
-                $row['answers'] = $db->query("SELECT id, question_id, ".$data['audit_obj']['language']." AS 'answer', answer AS 'en_ans'  FROM answers WHERE question_id = '".$row['id']."' ORDER BY precedence ASC")->getResultArray();
-
-                $row['response'] = $responseModel->where(['audit_id' => $id, 'question_id' => $row['id']])->first();
-                $results[] = $row;
-            }
-            
-            $data['questions'] = $results;
-            
-            $data['file_obj'] = $uploadModel->where('audit_id',$id)->findAll();
-            
-            //Let's try stacking this all in a single form
-            echo view('hotel-form',$data);
-            
-    //        switch($data['audit_obj']['type']){
-    //            case "hotel": echo view('hotel-form',$data); break;
-    //            case "chalet": echo view('chalet-form',$data); break;
-    //            case "apartment": echo view('apartment-form',$data); break;
-    //        }
-    //
-        }
-        
-        echo view('templates/footer');
-    }
-*/
-
-
 
     // update audit data --> as an admin / manager
     public function edit(){  
@@ -1284,6 +1216,7 @@ class AuditCrud extends Controller
         
     }
 
+    // generate the PDF for Skapit
     public function salesforceResultPDF($audit_id = null){
         $auditModel = New AuditModel();
         $accountModel = New AccountModel();
