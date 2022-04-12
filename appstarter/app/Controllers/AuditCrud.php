@@ -1322,8 +1322,11 @@ class AuditCrud extends Controller
 
 
         $html = view('salesforce-results-pdf',$data);
-        
+        $options = array(
+            'binary' => '../wkhtmltopdf'
+        );
         $pdf = new Pdf($html);
+        $pdf->setOptions($options);
 
         if (!$pdf->send()) {
            $error = $pdf->getError();
