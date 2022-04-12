@@ -1324,7 +1324,7 @@ class AuditCrud extends Controller
         $html = view('salesforce-results-pdf',$data);
 
         $pdf = new Mpdf();
-        $pdf->WriteHTML($html)
+        $pdf->WriteHTML($html);
 
         $pdf->Output();
 
