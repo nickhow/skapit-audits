@@ -112,7 +112,7 @@ class EmailModel extends Model
         $subject = $email['subject'];
         $message = $email['html'];
         $text = $email['text'];
-        $attachment = $audit_id."/results.pdf";
+        $attachment = $audit_id.".pdf";
         
         //Tags to search the text for -> this needs to be aligned to the $values[] Array
         $tags = array("__name__","__type__","__resort__","__result_ba__","__result_abta__","__url__");
@@ -154,7 +154,7 @@ class EmailModel extends Model
         $email->setSubject($subject);
         $email->setMessage($message);
 
-        $attachment = $audit_id."/results.pdf";
+        $attachment = $audit_id.".pdf";
 
         $email->attach($attachment, 'application/pdf' , 'results.pdf');
         
