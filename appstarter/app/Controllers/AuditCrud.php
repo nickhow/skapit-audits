@@ -14,6 +14,8 @@ use App\Models\UserModel;
 use App\Models\GroupModel;
 use App\Models\GroupMappingModel;
 
+use mikehaertl\wkhtmlto\Pdf;
+
 use CodeIgniter\Controller;
 use CodeIgniter\I18n\Time;
 
@@ -1320,19 +1322,15 @@ class AuditCrud extends Controller
 
 
         $html = view('salesforce-results-pdf',$data);
-            
-        $dompdf = new \Dompdf\Dompdf();
         
-        $options = $dompdf->getOptions();
-        $options->setDefaultFont('Roboto');
-        $options->setIsRemoteEnabled('true');
-        $options->setIsHtml5ParserEnabled('true');
-        $dompdf->setOptions($options);
-        $dompdf->loadHtml($html);
-        $dompdf->setPaper('A4', 'portrait');
-        $dompdf->render();
-               
-        $fileatt = $dompdf->output();
+        $pdf = new Pdf($html);
+
+        if (!$pdf->send()) {
+            $error = $pdf->getError();
+            
+            echo $error;
+        }
+
 
         $email_content = "Test";
         $emailaddresses = "nick@skapit.com";
