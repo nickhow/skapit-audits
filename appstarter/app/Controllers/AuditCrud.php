@@ -1317,8 +1317,7 @@ class AuditCrud extends Controller
         $data['account'] = $account;
         $data['questions'] = $results;
 
-
-    //    return view('salesforce-results-pdf',$data);
+        return view('salesforce-results-pdf',$data);
 
 
         $html = view('salesforce-results-pdf',$data);

@@ -8,47 +8,47 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <body>
     <div class="container">
-        <div class="row">
-            <div class="col-4 text-center">
-                <img src="<?= site_url() ?>/images/ski-api-technologies.png" alt="" width="200">
-            </div>
 
-            <div class="col-8">
-            <div class="row">
-                <div class="col-12">
-                    <p style="font-size: xx-large;"><?php echo $account['accommodation_name'] ." - " .$account['resort'].", ".$account['country']; ?></p>
-                    <p class="py-4">Reviewed Date: <?php echo date('d-m-Y', strtotime($audit['audited_date'])); ?></p>
-                </div>
-                <div class="col-12">
+        <table>
+            <tr>
+                <td rowspan="4"><img src="<?= site_url() ?>/images/ski-api-technologies.png" alt="" width="200"></td>
+                <td><p class="py-2 text-end">Reviewed Date: <?php echo date('d-m-Y', strtotime($audit['audited_date'])); ?></p></td>
+            </tr>
+            <tr>
+                <td colspan="2"><p style="font-size: xx-large;"><?php echo $account['accommodation_name'] ."</p> <p>" .$account['resort'].", ".$account['country']; ?></p></td>
+            <tr>
+            <tr>
+                <td colspan="2">
                     <table style="width:100%; text-align:center;">
-                            <thead class="border-bottom">
-                                <tr>
-                                    <th>Standard</th>
-                                    <th>Result</th>
-                                    <th>Expiry Date</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><b>British Airways</b></td>
-                                    <td><?php echo strtoupper($audit['result_ba']); ?></td>
-                                    <td><?php echo date('Y-m-d', strtotime($audit['expiry_date_ba'])); ?></td>
-                                </tr>
-                                <tr>
-                                    <td><b>ABTA</b></td>
-                                    <td><?php echo strtoupper($audit['result_abta']); ?></td>
-                                    <td><?php echo date('Y-m-d', strtotime($audit['expiry_date_abta'])); ?></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="col-12">
+                        <thead class="border-bottom">
+                            <tr>
+                                <th>Standard</th>
+                                <th>Result</th>
+                                <th>Expiry Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><b>British Airways</b></td>
+                                <td><?php echo strtoupper($audit['result_ba']); ?></td>
+                                <td><?php echo date('Y-m-d', strtotime($audit['expiry_date_ba'])); ?></td>
+                            </tr>
+                            <tr>
+                                <td><b>ABTA</b></td>
+                                <td><?php echo strtoupper($audit['result_abta']); ?></td>
+                                <td><?php echo date('Y-m-d', strtotime($audit['expiry_date_abta'])); ?></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
                     <p><?php echo ($audit['comment']) ?></p>
-                </div>
-            </div>
-        </div>
-        
+                </td>
+            </tr>
+        </table>
+
         <div class="row p-4">
             <div>
                 <p style="font-size: xx-large;">Audit</p>
