@@ -43,14 +43,15 @@
                         </table>
                     </div>
                 </div>
+                <div class="col-12">
+                    <p><?php echo ($audit['comment']) ?></p>
+                </div>
             </div>
         </div>
         
         <div class="row p-4">
             <div>
-                <div class="col-12">
-                    <p><?php echo ($audit['comment']) ?></p>
-                </div>
+                <p style="font-size: xx-large;">Audit</p>
             </div>
         </div>
 
