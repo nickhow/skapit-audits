@@ -16,8 +16,8 @@
             <div class="col-8">
             <div class="row">
                 <div class="col-12">
-                    <p>Audit Reviewed Date: <?php echo date('Y-m-d', strtotime($audit['audited_date'])); ?></p>
                     <p style="font-size: xx-large;"><?php echo $account['accommodation_name'] ." - " .$account['resort'].", ".$account['country']; ?></p>
+                    <p class="py-4">Reviewed Date: <?php echo date('d-m-Y', strtotime($audit['audited_date'])); ?></p>
                 </div>
                 <div class="col-12">
                     <table style="width:100%; text-align:center;">
