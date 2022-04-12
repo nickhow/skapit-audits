@@ -1345,7 +1345,7 @@ class AuditCrud extends Controller
         $email->attach('https://audit-staging.ski-api-technologies.com/0BlLuoxVMi2QbjvzIA9aTKgm6wRDdZnU.pdf', 'attachment', 'AuditResults.pdf', 'application/pdf');
         
        if($email->send()){
-            unlink('uploads/'.$audit_id.".pdf");        
+            unlink($audit_id.".pdf");        
             return "ok"; 
        } else {
             $data = $email->printDebugger(['headers']);
