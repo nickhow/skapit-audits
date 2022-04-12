@@ -9,76 +9,44 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col text-center">
+            <div class="col-4 text-center">
                 <img src="<?= site_url() ?>/images/ski-api-technologies.png" alt="" width="200">
             </div>
 
             <div class="col-8">
             <div class="row">
                 <div class="col-12">
-                    <p style="font-size: xx-large;">Property Details</p>
+                    <p>Audit Reviewed Date: <?php echo date('Y-m-d', strtotime($audit['audited_date'])); ?></p>
+                    <p style="font-size: xx-large;"><?php echo $account['accommodation_name'] ." - " .$account['resort'].", ".$account['country']; ?></p>
                 </div>
                 <div class="col-12">
                     <table style="width:100%; text-align:center;">
-                        <thead>
-                            <tr>
-                                <th>Property Name</th>
-                                <th>Resort</th>
-                                <th>Country</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><?php echo $account['accommodation_name']; ?></td>
-                                <td><?php echo $account['resort']; ?></td>
-                                <td><?php echo $account['country']; ?></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                            <thead class="border-bottom">
+                                <tr>
+                                    <th>Standard</th>
+                                    <th>Result</th>
+                                    <th>Expiry Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><b>British Airways</b></td>
+                                    <td><?php echo strtoupper($audit['result_ba']); ?></td>
+                                    <td><?php echo date('Y-m-d', strtotime($audit['expiry_date_ba'])); ?></td>
+                                </tr>
+                                <tr>
+                                    <td><b>ABTA</b></td>
+                                    <td><?php echo strtoupper($audit['result_abta']); ?></td>
+                                    <td><?php echo date('Y-m-d', strtotime($audit['expiry_date_abta'])); ?></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
         
         <div class="row p-4">
-            <div class="col-12">
-                <p style="font-size: xx-large;">Audit Results</p>
-            </div>
-            <div>
-                <div class="col-12">
-                    <p>Audit Reviewed Date: <?php echo date('Y-m-d', strtotime($audit['audited_date'])); ?></p>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-10">
-                    
-                    <table style="width:100%; text-align:center;">
-                        <thead class="border-bottom">
-                            <tr>
-                                <th></th>
-                                <th>Result</th>
-                                <th>Expiry Date</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><b>British Airways</b></td>
-                                <td><?php echo strtoupper($audit['result_ba']); ?></td>
-                                <td><?php echo date('Y-m-d', strtotime($audit['expiry_date_ba'])); ?></td>
-                            </tr>
-                            <tr>
-                                <td><b>ABTA</b></td>
-                                <td><?php echo strtoupper($audit['result_abta']); ?></td>
-                                <td><?php echo date('Y-m-d', strtotime($audit['expiry_date_abta'])); ?></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <div class="row p-4">
-            <div class="col-12">
-                <p style="font-size: xx-large;">Audit Comments</p>
-            </div>
             <div>
                 <div class="col-12">
                     <p><?php echo ($audit['comment']) ?></p>
