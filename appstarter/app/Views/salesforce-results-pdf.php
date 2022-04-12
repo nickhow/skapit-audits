@@ -68,12 +68,12 @@
         <?php foreach($questions as $question) : ?>
         <div class="row p-2">
             <div class="col-12">
-                <div class="form-group"> 
+                <div class="form-group <? if($question['highlight'] == "fail"){ echo "bg-error text-dark bg-opacity-10"; }elseif($question['highlight'] == "pass") {echo "bg-success text-dark bg-opacity-10"}  ?>"> 
                     <label class="pb-2">
                         <b><?php echo $question['question'] ?></b>
                     </label>
                     <input type="text" class="form-control" value="<?php echo $question['answer'] ?>" disabled="">
-                    <div class="text-secondary">
+                    <div class="text-secondary <? if($question['comment'] != ""){ echo "alert alert-warning";} ?>">
                         <small>
                             <b><i>Feedback: </i></b><i><?php echo $question['comment'] ?></i>
                         </small>

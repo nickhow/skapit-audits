@@ -1211,7 +1211,7 @@ class AuditCrud extends Controller
         $results = array();
 
         $query = $db->query("
-        SELECT questions.question, answers.en, responses.comment, responses.answer_id, responses.custom_answer 
+        SELECT questions.question, answers.en, responses.comment, responses.answer_id, responses.custom_answer, responses.score_ba, responses.score_abta 
         FROM `responses` 
         INNER JOIN questions ON questions.id = responses.question_id 
         INNER JOIN answers ON answers.id = responses.answer_id 
@@ -1220,7 +1220,14 @@ class AuditCrud extends Controller
         foreach ($query->getResultArray() as $row){
 
             $line = [];
-
+            $line['highlight'] = "none";
+            if($row['score_ba'] <= -100015 || $row['score_abta'] <= -100015) {
+                $line['highlight'] = "fail";
+            }
+            if($row['score_ba'] >= 100015 || $row['score_abta'] >= 100015) {
+                $line['highlight'] = "pass";
+            }
+            
             if($row['answer_id'] != "9999" && $row['answer_id'] != "8888"){
                 $line['question'] = $row['question'];
                 $line['answer'] = $row['en'];
