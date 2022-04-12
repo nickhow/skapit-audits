@@ -51,7 +51,7 @@
         <div class="row p-2">
             <table style="width:100%;">
                 <tr>
-                    <td style="width:80%">
+                    <td style="width:70%">
                         <p style="font-size: xx-large;">Audit</p>
                     </td>
                     <td>

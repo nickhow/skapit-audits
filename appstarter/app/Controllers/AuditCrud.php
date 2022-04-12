@@ -1317,7 +1317,7 @@ class AuditCrud extends Controller
         $data['account'] = $account;
         $data['questions'] = $results;
 
-        echo view('salesforce-results-pdf',$data);
+    //    echo view('salesforce-results-pdf',$data);
 
 
         $html = view('salesforce-results-pdf',$data);
@@ -1327,23 +1327,23 @@ class AuditCrud extends Controller
             'format' => 'A4',
             'margin_left' => 4.5,
             'margin_right' => 4.5,
-            'margin_top' => 2.5,
-            'margin_bottom' => 2.5,
+            'margin_top' => 6,
+            'margin_bottom' => 6,
             'margin_header' => 0,
             'margin_footer' => 0
         ]);
         $mpdf->WriteHTML($html);
 
-        $mpdf->Output($audit_id.'.pdf', 'F');
+        $fileatt = $mpdf->Output($audit_id.'.pdf', 'F');
 
 
-    //    $email_content = "Test";
-     //   $emailaddresses = "nick@skapit.com";
-     //   $account_values = "";
+        $email_content = "Test";
+        $emailaddresses = "nick@skapit.com";
+        $account_values = "";
 
-     //   $emailModel = new EmailModel();
-        //update $emailaddresses to the account email
-     //   $emailModel->pdfEmail("en", $email_content, $emailaddresses,$account_values,$fileatt);
+        $emailModel = new EmailModel();
+     
+        $emailModel->pdfEmail("en", $email_content, $emailaddresses,$account_values,$fileatt);
 
     }
     
