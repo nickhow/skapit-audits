@@ -1335,7 +1335,7 @@ class AuditCrud extends Controller
         ]);
         $mpdf->WriteHTML($html);
 
-        $mpdf->Output('./results/'.$audit_id.'.pdf', 'F');
+        $mpdf->Output($audit_id.'.pdf', 'F');
 
 
     //    $email_content = "Test";
