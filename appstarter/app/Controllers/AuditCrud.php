@@ -639,7 +639,7 @@ class AuditCrud extends Controller
             
             // now we send the email to the hotel 
             //get the PDF
-            $fileatt = hotelResultPDF($audit, $account)
+            $fileatt = hotelResultPDF($audit, $account);
             
             $email_content;
             $account_url;
