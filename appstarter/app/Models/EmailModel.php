@@ -123,6 +123,7 @@ class EmailModel extends Model
         return ( $this->sendEmailWithAttachment($emailAddresses, $message, $text, $subject,$attachment) );
     }
     
+
     //used for email audit complete
     function pdfEmail($language="en", $email_content, $emailAddresses="nick@skapit.com", $values=[], $file){
         
@@ -144,7 +145,7 @@ class EmailModel extends Model
         
         $message = str_replace($tags,$values,$message);
         
-        $email = \Config\Services::email();
+        $email = New \Config\Services::email();
         $email->setFrom('contact@skapit.com', 'Ski API Technolgies');
         $email->setTo($emailAddresses);  
         $email->setSubject($subject);

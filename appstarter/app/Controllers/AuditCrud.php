@@ -657,10 +657,8 @@ class AuditCrud extends Controller
             
             
             $account_values = array( $account['name'], $account_url);
-            $emailModel = new EmailModel();
             //update $emailaddresses to the account email
             $emailModel->pdfEmail("en", $email_content, $emailaddresses,$account_values,$fileatt);
-        
     
             $session->setFlashdata('msg', 'Audit review submitted.');
                 
@@ -670,21 +668,21 @@ class AuditCrud extends Controller
     
     public function hotelResultPDF($audit, $account){
         $data['audit'] = $audit;
-            $data['account'] = $account;
-            $html = view('pdf_index',$data);
-            
-            $dompdf = new \Dompdf\Dompdf();
+        $data['account'] = $account;
+        $html = view('pdf_index',$data);
+           
+        $dompdf = new \Dompdf\Dompdf();
         
-            $options = $dompdf->getOptions();
-            $options->setDefaultFont('Roboto');
-            $options->setIsRemoteEnabled('true');
-            $options->setIsHtml5ParserEnabled('true');
-            $dompdf->setOptions($options);
-            $dompdf->loadHtml($html);
-            $dompdf->setPaper('A4', 'portrait');
-            $dompdf->render();
+        $options = $dompdf->getOptions();
+        $options->setDefaultFont('Roboto');
+        $options->setIsRemoteEnabled('true');
+        $options->setIsHtml5ParserEnabled('true');
+        $dompdf->setOptions($options);
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
                 
-            return $dompdf->output();
+        return $dompdf->output();
     }
 
     // show single audit ->for editing as admin/manager
