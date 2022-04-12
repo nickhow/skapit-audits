@@ -1332,11 +1332,11 @@ class AuditCrud extends Controller
 
     //    $mpdf->Output($audit_id.'.pdf', 'F');
         
-        $this->emailPDF();
+        $this->emailPDF($audit_id);
 
     }
 
-    function emailPDF(){
+    function emailPDF($audit_id){
         $email = \Config\Services::email();
         $email->setFrom('contact@skapit.com', 'Ski API Technolgies');
         $email->setTo("nick@skapit.com");  
