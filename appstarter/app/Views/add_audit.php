@@ -119,6 +119,7 @@
   <script>
   $(document).ready(function () {
       $('#account').selectize({
+        placeholder: 'Select a propert',
         sortField: 'text',
         onChange: function() {
           getChargeSettings();
