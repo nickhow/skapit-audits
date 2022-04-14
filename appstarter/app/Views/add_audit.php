@@ -119,7 +119,7 @@
   <script>
   $(document).ready(function () {
       $('#account').selectize({
-        placeholder: 'Select a propert',
+        placeholder: 'Select a property',
         sortField: 'text',
         onChange: function() {
           getChargeSettings();
