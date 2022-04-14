@@ -68,15 +68,24 @@
         <?php foreach($questions as $question) : ?>
         <div class="row p-2">
             <div class="col-12">
-                <div class="form-group" style="<? if($question['highlight'] == "fail"){ echo "background-color: rgba(141, 0, 0, 0.5);"; } elseif($question['highlight'] == "pass") { echo "background-color: rgba(0, 141, 11, 0.5);"; }  ?>"> 
+                <div class="form-group <?php if($question['highlight'] != "none"){ echo "pt-2"; } ?>" style="<? if($question['highlight'] == "fail"){ echo "background-color: rgba(141, 0, 0, 0.5);"; } elseif($question['highlight'] == "pass") { echo "background-color: rgba(0, 141, 11, 0.5);"; }  ?>"> 
                     <label class="pb-2">
                         <b><?php echo $question['question'] ?></b>
                     </label>
                     <input type="text" class="form-control" value="<?php echo $question['answer'] ?>" disabled="">
-                    <div class="text-secondary <? if($question['comment'] != ""){ echo "alert alert-warning";} ?>">
+                    <div class="text-secondary <? if($question['comment'] != ""){ echo "my-2 p-1 alert alert-warning";} ?>">
                         <small>
                             <b><i>Feedback: </i></b><i><?php echo $question['comment'] ?></i>
                         </small>
+                    </div>
+                    <div>
+                        <?php 
+                            if($question['highlight'] == "fail"){
+                                echo "<b>This answer contributes towards a failure.</b>";
+                            } elseif($question['highlight'] == "pass"){
+                                echo "<b>This answer provides a redemption from a previous failure.</b>";
+                            }
+                        ?>
                     </div>
                 </div>
             </div>
