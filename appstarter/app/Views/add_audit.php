@@ -12,31 +12,21 @@
             <form method="post" id="add_create" name="add_create" 
             action="<?= site_url('/submit-audit-form') ?>">
               
-              <div class="form-group pt-2">
-                <label>Language</label>
-                <select name="language" id="language" class="form-select">
-                    <option value="en">English</option>
-                    <option value="fr">Français</option>
-                    <option value="de">Deutsch</option>
-                    <option value="it">Italiano</option>
-                    <option value="es">Español</option>
-                </select>
-              </div>
-              
-                <div class="form-group pt-2">
+              <div class="form-group py-2">
                 <label>Property</label>
                 <select id="account" name="account" class="">
+                  <option value="" selected disabled>Select a property</option>
                     <?php 
-                        foreach($accounts as $account){
-                            echo "<option value=".$account['id'].">".$account['accommodation_name']."</option>";
-                        }
+                      foreach($accounts as $account){
+                        echo "<option value=".$account['id'].">".$account['accommodation_name']."</option>";
+                      }
                     ?>
                 </select>
                 <small id="account_settings_description"></small>
               </div>
               
             <?php if(session()->get('is_admin')): ?>
-              <div class="form-group pt-2">
+              <div class="form-group py-2">
                 <label>Does this audit require payment?</label>
                 <select name="is_payable" id="isPayable" class="form-select">
                     <option value='0'  selected >No</option>
@@ -56,6 +46,17 @@
               </div>
 
             <?php endif; ?>
+
+            <div class="form-group pt-2">
+                <label>Language</label>
+                <select name="language" id="language" class="form-select">
+                    <option value="en">English</option>
+                    <option value="fr">Français</option>
+                    <option value="de">Deutsch</option>
+                    <option value="it">Italiano</option>
+                    <option value="es">Español</option>
+                </select>
+              </div>
 
     <!-- Custom Text Section -->
     <div class="row pt-2 g-3">
