@@ -26,6 +26,7 @@
               </div>
               
             <?php if(session()->get('is_admin')): ?>
+              <h3>Payment</h3>
               <div class="form-group py-2">
                 <label>Does this audit require payment?</label>
                 <select name="is_payable" id="isPayable" class="form-select">
@@ -47,6 +48,7 @@
 
             <?php endif; ?>
 
+            <h3>Audit</h3>
             <div class="form-group pt-2">
                 <label>Language</label>
                 <select name="language" id="language" class="form-select">
