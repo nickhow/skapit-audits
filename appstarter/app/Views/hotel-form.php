@@ -34,10 +34,18 @@
                 <?php endif ?>
             </div>
         </div>
-    <?php else: ?>
+
         <div class="container-fluid py-3 sticky-top bg-light">
             <h4><?php echo $text['progress']; ?> (<?php echo $account_obj['accommodation_name']; ?>)</h4>
             <div class="progress">
+                <div class="progress-bar" id="progressBar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+        </div> 
+
+    <?php else: ?>
+        <div class="container-fluid py-3 sticky-top bg-light">
+            <h4><?php echo $account_obj['accommodation_name']; ?></h4>
+            <div class="progress d-none">
                 <div class="progress-bar" id="progressBar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
         </div> 
@@ -57,21 +65,21 @@
             </div>
             <div class="col-12 col-md-6">
                 <b>Understanding the results.</b>
-                <table>
+                <table class="table">
                     <tr>
-                        <th class="success" scope="row">Green Section</th>
+                        <th class="bg-success" scope="row">Green Section</th>
                         <td>All the answers in this section are OK.</td>
                     </tr>
                     <tr>
-                        <th class="danger" scope="row">Red Section</th>
+                        <th class="bg-danger" scope="row">Red Section</th>
                         <td>At least one of the answers in this section causes a failure.</td>
                     </tr>
                     <tr>
-                        <th class="danger" scope="row">Red Question</th>
+                        <th class="bg-danger" scope="row">Red Question</th>
                         <td>This answer causes a failure.</td>
                     </tr>
                     <tr>
-                        <th class="success" scope="row">Green Question</th>
+                        <th class="bg-success" scope="row">Green Question</th>
                         <td>This answer provides a redemption on a previous failure.</td>
                     </tr>
                 </table>
