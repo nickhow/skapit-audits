@@ -14,6 +14,8 @@ use App\Models\UserModel;
 use App\Models\GroupModel;
 use App\Models\GroupMappingModel;
 
+use Mpdf\Mpdf;
+
 use CodeIgniter\Controller;
 use CodeIgniter\I18n\Time;
 
@@ -355,7 +357,7 @@ class AuditCrud extends Controller
         $account_id = $this->request->getVar('account');      
         
         if($account_id == ""){
-            $session->setFlashdata('msg', "Can't send an audit without a property, please create a property first. </br> <a href=".site_url('/account/new').">Create New Property</a>");
+            $session->setFlashdata('msg', "Can't send an audit without a property, please select or create a property first. </br> <a href=".site_url('/account/new').">Create New Property</a>");
             return $this->response->redirect(site_url('/audit/new'));
         }
 
@@ -624,30 +626,20 @@ class AuditCrud extends Controller
                 
             $url =  site_url('/audit/'.$audit_id);
             $values = array( $account['accommodation_name'], $audit['type'], $account['resort'],$audit['result_ba'],$audit['result_abta'], $url);
-                
+            
+            //generates the PDF
+            $this->salesforceResultPDF($audit_id); 
+
+            //send the email to Fraser
             $emailModel = new EmailModel();
-            $emailModel->sendReviewedAudit("en",$emailaddresses,$values);
+            $emailModel->sendReviewedAudit("en",$emailaddresses,$values,$audit_id);
             
-            $data['audit'] = $audit;
-            $data['account'] = $account;
-            $html = view('pdf_index',$data);
-            
-            $dompdf = new \Dompdf\Dompdf();
-        
-            $options = $dompdf->getOptions();
-            $options->setDefaultFont('Roboto');
-            $options->setIsRemoteEnabled('true');
-            $options->setIsHtml5ParserEnabled('true');
-            $dompdf->setOptions($options);
-            $dompdf->loadHtml($html);
-            $dompdf->setPaper('A4', 'portrait');
-            $dompdf->render();
-                
-            $fileatt = $dompdf->output();
-            
+
+            // now we send the email to the hotel 
+
+            //get the correct email body
             $email_content;
             $account_url;
-            
             if($account_audit['group_id'] == 0){
                 //no group, offer an account.
                 $email_content = "account";
@@ -658,14 +650,15 @@ class AuditCrud extends Controller
                 $account_url =  site_url('/audit/'.$audit_id);
             }
             
-            
             $account_values = array( $account['name'], $account_url);
-            $emailModel = new EmailModel();
-            //update $emailaddresses to the account email
-            $emailModel->pdfEmail("en", $email_content, $emailaddresses,$account_values,$fileatt);
-        
+
+            //send the email to the property account
+            $emailModel->pdfEmail("en", $email_content, $account['email'],$account_values,$audit_id);
     
             $session->setFlashdata('msg', 'Audit review submitted.');
+
+            //delete the file now it's been sent
+            unlink($audit_id.".pdf");
                 
             return $this->response->redirect(site_url('/audits'));
         }
@@ -806,75 +799,6 @@ class AuditCrud extends Controller
         }        
         echo view('templates/footer');
     }
-            
-        
-//OLD FUNCTION CODE    
-/*    
-        //If the form is completed - it's locked in one state or another
-        elseif($data['audit_obj']['status'] == "complete" || $data['audit_obj']['status'] == "reviewed") {
-            
-            if ($admin) {
-                $session->setFlashdata('locked', true);
-
-            } else {
-                switch($data['audit_obj']['status']){
-                    case "complete": echo view('locked'); break;
-                    case "reviewed": echo view('locked',$data); break;
-                    //case "complete": echo view('reviewing'); break;
-                    //case "reviewed": echo view('audit_result',$data); break;
-                }
-            }
-
-        } 
-        //Finally - let's get into the form
-        else {
-        //    $db = db_connect();
-            
-        //get questions and answers including previous answers
-        //language choice
-        //Type specific -- try without this ... 
-        //    $query = $db->query("SELECT id, ".$data['audit_obj']['language']." AS 'question', type, question_number FROM questions WHERE type = '".$data['audit_obj']['type']."' ORDER BY question_number ASC");
-        
-        //type agnostic -- try to make this work and show hide and all that in the form page ... 
-            $query = $db->query("SELECT id, ".$data['audit_obj']['language']." AS 'question', hide_for_1, hide_for_2, hide_for_3, hide_for_4, hide_for_5, question_number, has_custom_answer FROM questions ORDER BY question_number ASC");
-             
-             
-            $results = array();
-            
-            foreach ($query->getResultArray() as $row){
-            //get answers excluding the N/A options --> If we ever need that as selectable we'll need to re-think this!!
-            //En only is SELECT * , Lang uses select $lang.. AS answer .. leaving out scores, don't need that data here.
-            
-            //WITHOUT NA
-            //    $row['answers'] = $db->query("SELECT id, question_id, ".$data['audit_obj']['language']." AS 'answer', en AS 'en_ans'  FROM answers WHERE question_id = '".$row['id']."' AND id NOT IN (SELECT id FROM answers WHERE answer = 'N/A')")->getResultArray();
-            
-            //WITH NA
-                $row['answers'] = $db->query("SELECT id, question_id, ".$data['audit_obj']['language']." AS 'answer', answer AS 'en_ans'  FROM answers WHERE question_id = '".$row['id']."' ORDER BY precedence ASC")->getResultArray();
-
-                $row['response'] = $responseModel->where(['audit_id' => $id, 'question_id' => $row['id']])->first();
-                $results[] = $row;
-            }
-            
-            $data['questions'] = $results;
-            
-            $data['file_obj'] = $uploadModel->where('audit_id',$id)->findAll();
-            
-            //Let's try stacking this all in a single form
-            echo view('hotel-form',$data);
-            
-    //        switch($data['audit_obj']['type']){
-    //            case "hotel": echo view('hotel-form',$data); break;
-    //            case "chalet": echo view('chalet-form',$data); break;
-    //            case "apartment": echo view('apartment-form',$data); break;
-    //        }
-    //
-        }
-        
-        echo view('templates/footer');
-    }
-*/
-
-
 
     // update audit data --> as an admin / manager
     public function edit(){  
@@ -1270,6 +1194,76 @@ class AuditCrud extends Controller
         echo view('templates/footer');
         
     }
+
+    // generate the PDF for Skapit
+    public function salesforceResultPDF($audit_id = null){
+        $auditModel = New AuditModel();
+        $accountModel = New AccountModel();
+        $accountAuditModel = New AccountAuditModel();
+        $responseModel = New ResponseModel();
+
+        $db = db_connect(); 
+        $audit = $auditModel->where('id',$audit_id)->first();
+        $accountAudit = $accountAuditModel->where('audit_id', $audit_id)->first();
+        $account = $accountModel->where('id',$accountAudit['account_id'])->first();
+
+        $query = $db->query("SELECT id, en AS 'question', hide_for_1, hide_for_2, hide_for_3, hide_for_4, hide_for_5, question_number, has_custom_answer FROM questions ORDER BY question_number ASC");
+        $results = array();
+
+        $query = $db->query("
+        SELECT questions.question, answers.en, responses.comment, responses.answer_id, responses.custom_answer, responses.score_ba, responses.score_abta 
+        FROM `responses` 
+        INNER JOIN questions ON questions.id = responses.question_id 
+        INNER JOIN answers ON answers.id = responses.answer_id 
+        WHERE audit_id = '".$audit_id."'");
     
+        foreach ($query->getResultArray() as $row){
+
+            $line = [];
+            $line['highlight'] = "none";
+            if($row['score_ba'] <= -100015 || $row['score_abta'] <= -100015) {
+                $line['highlight'] = "fail";
+            }
+            if($row['score_ba'] >= 100015 || $row['score_abta'] >= 100015) {
+                $line['highlight'] = "pass";
+            }
+            
+            if($row['answer_id'] != "9999" && $row['answer_id'] != "8888"){
+                $line['question'] = $row['question'];
+                $line['answer'] = $row['en'];
+                $line['comment'] = $row['comment'];
+            } elseif( $row['answer_id'] == "9999" ){
+                $line['question'] = $row['question'];
+                $line['answer'] = $row['custom_answer'];
+                $line['comment'] = $row['comment'];
+            } else {
+                continue;
+            }
+            $results[] = $line;
+        }
+
+        $data['audit'] = $audit;
+        $data['account'] = $account;
+        $data['questions'] = $results;
+
+        $html = view('salesforce-results-pdf',$data);
+
+        $mpdf = new \Mpdf\Mpdf([
+            'mode' => 'utf-8',
+            'format' => 'A4',
+            'margin_left' => 4.5,
+            'margin_right' => 4.5,
+            'margin_top' => 6,
+            'margin_bottom' => 6,
+            'margin_header' => 0,
+            'margin_footer' => 0
+        ]);
+        $mpdf->WriteHTML($html);
+
+        $filename = $audit_id.".pdf";
+
+        $mpdf->Output($filename, 'F');
+
+    }    
 }
 ?>

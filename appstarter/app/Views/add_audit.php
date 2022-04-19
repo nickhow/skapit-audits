@@ -12,7 +12,45 @@
             <form method="post" id="add_create" name="add_create" 
             action="<?= site_url('/submit-audit-form') ?>">
               
-              <div class="form-group pt-2">
+              <div class="form-group py-2">
+                <label>Property</label>
+                <select id="account" name="account" class="">
+                  <option value="" selected disabled>Select a property</option>
+                    <?php 
+                      foreach($accounts as $account){
+                        echo "<option value=".$account['id'].">".$account['accommodation_name']."</option>";
+                      }
+                    ?>
+                </select>
+                <small id="account_settings_description"></small>
+              </div>
+              
+            <?php if(session()->get('is_admin')): ?>
+              <div class="pb-2">
+                <h4 class="m-0 pt-3">Payment</h4>
+                <div class="form-group pt-2">
+                  <label>Does this audit require payment?</label>
+                  <select name="is_payable" id="isPayable" class="form-select">
+                      <option value='0'  selected >No</option>
+                      <option value='1'  >Yes</option>
+                  </select>
+                </div>
+
+              
+                <div class="form-group pt-2" id="payableAmountContainer">
+                  <label>What is the cost for the audit (EUR)?</label>
+                  <div class="input-group">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text" style="border-radius:0.25rem 0 0 0.25rem!important" id="currency">€</span>
+                      </div>
+                      <input type="number" name="payable_amount" id="payableAmount" class="form-control" value="50.00" min="1" placeholder="Charge amount" aria-describedby="currency"/>
+                  </div>
+                </div>
+              </div>
+            <?php endif; ?>
+
+            <h4 class="m-0 pt-3">Audit</h4>
+            <div class="form-group pt-2">
                 <label>Language</label>
                 <select name="language" id="language" class="form-select">
                     <option value="en">English</option>
@@ -22,40 +60,6 @@
                     <option value="es">Español</option>
                 </select>
               </div>
-              
-                <div class="form-group pt-2">
-                <label>Property</label>
-                <select id="account" name="account" class="">
-                    <?php 
-                        foreach($accounts as $account){
-                            echo "<option value=".$account['id'].">".$account['accommodation_name']."</option>";
-                        }
-                    ?>
-                </select>
-                <small id="account_settings_description"></small>
-              </div>
-              
-            <?php if(session()->get('is_admin')): ?>
-              <div class="form-group pt-2">
-                <label>Does this audit require payment?</label>
-                <select name="is_payable" id="isPayable" class="form-select">
-                    <option value='0'  selected >No</option>
-                    <option value='1'  >Yes</option>
-                </select>
-              </div>
-
-            
-              <div class="form-group pt-2" id="payableAmountContainer">
-                <label>What is the cost for the audit (EUR)?</label>
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" style="border-radius:0.25rem 0 0 0.25rem!important" id="currency">€</span>
-                    </div>
-                    <input type="number" name="payable_amount" id="payableAmount" class="form-control" value="50.00" min="1" placeholder="Charge amount" aria-describedby="currency"/>
-                </div>
-              </div>
-
-            <?php endif; ?>
 
     <!-- Custom Text Section -->
     <div class="row pt-2 g-3">
@@ -119,6 +123,7 @@
   <script>
   $(document).ready(function () {
       $('#account').selectize({
+        placeholder: 'Select a property',
         sortField: 'text',
         onChange: function() {
           getChargeSettings();

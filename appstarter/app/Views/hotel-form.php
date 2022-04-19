@@ -6,6 +6,15 @@
     background-color:#1598159e;
     color: white;
 } */
+
+.key-completed{
+    background-color: #1598159e!important;
+    color: white;
+}    
+.key-error{
+    background-color: #9815159e!important;
+    color: white;
+}
 .collapsing {
     transition: none;
 }
@@ -19,39 +28,71 @@
   <div class="container-md mt-5 pb-5 mb-3">
     
     <?php if(!session()->getFlashdata('locked')): ?>
-    <div class="row bg-white rounded p-3">
-        <div class="col-12">
-            <?php echo($text['audit_intro']); ?>
+        <div class="row bg-white rounded p-3">
+            <div class="col-12">
+                <?php echo($text['audit_intro']); ?>
+            </div>
+            <div class="col-12">
+                <?php if($audit_obj['is_payable']): ?> 
+                    <div class="alert alert-warning">
+                        <?php
+                            echo(str_replace("{amount}", $audit_obj['payable_amount'], $text['audit_payment_intro']));
+                            //echo($text['audit_payment_intro']); 
+                        ?>
+                    </div>
+                <?php endif ?>
+            </div>
         </div>
-        <div class="col-12">
-            <?php if($audit_obj['is_payable']): ?> 
-                <div class="alert alert-warning">
-                    <?php
-                    echo(str_replace("{amount}", $audit_obj['payable_amount'], $text['audit_payment_intro']));
-                    //echo($text['audit_payment_intro']); 
-                    ?>
-                </div>
-            <?php endif  ?>
-        </div>
-    </div>
+
+        <div class="container-fluid py-3 sticky-top bg-light">
+            <h4><?php echo $text['progress']; ?> (<?php echo $account_obj['accommodation_name']; ?>)</h4>
+            <div class="progress">
+                <div class="progress-bar" id="progressBar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+        </div> 
+
+    <?php else: ?>
+        <div class="container-fluid py-3 sticky-top bg-light">
+            <h4><?php echo $account_obj['accommodation_name']; ?></h4>
+            <div class="progress d-none">
+                <div class="progress-bar" id="progressBar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+        </div> 
+
     <?php endif; ?>
-    <div class="container-fluid py-3 sticky-top bg-light">
-        <h4><?php echo $text['progress']; ?> (<?php echo $account_obj['accommodation_name']; ?>)</h4>
-        <div class="progress">
-          <div class="progress-bar" id="progressBar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-    </div> 
-    
     <?php if($audit_obj['status'] == 'reviewed'): ?>
         <div class="row p-3">
-            <div class="col-12">
-                <b>Audit result:</b>
+            <div class="col-12 col-md-6">
+                <div class="col-12">
+                    <b>Audit result:</b>
+                </div>
+                <div class="col-12">
+                    <h2><?php echo "BA: ". ucFirst($audit_obj['result_ba']);?></h2>
+                    <h2><?php echo "ABTA: ". ucFirst($audit_obj['result_abta']);?></h2>
+                </div>
+                <p>This result expires on <?php echo  date('d/m/Y', strtotime($audit_obj['expiry_date_ba']));?> for BA, and <?php echo  date('d/m/Y', strtotime($audit_obj['expiry_date_abta']));?> for ABTA.</p>
             </div>
-            <div class="col-12">
-                <h2><?php echo "BA: ". ucFirst($audit_obj['result_ba']);?></h2>
-                <h2><?php echo "ABTA: ". ucFirst($audit_obj['result_abta']);?></h2>
+            <div class="col-12 col-md-6">
+                <b>Understanding the feedback</b>
+                <table class="table table-sm">
+                    <tr>
+                        <td class="key-completed" scope="row">Green Section</td>
+                        <td >All the answers in this section are OK.</td>
+                    </tr>
+                    <tr>
+                        <td class="key-error" scope="row">Red Section</td>
+                        <td>At least one of the answers in this section causes a failure.</td>
+                    </tr>
+                    <tr>
+                        <td class="key-error" scope="row">Red Question</td>
+                        <td>This answer causes a failure.</td>
+                    </tr>
+                    <tr>
+                        <td class="key-completed" scope="row">Green Question</td>
+                        <td>This answer provides a redemption on a previous failure.</td>
+                    </tr>
+                </table>
             </div>
-            <p>This result expires on <?php echo  date('d/m/Y', strtotime($audit_obj['expiry_date_ba']));?> for BA, and <?php echo  date('d/m/Y', strtotime($audit_obj['expiry_date_abta']));?> for ABTA.</p>
             <div class="row">
                 <label><b>Comments</b></label>
                 <p><?php echo $audit_obj['comment'] ?></p>

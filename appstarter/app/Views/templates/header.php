@@ -38,8 +38,18 @@
                 <li class="nav-item">
                   <a class="nav-link" href="<?= site_url('/questions') ?>">Questions</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" target="_blank" href="https://skapit.freshdesk.com/support/solutions">Support</a>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Docs
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li class="dropdown-item">
+                      <a target="_blank" href="https://powderwhiteski.sharepoint.com/sites/HealthSafetyAudits-UserGuide">Admin User Guide</a>
+                    </li>
+                    <li class="dropdown-item">
+                      <a  target="_blank" href="https://skapit.freshdesk.com/support/solutions">User Support Docs</a>
+                    </li>
+                  </ul>
                 </li>
                  <li class="nav-item px-3">
                   <a class="nav-link btn-outline-danger" href="<?= site_url('/signout') ?>">Sign out</a>
