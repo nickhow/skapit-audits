@@ -65,21 +65,21 @@
             </div>
             <div class="col-12 col-md-6">
                 <b>Understanding the results.</b>
-                <table class="table">
+                <table class="table table-sm">
                     <tr>
-                        <th class="bg-success" scope="row">Green Section</th>
-                        <td>All the answers in this section are OK.</td>
+                        <th class="completed" scope="row">Green Section</th>
+                        <td >All the answers in this section are OK.</td>
                     </tr>
                     <tr>
-                        <th class="bg-danger" scope="row">Red Section</th>
+                        <th class="completed-error" scope="row">Red Section</th>
                         <td>At least one of the answers in this section causes a failure.</td>
                     </tr>
                     <tr>
-                        <th class="bg-danger" scope="row">Red Question</th>
+                        <th class="completed-error" scope="row">Red Question</th>
                         <td>This answer causes a failure.</td>
                     </tr>
                     <tr>
-                        <th class="bg-success" scope="row">Green Question</th>
+                        <th class="completed" scope="row">Green Question</th>
                         <td>This answer provides a redemption on a previous failure.</td>
                     </tr>
                 </table>
