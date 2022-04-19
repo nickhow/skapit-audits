@@ -34,24 +34,52 @@
             <?php endif  ?>
         </div>
     </div>
-    <?php endif; ?>
+    
     <div class="container-fluid py-3 sticky-top bg-light">
         <h4><?php echo $text['progress']; ?> (<?php echo $account_obj['accommodation_name']; ?>)</h4>
         <div class="progress">
           <div class="progress-bar" id="progressBar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
     </div> 
-    
+    <?php else: ?>
+        <div class="container-fluid py-3 sticky-top bg-light">
+            <h4><?php echo $account_obj['accommodation_name']; ?></h4>
+        </div>
+    </div> >
+    <?php endif; ?>
     <?php if($audit_obj['status'] == 'reviewed'): ?>
         <div class="row p-3">
-            <div class="col-12">
-                <b>Audit result:</b>
+            <div class="col-12 col-md-6">
+                <div class="col-12">
+                    <b>Audit result:</b>
+                </div>
+                <div class="col-12">
+                    <h2><?php echo "BA: ". ucFirst($audit_obj['result_ba']);?></h2>
+                    <h2><?php echo "ABTA: ". ucFirst($audit_obj['result_abta']);?></h2>
+                </div>
+                <p>This result expires on <?php echo  date('d/m/Y', strtotime($audit_obj['expiry_date_ba']));?> for BA, and <?php echo  date('d/m/Y', strtotime($audit_obj['expiry_date_abta']));?> for ABTA.</p>
             </div>
-            <div class="col-12">
-                <h2><?php echo "BA: ". ucFirst($audit_obj['result_ba']);?></h2>
-                <h2><?php echo "ABTA: ". ucFirst($audit_obj['result_abta']);?></h2>
+            <div class="col-12 col-md-6">
+                <b>Understanding the results.</b>
+                <table>
+                    <tr>
+                        <th class="success" scope="row">Green Section</th>
+                        <td>All the answers in this section are OK.</td>
+                    </tr>
+                    <tr>
+                        <th class="danger" scope="row">Red Section</th>
+                        <td>At least one of the answers in this section causes a failure.</td>
+                    </tr>
+                    <tr>
+                        <th class="danger" scope="row">Red Question</th>
+                        <td>This answer causes a failure.</td>
+                    </tr>
+                    <tr>
+                        <th class="success" scope="row">Green Question</th>
+                        <td>This answer provides a redemption on a previous failure.</td>
+                    </tr>
+                </table>
             </div>
-            <p>This result expires on <?php echo  date('d/m/Y', strtotime($audit_obj['expiry_date_ba']));?> for BA, and <?php echo  date('d/m/Y', strtotime($audit_obj['expiry_date_abta']));?> for ABTA.</p>
             <div class="row">
                 <label><b>Comments</b></label>
                 <p><?php echo $audit_obj['comment'] ?></p>
