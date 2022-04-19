@@ -8,11 +8,11 @@
 } */
 
 .key-completed{
-    background-color: #1598159e;
+    background-color: #1598159e!important;
     color: white;
 }    
 .key-error{
-    background-color: #9815159e;
+    background-color: #9815159e!important;
     color: white;
 }
 .collapsing {
@@ -73,22 +73,22 @@
                 <p>This result expires on <?php echo  date('d/m/Y', strtotime($audit_obj['expiry_date_ba']));?> for BA, and <?php echo  date('d/m/Y', strtotime($audit_obj['expiry_date_abta']));?> for ABTA.</p>
             </div>
             <div class="col-12 col-md-6">
-                <b>Understanding the results.</b>
+                <b>Understanding the feedback</b>
                 <table class="table table-sm">
                     <tr>
-                        <th class="key-completed" scope="row">Green Section</th>
+                        <td class="key-completed" scope="row">Green Section</td>
                         <td >All the answers in this section are OK.</td>
                     </tr>
                     <tr>
-                        <th class="key-error" scope="row">Red Section</th>
+                        <td class="key-error" scope="row">Red Section</td>
                         <td>At least one of the answers in this section causes a failure.</td>
                     </tr>
                     <tr>
-                        <th class="key-error" scope="row">Red Question</th>
+                        <td class="key-error" scope="row">Red Question</td>
                         <td>This answer causes a failure.</td>
                     </tr>
                     <tr>
-                        <th class="key-completed" scope="row">Green Question</th>
+                        <td class="key-completed" scope="row">Green Question</td>
                         <td>This answer provides a redemption on a previous failure.</td>
                     </tr>
                 </table>
