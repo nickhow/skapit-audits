@@ -6,6 +6,15 @@
     background-color:#1598159e;
     color: white;
 } */
+
+.key-completed{
+    background-color: #1598159e;
+    color: white;
+}    
+.key-error{
+    background-color: #9815159e;
+    color: white;
+}
 .collapsing {
     transition: none;
 }
@@ -67,19 +76,19 @@
                 <b>Understanding the results.</b>
                 <table class="table table-sm">
                     <tr>
-                        <th class="completed" scope="row">Green Section</th>
+                        <th class="key-completed" scope="row">Green Section</th>
                         <td >All the answers in this section are OK.</td>
                     </tr>
                     <tr>
-                        <th class="completed-error" scope="row">Red Section</th>
+                        <th class="key-error" scope="row">Red Section</th>
                         <td>At least one of the answers in this section causes a failure.</td>
                     </tr>
                     <tr>
-                        <th class="completed-error" scope="row">Red Question</th>
+                        <th class="key-error" scope="row">Red Question</th>
                         <td>This answer causes a failure.</td>
                     </tr>
                     <tr>
-                        <th class="completed" scope="row">Green Question</th>
+                        <th class="key-completed" scope="row">Green Question</th>
                         <td>This answer provides a redemption on a previous failure.</td>
                     </tr>
                 </table>
