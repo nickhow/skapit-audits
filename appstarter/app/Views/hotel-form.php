@@ -27,24 +27,21 @@
                 <?php if($audit_obj['is_payable']): ?> 
                     <div class="alert alert-warning">
                         <?php
-                        echo(str_replace("{amount}", $audit_obj['payable_amount'], $text['audit_payment_intro']));
-                        //echo($text['audit_payment_intro']); 
+                            echo(str_replace("{amount}", $audit_obj['payable_amount'], $text['audit_payment_intro']));
+                            //echo($text['audit_payment_intro']); 
                         ?>
                     </div>
-                <?php endif  ?>
+                <?php endif ?>
             </div>
         </div>
-    
+    <?php else: ?>
         <div class="container-fluid py-3 sticky-top bg-light">
             <h4><?php echo $text['progress']; ?> (<?php echo $account_obj['accommodation_name']; ?>)</h4>
             <div class="progress">
-            <div class="progress-bar" id="progressBar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar" id="progressBar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
         </div> 
-    <?php else: ?>
-        <div class="container-fluid py-3 sticky-top bg-light">
-            <h4><?php echo $account_obj['accommodation_name']; ?></h4>
-        </div>
+
     <?php endif; ?>
     <?php if($audit_obj['status'] == 'reviewed'): ?>
         <div class="row p-3">
