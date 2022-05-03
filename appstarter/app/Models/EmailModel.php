@@ -171,9 +171,9 @@ class EmailModel extends Model
         
         $emailaddresses = (getenv('alex'));
         
-        $email->clear(true); //reset $email to empty state (true - include attachments)
-
         $email = \Config\Services::email();
+        $email->clear(true); //reset $email to empty state (true - include attachments)
+        
         $email->setFrom('contact@skapit.com', 'Ski API Technolgies');
         //$email->setTo('a.lopez@hotelcheck-hsaudits.com');  // can be single, comma-delimited list 'a@me.com, b@me.com' or array ['a@me.com','b@me.com']
         $email->setTo($emailaddresses);
