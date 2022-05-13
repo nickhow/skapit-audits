@@ -12,7 +12,7 @@ if (!$conn) {
 }
 
 //get the unique IDs from the responses table
-$sql_select = "SELECT audit_id FROM `audits` WHERE `status` IN ('reviewed','reviewing','complete')";
+$sql_select = "SELECT id FROM audits WHERE `status` IN ('complete','reviewed','reviewing')";
 if($ids = mysqli_query($conn, $sql_select)){
     //generate the basic response to satisfy the new question
     foreach($ids as $id){
