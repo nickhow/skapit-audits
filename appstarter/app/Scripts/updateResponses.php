@@ -14,9 +14,11 @@ if (!$conn) {
 //get the unique IDs from the responses table
 $sql_select = "SELECT DISTINCT id FROM audits WHERE `status` IN ('complete','reviewed','reviewing')";
 $result = mysqli_query($conn, $sql_select);
+
+print_r($result);
 $ids = mysqli_fetch_array($result,MYSQLI_NUM);
 
-print_r($ids)
+
 
     //generate the basic response to satisfy the new question
  //   foreach($ids as $id){
