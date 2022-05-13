@@ -90,9 +90,9 @@
                 <td>
                 <?php 
                         if($audit['added_to_salesforce'] === 1) { 
-                            echo "<p class='success'><i class='far fa-tick fa-2x'></i>,p>";
+                            echo "<p class='success'><i class='far fa-tick fa-2x'></i><p>";
                         } else {
-                            echo "<p class='danger'><i class='far fa-cross fa-2x'></i>,p>";
+                            echo "<p class='danger'><i class='far fa-cross fa-2x'></i><p>";
                         }
                     ?>
                 </td>
