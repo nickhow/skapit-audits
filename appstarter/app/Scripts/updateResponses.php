@@ -1,28 +1,23 @@
 <?php
-namespace App\Scripts;
-use App\Models\ResponseModel;
-class UpdateResponses extends .\Controllers\Controller
-{
-    function main(){
-        $db = db_connect();
 
-        //get the unique IDs from the responses table
-        $ids = $db->query("SELECT audit_id FROM `audits` WHERE `status` IN ('reviewed','reviewing','complete')")->getResult();
+$servername = "localhost";
+$username = "skiapitechnologi";
+$password = "pIkQoMT9X.8u";
+$dbname = "skiapite_partners";
 
-        //generate the basic response to satisfy the new question
-        $responseModel = new ResponseModel();
-        foreach($ids as $id){
-            $response = [
-                'audit_id' => $id,
-                'question_id' => 129,  
-                'answer_id' => 10002,
-                'suggested_score_ba' => 0,
-                'suggested_score_abta' => 0,
-                'custom_answer' => "",
-            ];
+$conn = mysqli_connect($servername, $username, $password, $dbname);
 
-            $responseModel->insert($response);
-        }
-    }
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+//get the unique IDs from the responses table
+$sql_select = "SELECT audit_id FROM `audits` WHERE `status` IN ('reviewed','reviewing','complete')";
+$ids = mysqli_query($conn, $sql_select);
+
+//generate the basic response to satisfy the new question
+foreach($ids as $id){
+    $sql_insert = "INSERT INTO responses (audit_id, question_id, answer_id, suggested_score_ba, suggested_score_abta, custom_answer) VALUES('$id',129,10002,0,0,'')";
+    mysqli_query($conn, $sql_insert);
 }
 ?>
