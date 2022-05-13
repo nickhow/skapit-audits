@@ -1,9 +1,9 @@
 <?php
 
 $servername = "localhost";
-$username = "skiapite_dev";
-$password = "fx6QhvFWa8Sya4j";
-$dbname = "skiapite_dev_audit";
+$username = "skiapite_audit";
+$password = "zPcQNtRCCw8iyfH";
+$dbname = "skiapite_audit";
 
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
