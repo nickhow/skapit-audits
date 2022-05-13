@@ -130,7 +130,7 @@ class AuditCrud extends Controller
         
         if($admin){
             $sql = "
-                SELECT audits.id AS 'id', audits.type AS 'type', audits.status AS 'status', audits.result_ba AS 'result_ba', audits.result_abta AS 'result_abta', accounts.id AS 'account_id', accounts.accommodation_name AS 'accommodation_name', audits.last_updated AS 'last_updated', audits.sent_date AS 'sent_date', audits.created_date AS 'created_date', added_to_salesforce
+                SELECT audits.id AS 'id', audits.type AS 'type', audits.status AS 'status', audits.result_ba AS 'result_ba', audits.result_abta AS 'result_abta', accounts.id AS 'account_id', accounts.accommodation_name AS 'accommodation_name', audits.last_updated AS 'last_updated', audits.sent_date AS 'sent_date', audits.created_date AS 'created_date', audits.added_to_salesforce
                 FROM audits
                 INNER JOIN account_audits on account_audits.audit_id = audits.id
                 INNER JOIN accounts on account_audits.account_id = accounts.id
