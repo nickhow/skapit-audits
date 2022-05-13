@@ -46,12 +46,12 @@
                         <input class="form-check-input" type="checkbox" value="1" name="paid" id="paid" <?php if( $audit_obj['paid'] ) {echo "checked";} ?> >
                         <label class="form-check-label" for="paid">Hotel Check Paid</label>           
                       </div>
-                      <?php }?>
 
                       <div class="form-group pt-2">
                         <input class="form-check-input" type="checkbox" value="1" name="added_to_salesforce" id="added_to_salesforce" <?php if( $audit_obj['added_to_salesforce'] ) {echo "checked";} ?> >
                         <label class="form-check-label" for="paid">Added to Salesforce</label>           
                       </div>
+
                       <?php }?>
                   <?php endif; ?>
                   
