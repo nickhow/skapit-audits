@@ -17,7 +17,8 @@ $result = mysqli_query($conn, $sql_select);
 
 //print_r($result);
 while ($row = mysqli_fetch_row($result)){
-    print_r($row);
+   // print_r($row);
+   echo $row[0];
 }
     //generate the basic response to satisfy the new question
  //   foreach($ids as $id){
