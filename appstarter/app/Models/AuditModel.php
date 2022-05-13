@@ -17,7 +17,7 @@ class AuditModel extends Model
         'audited_date','expiry_date_ba','expiry_date_abta',
         'language', 'created_date','next_chase','paid',
         'waiver_extra_info_included', 'waiver_extra_info', 'waiver_name', 'waiver_job_title','waiver_email',
-        'is_payable','is_paid', 'payment_id', 'payable_amount'
+        'is_payable','is_paid', 'payment_id', 'payable_amount','added_to_salesforce'
         ];
     
     
