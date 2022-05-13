@@ -35,6 +35,7 @@
              <th>Status</th>
              <th>Last Opened</th>
              <th>Review</th>
+             <th>On Salesforce</th>
              <th>Actions</th>
           </tr>
        </thead>
@@ -85,6 +86,15 @@
                     <?php else: ?>
                         <span class="text-secondary text-center"><i>Not ready for review</i></span>
                     <?php endif ?>
+                </td>
+                <td>
+                <?php 
+                        if($audit['added_to_salesforce'] === 1) { 
+                            echo "<p class='success'><i class='far fa-tick fa-2x'></i>,p>";
+                        } else {
+                            echo "<p class='danger'><i class='far fa-cross fa-2x'></i>,p>";
+                        }
+                    ?>
                 </td>
               <td>
                   <div class="row">

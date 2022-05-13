@@ -837,6 +837,7 @@ class AuditCrud extends Controller
             $data += [
                 'is_payable' => $this->request->getVar('is_payable'),
                 'paid' => $this->request->getVar('paid'), // this is paid to hotelcheck
+                'added_to_salesforce' => $this->request->getVar('added_to_salesforce'), 
             ];
             if($this->request->getVar('is_payable')){
                 $data += [ 
