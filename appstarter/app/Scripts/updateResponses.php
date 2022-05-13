@@ -1,7 +1,7 @@
 <?php
 namespace App\Scripts;
 use App\Models\ResponseModel;
-class UpdateResponses extends ..\Controllers\Controller
+class UpdateResponses extends .\Controllers\Controller
 {
     function main(){
         $db = db_connect();
