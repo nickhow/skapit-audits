@@ -16,8 +16,8 @@ $sql_select = "SELECT DISTINCT id FROM audits WHERE `status` IN ('complete','rev
 $result = mysqli_query($conn, $sql_select);
 
 //print_r($result);
-while ($id = mysqli_fetch_row($result)){
-    print_r ( $id."\n");
+while ($row = mysqli_fetch_row($result)){
+    echo $row['id']."\n";
 }
     //generate the basic response to satisfy the new question
  //   foreach($ids as $id){
