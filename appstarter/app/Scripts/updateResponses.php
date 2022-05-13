@@ -1,7 +1,7 @@
 <?php
 namespace App\Scripts;
 use App\Models\ResponseModel;
-class AuditCrud extends Controller
+class UpdateResponses extends App\Controllers\Controller
 {
     function main(){
         $db = db_connect();
