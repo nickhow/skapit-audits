@@ -1,5 +1,5 @@
 <?php
-namespace App\Controllers;
+namespace App\Scripts;
 use App\Models\ResponseModel;
 class AuditCrud extends Controller
 {
