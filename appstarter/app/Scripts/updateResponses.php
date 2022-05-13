@@ -1,24 +1,27 @@
 <?php
-
+namespace App\Controllers;
 use App\Models\ResponseModel;
-$db = db_connect();
+class AuditCrud extends Controller
+{
 
-//get the unique IDs from the responses table
-$ids = $db->query("SELECT audit_id FROM `audits` WHERE `status` IN ('reviewed','reviewing','complete')")->getResult();
+    $db = db_connect();
 
-//generate the basic response to satisfy the new question
-$responseModel = new ResponseModel();
-foreach($ids as $id){
-    $response = [
-        'audit_id' => $id,
-        'question_id' => 129,  
-        'answer_id' => 10002,
-        'suggested_score_ba' => 0,
-        'suggested_score_abta' => 0,
-        'custom_answer' => "",
-    ];
+    //get the unique IDs from the responses table
+    $ids = $db->query("SELECT audit_id FROM `audits` WHERE `status` IN ('reviewed','reviewing','complete')")->getResult();
 
-    $responseModel->insert($response);
+    //generate the basic response to satisfy the new question
+    $responseModel = new ResponseModel();
+    foreach($ids as $id){
+        $response = [
+            'audit_id' => $id,
+            'question_id' => 129,  
+            'answer_id' => 10002,
+            'suggested_score_ba' => 0,
+            'suggested_score_abta' => 0,
+            'custom_answer' => "",
+        ];
+
+        $responseModel->insert($response);
+    }
 }
-
 ?>
