@@ -18,9 +18,9 @@ $result = mysqli_query($conn, $sql_select);
 while ($row = mysqli_fetch_row($result)){
     $sql_insert = "INSERT INTO responses (audit_id, question_id, answer_id, suggested_score_ba, suggested_score_abta, custom_answer) VALUES('$row[0]','129','10002','0','0','')";
     if(mysqli_query($conn, $sql_insert)){
-        echo "Insert success for id: ".$row[0];
+        echo "Insert success for id: ".$row[0]."\n";
     } else {
-        echo "Failed to insert for id: ".$row[0];
+        echo "Failed to insert for id: ".$row[0]."\n";
     }
 }
 
