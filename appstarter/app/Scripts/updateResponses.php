@@ -15,20 +15,15 @@ if (!$conn) {
 $sql_select = "SELECT DISTINCT id FROM audits WHERE `status` IN ('complete','reviewed','reviewing')";
 $result = mysqli_query($conn, $sql_select);
 
-//print_r($result);
 while ($row = mysqli_fetch_row($result)){
-   // print_r($row);
-   echo $row[0];
+    $sql_insert = "INSERT INTO responses (audit_id, question_id, answer_id, suggested_score_ba, suggested_score_abta, custom_answer) VALUES('$row[0]','129','10002','0','0','')";
+    if(mysqli_query($conn, $sql_insert)){
+        echo "Insert success for id: ".$row[0];
+    } else {
+        echo "Failed to insert for id: ".$row[0];
+    }
 }
-    //generate the basic response to satisfy the new question
- //   foreach($ids as $id){
- //       $sql_insert = "INSERT INTO responses (audit_id, question_id, answer_id, suggested_score_ba, suggested_score_abta, custom_answer) VALUES('$id','129','10002','0','0','')";
- //       if(mysqli_query($conn, $sql_insert)){
- //           echo "Insert success for id: ".$id;
-  //      } else {
-  //          echo "Failed to insert for id: ".$id;
-  //      }
-  //  }
+
 
 
 
