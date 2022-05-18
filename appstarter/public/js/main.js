@@ -167,6 +167,7 @@ function updateProgress(target){
                             if(!isLocked){ // only clean the answers to the unhidden questions if the form is still being completed
                             
                                 if(document.getElementById("A"+element.value) !== null){
+                                    console.log('element value is '+element.value);
                                     if(document.getElementById("A"+element.value) == "A131"){
                                         // skip this one, N/A is used differently
                                         console.log('looking at 131');
