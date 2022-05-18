@@ -1323,14 +1323,14 @@ class AuditCrud extends Controller
             
         //    $file->move('uploads/'.$newAuditId,$upload['file_name']);
 
-        $old = "uploads/".$audit['id']."/".$upload['file_name'];
+        $old = "uploads/".$audit_id."/".$upload['file_name'];
         $new = "uploads/".$newAuditId."/".$upload['file_name'];
 
         copy($old,$new); 
         //move_uploaded_file
             $upload['id'] = null;
             $upload['audit_id'] = $newAuditId;
-            $uploadModel->insert($upload);
+        //    $uploadModel->insert($upload);
         }
 
         echo $newAuditId;        
