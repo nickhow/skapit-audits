@@ -168,10 +168,9 @@ function updateProgress(target){
                             
                                 if(document.getElementById("A"+element.value) !== null){
                                     console.log('element value is '+element.value);
-                                    if(document.getElementById("A"+element.value) == "A131"){
+                                    if(element.value == "131"){
                                         // skip this one, N/A is used differently
                                         console.log('looking at 131');
-                                        element.value = "131";
                                     } else if(document.getElementById("A"+element.value).getAttribute('data-response') == "N/A"){
                                         element.value="Unanswered";
                                         console.log('looking at '+element.value);
