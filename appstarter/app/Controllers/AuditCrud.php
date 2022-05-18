@@ -1324,8 +1324,10 @@ class AuditCrud extends Controller
         //    $file->move('uploads/'.$newAuditId,$upload['file_name']);
 
         $old = "uploads/".$audit_id."/".$upload['file_name'];
-        $new = __DIR__."uploads/".$newAuditId."/".$upload['file_name'];
-
+        $new = "uploads/".$newAuditId."/".$upload['file_name'];
+        if(!is_dir("uploads/".$newAuditId."/")){
+            mkdir("uploads/".$newAuditId."/", 0755, true);
+        }
         copy($old,$new); 
         //move_uploaded_file
             $upload['id'] = null;
