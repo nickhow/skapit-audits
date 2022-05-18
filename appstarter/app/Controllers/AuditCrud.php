@@ -1288,6 +1288,8 @@ class AuditCrud extends Controller
         $audit['id'] = $newAuditId;
         $auditModel->insert($audit);
 
+        echo $newAuditId;
+
         //copy the uploaded files to the new audit foler
 
 
