@@ -1303,26 +1303,26 @@ class AuditCrud extends Controller
             'is_payable' => $audit['is_payable'],
             'payable_amount' => $audit['payable_amount'],
         ];
-        $auditModel->insert($newAudit);
+    //    $auditModel->insert($newAudit);
 
         //audit x property mapping
         $accountAudit['id'] = null;
         $accountAudit['audit_id'] = $newAuditId;
-        $accountAuditModel->insert($accountAudit);
+    //    $accountAuditModel->insert($accountAudit);
 
         //responses
         foreach( $responses as $response){
             $reponse['id'] = null;
             $response['audit_id'] = $newAuditId;
-            $responseModel->insert($response);
+        //    $responseModel->insert($response);
         }
 
         //uploads
         foreach( $uploads as $upload){
-            $file = new \CodeIgniter\Files\File("uploads/".$audit['id']."/".$upload['file_name']);
-            //if($file->isValid()){
+            $file = new \CodeIgniter\Files\File("uploads/".$audit['id']."/".$upload['file_name'],true);
+            if($file->isValid()){
                 $uploadModel->uploadFile($file, $newAuditId);
-            //}
+            }
 
         //    $upload['id'] = null;
         //    $upload['audit_id'] = $newAuditId;
