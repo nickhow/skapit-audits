@@ -173,7 +173,7 @@ function updateProgress(target){
                                         element.value = "131";
                                     } else if(document.getElementById("A"+element.value).getAttribute('data-response') == "N/A"){
                                         element.value="Unanswered";
-                                        console.log('looking at '.element.value);
+                                        console.log('looking at '+element.value);
                                     }
                                 }
                             }
