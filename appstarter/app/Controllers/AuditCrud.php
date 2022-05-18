@@ -1319,9 +1319,14 @@ class AuditCrud extends Controller
 
         //uploads
         foreach( $uploads as $upload){
-            $file = new \CodeIgniter\Files\File("uploads/".$audit['id']."/".$upload['file_name'],true);
+        //    $file = new \CodeIgniter\Files\File("uploads/".$audit['id']."/".$upload['file_name'],true);
             
-            $file->move('uploads/'.$newAuditId,$upload['file_name']);
+        //    $file->move('uploads/'.$newAuditId,$upload['file_name']);
+
+        $old = 'uploads/'.$audit['id']."/".$upload['file_name'];
+        $new = 'uploads/'.$newAuditId,$upload['file_name'];
+
+        move_uploaded_file($old,$new);
 
             $upload['id'] = null;
             $upload['audit_id'] = $newAuditId;
