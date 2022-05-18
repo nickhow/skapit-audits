@@ -167,13 +167,13 @@ function updateProgress(target){
                             if(!isLocked){ // only clean the answers to the unhidden questions if the form is still being completed
                             
                                 if(document.getElementById("A"+element.value) !== null){
-                                    console.log('element value is '+element.value);
+                                    
                                     if(element.value == "131"){
                                         // skip this one, N/A is used differently
-                                        console.log('looking at 131');
+                                        
                                     } else if(document.getElementById("A"+element.value).getAttribute('data-response') == "N/A"){
                                         element.value="Unanswered";
-                                        console.log('looking at '+element.value);
+                                       
                                     }
                                 }
                             }
