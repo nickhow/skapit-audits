@@ -1285,8 +1285,44 @@ class AuditCrud extends Controller
         $newAuditId = $auditModel->generateID();
 
         //create the new database records with the old data and the new audit id
-        $audit['id'] = $newAuditId;
-        $auditModel->insert($audit);
+        //audit
+        $newAudit = [
+            'id' => $newAuditId;
+            'type' => $audit['type'];
+            'sent_date' => Time::now('Europe/London', 'en_GB'),
+            'created_date' => Time::now('Europe/London', 'en_GB'),
+            'waiver_signed' => $audit['waiver_signed'],
+            'waiver_signed_date' => $audit['waiver_signed_date'],
+            'waiver_extra_info_included' => $audit['waiver_extra_info_included'],
+            'waiver_extra_info' => $audit['waiver_extra_info'],
+            'waiver_name' => $audit['waiver_name'],
+            'waiver_job_title' => $audit['waiver_job_title'],
+            'waiver_email' => $audit['waiver_email'],
+            'language' => $audit['language'],
+            'status' => 'in progress',
+            'is_payable' => $audit['is_payable'],
+            'payable_amount' => $audit['payable_amount'],
+        ];
+        $auditModel->insert($newAudit);
+
+        //audit x property mapping
+        $accountAudit['id'] = null;
+        $accountAudit['audit_id'] = $newAuditId;
+        $accountAuditModel->insert($accountAudit);
+
+        //responses
+        foreach( $responses as $response){
+            $reponse['id'] = null;
+            $response['audit_id'] = $newAuditId;
+            $responseModel->insert($response);
+        }
+
+        //uploads
+        foreach( $uploads as $upoad){
+            $upload['id'] = null;
+            $upload['audit_id'] = $newAuditId;
+            $uploadModel->insert($upload);
+        }
 
         echo $newAuditId;
 
