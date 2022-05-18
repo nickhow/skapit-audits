@@ -1287,8 +1287,8 @@ class AuditCrud extends Controller
         //create the new database records with the old data and the new audit id
         //audit
         $newAudit = [
-            'id' => $newAuditId;
-            'type' => $audit['type'];
+            'id' => $newAuditId,
+            'type' => $audit['type'],
             'sent_date' => Time::now('Europe/London', 'en_GB'),
             'created_date' => Time::now('Europe/London', 'en_GB'),
             'waiver_signed' => $audit['waiver_signed'],
