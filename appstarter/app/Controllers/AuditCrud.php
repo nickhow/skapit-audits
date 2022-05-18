@@ -1265,6 +1265,33 @@ class AuditCrud extends Controller
 
         $mpdf->Output($filename, 'F');
 
-    }    
+    }   
+    
+    public function resubmit($audit_id = null){
+
+        //set up the objects
+        $auditModel = new AuditModel();
+        $responseModel = new ResponseModel();
+        $uploadModel = new UploadModel();
+        $accountAuditModel = new AccountAuditModel();
+
+        //get the data relating to the original audit
+        $audit = $auditModel->where('id',$audit_id)->first();
+        $accountAudit = $accountAuditModel->where('audit_id', $audit_id)->first();
+        $uploads = $uploadModel->where('audit_id',$audit_id)->findAll();
+        $responses = $responseModel->where('audit_id',$audit_id)->findAll();
+
+        //generate a new audit id
+        $newAuditId = $auditModel->generateID();
+
+        //create the new database records with the old data and the new audit id
+        $audit['id'] => $newAuditId;
+        $auditModel->insert($audit);
+
+        //copy the uploaded files to the new audit foler
+
+
+    }
+    
 }
 ?>

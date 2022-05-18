@@ -78,6 +78,8 @@ $routes->post('update-audit', 'AuditCrud::edit');
 $routes->get('audit/(:alphanum)/delete', 'AuditCrud::delete/$1');
 $routes->post('audit/(:alphanum)/pay', 'AuditCrud::markPaid/$1');
 
+$routes->get('audit/(:alphanum)/resubmit', 'AuditCrud::resubmit/$1');
+
 $routes->get('audit/(:alphanum)/account', 'AuditCrud::register/$1');
 $routes->post('audit/(:alphanum)/account', 'SignupController::store/$1');
 
