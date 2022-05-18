@@ -1320,9 +1320,9 @@ class AuditCrud extends Controller
         //uploads
         foreach( $uploads as $upload){
             $file = new \CodeIgniter\Files\File("uploads/".$audit['id']."/".$upload['file_name']);
-            if($file->isValid()){
+            //if($file->isValid()){
                 $uploadModel->uploadFile($file, $newAuditId);
-            }
+            //}
 
         //    $upload['id'] = null;
         //    $upload['audit_id'] = $newAuditId;
