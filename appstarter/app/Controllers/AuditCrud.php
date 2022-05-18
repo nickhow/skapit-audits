@@ -1326,7 +1326,7 @@ class AuditCrud extends Controller
         $old = 'uploads/'.$audit['id']."/".$upload['file_name'];
         $new = 'uploads/'.$newAuditId."/".$upload['file_name'];
 
-        rename($old,$new); 
+        copy($old,$new); 
         //move_uploaded_file
             $upload['id'] = null;
             $upload['audit_id'] = $newAuditId;
