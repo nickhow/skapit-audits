@@ -1285,7 +1285,7 @@ class AuditCrud extends Controller
         $newAuditId = $auditModel->generateID();
 
         //create the new database records with the old data and the new audit id
-        $audit['id'] => $newAuditId;
+        $audit['id'] = $newAuditId;
         $auditModel->insert($audit);
 
         //copy the uploaded files to the new audit foler
