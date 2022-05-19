@@ -2,8 +2,10 @@
 // remove the error class on answer update
 var question_selects = document.querySelectorAll("select");
 question_selects.forEach(function(el){
-    el.parentElement.parentElement.classList.remove("error_question");
-    console.log("remove class from "+el.parentElement.parentElement);
+    el.addEventListener("change", function(){
+        el.parentElement.parentElement.classList.remove("error_question");
+        console.log("remove class from "+el.parentElement.parentElement);
+    });
 });
 
 function updateProgress(target){
