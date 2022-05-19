@@ -4,18 +4,18 @@ var question_selects = document.querySelectorAll("select");
 question_selects.forEach(function(el){
     el.addEventListener("change", function(){
         el.parentElement.parentElement.classList.remove("error_question");
-        console.log("remove class from "+el.parentElement.parentElement);
+       el.onchange();
     });
 });
 
 function updateProgress(target){
         targetEl = document.getElementById(target); 
-        console.log("update progress is running");
+      
         //count the errors and hold the accordion open while there are some ... need to remove error_question class on update answer.
         var error_count = targetEl.querySelectorAll(".error_question");
         if(error_count.length > 0) {
             // stop the rest of the process to hold the accordion open ...
-            console.log("update progress was stopped!");
+           
             return;
         }
 
