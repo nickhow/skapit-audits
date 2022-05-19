@@ -1056,6 +1056,7 @@ class AuditCrud extends Controller
                     'status' => 'complete',
                     'completed_date' => Time::now('Europe/London', 'en_GB'),
                     'last_updated' => Time::now('Europe/London', 'en_GB'),
+                    'highlight_failures' => 0,
                 ];
             
                 $account_audit = $accountAuditModel->where('audit_id',$audit['id'])->first();
@@ -1344,8 +1345,6 @@ class AuditCrud extends Controller
             $upload['audit_id'] = $newAuditId;
             $uploadModel->insert($upload);
         }
-
-        echo $newAuditId;   
 
         // send a link to the audit
         $account = $accountModel->where('id', $accountAudit['account_id'])->first();
