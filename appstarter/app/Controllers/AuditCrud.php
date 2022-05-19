@@ -972,7 +972,7 @@ class AuditCrud extends Controller
                                 $response += [
                                     'score_ba' => null,
                                     'score_abta' => null,
-                                ]
+                                ];
                             }
                                 
                             //check if the  question id x audit id combo has a response and either update or insert
