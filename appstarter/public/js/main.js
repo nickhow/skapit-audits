@@ -3,6 +3,7 @@
 var question_selects = document.querySelectorAll("select");
 question_selects.forEach(function(el){
     el.parentElement.parentElement.classList.remove("error_question");
+    console.log("remove class from "+el.parentElement.parentElement);
 });
 
 function updateProgress(target){
