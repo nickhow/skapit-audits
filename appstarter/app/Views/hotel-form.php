@@ -6268,6 +6268,7 @@
                                 
                                 if( responses[qid]['score_ba'] <= -100015 || responses[qid]['score_abta'] <= -100015){
                                     question.parentElement.parentElement.style.backgroundColor='rgb(203 0 0 / 50%)';
+                                    question.parentElement.parentElement.classList.add("error_question");
                                     
                                     //make the accordion red
                                     var list = question.closest(".accordion-item").getElementsByClassName('accordion-button');

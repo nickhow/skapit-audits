@@ -1,7 +1,20 @@
 
+// remove the error class on answer update
+var question_selects = document.querySelectorAll("select");
+question_selects.forEach(function(el){
+    el.parentElement.parentElement.classList.remove("error_question");
+});
+
 function updateProgress(target){
         targetEl = document.getElementById(target); 
         
+        //count the errors and hold the accordion open while there are some ... need to remove error_question class on update answer.
+        var error_count = targetEl.querySelectorAll(".error_question");
+        if(error_count.length > 0) {
+            // stop the rest of the process to hold the accordion open ...
+            return;
+        }
+
         var section_questions = targetEl.querySelectorAll('select, input');
         var complete = true;
         section_questions.forEach(function(element){
