@@ -1348,7 +1348,7 @@ class AuditCrud extends Controller
         echo $newAuditId;   
 
         // send a link to the audit
-        $account = $accountModel->where('id', $accountAuditModel['account_id'])->first();
+        $account = $accountModel->where('id', $accountAudit['account_id'])->first();
 
         $url =  site_url("/audit/".$newAuditId);
         $values = array($account['name'], $url,$account['accommodation_name'],$account['resort'],$account['country']);
