@@ -978,8 +978,6 @@ class AuditCrud extends Controller
                                 
                                 $original_answer = $responseCheck->getResult();
 
-                                print_r($original_answer);
-                                return;
                                 if( $audit['highlight_failures'] && $original_answer[0]->answer_id != $answer_id){
                                    $response += [
                                         'score_ba' => null,
