@@ -1284,6 +1284,7 @@ class AuditCrud extends Controller
 
         //set up the objects
         $auditModel = new AuditModel();
+        $accountModel = new AccountModel();
         $responseModel = new ResponseModel();
         $uploadModel = new UploadModel();
         $accountAuditModel = new AccountAuditModel();
@@ -1347,8 +1348,16 @@ class AuditCrud extends Controller
         echo $newAuditId;   
 
         // send a link to the audit
-        // open the new audit
+        $account = $accountModel->where('id', $accountAuditModel['account_id'])->first();
 
+        $url =  site_url("/audit/".$newAuditId);
+        $values = array($account['name'], $url,$account['accommodation_name'],$account['resort'],$account['country']);
+        
+        $emailModel = new EmailModel();
+        $emailModel->sendNewAudit($auditData['language'],$account['email'],$values,"");
+
+        // open the new audit
+        return $this->response->redirect(site_url('/audit/'.$newAuditId));
 
     }
     
