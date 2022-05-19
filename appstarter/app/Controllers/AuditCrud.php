@@ -1302,6 +1302,7 @@ class AuditCrud extends Controller
             'status' => 'in progress',
             'is_payable' => $audit['is_payable'],
             'payable_amount' => $audit['payable_amount'],
+            'highlight_failures' => 1,
         ];
         $auditModel->insert($newAudit);
 
@@ -1330,7 +1331,12 @@ class AuditCrud extends Controller
             $uploadModel->insert($upload);
         }
 
-        echo $newAuditId;        
+        echo $newAuditId;   
+
+        // send a link to the audit
+        // open the new audit
+
+
     }
     
 }

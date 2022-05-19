@@ -6235,7 +6235,7 @@
                 });
         </script>
     <?php endif;  ?>
-     <?php if(session()->get('is_admin') && session()->getFlashdata('locked')) : ?>
+     <?php if((session()->get('is_admin') && session()->getFlashdata('locked')) || $audit_obj['highlight_failures']) : ?>
              <script>
             var questions = document.querySelectorAll('select, input');
             var responses;
