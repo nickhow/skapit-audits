@@ -1354,7 +1354,7 @@ class AuditCrud extends Controller
         $values = array($account['name'], $url,$account['accommodation_name'],$account['resort'],$account['country']);
         
         $emailModel = new EmailModel();
-        $emailModel->sendNewAudit($auditData['language'],$account['email'],$values,"");
+        $emailModel->sendNewAudit($audit['language'],$account['email'],$values,"");
 
         // open the new audit
         return $this->response->redirect(site_url('/audit/'.$newAuditId));
