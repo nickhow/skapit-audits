@@ -6235,7 +6235,54 @@
                 });
         </script>
     <?php endif;  ?>
-     <?php if((session()->get('is_admin') && session()->getFlashdata('locked')) || $audit_obj['highlight_failures']) : ?>
+
+    <?php if($audit_obj['highlight_failures']) : ?>
+        <script>
+            var questions = document.querySelectorAll('select, input');
+            var responses;
+            
+                $.ajax({
+                    url: '<?php echo site_url('/audit/responses/'.$audit_obj['id']) ?>',
+                    type: 'GET',
+                    success: function(data) {
+                        responses = JSON.parse(data);
+                        questions.forEach(function(question){
+                            var qid = question.getAttribute('name');
+                            if(isNaN(qid) || responses[qid]['answer_id'] == "8888"){  //8888 is a skipped question
+                        	//nothing
+                            } else {
+                                var parent = question.parentElement;
+                                var el = document.createElement('div');
+                                el.classList.add('text-secondary');
+                                var text = document.createElement('small');
+                                
+                                text.innerHTML= '<b><i>Feedback: </i></b>';
+                                if( responses[qid]['comment'] == ''){
+                                    text.innerHTML += '<i>none</i>';
+                                } else {
+                                    el.classList.add('alert','alert-warning');
+                                    text.innerHTML += responses[qid]['comment'];
+                                }
+                                el.appendChild(text);
+                                parent.appendChild(el);
+                                
+                                if( responses[qid]['score_ba'] <= -100015 || responses[qid]['score_abta'] <= -100015){
+                                    question.parentElement.parentElement.style.backgroundColor='rgb(203 0 0 / 50%)';
+                                    
+                                    //make the accordion red
+                                    var list = question.closest(".accordion-item").getElementsByClassName('accordion-button');
+                                    for(btn of list){btn.classList.add('completed-error')};
+                                }
+                            }
+
+                        }); 
+                        
+                    }               
+                });
+        </script>
+    <?php endif ?>
+
+     <?php if(session()->get('is_admin') && session()->getFlashdata('locked')) : ?>
              <script>
             var questions = document.querySelectorAll('select, input');
             var responses;

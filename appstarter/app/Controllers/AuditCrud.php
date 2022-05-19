@@ -966,18 +966,19 @@ class AuditCrud extends Controller
                                 'suggested_score_abta' => $score_abta,
                                 'custom_answer' => $custom_answer,
                             ];
-
-                            // if we're on a resubmission audit then we should clear the hotel check scores when the response is updated, this will remove the highlighting from the audit form view.
-                            if($audit['highlight_failures']){
+                                
+                            //check if the  question id x audit id combo has a response and either update or insert
+                            $responseCheck = $db->query("SELECT id FROM responses WHERE audit_id = '".$audit_id."' AND question_id = '".$question['id']."'");
+                            
+                            // if we're on a resubmission audit then we should clear the hotel check scores 
+                            // only when the response is updated, this will remove the highlighting from the audit form view.
+                            if($audit['highlight_failures'] && ( $responseCheck['ba_score'] <= -100015 || $responseCheck['abta_score'] <= -100015){
                                 $response += [
                                     'score_ba' => null,
                                     'score_abta' => null,
                                 ];
                             }
-                                
-                            //check if the  question id x audit id combo has a response and either update or insert
-                            $responseCheck = $db->query("SELECT id FROM responses WHERE audit_id = '".$audit_id."' AND question_id = '".$question['id']."'");
-                            
+
                             if($responseCheck->getNumRows() > 0){
                                 //does exist -> update
                                 $responseModel->update($responseCheck->getResult()[0]->id, $response);
