@@ -968,7 +968,7 @@ class AuditCrud extends Controller
                             ];
                                 
                             //check if the  question id x audit id combo has a response and either update or insert
-                            $responseCheck = $db->query("SELECT id FROM responses WHERE audit_id = '".$audit_id."' AND question_id = '".$question['id']."'");
+                            $responseCheck = $db->query("SELECT id, answer_id FROM responses WHERE audit_id = '".$audit_id."' AND question_id = '".$question['id']."'");
 
                             if($responseCheck->getNumRows() > 0){
                                 //does exist -> update
@@ -976,16 +976,16 @@ class AuditCrud extends Controller
                                 // if we're on a resubmission audit then we should clear the hotel check scores 
                                 // this will remove the highlighting from the audit form view.
                                 
-                                $original_answer = $responseCheck->getResult('array');
+                                $original_answer = $responseCheck->getResult();
 
                                 print_r($original_answer);
                                 return;
-                            //    if( $audit['highlight_failures'] && $original_answer['answer_id'] != $answer_id){
-                            //       $response += [
-                            //            'score_ba' => null,
-                            //            'score_abta' => null,
-                            //        ];
-                            //    }
+                                if( $audit['highlight_failures'] && $original_answer[0]->answer_id != $answer_id){
+                                   $response += [
+                                        'score_ba' => null,
+                                        'score_abta' => null,
+                                    ];
+                                }
 
                                 $responseModel->update($responseCheck->getResult()[0]->id, $response);
                                 
