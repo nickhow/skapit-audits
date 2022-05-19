@@ -13,6 +13,11 @@ class AddHighlightToAudit extends Migration
                 'constraint' => '1',
                 'default'    => '0',
             ],
+            'is_resubmission'       => [
+                'type'       => 'tinyint',
+                'constraint' => '1',
+                'default'    => '0',
+            ],
         ];
         $this->forge->addColumn('audits', $fields);
     }
@@ -21,6 +26,7 @@ class AddHighlightToAudit extends Migration
     {
         $fields = [
             'highlight_failures',
+            'is_resubmission',
         ];
         $this->forge->dropColumn('audits', $fields);
     }

@@ -13,6 +13,13 @@
     
     <div class="row p-4 bg-white rounded">
         <h2>Property Details</h2>
+
+        <?php if($audit_obj['is_resubmission']) : ?>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                This is a re-submission of a previously reviewed audit.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php endif; ?>
         
         <div class="col-12 col-md-4">
             <div class="row">

@@ -1318,6 +1318,7 @@ class AuditCrud extends Controller
             'is_payable' => $audit['is_payable'],
             'payable_amount' => $audit['payable_amount'],
             'highlight_failures' => 1,
+            'is_resubmission' => 1,
         ];
         $auditModel->insert($newAudit);
 
