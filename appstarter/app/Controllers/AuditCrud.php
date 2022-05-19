@@ -976,9 +976,9 @@ class AuditCrud extends Controller
                                 // if we're on a resubmission audit then we should clear the hotel check scores 
                                 // this will remove the highlighting from the audit form view.
                                 
-                                $original_answer = $responseCheck->getResult()[0];
+                                $original_answer = $responseCheck->getResult('array');
 
-                                if( $audit['highlight_failures'] && $original_answer->answer_id != $answer_id){
+                                if( $audit['highlight_failures'] && $original_answer[0]['answer_id'] != $answer_id){
                                     $response += [
                                         'score_ba' => null,
                                         'score_abta' => null,
