@@ -1,12 +1,11 @@
 
   <div class="container mt-5">
         <div class="row justify-content-md-center ">
-          <div class="col-10 col-md-8 col-lg-6 p-4 bg-white rounded">
+          <div class="col-12 col-lg-6 p-4 bg-white rounded h-100">
               <h2>Update Audit</h2>
                 <form method="post" id="update_account" name="update_account" 
                 action="<?= site_url('/update-audit') ?>">
-                  <input type="hidden" name="id" id="id" value="<?php echo $audit_obj['id']; ?>">
-    
+                  <input type="hidden" name="id" id="id" value="<?php echo $audit_obj['id']; ?>">                  
                   <div class="form-group pt-2">
                     <label>Language</label>
                     <select name="language" class="form-control">
@@ -67,6 +66,55 @@
                         </div>
                     </div>
                 <?php }?>
+
+
+            </div>
+
+            <?php if($audit_obj['status'] == "reviewed") : ?>
+                  <div class="col-12 col-lg-5 h-100 sticky-lg-top p-0">
+                  
+                    <div class="bg-white rounded p-4 mx-lg-3 my-3 mt-lg-0 mb-4">
+                              <div class="row">
+                                  <div class="col-12 col-md-7 col-lg-9">
+                                      <h3>Results</h3>
+                                  </div>
+                              </div>
+                              <div class="col-12 my-3">
+                                  <div class="col-12">
+                                  <label>Audit reviewed on <?php echo ucFirst($audit_obj['audited_date'])?></label>
+                                  <table class="table">
+                                    <thead>
+                                      <tr>
+                                        <th>Rating Agency</th>
+                                        <th>Result</th>
+                                      </tr>
+                                    </thead>
+                                      <tbody>
+                                      <tr>
+                                        <td>BA</td>
+                                        <td><?php echo ucFirst($audit_obj['result_ba'])?></td>
+                                      </tr>
+                                      <tr>
+                                        <td>ABTA</td>
+                                        <td><?php echo ucFirst($audit_obj['result_ba'])?></td>
+                                      </tr>
+                                    </tbody>
+                                    </table>
+                                  </div>
+                                  
+                              </div>
+
+                              <?php if( $audit_obj['result_ba'] == "unsuitable" || $audit_obj['result_abta'] == "unsuitable") : ?>
+                                <div class="py-2">
+                                  <a href="<?= site_url('audit/'.$audit_obj['id'].'/resubmit') ?>"><div class="btn btn-danger">Re-open this audit for another submission</div></a>
+                                </div>
+                                <?php endif; ?>
+
+                      </div>
+                    </div>
+                  <?php endif; ?>
+
+        </div>
 
   </div>
 

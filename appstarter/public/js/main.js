@@ -1,7 +1,24 @@
 
+// remove the error class on answer update
+var question_selects = document.querySelectorAll("select");
+question_selects.forEach(function(el){
+    el.addEventListener("change", function(){
+        el.parentElement.parentElement.classList.remove("error_question");
+       el.onchange();
+    });
+});
+
 function updateProgress(target){
         targetEl = document.getElementById(target); 
-        
+      
+        //count the errors and hold the accordion open while there are some ... need to remove error_question class on update answer.
+        var error_count = targetEl.querySelectorAll(".error_question");
+        if(error_count.length > 0) {
+            // stop the rest of the process to hold the accordion open ...
+           
+            return;
+        }
+
         var section_questions = targetEl.querySelectorAll('select, input');
         var complete = true;
         section_questions.forEach(function(element){
@@ -167,8 +184,13 @@ function updateProgress(target){
                             if(!isLocked){ // only clean the answers to the unhidden questions if the form is still being completed
                             
                                 if(document.getElementById("A"+element.value) !== null){
-                                    if(document.getElementById("A"+element.value).getAttribute('data-response') == "N/A"){
-                                        element.value="Unanswered"
+                                    
+                                    if(element.value == "131"){
+                                        // skip this one, N/A is used differently
+                                        
+                                    } else if(document.getElementById("A"+element.value).getAttribute('data-response') == "N/A"){
+                                        element.value="Unanswered";
+                                       
                                     }
                                 }
                             }

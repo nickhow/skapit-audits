@@ -968,10 +968,23 @@ class AuditCrud extends Controller
                             ];
                                 
                             //check if the  question id x audit id combo has a response and either update or insert
-                            $responseCheck = $db->query("SELECT id FROM responses WHERE audit_id = '".$audit_id."' AND question_id = '".$question['id']."'");
-                            
+                            $responseCheck = $db->query("SELECT id, answer_id FROM responses WHERE audit_id = '".$audit_id."' AND question_id = '".$question['id']."'");
+
                             if($responseCheck->getNumRows() > 0){
                                 //does exist -> update
+
+                                // if we're on a resubmission audit then we should clear the hotel check scores 
+                                // this will remove the highlighting from the audit form view.
+                                
+                                $original_answer = $responseCheck->getResult();
+
+                                if( $audit['highlight_failures'] && $original_answer[0]->answer_id != $answer_id){
+                                   $response += [
+                                        'score_ba' => null,
+                                        'score_abta' => null,
+                                    ];
+                                }
+
                                 $responseModel->update($responseCheck->getResult()[0]->id, $response);
                                 
                             } else {
@@ -1043,6 +1056,7 @@ class AuditCrud extends Controller
                     'status' => 'complete',
                     'completed_date' => Time::now('Europe/London', 'en_GB'),
                     'last_updated' => Time::now('Europe/London', 'en_GB'),
+                    'highlight_failures' => 0,
                 ];
             
                 $account_audit = $accountAuditModel->where('audit_id',$audit['id'])->first();
@@ -1265,6 +1279,87 @@ class AuditCrud extends Controller
 
         $mpdf->Output($filename, 'F');
 
-    }    
+    }   
+    
+    public function resubmit($audit_id = null){
+
+        //set up the objects
+        $auditModel = new AuditModel();
+        $accountModel = new AccountModel();
+        $responseModel = new ResponseModel();
+        $uploadModel = new UploadModel();
+        $accountAuditModel = new AccountAuditModel();
+
+        //get the data relating to the original audit
+        $audit = $auditModel->where('id',$audit_id)->first();
+        $accountAudit = $accountAuditModel->where('audit_id', $audit_id)->first();
+        $uploads = $uploadModel->where('audit_id',$audit_id)->findAll();
+        $responses = $responseModel->where('audit_id',$audit_id)->findAll();
+
+        //generate a new audit id
+        $newAuditId = $auditModel->generateID();
+
+        //create the new database records with the old data and the new audit id
+        //audit
+        $newAudit = [
+            'id' => $newAuditId,
+            'type' => $audit['type'],
+            'sent_date' => Time::now('Europe/London', 'en_GB'),
+            'created_date' => Time::now('Europe/London', 'en_GB'),
+            'waiver_signed' => $audit['waiver_signed'],
+            'waiver_signed_date' => $audit['waiver_signed_date'],
+            'waiver_extra_info_included' => $audit['waiver_extra_info_included'],
+            'waiver_extra_info' => $audit['waiver_extra_info'],
+            'waiver_name' => $audit['waiver_name'],
+            'waiver_job_title' => $audit['waiver_job_title'],
+            'waiver_email' => $audit['waiver_email'],
+            'language' => $audit['language'],
+            'status' => 'in progress',
+            'is_payable' => $audit['is_payable'],
+            'payable_amount' => $audit['payable_amount'],
+            'highlight_failures' => 1,
+            'is_resubmission' => 1,
+        ];
+        $auditModel->insert($newAudit);
+
+        //audit x property mapping
+        $accountAudit['id'] = null;
+        $accountAudit['audit_id'] = $newAuditId;
+        $accountAuditModel->insert($accountAudit);
+
+        //responses
+        foreach( $responses as $response){
+            $reponse['id'] = null;
+            $response['audit_id'] = $newAuditId;
+            $responseModel->insert($response);
+        }
+
+        //uploads
+        foreach( $uploads as $upload){
+            $old = "uploads/".$audit_id."/".$upload['file_name'];
+            $new = "uploads/".$newAuditId."/".$upload['file_name'];
+            if(!is_dir("uploads/".$newAuditId."/")){
+                mkdir("uploads/".$newAuditId."/", 0755, true);
+            }
+            copy($old,$new); 
+            $upload['id'] = null;
+            $upload['audit_id'] = $newAuditId;
+            $uploadModel->insert($upload);
+        }
+
+        // send a link to the audit
+        $account = $accountModel->where('id', $accountAudit['account_id'])->first();
+
+        $url =  site_url("/audit/".$newAuditId);
+        $values = array($account['name'], $url,$account['accommodation_name'],$account['resort'],$account['country']);
+        
+        $emailModel = new EmailModel();
+        $emailModel->sendNewAudit($audit['language'],$account['email'],$values,"");
+
+        // open the new audit
+        return $this->response->redirect(site_url('/audit/'.$newAuditId));
+
+    }
+    
 }
 ?>
