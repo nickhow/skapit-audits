@@ -3,6 +3,11 @@
     color: white;
 }
 
+.completed-pending {
+    background-color:#2975c39e;
+    color: white;
+}
+
 .completed-error {
     background-color:#9815159e;
     color: white;

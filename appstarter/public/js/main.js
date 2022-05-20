@@ -37,7 +37,12 @@ function updateProgress(target){
                 }); 
                 bsCollapse.hide();
                 
-                targetEl.previousElementSibling.firstElementChild.classList.add("completed");
+                if(isLocked){
+                    targetEl.previousElementSibling.firstElementChild.classList.add("completed");
+                } else {
+                    targetEl.previousElementSibling.firstElementChild.classList.add("completed-pending");
+                }
+                
                 var progress = document.getElementById('progressBar');
                 var now = parseInt(progress.getAttribute('aria-valuenow'));
                 var newProgress = now+=10;
@@ -72,7 +77,7 @@ function updateProgress(target){
                 bsCollapse.show(); //pin it open
                 
                 sections[target] = 'incomplete';
-                targetEl.previousElementSibling.firstElementChild.classList.remove("completed");
+                targetEl.previousElementSibling.firstElementChild.classList.remove("completed, completed-pending");
                 var progress = document.getElementById('progressBar');
                 var now = parseInt(progress.getAttribute('aria-valuenow'));
                 var newProgress = now-=10;
