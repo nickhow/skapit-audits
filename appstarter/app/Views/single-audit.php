@@ -6,7 +6,33 @@
                 <form method="post" id="update_account" name="update_account" 
                 action="<?= site_url('/update-audit') ?>">
                   <input type="hidden" name="id" id="id" value="<?php echo $audit_obj['id']; ?>">
-    
+
+                  <?php if($audit_obj['status'] == "reviewed") : ?>
+                    <div class="form-group pt-2">
+                      <label>Results</label>
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>Rating Agency</th>
+                            <th>Result</th>
+                          </tr>
+                        </thead>
+                          <tbody>
+                          <tr>
+                            <td>BA</td>
+                            <td><?php echo ucFirst($audit_obj['result_ba'])?></td>
+                          </tr>
+                          <tr>
+                            <td>ABTA</td>
+                            <td><?php echo ucFirst($audit_obj['result_ba'])?></td>
+                          </tr>
+                        </tbody>
+                    </div>
+                    <?php if( $audit_obj['result_ba'] == "unsuitable" || $audit_obj['result_abta'] == "unsuitable") : ?>
+                      <a href="<?= site_url($audit_obj['id'].'/resubmit') ?>"><div class="btn btn-danger">Re-open this audit for another submission</div></a>
+                    <?php endif; ?>
+                  <?php endif; ?>
+
                   <div class="form-group pt-2">
                     <label>Language</label>
                     <select name="language" class="form-control">
