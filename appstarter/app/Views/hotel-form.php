@@ -11,6 +11,10 @@
     background-color: #1598159e!important;
     color: white;
 }    
+.key-pending{
+    background-color: #2975c39e!important;
+    color: white;
+}    
 .key-error{
     background-color: #9815159e!important;
     color: white;
@@ -82,6 +86,10 @@
                     <tr>
                         <td class="key-error" scope="row">Red Section</td>
                         <td>At least one of the answers in this section causes a failure.</td>
+                    </tr>
+                    <tr>
+                        <td class="key-pending" scope="row">Blue Section</td>
+                        <td>This section has answers that are yet to be reviewed.</td>
                     </tr>
                     <tr>
                         <td class="key-error" scope="row">Red Question</td>
