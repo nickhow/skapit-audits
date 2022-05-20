@@ -106,7 +106,7 @@
 
                               <?php if( $audit_obj['result_ba'] == "unsuitable" || $audit_obj['result_abta'] == "unsuitable") : ?>
                                 <div class="py-2">
-                                  <a href="<?= site_url($audit_obj['id'].'/resubmit') ?>"><div class="btn btn-danger">Re-open this audit for another submission</div></a>
+                                  <a href="<?= site_url('audit/'.$audit_obj['id'].'/resubmit') ?>"><div class="btn btn-danger">Re-open this audit for another submission</div></a>
                                 </div>
                                 <?php endif; ?>
 
