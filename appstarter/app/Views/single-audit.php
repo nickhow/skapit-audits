@@ -67,7 +67,10 @@
                     </div>
                 <?php }?>
 
-                <?php if($audit_obj['status'] == "reviewed") : ?>
+
+            </div>
+
+            <?php if($audit_obj['status'] == "reviewed") : ?>
                   <div class="col-12 col-lg-7 col-xl-6 h-100 sticky-lg-top p-0">
                   
                     <div class="bg-white rounded p-4 mx-lg-3 my-3 mt-lg-0 mb-4">
@@ -98,7 +101,7 @@
                                     </tbody>
                                     </table>
                                   </div>
-                                  <div class="btn btn-sm btn-outline-success" onclick="saveComment();">Save contact</div>
+                                  
                               </div>
 
                               <?php if( $audit_obj['result_ba'] == "unsuitable" || $audit_obj['result_abta'] == "unsuitable") : ?>
@@ -110,7 +113,7 @@
                       </div>
                     </div>
                   <?php endif; ?>
-            </div>
+                  
         </div>
 
   </div>
