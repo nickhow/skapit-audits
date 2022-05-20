@@ -10,7 +10,7 @@
                   <?php if($audit_obj['status'] == "reviewed") : ?>
                     <div class="form-group pt-2">
                       <label>Results</label>
-                      <table>
+                      <table class="table">
                         <thead>
                           <tr>
                             <th>Rating Agency</th>
@@ -27,6 +27,7 @@
                             <td><?php echo ucFirst($audit_obj['result_ba'])?></td>
                           </tr>
                         </tbody>
+                        </table>
                     </div>
                     <?php if( $audit_obj['result_ba'] == "unsuitable" || $audit_obj['result_abta'] == "unsuitable") : ?>
                       <a href="<?= site_url($audit_obj['id'].'/resubmit') ?>"><div class="btn btn-danger">Re-open this audit for another submission</div></a>
