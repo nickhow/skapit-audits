@@ -38,8 +38,10 @@ function updateProgress(target){
                 bsCollapse.hide();
                 
                 if(isLocked){
+                    console.log('isLocked - adding completed');
                     targetEl.previousElementSibling.firstElementChild.classList.add("completed");
                 } else {
+                    console.log('not locked - adding completed-pending');
                     targetEl.previousElementSibling.firstElementChild.classList.add("completed-pending");
                 }
                 
