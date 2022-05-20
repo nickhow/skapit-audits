@@ -1,7 +1,7 @@
 
   <div class="container mt-5">
         <div class="row justify-content-md-center ">
-          <div class="col-12 col-lg-6 p-4 bg-white rounded">
+          <div class="col-12 col-lg-6 p-4 bg-white rounded h-100">
               <h2>Update Audit</h2>
                 <form method="post" id="update_account" name="update_account" 
                 action="<?= site_url('/update-audit') ?>">
