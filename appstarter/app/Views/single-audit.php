@@ -9,7 +9,7 @@
 
                   <?php if($audit_obj['status'] == "reviewed") : ?>
                     <div class="form-group pt-2">
-                      <label>Results</label>
+                      <label>Audit reviewed on <?php echo ucFirst($audit_obj['audited_date'])?></label>
                       <table class="table">
                         <thead>
                           <tr>
@@ -33,7 +33,7 @@
                       <a href="<?= site_url($audit_obj['id'].'/resubmit') ?>"><div class="btn btn-danger">Re-open this audit for another submission</div></a>
                     <?php endif; ?>
                   <?php endif; ?>
-
+                  <div class="my-3"></div><span class="border-bottom"></span><div class="my-3"></div>
                   <div class="form-group pt-2">
                     <label>Language</label>
                     <select name="language" class="form-control">
