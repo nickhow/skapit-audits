@@ -30,10 +30,12 @@
                         </table>
                     </div>
                     <?php if( $audit_obj['result_ba'] == "unsuitable" || $audit_obj['result_abta'] == "unsuitable") : ?>
+                    <div class="py-2">
                       <a href="<?= site_url($audit_obj['id'].'/resubmit') ?>"><div class="btn btn-danger">Re-open this audit for another submission</div></a>
+                    </div>
                     <?php endif; ?>
                   <?php endif; ?>
-                  <div class="my-3"></div><span class="border-bottom"></span><div class="my-3"></div>
+                  <div class="py-3"></div><div class="border-bottom"></div><div class="py-3"></div>
                   <div class="form-group pt-2">
                     <label>Language</label>
                     <select name="language" class="form-control">
