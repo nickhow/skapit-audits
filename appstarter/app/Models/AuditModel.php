@@ -28,7 +28,7 @@ class AuditModel extends Model
         $keyToCheck='';
         
         while(!$goodKey){
-            $keyToCheck = random_string('alnum',32);
+            $keyToCheck = random_string('alnum',6);
             $goodKey = $this->checkID($keyToCheck);
         }
         return $keyToCheck;
