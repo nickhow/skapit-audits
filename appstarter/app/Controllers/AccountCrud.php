@@ -23,6 +23,7 @@ class AccountCrud extends Controller
     // show accounts list
     public function index(){
         $accountModel = new AccountModel();
+        $accountAuditModel = new AccountAuditModel();
         $groupMappingModel = new GroupMappingModel();
         //Gets the AccountModel -> no join so shows the IDs rather than names
         //$data['accounts'] = $accountModel->orderBy('id', 'DESC')->findAll();
@@ -36,6 +37,23 @@ class AccountCrud extends Controller
         //Uses the method with the join
         if($admin){
             $data['accounts'] = $accountModel->getAccountsWithGroup();
+
+            foreach ($data['accounts'] as $account) {
+
+                $audits = $accountAuditModel->where('account_id',$account['id'])->findColumn('audit_id');
+                $data['accounts'] += $auditModel->whereIn('id',$audits)->orderBy('created_date','DESC')->first();
+
+            }
+
+            print_r($data);
+            return; // for testing
+
+
+            // UNTESTED!!
+          //  $sql = "SELECT * FROM audits WHERE id IN (" . implode("','", array_map('mysql_real_escape_string', $audits)) . ") ORDER BY created_date DESC LIMIT 1";
+
+
+
             echo view('templates/header');
             
         } elseif($session->get('enable_groups')){
@@ -46,7 +64,7 @@ class AccountCrud extends Controller
             echo view('templates/header-group');
         }
         
-        echo view('view_accounts', $data);
+        echo view('view_accounts_new', $data);
         echo view('templates/footer');
     }
     
