@@ -40,24 +40,24 @@
 
               <td>
               <!-- Status : sent, open, in progress, pending_payment = Active  //  complete, reviewing = Submitted // reviewed = {show results} -->
-                <?php if ( in_array($audit['status'], array("sent", "open", "in progress", "pending_payment") ) {
+                <?php if ( in_array($audits[$account['id']]['status'], array("sent", "open", "in progress", "pending_payment") ) {
                         echo "Active";
-                 } elseif ( in_array($audit['status'], array("complete", "reviewing") ){
+                 } elseif ( in_array($audits[$account['id']]['status'], array("complete", "reviewing") ){
                      echo "Submitted";
-                 } elseif ( in_array($audit['status'], array("reviewed") ) : ?>
+                 } elseif ( in_array($audits[$account['id']]['status'], array("reviewed") ) : ?>
                     BA: 
-                        <?php if($audit['result_ba'] == "suitable"): ?>
+                        <?php if($audits[$account['id']]['result_ba'] == "suitable"): ?>
                             <span class="text-primary text-center"><?php echo ucFirst($audit['result_ba']); ?></span>
-                        <?php elseif ($audit['result_ba'] == "unsuitable"): ?>
+                        <?php elseif ($audits[$account['id']]['result_ba'] == "unsuitable"): ?>
                             <span class="text-danger text-center"><?php echo ucFirst($audit['result_ba']); ?></span>
                         <?php else: ?>
                             <span class="text-warning text-center">Unknown</span>
                         <?php endif ?>
                         <br/>
                         ABTA: 
-                        <?php if($audit['result_abta'] == "suitable"): ?>
+                        <?php if($audits[$account['id']]['result_abta'] == "suitable"): ?>
                             <span class="text-primary text-center"><?php echo ucFirst($audit['result_abta']); ?></span>
-                        <?php elseif ($audit['result_abta'] == "unsuitable"): ?>
+                        <?php elseif ($audits[$account['id']]['result_abta'] == "unsuitable"): ?>
                             <span class="text-danger text-center"><?php echo ucFirst($audit['result_abta']); ?></span>
                         <?php else: ?>
                             <span class="text-warning text-center">Unknown</span>
@@ -70,13 +70,13 @@
               <td>
                <div class="row">
                       <div class="col text-center">
-                          <a href="<?php echo base_url('audit/'.$audit['id']);?>"  class="text-secondary">Edit Audit</a>
+                          <a href="<?php echo base_url('audit/'.$audits[$account['id']]['id']);?>"  class="text-secondary">Edit Audit</a>
                       </div>
                       <div class="col text-center">
-                          <a href="<?php echo base_url('audit/'.$audit['id']);?>"  class="text-secondary">View Audit</a>
+                          <a href="<?php echo base_url('audit/'.$audits[$account['id']]dit['id']);?>"  class="text-secondary">View Audit</a>
                       </div>
                      <div class="col text-center">
-                          <a href="<?php echo base_url('audit/'.$audit['id']);?>" class="text-danger">Resubmit</i></a>
+                          <a href="<?php echo base_url('audit/'.$audits[$account['id']]['id']);?>" class="text-danger">Resubmit</i></a>
                       </div>
                   </div>
               </td>
