@@ -22,6 +22,7 @@ class AccountCrud extends Controller
 {
     // show accounts list
     public function index(){
+        $auditModel = new AuditModel();
         $accountModel = new AccountModel();
         $accountAuditModel = new AccountAuditModel();
         $groupMappingModel = new GroupMappingModel();
