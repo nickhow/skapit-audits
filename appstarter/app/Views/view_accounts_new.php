@@ -62,9 +62,9 @@
                         <span class="text-danger text-center"><?php echo ucFirst($audit['result_abta']); ?></span>
                     <?php else: ?>
                         <span class="text-warning text-center">Unknown</span>
-                    <?php endif ?>
+                    <?php endif 
                  } else {
-                    echo "Unknown"
+                     echo "Unknown" 
                 }
                 ?>
               </td> 
