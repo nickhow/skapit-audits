@@ -40,11 +40,11 @@
 
               <td>
               <!-- Status : sent, open, in progress, pending_payment = Active  //  complete, reviewing = Submitted // reviewed = {show results} -->
-                <?php if ( in_array($audits[$account['id']]['status'], array("sent", "open", "in progress", "pending_payment") ) {
+                <?php if ( in_array($audits[$account['id']]['status'], array("sent", "open", "in progress", "pending_payment") ) ){
                         echo "Active";
-                 } elseif ( in_array($audits[$account['id']]['status'], array("complete", "reviewing") ){
+                 } elseif ( in_array($audits[$account['id']]['status'], array("complete", "reviewing") ) ){
                      echo "Submitted";
-                 } elseif ( in_array($audits[$account['id']]['status'], array("reviewed") ) : ?>
+                 } elseif ( in_array($audits[$account['id']]['status'], array("reviewed") ) ) : ?>
                     BA: 
                         <?php if($audits[$account['id']]['result_ba'] == "suitable"): ?>
                             <span class="text-primary text-center"><?php echo ucFirst($audit['result_ba']); ?></span>
