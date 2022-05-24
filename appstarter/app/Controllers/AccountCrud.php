@@ -42,7 +42,7 @@ class AccountCrud extends Controller
             foreach ($data['accounts'] as $account) {
 
                 $audits = $accountAuditModel->where('account_id',$account['id'])->findColumn('audit_id');
-                $data['accounts'][$account_id]['audit'] = $auditModel->whereIn('id',$audits)->orderBy('created_date','DESC')->first();
+                $data['accounts'][$account['id']]['audit'] = $auditModel->whereIn('id',$audits)->orderBy('created_date','DESC')->first();
 
             }
 
