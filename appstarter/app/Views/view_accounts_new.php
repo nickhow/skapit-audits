@@ -53,16 +53,12 @@
                     <td>
                     <!-- Status : sent, open, in progress, pending_payment = Active  //  complete, reviewing = Submitted // reviewed = {show results} -->
 
-
-                    <!-- 
-                        there is a bad audit to propety in here somewhere ... or I was referencing the id badly ... but it wasn't working without specifing a specific account ...
-                        -->
                         <?php 
-                        if ( in_array($account['audit']['status'], array("sent", "open", "in progress", "pending_payment") ) ){
+                        if ( in_array($account['audit']['id'], array("sent", "open", "in progress", "pending_payment") ) ){
                                 echo "Active";
-                        } elseif ( in_array($account['audit']['status'], array("complete", "reviewing") ) ){
+                        } elseif ( in_array($account['audit']['id'], array("complete", "reviewing") ) ){
                             echo "Submitted";
-                        } elseif ( in_array($account['audit']['status'], array("reviewed") ) ) {
+                        } elseif ( in_array($account['audit']['id'], array("reviewed") ) ) {
                             echo "BA:"; ?>
                             <?php if($account['audit']['result_ba'] == "suitable"): ?>
                                 <span class="text-primary text-center"><?php echo ucFirst($account['audit']['result_ba']); ?></span>
