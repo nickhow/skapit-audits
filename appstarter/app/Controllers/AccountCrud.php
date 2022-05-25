@@ -40,10 +40,9 @@ class AccountCrud extends Controller
             $data['accounts'] = $accountModel->getAccountsWithGroup();
 
             foreach ($data['accounts'] as $account) {
-                $audits = [];
                 $audits = $accountAuditModel->where('account_id',$account['id'])->findColumn('audit_id');
                 $data['audits'][$account['id']] = $auditModel->whereIn('id',$audits)->orderBy('created_date','DESC')->first();
-
+                unset($audits);
             }
 
           //  print_r($data);
