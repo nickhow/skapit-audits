@@ -48,7 +48,7 @@ class AccountCrud extends Controller
                 $all_audits = $accountAuditModel->where('account_id',$account['id'])->findColumn('audit_id');
                 
                 if(is_null($all_audits)){
-                    $latest_audit = [];
+                    $latest_audit = "";
                 } else {
                     $latest_audit = $auditModel->whereIn('id',$all_audits)->orderBy('created_date','DESC')->first();
                 }
@@ -58,7 +58,7 @@ class AccountCrud extends Controller
                     'group' => $group,
                     'audit' => $latest_audit,
                 ];
-                array_push($data, $collected_data);
+                array_push($data['accounts'], $collected_data);
             }
 
             print_r($data);
