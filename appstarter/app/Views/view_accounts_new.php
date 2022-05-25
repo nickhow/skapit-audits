@@ -46,7 +46,7 @@
             <td><?php echo date('d/m/Y', strtotime($account['account']['created_date'])); ?></td>
 
 
-<?php   if(is_null($account['audit'])): ?>
+<?php   if(is_null($account['audit']) || $account['audit'] = ""): ?>
                     <td>N/a</td><td>N/a</td>
 <?php else: ?>
 
