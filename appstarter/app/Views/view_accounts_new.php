@@ -51,15 +51,15 @@
                         there is a bad audit to propety in here somewhere ... or I was referencing the id badly ... but it wasn't working without specifing a specific account ...
                         -->
                         <?php 
-                        if ( in_array($audits[38]['status'], array("sent", "open", "in progress", "pending_payment") ) ){
+                        if ( in_array($audits[$account['id']]['status'], array("sent", "open", "in progress", "pending_payment") ) ){
                                 echo "Active";
-                        } elseif ( in_array($audits[38]['status'], array("complete", "reviewing") ) ){
+                        } elseif ( in_array($audits[$account['id']]['status'], array("complete", "reviewing") ) ){
                             echo "Submitted";
-                        } elseif ( in_array($audits[38]['status'], array("reviewed") ) ) {
+                        } elseif ( in_array($audits[$account['id']]['status'], array("reviewed") ) ) {
                             echo "BA:"; ?>
-                            <?php if($audits[38]['result_ba'] == "suitable"): ?>
+                            <?php if($audits[$account['id']]['result_ba'] == "suitable"): ?>
                                 <span class="text-primary text-center"><?php echo ucFirst($audit['result_ba']); ?></span>
-                            <?php elseif ($audits[38]['result_ba'] == "unsuitable"): ?>
+                            <?php elseif ($audits[$account['id']]['result_ba'] == "unsuitable"): ?>
                                 <span class="text-danger text-center"><?php echo ucFirst($audit['result_ba']); ?></span>
                             <?php else: ?>
                                 <span class="text-warning text-center">Unknown</span>
@@ -67,9 +67,9 @@
                             <br/>
                             <?php
                             echo "ABTA"; ?>
-                            <?php if($audits[38]['result_abta'] == "suitable"): ?>
+                            <?php if($audits[$account['id']]['result_abta'] == "suitable"): ?>
                                 <span class="text-primary text-center"><?php echo ucFirst($audit['result_abta']); ?></span>
-                            <?php elseif ($audits[38]['result_abta'] == "unsuitable"): ?>
+                            <?php elseif ($audits[$account['id']]['result_abta'] == "unsuitable"): ?>
                                 <span class="text-danger text-center"><?php echo ucFirst($audit['result_abta']); ?></span>
                             <?php else: ?>
                                 <span class="text-warning text-center">Unknown</span>
