@@ -121,7 +121,7 @@
       $.fn.dataTable.moment( 'D/M/YYYY' ); 
       $('#accounts-list').DataTable({
           responsive: true,
-          "order": [[ 1, "desc" ]]
+          "order": [[ 2, "desc" ]]
       });
   } );
 </script>
