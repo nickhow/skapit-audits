@@ -68,9 +68,9 @@
                             <?php
                             echo "ABTA"; ?>
                             <?php if($audits[$account['id']]['result_abta'] == "suitable"): ?>
-                                <span class="text-primary text-center"><?php echo ucFirst($audit['result_abta']); ?></span>
+                                <span class="text-primary text-center"><?php echo ucFirst($audits[$account['id']]['result_abta']); ?></span>
                             <?php elseif ($audits[$account['id']]['result_abta'] == "unsuitable"): ?>
-                                <span class="text-danger text-center"><?php echo ucFirst($audit['result_abta']); ?></span>
+                                <span class="text-danger text-center"><?php echo ucFirst($audits[$account['id']]['result_abta']); ?></span>
                             <?php else: ?>
                                 <span class="text-warning text-center">Unknown</span>
                             <?php endif; 
