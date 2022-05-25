@@ -58,9 +58,9 @@
                         } elseif ( in_array($audits[$account['id']]['status'], array("reviewed") ) ) {
                             echo "BA:"; ?>
                             <?php if($audits[$account['id']]['result_ba'] == "suitable"): ?>
-                                <span class="text-primary text-center"><?php echo ucFirst($audit['result_ba']); ?></span>
+                                <span class="text-primary text-center"><?php echo ucFirst($audits[$account['id']]['result_ba']); ?></span>
                             <?php elseif ($audits[$account['id']]['result_ba'] == "unsuitable"): ?>
-                                <span class="text-danger text-center"><?php echo ucFirst($audit['result_ba']); ?></span>
+                                <span class="text-danger text-center"><?php echo ucFirst($audits[$account['id']]['result_ba']); ?></span>
                             <?php else: ?>
                                 <span class="text-warning text-center">Unknown</span>
                             <?php endif; ?>
