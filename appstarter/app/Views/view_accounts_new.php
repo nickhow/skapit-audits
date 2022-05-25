@@ -54,8 +54,8 @@
                     <!-- Status : sent, open, in progress, pending_payment = Active  //  complete, reviewing = Submitted // reviewed = {show results} -->
 
                         <?php 
-                        print_r( $account['audit']);
-                       /* if ( in_array($account['audit']['status'], array("sent", "open", "in progress", "pending_payment") ) ){
+                        
+                        if ( in_array($account['audit']['status'], array("sent", "open", "in progress", "pending_payment") ) ){
                                 echo "Active";
                         } elseif ( in_array($account['audit']['status'], array("complete", "reviewing") ) ){
                             echo "Submitted";
@@ -80,19 +80,19 @@
                             <?php endif; 
                         } else {
                             echo "Unknown" ;
-                        } */
+                        } 
                         ?>
                     </td> 
                     <td>
                     <div class="row">
                             <div class="col text-center">
-                                <a href="<?php echo base_url('audit//edit');?>"  class="text-secondary">Edit Audit</a>
+                                <a href="<?php echo base_url('audit/'.$account['audit']['id'].'/edit');?>"  class="text-secondary">Edit Audit</a>
                             </div>
                             <div class="col text-center">
-                                <a href="<?php echo base_url('audit/');?>"  class="text-secondary">View Audit</a>
+                                <a href="<?php echo base_url('audit/'.$account['audit']['id']);?>"  class="text-secondary">View Audit</a>
                             </div>
                             <div class="col text-center">
-                                <a href="<?php echo base_url('audit//resubmit');?>" class="text-danger">Resubmit</i></a>
+                                <a href="<?php echo base_url('audit/'.$account['audit']['id'].'/resubmit');?>" class="text-danger">Resubmit</i></a>
                             </div>
                         </div>
                     </td>
