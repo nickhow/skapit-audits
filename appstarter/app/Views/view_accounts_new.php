@@ -30,12 +30,14 @@
                         <?php echo $account['accommodation_name']; ?>
                     </div>
                     <div class="col ms-auto">
-                        <div class="col-6 text-center">
-                            <a href="<?php echo base_url('account/'.$account['id']);?>"  class="text-secondary" ><i class="far fa-edit fa-2x"></i></a>
+                        <div class="row">
+                            <div class="col-6 text-center">
+                                <a href="<?php echo base_url('account/'.$account['id']);?>"  class="text-secondary" ><i class="far fa-edit fa-2x"></i></a>
+                            </div>
+                            <div class="col-6 text-center">
+                                <a href="<?php echo base_url('account/'.$account['id'].'/delete');?>" class="text-danger"><i class="far fa-trash-alt fa-2x"></i></a>
+                            </div>
                         </div>
-                        <div class="col-6 text-center">
-                          <a href="<?php echo base_url('account/'.$account['id'].'/delete');?>" class="text-danger"><i class="far fa-trash-alt fa-2x"></i></a>
-                       </div>
                   </div>
                 
             </td>
