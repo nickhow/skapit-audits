@@ -61,14 +61,6 @@ class AccountCrud extends Controller
                 array_push($data, $collected_data);
             }
 
-            foreach ($data['accounts'] as $account) {
-                $audits = $accountAuditModel->where('account_id',$account['id'])->findColumn('audit_id');
-                print_r($account['id'].'\r\n');
-                print_r($audits);
-                print_r('\r\n');
-                $data['audits'][$account['id']] = $auditModel->whereIn('id',$audits)->orderBy('created_date','DESC')->first();
-            }
-
             print_r($data);
             return; // for testing
 
