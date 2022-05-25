@@ -61,8 +61,8 @@ class AccountCrud extends Controller
                 array_push($data['accounts'], $collected_data);
             }
 
-            print_r($data);
-            return; // for testing
+        //    print_r($data);
+        //    return; // for testing
 
 
             // UNTESTED!!
