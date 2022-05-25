@@ -28,7 +28,7 @@
              <td>
                 <div class="row">
                     <div class="col-8">
-                        <?php echo $account['account']['accommodation_name']; ?>
+                    <a href="<?php echo base_url('account/'.$account['account']['id']);?>"><?php echo $account['account']['accommodation_name']; ?></a>
                     </div>
                     <div class="col-4 ms-auto">
                         <div class="row">
@@ -84,15 +84,18 @@
                         ?>
                     </td> 
                     <td>
-                    <div class="row">
-                            <div class="col text-center">
-                                <a href="<?php echo base_url('audit/'.$account['audit']['id'].'/edit');?>"  class="text-secondary">Edit Audit</a>
-                            </div>
+                        <div class="row">
                             <div class="col text-center">
                                 <a href="<?php echo base_url('audit/'.$account['audit']['id']);?>"  class="text-secondary">View Audit</a>
                             </div>
+
                             <div class="col text-center">
-                                <a href="<?php echo base_url('audit/'.$account['audit']['id'].'/resubmit');?>" class="text-danger">Resubmit</i></a>
+                                <?php 
+                                if ( in_array($account['audit']['status'], array("sent", "open", "in progress", "pending_payment") ) ): ?>
+                                        <a href="<?php echo base_url('audit/'.$account['audit']['id'].'/edit');?>"  class="text-secondary">Edit Audit</a>
+                                <?php elseif ( $account['audit']['status'], = "reviewed" && ($account['audit']['result_ba'] == "unsuitable") || $account['audit']['result_abta'] == "unsuitable" )): ?>
+                                    <a href="<?php echo base_url('audit/'.$account['audit']['id'].'/resubmit');?>" class="text-danger">Resubmit</i></a>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </td>
