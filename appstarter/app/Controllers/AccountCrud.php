@@ -25,6 +25,7 @@ class AccountCrud extends Controller
         $auditModel = new AuditModel();
         $accountModel = new AccountModel();
         $accountAuditModel = new AccountAuditModel();
+        $groupModel = new GroupModel();
         $groupMappingModel = new GroupMappingModel();
         //Gets the AccountModel -> no join so shows the IDs rather than names
         //$data['accounts'] = $accountModel->orderBy('id', 'DESC')->findAll();
