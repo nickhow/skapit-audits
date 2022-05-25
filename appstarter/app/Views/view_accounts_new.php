@@ -26,10 +26,10 @@
           <tr>
              <td>
                 <div class="row">
-                    <div class="col">
+                    <div class="col-8">
                         <?php echo $account['accommodation_name']; ?>
                     </div>
-                    <div class="col ms-auto">
+                    <div class="col-4 ms-auto">
                         <div class="row">
                             <div class="col-6 text-center">
                                 <a href="<?php echo base_url('account/'.$account['id']);?>"  class="text-secondary" ><i class="far fa-edit fa-2x"></i></a>
