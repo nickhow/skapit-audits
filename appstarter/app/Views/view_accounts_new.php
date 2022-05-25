@@ -42,7 +42,7 @@
                   </div>
                 
             </td>
-            <td><?php if($account['group']['group_name'] == '') { echo  "<i>No group</i>"; } else { echo $account['group']['group_name']; } ?></td>
+            <td><?php if($account['group']['name'] == '') { echo  "<i>No group</i>"; } else { echo $account['group']['name']; } ?></td>
             <td><?php echo date('d/m/Y', strtotime($account['account']['created_date'])); ?></td>
 
 
