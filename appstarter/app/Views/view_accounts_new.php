@@ -46,7 +46,7 @@
             <td><?php echo date('d/m/Y', strtotime($account['account']['created_date'])); ?></td>
 
 
-<?php   if(is_null($account['audit'])) : ?>
+<?php   if(is_null($account['audit'])): ?>
                     <td>N/a</td><td>N/a</td>
 <?php else: ?>
 
@@ -54,11 +54,12 @@
                     <!-- Status : sent, open, in progress, pending_payment = Active  //  complete, reviewing = Submitted // reviewed = {show results} -->
 
                         <?php 
-                        if ( in_array($account['audit']['id'], array("sent", "open", "in progress", "pending_payment") ) ){
+                        print_r( $account['audit']);
+                       /* if ( in_array($account['audit']['status'], array("sent", "open", "in progress", "pending_payment") ) ){
                                 echo "Active";
-                        } elseif ( in_array($account['audit']['id'], array("complete", "reviewing") ) ){
+                        } elseif ( in_array($account['audit']['status'], array("complete", "reviewing") ) ){
                             echo "Submitted";
-                        } elseif ( in_array($account['audit']['id'], array("reviewed") ) ) {
+                        } elseif ( in_array($account['audit']['status'], array("reviewed") ) ) {
                             echo "BA:"; ?>
                             <?php if($account['audit']['result_ba'] == "suitable"): ?>
                                 <span class="text-primary text-center"><?php echo ucFirst($account['audit']['result_ba']); ?></span>
@@ -79,19 +80,19 @@
                             <?php endif; 
                         } else {
                             echo "Unknown" ;
-                        }
+                        } */
                         ?>
                     </td> 
                     <td>
                     <div class="row">
                             <div class="col text-center">
-                                <a href="<?php echo base_url('audit/'.$account['audit']['id'].'/edit');?>"  class="text-secondary">Edit Audit</a>
+                                <a href="<?php echo base_url('audit/'./* $account['audit']['id'] */.'/edit');?>"  class="text-secondary">Edit Audit</a>
                             </div>
                             <div class="col text-center">
-                                <a href="<?php echo base_url('audit/'.$account['audit']['id']);?>"  class="text-secondary">View Audit</a>
+                                <a href="<?php echo base_url('audit/'./* $account['audit']['id'] */);?>"  class="text-secondary">View Audit</a>
                             </div>
                             <div class="col text-center">
-                                <a href="<?php echo base_url('audit/'.$account['audit']['id'].'/resubmit');?>" class="text-danger">Resubmit</i></a>
+                                <a href="<?php echo base_url('audit/'./* $account['audit']['id'] */.'/resubmit');?>" class="text-danger">Resubmit</i></a>
                             </div>
                         </div>
                     </td>
