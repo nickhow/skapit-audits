@@ -87,13 +87,13 @@
                     <td>
                     <div class="row">
                             <div class="col text-center">
-                                <a href="<?php echo base_url('audit/');?>"  class="text-secondary">Edit Audit</a>
+                                <a href="<?php echo base_url('audit/'.$audits[$account['id']['id'].'/edit');?>"  class="text-secondary">Edit Audit</a>
                             </div>
                             <div class="col text-center">
-                                <a href="<?php echo base_url('audit/');?>"  class="text-secondary">View Audit</a>
+                                <a href="<?php echo base_url('audit/'.$audits[$account['id']['id']);?>"  class="text-secondary">View Audit</a>
                             </div>
                             <div class="col text-center">
-                                <a href="<?php echo base_url('audit/');?>" class="text-danger">Resubmit</i></a>
+                                <a href="<?php echo base_url('audit/'.$audits[$account['id']['id'].'/resubmit');?>" class="text-danger">Resubmit</i></a>
                             </div>
                         </div>
                     </td>
