@@ -93,7 +93,7 @@
                                 <?php 
                                 if ( in_array($account['audit']['status'], array("sent", "open", "in progress", "pending_payment") ) ): ?>
                                         <a href="<?php echo base_url('audit/'.$account['audit']['id'].'/edit');?>"  class="text-secondary">Edit Audit</a>
-                                <?php elseif ( $account['audit']['status'], = "reviewed" && ($account['audit']['result_ba'] == "unsuitable") || $account['audit']['result_abta'] == "unsuitable" )): ?>
+                                <?php elseif ( $account['audit']['status'] == "reviewed" && ( $account['audit']['result_ba'] == "unsuitable" || $account['audit']['result_abta'] == "unsuitable" )): ?>
                                     <a href="<?php echo base_url('audit/'.$account['audit']['id'].'/resubmit');?>" class="text-danger">Resubmit</i></a>
                                 <?php endif; ?>
                             </div>
