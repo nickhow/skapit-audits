@@ -53,7 +53,7 @@ class AccountCrud extends Controller
                     'group' => $group,
                     'audit' => $latest_audit,
                 ];
-                array_push($data, $collected_data)
+                array_push($data, $collected_data);
             }
 
           print_r($data);
