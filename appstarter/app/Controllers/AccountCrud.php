@@ -41,7 +41,7 @@ class AccountCrud extends Controller
         //    $data['accounts'] = $accountModel->getAccountsWithGroup();
 
             $accounts = $accountModel->findAll();
-            $data = [];
+            $data['accounts'] = [];
             foreach ($accounts as $account){
 
                 $group = $groupModel->where('id',$account['group_id'])->findColumn('name');
