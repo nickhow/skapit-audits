@@ -1,5 +1,5 @@
 <div class="container mt-4 bg-white p-4 rounded">
-    <h2>Accounts</h2>
+    <h2>Properties</h2>
     <div class="d-flex justify-content-end">
         <a href="<?php echo site_url('/account/new') ?>" class="btn btn-success mb-2">Add A New Property</a>
 	</div>
