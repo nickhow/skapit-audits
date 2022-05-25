@@ -16,7 +16,6 @@
           <tr>
              <th>Property Name</th>
              <th>Created On</th>
-             <th>Property Actions</th>
              <th>Latest audit status</th>
              <th>Audit Actions</th>
           </tr>
@@ -25,22 +24,26 @@
           <?php if($accounts): ?>
           <?php foreach($accounts as $account): ?>
           <tr>
-             <td><?php echo $account['accommodation_name']; ?></td>
-             <td><?php echo date('d/m/Y', strtotime($account['created_date'])); ?></td>
              <td>
-               <div class="row">
-                      <div class="col-6 text-center">
-                          <a href="<?php echo base_url('account/'.$account['id']);?>"  class="text-secondary" ><i class="far fa-edit fa-2x"></i></a>
-                      </div>
-                     <div class="col-6 text-center">
+                <div class="row">
+                    <div class="col">
+                        <?php echo $account['accommodation_name']; ?>
+                    </div>
+                    <div class="col ms-auto">
+                        <div class="col-6 text-center">
+                            <a href="<?php echo base_url('account/'.$account['id']);?>"  class="text-secondary" ><i class="far fa-edit fa-2x"></i></a>
+                        </div>
+                        <div class="col-6 text-center">
                           <a href="<?php echo base_url('account/'.$account['id'].'/delete');?>" class="text-danger"><i class="far fa-trash-alt fa-2x"></i></a>
-                      </div>
+                       </div>
                   </div>
-              </td>
+                
+            </td>
+             <td><?php echo date('d/m/Y', strtotime($account['created_date'])); ?></td>
 
 
 <?php   if(is_null($audits[$account['id']])) : ?>
-                    <td>N/a</td><td>N/a></td>
+                    <td>N/a</td><td>N/a</td>
 <?php else: ?>
 
                     <td>
