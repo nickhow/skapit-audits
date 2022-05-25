@@ -28,25 +28,25 @@
              <td>
                 <div class="row">
                     <div class="col-8">
-                        <?php echo $account['accommodation_name']; ?>
+                        <?php echo $account['account']['accommodation_name']; ?>
                     </div>
                     <div class="col-4 ms-auto">
                         <div class="row">
                             <div class="col-6 text-center">
-                                <a href="<?php echo base_url('account/'.$account['id']);?>"  class="text-secondary" ><i class="far fa-edit fa-2x"></i></a>
+                                <a href="<?php echo base_url('account/'.$account['account']['id']);?>"  class="text-secondary" ><i class="far fa-edit fa-2x"></i></a>
                             </div>
                             <div class="col-6 text-center">
-                                <a href="<?php echo base_url('account/'.$account['id'].'/delete');?>" class="text-danger"><i class="far fa-trash-alt fa-2x"></i></a>
+                                <a href="<?php echo base_url('account/'.$account['account']['id'].'/delete');?>" class="text-danger"><i class="far fa-trash-alt fa-2x"></i></a>
                             </div>
                         </div>
                   </div>
                 
             </td>
-            <td><?php if($account['group_name'] == '') { echo  "<i>No group</i>"; } else { echo $account['group_name']; } ?></td>
-            <td><?php echo date('d/m/Y', strtotime($account['created_date'])); ?></td>
+            <td><?php if($account['group']['group_name'] == '') { echo  "<i>No group</i>"; } else { echo $account['group']['group_name']; } ?></td>
+            <td><?php echo date('d/m/Y', strtotime($account['account']['created_date'])); ?></td>
 
 
-<?php   if(is_null($audits[$account['id']])) : ?>
+<?php   if(is_null($account['audit'])) : ?>
                     <td>N/a</td><td>N/a</td>
 <?php else: ?>
 
@@ -58,26 +58,26 @@
                         there is a bad audit to propety in here somewhere ... or I was referencing the id badly ... but it wasn't working without specifing a specific account ...
                         -->
                         <?php 
-                        if ( in_array($audits[$account['id']]['status'], array("sent", "open", "in progress", "pending_payment") ) ){
+                        if ( in_array($account['audit']['status'], array("sent", "open", "in progress", "pending_payment") ) ){
                                 echo "Active";
-                        } elseif ( in_array($audits[$account['id']]['status'], array("complete", "reviewing") ) ){
+                        } elseif ( in_array($account['audit']['status'], array("complete", "reviewing") ) ){
                             echo "Submitted";
-                        } elseif ( in_array($audits[$account['id']]['status'], array("reviewed") ) ) {
+                        } elseif ( in_array($account['audit']['status'], array("reviewed") ) ) {
                             echo "BA:"; ?>
-                            <?php if($audits[$account['id']]['result_ba'] == "suitable"): ?>
-                                <span class="text-primary text-center"><?php echo ucFirst($audits[$account['id']]['result_ba']); ?></span>
-                            <?php elseif ($audits[$account['id']]['result_ba'] == "unsuitable"): ?>
-                                <span class="text-danger text-center"><?php echo ucFirst($audits[$account['id']]['result_ba']); ?></span>
+                            <?php if($account['audit']['result_ba'] == "suitable"): ?>
+                                <span class="text-primary text-center"><?php echo ucFirst($account['audit']['result_ba']); ?></span>
+                            <?php elseif ($account['audit']['result_ba'] == "unsuitable"): ?>
+                                <span class="text-danger text-center"><?php echo ucFirst($account['audit']['result_ba']); ?></span>
                             <?php else: ?>
                                 <span class="text-warning text-center">Unknown</span>
                             <?php endif; ?>
                             <br/>
                             <?php
                             echo "ABTA"; ?>
-                            <?php if($audits[$account['id']]['result_abta'] == "suitable"): ?>
-                                <span class="text-primary text-center"><?php echo ucFirst($audits[$account['id']]['result_abta']); ?></span>
-                            <?php elseif ($audits[$account['id']]['result_abta'] == "unsuitable"): ?>
-                                <span class="text-danger text-center"><?php echo ucFirst($audits[$account['id']]['result_abta']); ?></span>
+                            <?php if($account['audit']['result_abta'] == "suitable"): ?>
+                                <span class="text-primary text-center"><?php echo ucFirst($account['audit']['result_abta']); ?></span>
+                            <?php elseif ($account['audit']['result_abta'] == "unsuitable"): ?>
+                                <span class="text-danger text-center"><?php echo ucFirst($account['audit']['result_abta']); ?></span>
                             <?php else: ?>
                                 <span class="text-warning text-center">Unknown</span>
                             <?php endif; 
@@ -89,13 +89,13 @@
                     <td>
                     <div class="row">
                             <div class="col text-center">
-                                <a href="<?php echo base_url('audit/'.$audits[$account['id']]['id'].'/edit');?>"  class="text-secondary">Edit Audit</a>
+                                <a href="<?php echo base_url('audit/'.$account['audit']['id'].'/edit');?>"  class="text-secondary">Edit Audit</a>
                             </div>
                             <div class="col text-center">
-                                <a href="<?php echo base_url('audit/'.$audits[$account['id']]['id']);?>"  class="text-secondary">View Audit</a>
+                                <a href="<?php echo base_url('audit/'.$account['audit']['id']);?>"  class="text-secondary">View Audit</a>
                             </div>
                             <div class="col text-center">
-                                <a href="<?php echo base_url('audit/'.$audits[$account['id']]['id'].'/resubmit');?>" class="text-danger">Resubmit</i></a>
+                                <a href="<?php echo base_url('audit/'.$account['audit']['id'].'/resubmit');?>" class="text-danger">Resubmit</i></a>
                             </div>
                         </div>
                     </td>
