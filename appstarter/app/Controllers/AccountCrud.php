@@ -52,7 +52,7 @@ class AccountCrud extends Controller
                     'account' => $account,
                     'group' => $group,
                     'audit' => $latest_audit,
-                ]
+                ];
                 array_push($data, $collected_data)
             }
 
