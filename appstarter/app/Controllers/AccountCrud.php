@@ -46,6 +46,10 @@ class AccountCrud extends Controller
 
                 $group = $groupModel->where('id',$account['group_id'])->findColumn('name');
                 $all_audits = $accountAuditModel->where('account_id',$account['id'])->findColumn('audit_id');
+
+                echo($account['id']);
+                print_r($all_audits);
+
                 $latest_audit = $auditModel->whereIn('id',$all_audits)->orderBy('created_date','DESC')->first();
 
                 $collected_data = [
@@ -56,7 +60,7 @@ class AccountCrud extends Controller
                 array_push($data, $collected_data);
             }
 
-          print_r($data);
+        //    print_r($data);
             return; // for testing
 
             foreach ($data['accounts'] as $account) {
