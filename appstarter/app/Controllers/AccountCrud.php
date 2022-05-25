@@ -60,16 +60,6 @@ class AccountCrud extends Controller
                 ];
                 array_push($data['accounts'], $collected_data);
             }
-
-        //   print_r($data);
-        //    return; // for testing
-
-
-            // UNTESTED!!
-          //  $sql = "SELECT * FROM audits WHERE id IN (" . implode("','", array_map('mysql_real_escape_string', $audits)) . ") ORDER BY created_date DESC LIMIT 1";
-
-
-
             echo view('templates/header');
             
         } elseif($session->get('enable_groups')){

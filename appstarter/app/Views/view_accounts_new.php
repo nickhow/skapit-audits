@@ -47,7 +47,7 @@
 
 
 <?php   if( is_null($account['audit']) || !$account['audit'] || count($account['audit']) === 0): ?>
-                    <td>N/a</td><td>N/a</td>
+                    <td>No audits for this property</td><td><!-- no audit to show actions for --> </td>
 <?php else: ?>
 
                     <td>
