@@ -38,7 +38,7 @@ class AccountCrud extends Controller
         
         //Uses the method with the join
         if($admin){
-            $data['accounts'] = $accountModel->getAccountsWithGroup();
+        //    $data['accounts'] = $accountModel->getAccountsWithGroup();
 
             $accounts = $accountModel->findAll();
             $data = [];
