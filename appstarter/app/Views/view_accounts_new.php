@@ -15,6 +15,7 @@
        <thead>
           <tr>
              <th>Property Name</th>
+             <th>Group</th>
              <th>Created On</th>
              <th>Latest audit status</th>
              <th>Audit Actions</th>
@@ -41,7 +42,8 @@
                   </div>
                 
             </td>
-             <td><?php echo date('d/m/Y', strtotime($account['created_date'])); ?></td>
+            <td><?php if($account['group_name'] == '') { echo  "<i>No group</i>"; } else { echo $account['group_name']; } ?></td>
+            <td><?php echo date('d/m/Y', strtotime($account['created_date'])); ?></td>
 
 
 <?php   if(is_null($audits[$account['id']])) : ?>

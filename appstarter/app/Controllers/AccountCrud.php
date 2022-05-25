@@ -39,6 +39,16 @@ class AccountCrud extends Controller
         if($admin){
             $data['accounts'] = $accountModel->getAccountsWithGroup();
 
+            $accounts = $accountModel->findAll();
+            foreach ($accounts as $account){
+                $account['group'] = $groupModel->where('id',$account['group_id'])->findColumn('name');
+                $all_audits = $accountAuditModel->where('account_id',$account['id'])->findColumn('audit_id');
+                $account['latest_audit'] = $auditModel->whereIn('id',$all_audits)->orderBy('created_date','DESC')->first();
+            }
+
+          print_r($accounts);
+            return; // for testing
+
             foreach ($data['accounts'] as $account) {
                 $audits = $accountAuditModel->where('account_id',$account['id'])->findColumn('audit_id');
                 print_r($account['id'].'\r\n');
