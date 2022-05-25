@@ -38,50 +38,61 @@
                   </div>
               </td>
 
-              <td>
-              <!-- Status : sent, open, in progress, pending_payment = Active  //  complete, reviewing = Submitted // reviewed = {show results} -->
-                <?php if ( in_array($audits[38]['status'], array("sent", "open", "in progress", "pending_payment") ) ){
-                        echo "Active";
-                 } elseif ( in_array($audits[38]['status'], array("complete", "reviewing") ) ){
-                     echo "Submitted";
-                 } elseif ( in_array($audits[38]['status'], array("reviewed") ) ) {
-                    echo "BA:"; ?>
-                    <?php if($audits[38]['result_ba'] == "suitable"): ?>
-                        <span class="text-primary text-center"><?php echo ucFirst($audit['result_ba']); ?></span>
-                    <?php elseif ($audits[38]['result_ba'] == "unsuitable"): ?>
-                        <span class="text-danger text-center"><?php echo ucFirst($audit['result_ba']); ?></span>
-                    <?php else: ?>
-                        <span class="text-warning text-center">Unknown</span>
-                    <?php endif; ?>
-                    <br/>
-                    <?php
-                    echo "ABTA"; ?>
-                    <?php if($audits[38]['result_abta'] == "suitable"): ?>
-                        <span class="text-primary text-center"><?php echo ucFirst($audit['result_abta']); ?></span>
-                    <?php elseif ($audits[38]['result_abta'] == "unsuitable"): ?>
-                        <span class="text-danger text-center"><?php echo ucFirst($audit['result_abta']); ?></span>
-                    <?php else: ?>
-                        <span class="text-warning text-center">Unknown</span>
-                    <?php endif; 
-                 } else {
-                     echo "Unknown" ;
-                }
-                ?>
-              </td> 
-              <td>
-               <div class="row">
-                      <div class="col text-center">
-                          <a href="<?php echo base_url('audit/');?>"  class="text-secondary">Edit Audit</a>
-                      </div>
-                      <div class="col text-center">
-                          <a href="<?php echo base_url('audit/');?>"  class="text-secondary">View Audit</a>
-                      </div>
-                     <div class="col text-center">
-                          <a href="<?php echo base_url('audit/');?>" class="text-danger">Resubmit</i></a>
-                      </div>
-                  </div>
-              </td>
 
+<?php   if(is_null($audits[$account['id']])) : ?>
+                    <td>N/a</td><td>N/a></td>
+<?php else: ?>
+
+                    <td>
+                    <!-- Status : sent, open, in progress, pending_payment = Active  //  complete, reviewing = Submitted // reviewed = {show results} -->
+
+
+                    <!-- 
+                        there is a bad audit to propety in here somewhere ... or I was referencing the id badly ... but it wasn't working without specifing a specific account ...
+                        -->
+                        <?php 
+                        if ( in_array($audits[38]['status'], array("sent", "open", "in progress", "pending_payment") ) ){
+                                echo "Active";
+                        } elseif ( in_array($audits[38]['status'], array("complete", "reviewing") ) ){
+                            echo "Submitted";
+                        } elseif ( in_array($audits[38]['status'], array("reviewed") ) ) {
+                            echo "BA:"; ?>
+                            <?php if($audits[38]['result_ba'] == "suitable"): ?>
+                                <span class="text-primary text-center"><?php echo ucFirst($audit['result_ba']); ?></span>
+                            <?php elseif ($audits[38]['result_ba'] == "unsuitable"): ?>
+                                <span class="text-danger text-center"><?php echo ucFirst($audit['result_ba']); ?></span>
+                            <?php else: ?>
+                                <span class="text-warning text-center">Unknown</span>
+                            <?php endif; ?>
+                            <br/>
+                            <?php
+                            echo "ABTA"; ?>
+                            <?php if($audits[38]['result_abta'] == "suitable"): ?>
+                                <span class="text-primary text-center"><?php echo ucFirst($audit['result_abta']); ?></span>
+                            <?php elseif ($audits[38]['result_abta'] == "unsuitable"): ?>
+                                <span class="text-danger text-center"><?php echo ucFirst($audit['result_abta']); ?></span>
+                            <?php else: ?>
+                                <span class="text-warning text-center">Unknown</span>
+                            <?php endif; 
+                        } else {
+                            echo "Unknown" ;
+                        }
+                        ?>
+                    </td> 
+                    <td>
+                    <div class="row">
+                            <div class="col text-center">
+                                <a href="<?php echo base_url('audit/');?>"  class="text-secondary">Edit Audit</a>
+                            </div>
+                            <div class="col text-center">
+                                <a href="<?php echo base_url('audit/');?>"  class="text-secondary">View Audit</a>
+                            </div>
+                            <div class="col text-center">
+                                <a href="<?php echo base_url('audit/');?>" class="text-danger">Resubmit</i></a>
+                            </div>
+                        </div>
+                    </td>
+<?php endif; ?>
              
           </tr>
          <?php endforeach; ?>
