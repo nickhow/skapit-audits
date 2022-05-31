@@ -59,8 +59,7 @@
                                 echo "Active";
                         } elseif ( in_array($account['audit']['status'], array("complete", "reviewing") ) ){
                             echo "Submitted";
-                        } elseif ( in_array($account['audit']['status'], array("reviewed") ) ) {
-                            echo "BA:"; ?>
+                        } elseif ( in_array($account['audit']['status'], array("reviewed") ) ) { ?>
 
                             <table class="table">
                                 <thead>
@@ -91,8 +90,8 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>Exp. <p><small><?php echo ucFirst($account['audit']['expiry_date_ba']); ?></small></p></td>
-                                        <td>Exp. <p><small><?php echo ucFirst($account['audit']['expiry_date_abta']); ?></small></p></td>
+                                        <td><p><small>Exp.  <?php echo date('d/m/Y', strtotime($account['audit']['expiry_date_ba'])); ?></small></p></td>
+                                        <td><p><small>Exp.  <?php echo date('d/m/Y', strtotime($account['audit']['expiry_date_abta'])); ?></small></p></td>
                                     </tr>
                                 </tbody>
                             </table>
