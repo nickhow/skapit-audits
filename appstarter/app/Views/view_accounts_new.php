@@ -28,7 +28,7 @@
              <td>
                 <div class="row">
                     <div class="col-8">
-                    <a href="<?php echo base_url('account/'.$account['account']['id']);?>"><?php echo $account['account']['accommodation_name']; ?></a>
+                    <a href="<?php echo base_url('account/'.$account['account']['id']);?>"><?php echo $account['account']['accommodation_name'].", ".$account['account']['resort']; ?></a>
                     </div>
                     <div class="col-4 ms-auto">
                         <div class="row">
@@ -61,27 +61,42 @@
                             echo "Submitted";
                         } elseif ( in_array($account['audit']['status'], array("reviewed") ) ) {
                             echo "BA:"; ?>
-                            <?php if($account['audit']['result_ba'] == "suitable"): ?>
-                                <span class="text-primary text-center"><?php echo ucFirst($account['audit']['result_ba']); ?></span>
-                            <?php elseif ($account['audit']['result_ba'] == "unsuitable"): ?>
-                                <span class="text-danger text-center"><?php echo ucFirst($account['audit']['result_ba']); ?></span>
-                            <?php else: ?>
-                                <span class="text-warning text-center">Unknown</span>
-                            <?php endif; ?>
-                            <br/>
-                            <?php
-                            echo "ABTA"; ?>
-                            <?php if($account['audit']['result_abta'] == "suitable"): ?>
-                                <span class="text-primary text-center"><?php echo ucFirst($account['audit']['result_abta']); ?></span>
-                            <?php elseif ($account['audit']['result_abta'] == "unsuitable"): ?>
-                                <span class="text-danger text-center"><?php echo ucFirst($account['audit']['result_abta']); ?></span>
-                            <?php else: ?>
-                                <span class="text-warning text-center">Unknown</span>
-                            <?php endif; 
-                        } else {
-                            echo "Unknown" ;
-                        } 
-                        ?>
+
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">BA</th>
+                                        <th scope="col">ABTA</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <?php if($account['audit']['result_ba'] == "suitable"): ?>
+                                                <span class="text-primary text-center"><?php echo ucFirst($account['audit']['result_ba']); ?></span>
+                                            <?php elseif ($account['audit']['result_ba'] == "unsuitable"): ?>
+                                                <span class="text-danger text-center"><?php echo ucFirst($account['audit']['result_ba']); ?></span>
+                                            <?php else: ?>
+                                                <span class="text-warning text-center">Unknown</span>
+                                            <?php endif; ?>
+                                        </td>
+                                        <td>
+                                            <?php if($account['audit']['result_abta'] == "suitable"): ?>
+                                                <span class="text-primary text-center"><?php echo ucFirst($account['audit']['result_abta']); ?></span>
+                                            <?php elseif ($account['audit']['result_abta'] == "unsuitable"): ?>
+                                                <span class="text-danger text-center"><?php echo ucFirst($account['audit']['result_abta']); ?></span>
+                                            <?php else: ?>
+                                                <span class="text-warning text-center">Unknown</span>
+                                            <?php endif; ?>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Exp. <p><small><?php echo ucFirst($account['audit']['expiry_date_ba']); ?></small></p></td>
+                                        <td>Exp. <p><small><?php echo ucFirst($account['audit']['expiry_date_abta']); ?></small></p></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        <?php } else { echo "Unknown" ; } ?>
                     </td> 
                     <td>
                         <div class="row">
