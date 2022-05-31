@@ -1,3 +1,9 @@
+<style>
+table.dataTable tbody td {
+  vertical-align: top;
+}
+</style>
+
 <div class="container mt-4 bg-white p-4 rounded">
     <h2>Properties</h2>
     <div class="d-flex justify-content-end">
@@ -11,7 +17,7 @@
     <?php endif;?>
      
   <div class="mt-3">
-     <table class="table table-bordered" id="accounts-list">
+     <table class="table table-bordered " id="accounts-list">
        <thead>
           <tr>
              <th>Property Name</th>
@@ -66,20 +72,20 @@
                                     <tr>
                                         <td>
                                             <?php if($account['audit']['result_ba'] == "suitable"): ?>
-                                                BA:<span class="text-primary text-center"><?php echo ucFirst($account['audit']['result_ba']); ?></span>
+                                                BA: <span class="text-primary text-center"><?php echo ucFirst($account['audit']['result_ba']); ?></span>
                                             <?php elseif ($account['audit']['result_ba'] == "unsuitable"): ?>
-                                                BA:<span class="text-danger text-center"><?php echo ucFirst($account['audit']['result_ba']); ?></span>
+                                                BA: <span class="text-danger text-center"><?php echo ucFirst($account['audit']['result_ba']); ?></span>
                                             <?php else: ?>
-                                                BA:<span class="text-warning text-center">Unknown</span>
+                                                BA: <span class="text-warning text-center">Unknown</span>
                                             <?php endif; ?>
                                         </td>
                                         <td>
                                             <?php if($account['audit']['result_abta'] == "suitable"): ?>
-                                                ABTA:<span class="text-primary text-center"><?php echo ucFirst($account['audit']['result_abta']); ?></span>
+                                                ABTA: <span class="text-primary text-center"><?php echo ucFirst($account['audit']['result_abta']); ?></span>
                                             <?php elseif ($account['audit']['result_abta'] == "unsuitable"): ?>
-                                                ABTA:<span class="text-danger text-center"><?php echo ucFirst($account['audit']['result_abta']); ?></span>
+                                                ABTA: <span class="text-danger text-center"><?php echo ucFirst($account['audit']['result_abta']); ?></span>
                                             <?php else: ?>
-                                                ABTA:<span class="text-warning text-center">Unknown</span>
+                                                ABTA: <span class="text-warning text-center">Unknown</span>
                                             <?php endif; ?>
                                         </td>
                                     </tr>
