@@ -1,6 +1,6 @@
 <style>
-table.dataTable tbody td {
-  vertical-align: top;
+ td, th {
+     vertical-align: middle!important;
 }
 </style>
 
@@ -17,7 +17,7 @@ table.dataTable tbody td {
     <?php endif;?>
      
   <div class="mt-3">
-     <table class="table table-bordered " id="accounts-list">
+     <table class="table table-bordered" id="accounts-list">
        <thead>
           <tr>
              <th>Property Name</th>
