@@ -61,37 +61,31 @@
                             echo "Submitted";
                         } elseif ( in_array($account['audit']['status'], array("reviewed") ) ) { ?>
 
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">BA</th>
-                                        <th scope="col">ABTA</th>
-                                    </tr>
-                                </thead>
+                            <table class="table m-0">
                                 <tbody>
                                     <tr>
                                         <td>
                                             <?php if($account['audit']['result_ba'] == "suitable"): ?>
-                                                <span class="text-primary text-center"><?php echo ucFirst($account['audit']['result_ba']); ?></span>
+                                                BA:<span class="text-primary text-center"><?php echo ucFirst($account['audit']['result_ba']); ?></span>
                                             <?php elseif ($account['audit']['result_ba'] == "unsuitable"): ?>
-                                                <span class="text-danger text-center"><?php echo ucFirst($account['audit']['result_ba']); ?></span>
+                                                BA:<span class="text-danger text-center"><?php echo ucFirst($account['audit']['result_ba']); ?></span>
                                             <?php else: ?>
-                                                <span class="text-warning text-center">Unknown</span>
+                                                BA:<span class="text-warning text-center">Unknown</span>
                                             <?php endif; ?>
                                         </td>
                                         <td>
                                             <?php if($account['audit']['result_abta'] == "suitable"): ?>
-                                                <span class="text-primary text-center"><?php echo ucFirst($account['audit']['result_abta']); ?></span>
+                                                ABTA:<span class="text-primary text-center"><?php echo ucFirst($account['audit']['result_abta']); ?></span>
                                             <?php elseif ($account['audit']['result_abta'] == "unsuitable"): ?>
-                                                <span class="text-danger text-center"><?php echo ucFirst($account['audit']['result_abta']); ?></span>
+                                                ABTA:<span class="text-danger text-center"><?php echo ucFirst($account['audit']['result_abta']); ?></span>
                                             <?php else: ?>
-                                                <span class="text-warning text-center">Unknown</span>
+                                                ABTA:<span class="text-warning text-center">Unknown</span>
                                             <?php endif; ?>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><p><small>Exp.  <?php echo date('d/m/Y', strtotime($account['audit']['expiry_date_ba'])); ?></small></p></td>
-                                        <td><p><small>Exp.  <?php echo date('d/m/Y', strtotime($account['audit']['expiry_date_abta'])); ?></small></p></td>
+                                        <td><p class="m-0"><small>Exp.  <?php echo date('d/m/Y', strtotime($account['audit']['expiry_date_ba'])); ?></small></p></td>
+                                        <td><p class="m-0"><small>Exp.  <?php echo date('d/m/Y', strtotime($account['audit']['expiry_date_abta'])); ?></small></p></td>
                                     </tr>
                                 </tbody>
                             </table>
