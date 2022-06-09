@@ -36,6 +36,7 @@
              <th>Last Opened</th>
              <th>Review</th>
              <th>On Salesforce</th>
+             <th>Audit Owner</th>
              <th>Actions</th>
           </tr>
        </thead>
@@ -96,6 +97,7 @@
                         }
                     ?>
                 </td>
+                <td><?php echo $audit['alias']; ?></td>
               <td>
                   <div class="row">
                       <div class="col-4 text-center">
