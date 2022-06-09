@@ -22,7 +22,10 @@ class AccountCrud extends Controller
 {
     // show accounts list
     public function index(){
+        $auditModel = new AuditModel();
         $accountModel = new AccountModel();
+        $accountAuditModel = new AccountAuditModel();
+        $groupModel = new GroupModel();
         $groupMappingModel = new GroupMappingModel();
         //Gets the AccountModel -> no join so shows the IDs rather than names
         //$data['accounts'] = $accountModel->orderBy('id', 'DESC')->findAll();
@@ -35,7 +38,28 @@ class AccountCrud extends Controller
         
         //Uses the method with the join
         if($admin){
-            $data['accounts'] = $accountModel->getAccountsWithGroup();
+        //    $data['accounts'] = $accountModel->getAccountsWithGroup();
+
+            $accounts = $accountModel->findAll();
+            $data['accounts'] = [];
+            foreach ($accounts as $account){
+
+                $group = $groupModel->where('id',$account['group_id'])->first();
+                $all_audits = $accountAuditModel->where('account_id',$account['id'])->findColumn('audit_id');
+                
+                if(is_null($all_audits)){
+                    $latest_audit = "";
+                } else {
+                    $latest_audit = $auditModel->whereIn('id',$all_audits)->orderBy('created_date','DESC')->first();
+                }
+
+                $collected_data = [
+                    'account' => $account,
+                    'group' => $group,
+                    'audit' => $latest_audit,
+                ];
+                array_push($data['accounts'], $collected_data);
+            }
             echo view('templates/header');
             
         } elseif($session->get('enable_groups')){
@@ -46,7 +70,7 @@ class AccountCrud extends Controller
             echo view('templates/header-group');
         }
         
-        echo view('view_accounts', $data);
+        echo view('view_accounts_new', $data);
         echo view('templates/footer');
     }
     
