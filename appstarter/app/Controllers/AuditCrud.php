@@ -134,7 +134,7 @@ class AuditCrud extends Controller
                 FROM audits
                 INNER JOIN account_audits on account_audits.audit_id = audits.id
                 INNER JOIN accounts on account_audits.account_id = accounts.id
-                INNER JOIN users on audits.audit_owner_id = users.id
+                LEFT JOIN users on audits.audit_owner_id = users.id
             ";
         
         $data['audits'] = $db->query($sql)->getResultArray();
