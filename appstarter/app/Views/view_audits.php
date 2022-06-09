@@ -36,7 +36,7 @@
              <th>Last Opened</th>
              <th>Review</th>
              <th>On Salesforce</th>
-             <th>Owner Alias</th>
+             <th>Audit Owner</th>
              <th>Actions</th>
           </tr>
        </thead>
