@@ -6349,11 +6349,11 @@
                     url:  '<?php echo site_url('/pdf-results/'.$audit_obj['id'].'.pdf') ?>',
                     type: 'GET',
                     success: function(data, textStatus, xhr) {
-                        console.log(xhr.status);
+                      //  console.log(xhr.status);
                     },
                     complete: function(xhr, textStatus) {
-                        console.log(xhr.status);
-                        if(!xhr.status == 200){
+                     //   console.log(xhr.status);
+                        if(xhr.status !== 200){
                             document.getElementById('download_pdf').style.display = 'none';
                         }
                     }
