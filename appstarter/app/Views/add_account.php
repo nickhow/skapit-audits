@@ -15,21 +15,21 @@
                   <a href="<?= site_url('/account/upload') ?>"><div class="btn btn-outline-secondary">Upload multiple properties</div></a>
               </div>
             </div>
-            <form method="post" id="add_create" name="add_create" action="<?= site_url('/account/new') ?>">
+            <form method="post" id="add_create" name="add_create" autocomplete="off" action="<?= site_url('/account/new') ?>">
             <h3>Property Contact Details</h3>
               <div class="form-group">
-                <label>Name</label>
-                <input type="text" name="name" value="<?= set_value('name') ?>" class="form-control">
+                <label>Health and Safety Contact Name</label>
+                <input type="text" name="name" autocomplete="name" value="<?= set_value('name') ?>" class="form-control">
               </div>
         
               <div class="form-group pt-2">
-                <label>Email</label>
-                <input type="text" name="email" value="<?= set_value('email') ?>" class="form-control">
+                <label>Health and Safety Contact Email</label>
+                <input type="text" name="input_contact"  autocomplete="off" value="<?= set_value('email') ?>" class="form-control">
               </div>
               
               <div class="form-group pt-2">
-                <label>Phone</label>
-                <input type="text" name="phone" value="<?= set_value('phone') ?>" class="form-control">
+                <label>Health and Safety Contact Phone</label>
+                <input type="text" name="phone"  autocomplete="off" value="<?= set_value('phone') ?>" class="form-control">
               </div>
               
               <?php $session = session();  if($session->get('is_admin')): ?>
@@ -232,7 +232,7 @@
           name: {
             required: true,
           },
-          email: {
+          input_contact: {
             required: true,
             maxlength: 60,
             email: true,
@@ -242,7 +242,7 @@
           name: {
             required: "Name is required.",
           },
-          email: {
+          input_contact: {
             required: "Email is required.",
             email: "It does not seem to be a valid email.",
             maxlength: "The email should be or equal to 60 chars.",
