@@ -24,12 +24,12 @@
         
               <div class="form-group pt-2">
                 <label>Health and Safety Contact Email</label>
-                <input type="text" name="input_contact" autocomplete="new-password" value="<?= set_value('email') ?>" class="form-control">
+                <input type="text" name="input_contact"  autocomplete="off"value="<?= set_value('email') ?>" class="form-control">
               </div>
               
               <div class="form-group pt-2">
                 <label>Health and Safety Contact Phone</label>
-                <input type="text" name="phone" autocomplete="new-password" value="<?= set_value('phone') ?>" class="form-control">
+                <input type="text" name="phone"  autocomplete="off" value="<?= set_value('phone') ?>" class="form-control">
               </div>
               
               <?php $session = session();  if($session->get('is_admin')): ?>
