@@ -15,7 +15,7 @@
     <nav class="navbar navbar-expand-lg  navbar-dark bg-dark" style="z-index:999">
         <div class="container-fluid">
             <a class="navbar-brand" href="<?= site_url('')?>">
-              <img src="<?= site_url() ?>/images/ski-api-technologies.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+              <img src="<?= site_url() ?>/images/skapit-logo.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
