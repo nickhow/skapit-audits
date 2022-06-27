@@ -76,12 +76,14 @@
                         <h2><?php echo "BA: ". ucFirst($audit_obj['result_ba']);?></h2>
                         <h2><?php echo "ABTA: ". ucFirst($audit_obj['result_abta']);?></h2>
                     </div>
-                    <p>This result expires on <?php echo  date('d/m/Y', strtotime($audit_obj['expiry_date_ba']));?> for BA, and <?php echo  date('d/m/Y', strtotime($audit_obj['expiry_date_abta']));?> for ABTA.</p>
                 </div>
                 <div class="col-4">
-                    <a href="<?php echo base_url()."/pdf-results/".$audit_obj['id']; ?>" target='_blank' ><div class="col-12 btn btn-sm btn-secondary">Download</div></a>
+                    <a href="<?php echo base_url()."/pdf-results/".$audit_obj['id']; ?>" target='_blank' > <i class="fas fa-arrow-to-bottom fa-2x"></i> <br/> Download PDF</a>
                 </div>
             </div>
+
+            <p>This result expires on <?php echo  date('d/m/Y', strtotime($audit_obj['expiry_date_ba']));?> for BA, and <?php echo  date('d/m/Y', strtotime($audit_obj['expiry_date_abta']));?> for ABTA.</p>
+
             </div>
             <div class="col-12 col-md-6">
                 <b>Understanding the feedback</b>
