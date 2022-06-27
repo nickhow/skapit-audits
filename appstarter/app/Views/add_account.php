@@ -23,7 +23,7 @@
               </div>
         
               <div class="form-group pt-2">
-                <label>E&#8204;mail</label>
+                <label>Something obscure</label>
                 <input type="text" name="input_contact" autocomplete="off" value="<?= set_value('email') ?>" class="form-control">
               </div>
               
