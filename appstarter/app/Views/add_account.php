@@ -24,7 +24,7 @@
         
               <div class="form-group pt-2">
                 <label>E&#8204;mail</label>
-                <input type="text" name="email" autocomplete="off" value="<?= set_value('email') ?>" class="form-control">
+                <input type="text" name="hs_contact_email" autocomplete="off" value="<?= set_value('email') ?>" class="form-control">
               </div>
               
               <div class="form-group pt-2">
@@ -232,7 +232,7 @@
           name: {
             required: true,
           },
-          email: {
+          hs_contact_email: {
             required: true,
             maxlength: 60,
             email: true,
@@ -242,7 +242,7 @@
           name: {
             required: "Name is required.",
           },
-          email: {
+          hs_contact_email: {
             required: "Email is required.",
             email: "It does not seem to be a valid email.",
             maxlength: "The email should be or equal to 60 chars.",
