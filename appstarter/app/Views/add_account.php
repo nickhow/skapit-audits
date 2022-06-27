@@ -15,7 +15,7 @@
                   <a href="<?= site_url('/account/upload') ?>"><div class="btn btn-outline-secondary">Upload multiple properties</div></a>
               </div>
             </div>
-            <form method="post" id="add_create" name="add_create" action="<?= site_url('/account/new') ?>">
+            <form method="post" id="add_create" name="add_create" autocomplete="off" action="<?= site_url('/account/new') ?>">
             <h3>Property Contact Details</h3>
               <div class="form-group">
                 <label>Health and Safety Contact Name</label>
