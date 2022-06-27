@@ -77,8 +77,8 @@
                         <h2><?php echo "ABTA: ". ucFirst($audit_obj['result_abta']);?></h2>
                     </div>
                 </div>
-                <div class="col-4">
-                    <a href="<?php echo base_url()."/pdf-results/".$audit_obj['id']; ?>" target='_blank' > <i class="fas fa-arrow-to-bottom fa-2x"></i> <br/> Download PDF</a>
+                <div class="col-4 text-center align-self-center">
+                    <a href="<?php echo base_url()."/pdf-results/".$audit_obj['id']; ?>" download target='_blank' > <i class="fas fa-download fa-2x"></i> <br/> Download PDF</a>
                 </div>
             </div>
 
