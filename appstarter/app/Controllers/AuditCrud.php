@@ -107,7 +107,7 @@ class AuditCrud extends Controller
         $chart_data['new_reviewed'] = $db->query("SELECT COUNT(`id`) AS count from audits WHERE status = 'reviewed' AND (DATEDIFF('".$today."', `audited_date`) < 7)")->getRow();
         $chart_data['new_pass'] = $db->query("SELECT COUNT(`id`) AS count from audits WHERE status = 'reviewed' AND (result_ba='suitable' OR result_abta='suitable') AND (DATEDIFF('".$today."', `audited_date`) < 7)")->getRow();
         $chart_data['total_reviewed'] = $db->query("SELECT COUNT(`id`) AS count from audits WHERE status = 'reviewed' AND (result_ba='suitable' OR result_abta='suitable') AND (expiry_date_ba > '".$today."' OR expiry_date_ba > '".$today."')" )->getRow();
-        $chart_data['expire_soon'] = $db->query("SELECT COUNT(`id`) AS count from audits WHERE status = 'reviewed' AND (result_ba='suitable' OR result_abta='suitable') AND ( (DATEDIFF('".$today."', `expiry_date_ba`) > -30) OR (DATEDIFF('".$today."', `expiry_date_abta`) > -30) ) " )->getRow();
+        $chart_data['expire_soon'] = $db->query("SELECT COUNT(`id`) AS count from audits WHERE status = 'reviewed' AND result_ba='suitable' AND result_abta='suitable' AND ( (DATEDIFF('".$today."', `expiry_date_ba`) > -30) OR (DATEDIFF('".$today."', `expiry_date_abta`) > -30) ) " )->getRow();
 
        echo view('dashboard_stats', $chart_data);
     }
