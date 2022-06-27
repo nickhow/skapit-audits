@@ -661,7 +661,7 @@ class AuditCrud extends Controller
             $session->setFlashdata('msg', 'Audit review submitted.');
 
             //delete the file now it's been sent
-            unlink($audit_id.".pdf");
+            //unlink($audit_id.".pdf");
                 
             return $this->response->redirect(site_url('/audits'));
         }
