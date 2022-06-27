@@ -6353,6 +6353,9 @@
                     },
                     complete: function(xhr, textStatus) {
                         console.log(xhr.status);
+                        if(!xhr.status == 200){
+                            document.getElementById('download_pdf').style.display = 'none';
+                        }
                     }
         }); 
 
