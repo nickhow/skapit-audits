@@ -67,6 +67,7 @@
     <?php if($audit_obj['status'] == 'reviewed'): ?>
         <div class="row p-3">
             <div class="col-12 col-md-6">
+            <div class="row">
                 <div class="col-8">
                     <div class="col-12">
                         <b>Audit result:</b>
@@ -78,8 +79,9 @@
                     <p>This result expires on <?php echo  date('d/m/Y', strtotime($audit_obj['expiry_date_ba']));?> for BA, and <?php echo  date('d/m/Y', strtotime($audit_obj['expiry_date_abta']));?> for ABTA.</p>
                 </div>
                 <div class="col-4">
-                    <a href="<?php echo base_url()."/pdf-results/".$audit_obj['id']; ?>" target='_blank' ><div class="col-12 btn btn-sm btn-secondary">View</div></a>
+                    <a href="<?php echo base_url()."/pdf-results/".$audit_obj['id']; ?>" target='_blank' ><div class="col-12 btn btn-sm btn-secondary">Download</div></a>
                 </div>
+            </div>
             </div>
             <div class="col-12 col-md-6">
                 <b>Understanding the feedback</b>
