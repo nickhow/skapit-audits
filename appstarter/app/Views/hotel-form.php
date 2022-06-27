@@ -67,14 +67,19 @@
     <?php if($audit_obj['status'] == 'reviewed'): ?>
         <div class="row p-3">
             <div class="col-12 col-md-6">
-                <div class="col-12">
-                    <b>Audit result:</b>
+                <div class="col-8">
+                    <div class="col-12">
+                        <b>Audit result:</b>
+                    </div>
+                    <div class="col-12">
+                        <h2><?php echo "BA: ". ucFirst($audit_obj['result_ba']);?></h2>
+                        <h2><?php echo "ABTA: ". ucFirst($audit_obj['result_abta']);?></h2>
+                    </div>
+                    <p>This result expires on <?php echo  date('d/m/Y', strtotime($audit_obj['expiry_date_ba']));?> for BA, and <?php echo  date('d/m/Y', strtotime($audit_obj['expiry_date_abta']));?> for ABTA.</p>
                 </div>
-                <div class="col-12">
-                    <h2><?php echo "BA: ". ucFirst($audit_obj['result_ba']);?></h2>
-                    <h2><?php echo "ABTA: ". ucFirst($audit_obj['result_abta']);?></h2>
+                <div class="col-4">
+                    <a href="<?php echo base_url()."/pdf-results/".$audit_obj['id']; ?>" target='_blank' ><div class="col-12 btn btn-sm btn-secondary">View</div></a>
                 </div>
-                <p>This result expires on <?php echo  date('d/m/Y', strtotime($audit_obj['expiry_date_ba']));?> for BA, and <?php echo  date('d/m/Y', strtotime($audit_obj['expiry_date_abta']));?> for ABTA.</p>
             </div>
             <div class="col-12 col-md-6">
                 <b>Understanding the feedback</b>
