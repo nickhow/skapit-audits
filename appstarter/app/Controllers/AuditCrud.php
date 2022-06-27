@@ -698,6 +698,7 @@ class AuditCrud extends Controller
         
         $data['audit_obj'] = $auditModel->where('id', $id)->first();
         $data['account_audit_objects'] = $accountAuditModel->orderBy('id', 'DESC')->findAll();
+        $data['account_obj'] = $accountModel->where('id',$accountAuditModel->where('id', $id)->findColumn('account_id'))->first();
             echo view('templates/header');
             echo view('single-audit', $data); 
             echo view('templates/footer');

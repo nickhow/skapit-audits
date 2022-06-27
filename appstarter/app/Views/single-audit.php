@@ -3,6 +3,9 @@
         <div class="row justify-content-md-center ">
           <div class="col-12 col-lg-6 p-4 bg-white rounded h-100">
               <h2>Update Audit</h2>
+
+              <h4>Name, resort</h4>
+              
                 <form method="post" id="update_account" name="update_account" 
                 action="<?= site_url('/update-audit') ?>">
                   <input type="hidden" name="id" id="id" value="<?php echo $audit_obj['id']; ?>">                  
@@ -87,17 +90,21 @@
                                       <tr>
                                         <th>Rating Agency</th>
                                         <th>Result</th>
+                                        <th>Expires</th>
                                       </tr>
                                     </thead>
                                       <tbody>
                                       <tr>
                                         <td>BA</td>
                                         <td><?php echo ucFirst($audit_obj['result_ba'])?></td>
+                                        <td><?php echo ucFirst($audit_obj['expiry_date_ba'])?></td>
                                       </tr>
                                       <tr>
                                         <td>ABTA</td>
-                                        <td><?php echo ucFirst($audit_obj['result_ba'])?></td>
+                                        <td><?php echo ucFirst($audit_obj['result_abta'])?></td>
+                                        <td><?php echo ucFirst($audit_obj['expiry_date_abta'])?></td>
                                       </tr>
+                                      <tr>
                                     </tbody>
                                     </table>
                                   </div>
