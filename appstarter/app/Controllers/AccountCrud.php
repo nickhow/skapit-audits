@@ -246,6 +246,7 @@ class AccountCrud extends Controller
                 'status' => 'sent',
                 'is_payable' => $isPayable,
                 'payable_amount' => $payableAmount,
+                'audit_owner_id' => $session->id,
             ];
 
             //Collect accountAudit data
