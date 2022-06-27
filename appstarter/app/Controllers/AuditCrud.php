@@ -661,7 +661,7 @@ class AuditCrud extends Controller
             $session->setFlashdata('msg', 'Audit review submitted.');
 
             //delete the file now it's been sent
-            unlink($audit_id.".pdf");
+            //unlink($audit_id.".pdf");
                 
             return $this->response->redirect(site_url('/audits'));
         }
@@ -1281,7 +1281,7 @@ class AuditCrud extends Controller
         ]);
         $mpdf->WriteHTML($html);
 
-        $filename = $audit_id.".pdf";
+        $filename = "pdf-results/".$audit_id.".pdf";
 
         $mpdf->Output($filename, 'F');
 
