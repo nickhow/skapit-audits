@@ -19,7 +19,7 @@
             <h3>Property Contact Details</h3>
               <div class="form-group">
                 <label>Health and Safety Contact Name</label>
-                <input type="text" name="name" autocomplete="new-password" value="<?= set_value('name') ?>" class="form-control">
+                <input type="text" name="name" autocomplete="name" value="<?= set_value('name') ?>" class="form-control">
               </div>
         
               <div class="form-group pt-2">
