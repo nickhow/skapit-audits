@@ -77,7 +77,7 @@
                         <h2><?php echo "ABTA: ". ucFirst($audit_obj['result_abta']);?></h2>
                     </div>
                 </div>
-                <div class="col-4 text-center align-self-center">
+                <div id="download_pdf" class="col-4 text-center align-self-center">
                     <a href="<?php echo base_url()."/pdf-results/".$audit_obj['id'].".pdf"; ?>" download target='_blank' > <i class="fas fa-download fa-2x"></i> <br/> Download PDF</a>
                 </div>
             </div>
@@ -6340,5 +6340,21 @@
                         
                     }               
                 });
+        </script>
+
+        <script>
+        
+        // check the file is available for download, else hide the button. download_pdf
+        $.ajax({
+                    url:  '<?php echo site_url('/pdf-results/'.$audit_obj['id'].'.pdf') ?>',
+                    type: 'GET',
+                    success: function(data, textStatus, xhr) {
+                        console.log(xhr.status);
+                    },
+                    complete: function(xhr, textStatus) {
+                        console.log(xhr.status);
+                    }
+        }); 
+
         </script>
         <?php endif; ?>
