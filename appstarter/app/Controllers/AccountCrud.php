@@ -168,7 +168,7 @@ class AccountCrud extends Controller
         //Account
         $data = [
             'name' => $this->request->getVar('name'),
-            'email'  => $this->request->getVar('hs_contact_email'),
+            'email'  => $this->request->getVar('input_contact'),
             'group_id'  => $this->request->getVar('group_id'),
             'is_group_manager'  => $this->request->getVar('is_group_manager'),
             'phone'  => $this->request->getVar('phone'),
