@@ -19,12 +19,12 @@
             <h3>Property Contact Details</h3>
               <div class="form-group">
                 <label>Health and Safety Contact Name</label>
-                <input type="text" name="name" value="<?= set_value('name') ?>" class="form-control">
+                <input type="text" name="name" autocomplete="new-password" value="<?= set_value('name') ?>" class="form-control">
               </div>
         
               <div class="form-group pt-2">
                 <label>Health and Safety Contact Email</label>
-                <input type="text" name="input_contact"  autocomplete="off"value="<?= set_value('email') ?>" class="form-control">
+                <input type="text" name="input_contact"  autocomplete="off" value="<?= set_value('email') ?>" class="form-control">
               </div>
               
               <div class="form-group pt-2">
