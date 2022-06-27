@@ -670,6 +670,7 @@ class AuditCrud extends Controller
     // show single audit ->for editing as admin/manager
     public function editSingleAudit($id = null){
         $auditModel = new AuditModel();
+        $accountModel = new AccountModel();
         $accountAuditModel = new AccountAuditModel();
         $groupMappingModel = new GroupMappingModel();
         $session= session();
