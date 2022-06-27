@@ -1281,7 +1281,7 @@ class AuditCrud extends Controller
         ]);
         $mpdf->WriteHTML($html);
 
-        $filename = $audit_id.".pdf";
+        $filename = "pdf-results/".$audit_id.".pdf";
 
         $mpdf->Output($filename, 'F');
 
