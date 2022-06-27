@@ -78,7 +78,7 @@
                     </div>
                 </div>
                 <div class="col-4 text-center align-self-center">
-                    <a href="<?php echo base_url()."/pdf-results/".$audit_obj['id']; ?>" download target='_blank' > <i class="fas fa-download fa-2x"></i> <br/> Download PDF</a>
+                    <a href="<?php echo base_url()."/pdf-results/".$audit_obj['id'].".pdf"; ?>" download target='_blank' > <i class="fas fa-download fa-2x"></i> <br/> Download PDF</a>
                 </div>
             </div>
 
