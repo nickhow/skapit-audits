@@ -57,7 +57,7 @@
                   <?php endif; ?>
                   
                   <div class="form-group py-3">
-                    <a href="javascript:history.go(-1)" class="btn btn-outline-dark btn-block"><i class="fas fa-arrow-left"></i> Back</a>
+                    <a href="javascript:window.history.back()" class="btn btn-outline-dark btn-block"><i class="fas fa-arrow-left"></i> Back</a>
                     <button type="submit" class="btn btn-primary btn-block px-5 mx-2">Save Changes</button>
                   </div>
                 </form>

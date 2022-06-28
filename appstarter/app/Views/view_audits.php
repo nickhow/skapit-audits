@@ -104,7 +104,7 @@
                         <div class="text-secondary copy btn m-0 p-0" data-clipboard-text="<?php echo base_url('audit/'.$audit['id']);?>" onclick="toggleToolTip(this);" data-bs-toggle="tooltip" data-bs-trigger="manual" data-bs-placement="top" data-bs-title="Copied!"><i class="far fa-copy fa-2x"></i></div>
                       </div>
                       <div class="col-4 text-center">
-                          <a href="<?php echo base_url('audit/'.$audit['id'].'/edit');?>" target="_blank" class="text-secondary" ><i class="far fa-edit fa-2x"></i></a>
+                          <a href="<?php echo base_url('audit/'.$audit['id'].'/edit');?>" class="text-secondary" ><i class="far fa-edit fa-2x"></i></a>
                       </div>
                      <div class="col-4 text-center">
                           <a href="<?php echo base_url('audit/'.$audit['id'].'/delete');?>" class="text-danger"><i class="far fa-trash-alt fa-2x"></i></a>
