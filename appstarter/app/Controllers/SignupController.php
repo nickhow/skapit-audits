@@ -130,8 +130,11 @@ class SignupController extends Controller
 
     public function selfserve()
     {
+        helper(['form']);
+        $data = [];
+    
         echo view('templates/header');
-        echo view('self_serve');
+        echo view('self_serve',$data);
         echo view('templates/footer');
     }
 
