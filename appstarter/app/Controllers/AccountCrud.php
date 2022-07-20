@@ -63,10 +63,10 @@ class AccountCrud extends Controller
             echo view('templates/header');
             
         } elseif($session->get('enable_groups')){
-            $data['accounts'] = $accountModel->getAccountsWithGroupsById($user['group_id']);
+            $data['accounts']['account'] = $accountModel->getAccountsWithGroupsById($user['group_id']);
             echo view('templates/header-group');
         } else {
-            $data['accounts'] = $accountModel->getAccountsWithGroupById($user['group_id']);
+            $data['accounts']['account'] = $accountModel->getAccountsWithGroupById($user['group_id']);
             echo view('templates/header-group');
         }
         

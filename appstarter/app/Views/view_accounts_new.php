@@ -31,13 +31,13 @@
           <?php if($accounts): ?>
           <?php foreach($accounts as $account):  print_r($account); ?>
 
-           <php $account = [
-                'account' = [
-                    'id' => '1',
-                    'accommodation_name' => 'test',
-                    'resort' => 'resort',
-                ],
-           ]; 
+           <?php /* $account = [
+                    'account' = [
+                        'id' => '1',
+                        'accommodation_name' => 'test',
+                        'resort' => 'resort',
+                    ],
+            ]; */
            ?>
   
 
