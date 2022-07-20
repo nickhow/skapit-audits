@@ -28,16 +28,17 @@
           </tr>
        </thead>
        <tbody>
-          <?php if($accounts): ?>
-          <?php foreach($accounts as $account):  print_r($account); ?>
+          <?php if($accounts): print_r($accounts); ?>
+          
+          <?php foreach($accounts as $account):   ?>
 
-           <?php /* $account = [
+           <?php $account = [
                     'account' = [
                         'id' => '1',
                         'accommodation_name' => 'test',
                         'resort' => 'resort',
                     ],
-            ]; */
+            ]; 
            ?>
   
 
