@@ -32,13 +32,13 @@
           
           <?php foreach($accounts as $account):   ?>
 
-           <?php $account = [
+           <?php /* $account = [
                     'account' => array(
                         'id' => '1',
                         'accommodation_name' => 'test',
                         'resort' => 'resort',
                     )
-            ]; 
+            ]; */
            ?>
   
 
