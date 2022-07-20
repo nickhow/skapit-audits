@@ -28,19 +28,9 @@
           </tr>
        </thead>
        <tbody>
-          <?php if($accounts): print_r($accounts); ?>
+          <?php if($accounts): ?>
           
-          <?php foreach($accounts as $account):   ?>
-
-           <?php /* $account = [
-                    'account' => array(
-                        'id' => '1',
-                        'accommodation_name' => 'test',
-                        'resort' => 'resort',
-                    )
-            ]; */
-           ?>
-  
+          <?php foreach($accounts as $account):   ?>  
 
           <tr>
              <td>
