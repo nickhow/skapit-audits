@@ -29,7 +29,18 @@
        </thead>
        <tbody>
           <?php if($accounts): ?>
-          <?php foreach($accounts as $account): ?>
+          <?php foreach($accounts as $account):  print_r($account); ?>
+
+           <php $account = [
+                'account' = [
+                    'id' => '1',
+                    'accommodation_name' => 'test',
+                    'resort' => 'resort',
+                ],
+           ]; 
+           ?>
+  
+
           <tr>
              <td>
                 <div class="row">
