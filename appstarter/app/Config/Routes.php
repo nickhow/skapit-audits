@@ -138,6 +138,9 @@ $routes->get('/user/(:num)/delete', 'ProfileController::delete/$1');
 $routes->get('user/(:num)', 'ProfileController::singleUser/$1');
 $routes->post('user/update', 'ProfileController::update');
 
+$routes->get('/register','SignupController::selfserve');
+$routes->post('/register','SignupController::store_selfserve');
+
 $routes->get('/privacy-policy', 'AuditCrud::privacyPolicy');
 $routes->get('/privacy-policy/(:segment)', 'AuditCrud::privacyPolicy/$1');
 

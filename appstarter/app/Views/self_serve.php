@@ -21,7 +21,7 @@
                 </div>
                 <?php endif;?>
 
-                <form action="<?php echo base_url(); ?>/SignupController/store" method="post">
+                <form action="<?php echo base_url(); ?>/SignupController/store_selfserve" method="post">
                     <h2>About You</h2>
                     <div class="form-group pt-2">
                         <label>Name</label>
@@ -44,7 +44,22 @@
                     </div>
 
                     <h2>The Property</h2>
-                    
+                    <div class="form-group pt-2">
+                        <label>Contact Phone Number</label>
+                        <input type="text" name="name" placeholder="Name" value="<?= set_value('name') ?>" class="form-control" >
+                    </div>
+                    <div class="form-group pt-2">
+                        <label>Accommodation Name</label>
+                        <input type="text" name="accommodation_name" placeholder="Accommodation Name" value="<?= set_value('accommodation_name') ?>" class="form-control" >
+                    </div>
+                    <div class="form-group pt-2">
+                        <label>Resort</label>
+                        <input type="text" name="resort" placeholder="Resort" value="<?= set_value('resort') ?>" class="form-control" >
+                    </div>
+                    <div class="form-group pt-2">
+                        <label>Country</label>
+                        <input type="text" name="country" placeholder="Country" value="<?= set_value('country') ?>" class="form-control" >
+                    </div>
                 
 
                     <div class="d-grid p-3">
