@@ -143,7 +143,7 @@ class SignupController extends Controller
         helper(['form']);
         $rules = [
             'name'          => 'required|min_length[2]|max_length[50]',
-            'email'         => 'required|min_length[2]|max_length[80]',
+            'email'         => 'required|min_length[2]|max_length[80]|is_unique[users.email]',
             'password'      => 'required|min_length[4]|max_length[50]',
             'confirmpassword'  => 'matches[password]'
         ];
