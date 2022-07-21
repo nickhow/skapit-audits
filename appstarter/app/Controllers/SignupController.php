@@ -144,7 +144,6 @@ class SignupController extends Controller
         $rules = [
             'name'          => 'required|min_length[2]|max_length[50]',
             'email'         => 'required|min_length[2]|max_length[80]|is_unique[users.email]',
-            'username'         => 'required|min_length[4]|max_length[100]|is_unique[users.username]',
             'password'      => 'required|min_length[4]|max_length[50]',
             'confirmpassword'  => 'matches[password]'
         ];
@@ -160,12 +159,6 @@ class SignupController extends Controller
                     'max_length' => 'The email is too long',
                     'is_unique' => 'This email has used already.',
                     ],
-            'username' => [
-                'required' => 'Username is a required field. Please enter a username.',
-                'min_length' => 'The username must be at least 4 characters.',
-                'max_length' => 'The username must not be more than 100 characters',
-                'is_unique' => 'This username has been taken, please enter another username.',
-                ],
             'password' => [
                 'required' => 'Password is a required field. Please enter a password.',
                 'min_length' => 'The password must be at least 4 characters.',
@@ -184,7 +177,7 @@ class SignupController extends Controller
 
             $data = [
                 'name'  => $this->request->getVar('name'),
-                'username'  => $this->request->getVar('username'),
+                'username'  => $this->request->getVar('email'),
                 'email' => $this->request->getVar('email'),
                 'group_id'  => $group_id,
                 'account_id' => $account_id,
