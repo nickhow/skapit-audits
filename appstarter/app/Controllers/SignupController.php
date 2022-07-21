@@ -143,7 +143,7 @@ class SignupController extends Controller
         helper(['form']);
         $rules = [
             'name'          => 'required|min_length[2]|max_length[50]',
-            'email'         => 'required|min_length[2]|max_length[80]|is_unique[users.email]',
+            'email'         => 'required|min_length[2]|max_length[80]|is_unique[users.user_email]',
             'password'      => 'required|min_length[4]|max_length[50]',
             'confirmpassword'  => 'matches[password]'
         ];
@@ -157,7 +157,7 @@ class SignupController extends Controller
                     'required' => 'Email is a required field. Please enter an email address.',
                     'min_length' => 'The email is too short.',
                     'max_length' => 'The email is too long',
-                    'is_unique' => 'This email has used already.',
+                    'is_unique' => 'This email has been used already.',
                     ],
             'password' => [
                 'required' => 'Password is a required field. Please enter a password.',
