@@ -44,10 +44,14 @@
                     </div>
 
                     <!-- Private property or group :: show/hide the relevant bits of form -->
-                    <input type="radio" id="private" name="type" value="private">
-                    <label for="private">I only need to audit a single accomodation </label><br>
-                    <input type="radio" id="group" name="type" value="group">
-                    <label for="group">I have an accommodation group to audit</label><br>
+                    <div class="form-group pt-2">
+                        <label>What type of account do you require?</label>
+                        <input type="radio" id="private" name="type" value="private">
+                        <label for="private">I only need to audit a single accomodation </label><br>
+                        <input type="radio" id="group" name="type" value="group">
+                        <label for="group">I have a multi properties to audit</label><br>
+                    </div>
+                    
 
 
                     <div id="private_wrapper">
