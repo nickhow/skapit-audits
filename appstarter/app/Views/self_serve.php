@@ -46,7 +46,7 @@
                     <h2>The Property</h2>
                     <div class="form-group pt-2">
                         <label>Contact Phone Number</label>
-                        <input type="text" name="name" placeholder="Name" value="<?= set_value('name') ?>" class="form-control" >
+                        <input type="text" name="phone" placeholder="Phone" value="<?= set_value('phone') ?>" class="form-control" >
                     </div>
                     <div class="form-group pt-2">
                         <label>Accommodation Name</label>
