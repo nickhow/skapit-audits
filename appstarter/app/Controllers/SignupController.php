@@ -169,7 +169,7 @@ class SignupController extends Controller
                 ]
           ];
           
-        if($this->validate($rules, $errors)){
+    //    if($this->validate($rules, $errors)){
             $userModel = new UserModel();
    
             $group_id = 0;
@@ -204,14 +204,14 @@ class SignupController extends Controller
 
             return redirect()->to($redirect);
 
-        }else{
-            helper(['form']);
-            $data['validation'] = $this->validator;
+    //    }else{
+    //        helper(['form']);
+    //        $data['validation'] = $this->validator;
 
-            echo view('templates/header');
-            echo view('self_serve', $data);
-            echo view('templates/footer');
-        }
+    //        echo view('templates/header');
+    //        echo view('self_serve', $data);
+    //        echo view('templates/footer');
+    //    }
           
     }
  
