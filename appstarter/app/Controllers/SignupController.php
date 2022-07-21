@@ -178,7 +178,7 @@ class SignupController extends Controller
             $data = [
                 'name'  => $this->request->getVar('name'),
                 'username'  => $this->request->getVar('email'),
-                'email' => $this->request->getVar('email'),
+                'user_email' => $this->request->getVar('email'),
                 'group_id'  => $group_id,
                 'account_id' => $account_id,
                 'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT)
@@ -190,7 +190,7 @@ class SignupController extends Controller
             $account_data = [
                 'name' => $this->request->getVar('name'),
                 'email'  => $this->request->getVar('email'),
-                'group_id'  => $this->request->getVar('group_id'),
+                'group_id'  => $group_id,
                 'is_group_manager'  => $this->request->getVar('is_group_manager'),
                 'phone'  => $this->request->getVar('phone'),
                 'accommodation_name'  => $this->request->getVar('accommodation_name'),
@@ -200,17 +200,17 @@ class SignupController extends Controller
             ];
             $accountModel->save($account_data);
 
-            $redirect = '/audits';
+        //    $redirect = '/audits';
 
-            return redirect()->to($redirect);
+        //    return redirect()->to($redirect);
 
         }else{
-    //        helper(['form']);
-    //        $data['validation'] = $this->validator;
+            helper(['form']);
+            $data['validation'] = $this->validator;
 
-    //        echo view('templates/header');
-    //        echo view('self_serve', $data);
-    //        echo view('templates/footer');
+            echo view('templates/header');
+            echo view('self_serve', $data);
+            echo view('templates/footer');
         }
           
     }

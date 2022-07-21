@@ -43,22 +43,39 @@
                         <input type="password" name="confirmpassword" placeholder="Confirm Password" class="form-control" >
                     </div>
 
-                    <h2>The Property</h2>
-                    <div class="form-group pt-2">
-                        <label>Contact Phone Number</label>
-                        <input type="text" name="phone" placeholder="Phone" value="<?= set_value('phone') ?>" class="form-control" >
+                    <!-- Private property or group :: show/hide the relevant bits of form -->
+                    <input type="radio" id="private" name="type" value="private">
+                    <label for="private">I only need to audit a single accomodation </label><br>
+                    <input type="radio" id="group" name="type" value="group">
+                    <label for="group">I have an accommodation group to audit</label><br>
+
+
+                    <div id="private_wrapper">
+                        <h2>The Property</h2>
+                        <div class="form-group pt-2">
+                            <label>Contact Phone Number</label>
+                            <input type="text" name="phone" placeholder="Phone" value="<?= set_value('phone') ?>" class="form-control" >
+                        </div>
+                        <div class="form-group pt-2">
+                            <label>Accommodation Name</label>
+                            <input type="text" name="accommodation_name" placeholder="Accommodation Name" value="<?= set_value('accommodation_name') ?>" class="form-control" >
+                        </div>
+                        <div class="form-group pt-2">
+                            <label>Resort</label>
+                            <input type="text" name="resort" placeholder="Resort" value="<?= set_value('resort') ?>" class="form-control" >
+                        </div>
+                        <div class="form-group pt-2">
+                            <label>Country</label>
+                            <input type="text" name="country" placeholder="Country" value="<?= set_value('country') ?>" class="form-control" >
+                        </div>
                     </div>
-                    <div class="form-group pt-2">
-                        <label>Accommodation Name</label>
-                        <input type="text" name="accommodation_name" placeholder="Accommodation Name" value="<?= set_value('accommodation_name') ?>" class="form-control" >
-                    </div>
-                    <div class="form-group pt-2">
-                        <label>Resort</label>
-                        <input type="text" name="resort" placeholder="Resort" value="<?= set_value('resort') ?>" class="form-control" >
-                    </div>
-                    <div class="form-group pt-2">
-                        <label>Country</label>
-                        <input type="text" name="country" placeholder="Country" value="<?= set_value('country') ?>" class="form-control" >
+
+                    <div id="group_wrapper">
+                        <h2>The Accommodation Group</h2>
+                        <div class="form-group pt-2">
+                            <label>Group Name</label>
+                            <input type="text" name="groupname" placeholder="Group Name" value="<?= set_value('groupname') ?>" class="form-control" >
+                        </div>
                     </div>
                 
 
