@@ -45,11 +45,11 @@
 
                     <!-- Private property or group :: show/hide the relevant bits of form -->
                     <div class="form-group pt-2">
-                        <label>What type of account do you require?</label><br/>
-                        <input type="radio" id="private" name="type" value="private">
-                        <label for="private">I only need to audit a single accomodation </label><br>
-                        <input type="radio" id="group" name="type" value="group">
-                        <label for="group">I have a multi properties to audit</label><br>
+                        <label>What type of account do you require?</label>
+                        <select id="type" name="type" class="">
+                            <option value="private" selected >I only need to audit a single accomodation </option>
+                            <option value="group" selected >I have a multi properties to audit </option>
+                        </select>
                     </div>
                     
 
@@ -91,5 +91,23 @@
         </div>
     </div>
 </body>
+
+<script>
+    function formUpdate(){
+        let private = document.getElementById('private_wrapper');
+        let group = document.getElementById('group_wrapper');
+        
+        if(document.getElementById('type').value == private){
+            private.disabled = true;
+            group.style.display="none";
+        } else {
+            private.disabled = false;
+            group.style.display="block";
+        }
+    }
+    document.getElementById('type').addEventListener("change", formUpdate);
+    formUpdate();
+</script>
+    
 
 </html>
