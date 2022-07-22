@@ -322,8 +322,10 @@ class SignupController extends Controller
                     'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT)
                 ];
                 
-                $user_to_reset = $userModel->where('user_email',$email_to_reset)->first();
                 print_r("hello ... ");
+
+                $user_to_reset = $userModel->where('user_email',$email_to_reset)->first();
+              
                 print_r("[] = ".$user_to_reset['id']);
                 print_r("-> = ".$user_to_reset->id);
                 //$userModel->update($user_to_reset['id'],$data);
