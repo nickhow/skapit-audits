@@ -245,7 +245,7 @@ class SignupController extends Controller
         $reset_data = [
             'email' => $email_to_reset,
             'selector'  => $selector,
-            'token'  => $token,
+            'token'  => hash('sha256', $token),
             'expires'  => $expires
         ];
 
