@@ -258,14 +258,13 @@ class SignupController extends Controller
         $resetModel->save($reset_data);
 
         //email the reset link
-        print_r($emailModel->sendResetEmail($user_to_reset,$link,'en'));
+        $emailModel->sendResetEmail($user_to_reset,$link,'en');
 
         }
        
-
-
+        $session->setFlashdata('msg', 'If a user with the provided email exists we will send a reset token shortly.');
         //return message and show page
-        //$redirect = '/password-reset';
+        $redirect = '/password-reset';
     }
 
     public function reset_password(){
