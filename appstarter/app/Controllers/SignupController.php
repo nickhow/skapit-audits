@@ -214,5 +214,49 @@ class SignupController extends Controller
         }
           
     }
+
+    public function reset_request(){
+        echo view('templates/header');
+        echo view('request_reset');
+        echo view('templates/footer');
+    }
+
+    public function init_reset(){
+        $userModel = new UserModel();
+
+        // check email
+        $email_to_reset = $this->request->getVar('email');
+        $user_to_reset = $userModel->where('email',$email_to_reset)->first();
+        if( is_null( $user_to_reset) ) {
+            //stop here - not a user
+        };
+        print_r($user_to_reset);
+
+        // create a reset row and remove any old ones for this account
+
+        //email the reset link
+
+        //return message and show page
+        echo view('templates/header');
+        echo view('request_reset');
+        echo view('templates/footer');
+    }
+
+    public function reset_request(){
+        echo view('templates/header');
+        echo view('reset_password');
+        echo view('templates/footer');
+    }
+
+    public function process_reset(){
+        // check token
+        
+        // Update password
+
+        //return message and show page then redirect to login
+        echo view('templates/header');
+        echo view('reset_password');
+        echo view('templates/footer');
+    }
  
 }
