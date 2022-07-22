@@ -309,10 +309,8 @@ class SignupController extends Controller
                 ];
                 
                 $user_to_reset = $userModel->where('user_email',$email_to_reset)->first();
-                $userModel->update($user_to_reset['id'],)
-
-                $responseModel->update($response['id'], $data);
-
+                $userModel->update($user_to_reset['id'],$data);
+                
                 //Delete the reset token
                 $resetModel->where('id',$reset_request['id'])->delete();
             }
