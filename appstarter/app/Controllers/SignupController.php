@@ -262,7 +262,7 @@ class SignupController extends Controller
 
         }
        
-        $session->setFlashdata('msg', 'If a user with the provided email exists we will send a reset token shortly.');
+        $session->setFlashdata('msg', 'If a user with the provided email exists we will send a reset token shortly.'.$link );
         //return message and show page
         $redirect = '/request-reset';
         return redirect()->to($redirect);
@@ -297,7 +297,7 @@ class SignupController extends Controller
           
         if($this->validate($rules, $errors)){
 
-                    // check token
+        // check token
         $time = new Time();
 
         $where = ['selector' => $selector, 'expires >' => $time];
