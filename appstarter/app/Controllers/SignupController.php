@@ -230,6 +230,8 @@ class SignupController extends Controller
         $userModel = new UserModel();
         $resetModel = new ResetModel();
         $emailModel = new EmailModel();
+        $session = session();
+        
         // check email
         $email_to_reset = $this->request->getVar('email');
         $user_to_reset = $userModel->where('user_email',$email_to_reset)->first();
