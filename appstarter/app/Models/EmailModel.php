@@ -299,7 +299,8 @@ class EmailModel extends Model
         $email->setMessage($message);
         
        if($email->send()){
-          return "ok"; 
+          //return "ok"; 
+          return ($message);
        } else {
             $data = $email->printDebugger(['headers']);
             return ($data);
