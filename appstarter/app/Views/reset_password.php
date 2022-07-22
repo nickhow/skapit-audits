@@ -46,6 +46,13 @@
                            <?= session()->getFlashdata('msg') ?>
                         </div>
                     <?php endif;?>
+                    <?php if(isset($validation)):?>
+                        <div class="alert alert-warning">
+                            <?= $validation->listErrors() ?>
+                        </div>
+                    <?php endif;?>
+
+
                     <form action="#" method="post">
                         <div class="form-floating mb-3">
                             <input type="password" name="password" id="password" placeholder="Password" class="form-control" >
