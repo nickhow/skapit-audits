@@ -310,6 +310,8 @@ class SignupController extends Controller
 
                 //Delete the reset token
                 $resetModel->where('id',$reset_request['id'])->delete();
+                
+                $session->setFlashdata('msg', 'Your password has been reset, please try to sign in.');
             }
         }
 
