@@ -314,7 +314,7 @@ class SignupController extends Controller
         }
 
         //return message and show page then redirect to login
-        $redirect = '/password-reset';
+        $redirect = '/signin';
         return redirect()->to($redirect);
     }
  
