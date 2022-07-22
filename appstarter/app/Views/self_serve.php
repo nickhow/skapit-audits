@@ -97,7 +97,7 @@
         let private = document.getElementById('private_wrapper');
         let group = document.getElementById('group_wrapper');
         
-        if(document.getElementById('type').value == private){
+        if(document.getElementById('type').value == "private"){
             private.style.display = "block";
             group.style.display = "none";
         } else {
