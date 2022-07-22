@@ -98,11 +98,12 @@
         let group = document.getElementById('group_wrapper');
         
         if(document.getElementById('type').value == private){
-            private.disabled = true;
+            private.style.display = true;
             group.style.display="none";
         } else {
-            private.disabled = false;
+            private.style.display="none";
             group.style.display="block";
+        
         }
     }
     document.getElementById('type').addEventListener("change", formUpdate);
