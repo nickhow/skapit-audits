@@ -46,9 +46,9 @@
                            <?= session()->getFlashdata('msg') ?>
                         </div>
                     <?php endif;?>
-                    <form action="<?php echo base_url(); ?>/SignupController/request_reset" method="post">
+                    <form action="<?php echo base_url(); ?>/SignupController/init_reset" method="post">
                         <div class="form-floating mb-3">
-                          <input type="username" class="form-control" name="email" id="email" placeholder="Email" value="<?= set_value('email') ?>">
+                          <input type="username" class="form-control" name="email" id="email" placeholder="Email">
                           <label for="username">Email</label>
                         </div>
                         <div class="d-grid">
