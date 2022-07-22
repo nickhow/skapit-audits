@@ -52,23 +52,14 @@
                             <label for="password">Password</label>
                         </div>
 
-                        <div class="form-group pt-2">
-                        
+                        <div class="form-floating mb-3">
                             <input type="password" name="confirmpassword" id="confirmpassword" placeholder="Confirm Password" class="form-control" >
                             <label for="confirmpassword">Confirm Password</label>
                         </div>
                         <div class="d-grid">
-                             <button type="submit" class="btn btn-primary">Request password reset</button>
+                             <button type="submit" class="btn btn-primary">Confirm new password</button>
                         </div>     
-
-                        <div class="d-grid">
-                             <button type="submit" class="btn btn-primary">Request password reset</button>
-                        </div>    
-
-
-
                     </form>
-                
                 </div>
             </div> 
               

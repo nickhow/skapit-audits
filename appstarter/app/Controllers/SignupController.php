@@ -269,13 +269,40 @@ class SignupController extends Controller
     }
 
     public function reset_password(){
-        echo view('reset_password');
+        helper(['form']);
+        $data = [];
+        echo view('reset_password',$data);
     }
 
     public function process_reset($selector, $token_validator){
         $resetModel = new ResetModel();
         $userModel = new UserModel();
         $session = session();
+
+        helper(['form']);
+        $rules = [
+            'password'      => 'required|min_length[4]|max_length[50]',
+            'confirmpassword'  => 'matches[password]'
+        ];
+        $errors = [
+            'password' => [
+                'required' => 'Password is a required field. Please enter a password.',
+                'min_length' => 'The password must be at least 4 characters.',
+                'max_length' => 'The username must not be more than 50 characters',
+                ],
+            'confirmpassword' => [
+                'matches' => 'The passwords do not match.'
+                ]
+          ];
+          
+        if($this->validate($rules, $errors)){
+
+        } else {
+            helper(['form']);
+            $data['validation'] = $this->validator;
+            echo view('reset_password',$data);
+        }
+
         // check token
         $time = new Time();
 
