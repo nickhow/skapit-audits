@@ -52,7 +52,7 @@
                         </select>
                     </div>
                     
-                    <div class="p2"></div>
+                    <div class="p-4"></div>
 
                     <div id="private_wrapper">
                         <h2>The Property</h2>

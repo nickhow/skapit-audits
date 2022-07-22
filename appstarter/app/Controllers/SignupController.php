@@ -191,23 +191,30 @@ class SignupController extends Controller
 
             $userModel->save($data);
 
-            $accountModel = new AccountModel();
-            $account_data = [
-                'name' => $this->request->getVar('name'),
-                'email'  => $this->request->getVar('email'),
-                'group_id'  => $group_id,
-                'is_group_manager'  => $this->request->getVar('is_group_manager'),
-                'phone'  => $this->request->getVar('phone'),
-                'accommodation_name'  => $this->request->getVar('accommodation_name'),
-                'resort'  => $this->request->getVar('resort'),
-                'country'  => $this->request->getVar('country'),
-                'notes'  => $this->request->getVar('notes'),
-            ];
-            $accountModel->save($account_data);
+            //single property - make account + audit
+            if($this->request->getVar('type') == "private") {
+                $accountModel = new AccountModel();
+                $account_data = [
+                    'name' => $this->request->getVar('name'),
+                    'email'  => $this->request->getVar('email'),
+                    'group_id'  => $group_id,
+                    'is_group_manager'  => $this->request->getVar('is_group_manager'),
+                    'phone'  => $this->request->getVar('phone'),
+                    'accommodation_name'  => $this->request->getVar('accommodation_name'),
+                    'resort'  => $this->request->getVar('resort'),
+                    'country'  => $this->request->getVar('country'),
+                    'notes'  => $this->request->getVar('notes'),
+                ];
+                $accountModel->save($account_data);
+            }
+            
+            //group - make group
 
-        //    $redirect = '/audits';
 
-        //    return redirect()->to($redirect);
+            //head to signin
+            $redirect = '/signin';
+
+            return redirect()->to($redirect);
 
         }else{
             helper(['form']);
