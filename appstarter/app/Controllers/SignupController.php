@@ -231,7 +231,7 @@ class SignupController extends Controller
         $resetModel = new ResetModel();
         $emailModel = new EmailModel();
         $session = session();
-        
+
         // check email
         $email_to_reset = $this->request->getVar('email');
         $user_to_reset = $userModel->where('user_email',$email_to_reset)->first();
@@ -267,6 +267,7 @@ class SignupController extends Controller
         $session->setFlashdata('msg', 'If a user with the provided email exists we will send a reset token shortly.');
         //return message and show page
         $redirect = '/password-reset';
+        return redirect()->to($redirect);
     }
 
     public function reset_password(){
