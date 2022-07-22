@@ -142,7 +142,7 @@ $routes->get('/register','SignupController::selfserve');
 $routes->post('/register','SignupController::store_selfserve');
 
 $routes->get('/request-reset','SignupController::reset_request');
-$routes->get('/password-reset/(:alphanum)/(:alphanum)','SignupController::reset_password/$1/$2');
+$routes->get('/password-reset','SignupController::reset_password');
 $routes->post('/password-reset/(:alphanum)/(:alphanum)','SignupController::process_reset/$1/$2');
 
 $routes->get('/privacy-policy', 'AuditCrud::privacyPolicy');
