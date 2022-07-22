@@ -221,9 +221,7 @@ class SignupController extends Controller
     }
 
     public function reset_request(){
-        echo view('templates/header');
         echo view('request_reset');
-        echo view('templates/footer');
     }
 
     public function init_reset(){
@@ -271,9 +269,7 @@ class SignupController extends Controller
     }
 
     public function reset_password(){
-        echo view('templates/header');
         echo view('reset_password');
-        echo view('templates/footer');
     }
 
     public function process_reset($selector, $token_validator){
@@ -310,7 +306,7 @@ class SignupController extends Controller
 
                 //Delete the reset token
                 $resetModel->where('id',$reset_request['id'])->delete();
-                
+
                 $session->setFlashdata('msg', 'Your password has been reset, please try to sign in.');
             }
         }

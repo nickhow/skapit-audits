@@ -93,7 +93,7 @@
                         </div>
                         <div class="row p-2">
                             <div class="col text-end">
-                                <a href="<?= site_url('request-reset') ?>"><i class="text-secondary">Reset password<i></a>
+                                <a href="<?= site_url('request-reset') ?>"><i class="text-secondary">Reset password</i></a>
                             </div>
                         </div>
                     </form>

@@ -47,18 +47,26 @@
                         </div>
                     <?php endif;?>
                     <form action="#" method="post">
-                        <div class="form-group pt-2">
-                        <label>Password</label>
-                            <input type="password" name="password" placeholder="Password" class="form-control" >
+                        <div class="form-floating mb-3">
+                            <input type="password" name="password" id="password" placeholder="Password" class="form-control" >
+                            <label for="password">Password</label>
                         </div>
 
                         <div class="form-group pt-2">
-                        <label>Confirm Password</label>
-                            <input type="password" name="confirmpassword" placeholder="Confirm Password" class="form-control" >
+                        
+                            <input type="password" name="confirmpassword" id="confirmpassword" placeholder="Confirm Password" class="form-control" >
+                            <label for="confirmpassword">Confirm Password</label>
                         </div>
                         <div class="d-grid">
                              <button type="submit" class="btn btn-primary">Request password reset</button>
                         </div>     
+
+                        <div class="d-grid">
+                             <button type="submit" class="btn btn-primary">Request password reset</button>
+                        </div>    
+
+
+
                     </form>
                 
                 </div>
