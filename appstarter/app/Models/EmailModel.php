@@ -294,7 +294,7 @@ class EmailModel extends Model
         $email->clear(true); //reset $email to empty state (true - include attachments)
 
         $email->setFrom('contact@skapit.com', 'Ski API Technolgies');
-        $email->setTo($user['email_address']);  
+        $email->setTo($user['user_email']);  
         $email->setSubject($subject);
         $email->setMessage($message);
         
