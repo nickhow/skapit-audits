@@ -141,7 +141,8 @@ $routes->post('user/update', 'ProfileController::update');
 $routes->get('/register','SignupController::selfserve');
 $routes->post('/register','SignupController::store_selfserve');
 
-$routes->get('/password-reset','SignupController::reset_request');
+$routes->get('/request-reset','SignupController::reset_request');
+$routes->get('/password-reset','SignupController::reset_password');
 
 $routes->get('/privacy-policy', 'AuditCrud::privacyPolicy');
 $routes->get('/privacy-policy/(:segment)', 'AuditCrud::privacyPolicy/$1');

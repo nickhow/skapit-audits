@@ -266,7 +266,7 @@ class SignupController extends Controller
        
         $session->setFlashdata('msg', 'If a user with the provided email exists we will send a reset token shortly.');
         //return message and show page
-        $redirect = '/password-reset';
+        $redirect = '/request-reset';
         return redirect()->to($redirect);
     }
 
@@ -277,14 +277,50 @@ class SignupController extends Controller
     }
 
     public function process_reset(){
+        $resetModel = new ResetModel();
+        $userModel = new UserModel();
+        $session = session();
         // check token
-        
-        // Update password
+
+        $selector = $this->request->getVar('selector');
+        $token_validator = $this->request->getVar('token');
+        $time = new Time();
+
+        $where = ['selector' => $selector, 'expires >' => $time];
+        $reset_request = $resetModel->where($where)->first();
+
+        if( is_null( $reset_request ) ) {
+            //stop - no valid request
+            $session->setFlashdata('msg', 'No valid reset tokens, it may have expired.');
+        } else {
+
+            //we have a request let's double check it
+
+            $calc = hash('sha256', hex2bin($token_validator));    	
+            
+            if (!hash_equals( $calc, $reset_request['token'] ) )  {
+                //stop - token invalid
+                $session->setFlashdata('msg', 'There was an error with the token provided.');
+            } else {
+
+                //OK - let's reset the password
+                $data = [
+                    'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT)
+                ]
+                
+                $user_to_reset = $userModel->where('user_email',$email_to_reset)->first();
+                $userModel->update($user_to_reset['id'],)
+
+                $responseModel->update($response['id'], $data);
+
+                //Delete the reset token
+                $resetModel->where('id',$reset_request['id'])->delete();
+            }
+        }
 
         //return message and show page then redirect to login
-        echo view('templates/header');
-        echo view('reset_password');
-        echo view('templates/footer');
+        $redirect = '/password-reset';
+        return redirect()->to($redirect);
     }
  
 }
