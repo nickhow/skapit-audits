@@ -242,7 +242,7 @@ class SignupController extends Controller
         echo view('templates/footer');
     }
 
-    public function reset_request(){
+    public function reset_password(){
         echo view('templates/header');
         echo view('reset_password');
         echo view('templates/footer');
