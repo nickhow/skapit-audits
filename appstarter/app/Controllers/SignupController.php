@@ -325,11 +325,11 @@ class SignupController extends Controller
                 echo("hello ... ");
                 echo($reset_request['email']);
 
-            //    $user_to_reset = $userModel->where('user_email',$reset_request['email'])->first();
+                $user_to_reset = $userModel->where('user_email',$reset_request['email'])->first();
               
-             //   print_r("[] = ".$user_to_reset['id']);
-            //    print_r("-> = ".$user_to_reset->id);
-                //$userModel->update($user_to_reset['id'],$data);
+                print_r($user_to_reset['id']);
+
+                $userModel->update($user_to_reset['id'],$data);
 
                 //Delete the reset token
             //    $resetModel->where('id',$reset_request['id'])->delete();
