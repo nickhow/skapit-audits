@@ -30,7 +30,7 @@
 
             <div class="col-12 align-self-center bg-white p-0 pt-2 pt-md-0 pb-4 pb-md-0 formbg">
                 
-                <div class="col-10 mx-auto pt-2 pb-4" >
+                <div class="col-12 col-md-4 col-lg-3 mx-auto pt-2 pb-4" >
                 
                     <div class="d-md-none p-2 text-center">
                         <h1 class="fs-1">Reset my password</h1>
@@ -48,8 +48,8 @@
                     <?php endif;?>
                     <form action="<?php echo base_url(); ?>/SignupController/init_reset" method="post">
                         <div class="form-floating mb-3">
-                          <input type="username" class="form-control" name="email" id="email" placeholder="Email">
-                          <label for="username">Email</label>
+                          <input type="email" class="form-control" name="email" id="email" placeholder="Email">
+                          <label for="email">Email</label>
                         </div>
                         <div class="d-grid">
                              <button type="submit" class="btn btn-primary">Request password reset</button>

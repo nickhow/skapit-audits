@@ -226,11 +226,11 @@ class SignupController extends Controller
 
         // check email
         $email_to_reset = $this->request->getVar('email');
-        $user_to_reset = $userModel->where('email',$email_to_reset)->first();
-        if( is_null( $user_to_reset) ) {
+      //  $user_to_reset = $userModel->where('email',$email_to_reset)->first();
+      //  if( is_null( $user_to_reset ) ) {
             //stop here - not a user
-        };
-        print_r($user_to_reset);
+     //   };
+        print_r($email_to_reset);
 
         // create a reset row and remove any old ones for this account
 
