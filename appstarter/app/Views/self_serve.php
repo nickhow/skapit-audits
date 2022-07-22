@@ -98,11 +98,11 @@
         let group = document.getElementById('group_wrapper');
         
         if(document.getElementById('type').value == private){
-            private.style.display = true;
-            group.style.display="none";
+            private.style.display = "block";
+            group.style.display = "none";
         } else {
-            private.style.display="none";
-            group.style.display="block";
+            private.style.display = "none";
+            group.style.display = "block";
         
         }
     }
