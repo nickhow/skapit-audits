@@ -254,7 +254,7 @@ class SignupController extends Controller
         $query_string = http_build_query(['selector' => $selector, 'validator' => bin2hex($token)]);
 
         $link = site_url('/reset-password'.$query_string);
-        print_r($$link);
+        print_r($link);
         
         $resetModel->save($reset_data);
 
