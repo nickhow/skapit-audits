@@ -322,18 +322,19 @@ class SignupController extends Controller
                     'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT)
                 ];
 
-                print_r("hello ... ");
+                echo("hello ... ");
+                echo($reset_request['email']);
 
-                $user_to_reset = $userModel->where('user_email',$reset_request['email'])->first();
+            //    $user_to_reset = $userModel->where('user_email',$reset_request['email'])->first();
               
-                print_r("[] = ".$user_to_reset['id']);
-                print_r("-> = ".$user_to_reset->id);
+             //   print_r("[] = ".$user_to_reset['id']);
+            //    print_r("-> = ".$user_to_reset->id);
                 //$userModel->update($user_to_reset['id'],$data);
 
                 //Delete the reset token
-                $resetModel->where('id',$reset_request['id'])->delete();
+            //    $resetModel->where('id',$reset_request['id'])->delete();
 
-                $session->setFlashdata('msg', 'Your password has been reset, please try to sign in.');
+            //    $session->setFlashdata('msg', 'Your password has been reset, please try to sign in.');
             }
         }
 
