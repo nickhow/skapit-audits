@@ -8,6 +8,9 @@ use App\Models\GroupMappingModel;
 use App\Models\AccountModel;
 use App\Models\ResetModel;
 
+use CodeIgniter\I18n\Time;
+
+
 class SignupController extends Controller
 {
     public function index()
@@ -237,8 +240,7 @@ class SignupController extends Controller
         
         $selector = bin2hex(random_bytes(8));
         $token = random_bytes(32);
-        $expires = new DateTime();
-        $expires->add(new DateInterval('PT01H'));
+        $expires = new Time('+1 hour');
 
         $reset_data = [
             'email' => $email_to_reset,
