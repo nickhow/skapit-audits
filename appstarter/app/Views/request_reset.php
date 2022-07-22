@@ -28,7 +28,7 @@
     <div class="container-fluid p-0 mobbg" >
         <div class="row m-0 vh-100">
 
-            <div class="col-12 col-md-4 col-lg-3 align-self-center bg-white p-0 pt-2 pt-md-0 pb-4 pb-md-0 formbg">
+            <div class="col-12 col-md-4 col-lg-3 align-self-center mx-auto bg-white p-0 pt-2 pt-md-0 pb-4 pb-md-0 formbg">
                 
                 <div class="col-12 col-md-10 mx-auto text-center pt-2 pb-4" >
                 

@@ -228,7 +228,7 @@ class SignupController extends Controller
         $email_to_reset = $this->request->getVar('email');
         $user_to_reset = $userModel->where('user_email',$email_to_reset)->first();
         if( is_null( $user_to_reset ) ) {
-            //stop here - not a user
+            print_r("is empty");
         };
         print_r($user_to_reset);
 
