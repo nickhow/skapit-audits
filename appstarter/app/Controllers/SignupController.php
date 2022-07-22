@@ -6,6 +6,7 @@ use App\Models\UserModel;
 use App\Models\GroupModel;
 use App\Models\GroupMappingModel;
 use App\Models\AccountModel;
+use App\Models\ResetModel;
 
 class SignupController extends Controller
 {
@@ -223,18 +224,40 @@ class SignupController extends Controller
 
     public function init_reset(){
         $userModel = new UserModel();
-
+        $resetModel = new ResetModel();
         // check email
         $email_to_reset = $this->request->getVar('email');
         $user_to_reset = $userModel->where('user_email',$email_to_reset)->first();
         if( is_null( $user_to_reset ) ) {
-            print_r("is empty");
-        };
-        print_r($user_to_reset);
+            //stop - no user with this email
+        } else {
 
         // create a reset row and remove any old ones for this account
+        $resetModel->where('email', $email_to_reset)->delete();
+        
+        $selector = bin2hex(random_bytes(8));
+        $token = random_bytes(32);
+        $expires = new DateTime();
+        $expires->add(new DateInterval('PT01H'));
+
+        $reset_data = [
+            'email' => $email_to_reset,
+            'selector'  => $selector,
+            'token'  => $token,
+            'expires'  => $expires
+        ];
+
+        print_r($reset_data );
+
+        //$link = http_build_query(['selector' => $selector, 'validator' => bin2hex($token)]));
+        
+        $resetModel->save($reset_data);
 
         //email the reset link
+
+        }
+       
+
 
         //return message and show page
         echo view('templates/header');
