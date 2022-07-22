@@ -30,7 +30,7 @@
 
             <div class="col-12 col-md-4 col-lg-3 align-self-center bg-white p-0 pt-2 pt-md-0 pb-4 pb-md-0 formbg">
                 
-                <div class="col-12 col-md-10 mx-auto pt-2 pb-4" >
+                <div class="col-12 col-md-10 mx-auto text-center pt-2 pb-4" >
                 
                     <div class="d-md-none p-2 text-center">
                         <h1 class="fs-1">Reset my password</h1>

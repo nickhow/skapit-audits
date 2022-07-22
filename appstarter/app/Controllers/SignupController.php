@@ -230,7 +230,7 @@ class SignupController extends Controller
         if( is_null( $user_to_reset ) ) {
             //stop here - not a user
         };
-        print_r($email_to_reset);
+        print_r($user_to_reset);
 
         // create a reset row and remove any old ones for this account
 
