@@ -46,7 +46,7 @@
                            <?= session()->getFlashdata('msg') ?>
                         </div>
                     <?php endif;?>
-                    <form action="<?php echo base_url(); ?>/SignupController/process_reset" method="post">
+                    <form action="#" method="post">
                         <div class="form-group pt-2">
                         <label>Password</label>
                             <input type="password" name="password" placeholder="Password" class="form-control" >
