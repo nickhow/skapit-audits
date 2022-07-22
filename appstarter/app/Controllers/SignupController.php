@@ -255,7 +255,7 @@ class SignupController extends Controller
 
         $query_string = http_build_query(['selector' => $selector, 'validator' => bin2hex($token)]);
 
-        $link = site_url('/reset-password?'.$query_string);
+        $link = site_url('/password-reset/'.$selector.'/'.bin2hex($token));
     
         $resetModel->save($reset_data);
 
@@ -276,14 +276,11 @@ class SignupController extends Controller
         echo view('templates/footer');
     }
 
-    public function process_reset(){
+    public function process_reset($selector, $token_validator){
         $resetModel = new ResetModel();
         $userModel = new UserModel();
         $session = session();
         // check token
-
-        $selector = $this->request->getVar('selector');
-        $token_validator = $this->request->getVar('token');
         $time = new Time();
 
         $where = ['selector' => $selector, 'expires >' => $time];
