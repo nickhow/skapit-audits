@@ -297,13 +297,7 @@ class SignupController extends Controller
           
         if($this->validate($rules, $errors)){
 
-        } else {
-            helper(['form']);
-            $data['validation'] = $this->validator;
-            echo view('reset_password',$data);
-        }
-
-        // check token
+                    // check token
         $time = new Time();
 
         $where = ['selector' => $selector, 'expires >' => $time];
@@ -341,6 +335,13 @@ class SignupController extends Controller
         //return message and show page then redirect to login
         $redirect = '/signin';
         return redirect()->to($redirect);
+
+        } else {
+            helper(['form']);
+            $data['validation'] = $this->validator;
+            echo view('reset_password',$data);
+        }
+
     }
  
 }
