@@ -269,6 +269,43 @@ class EmailModel extends Model
         $html = $this->where($whereCondition)->first();
         return $html;
     }
+
+
+    function sendResetEmail($user, $link, $lang='en'){
+ 
+        $whereCondition = array('type'=>'password_reset','language'=>$lang);
+        $emailContent = $this->where($whereCondition)->first();
+        
+        //Email settings
+        $subject = $emailContent['subject'];
+        $message = $emailContent['html'];
+        
+        //Tags to search the text for -> this needs to be aligned to the $values[] Array
+        $tags = array("__name__","__url__");
+        $values =[
+            'name' => $user['name'],
+            'url' => $link,
+        ];
+
+        $message = str_replace($tags,$values,$message);
+        
+        $email = \Config\Services::email();
+        
+        $email->clear(true); //reset $email to empty state (true - include attachments)
+
+        $email->setFrom('contact@skapit.com', 'Ski API Technolgies');
+        $email->setTo($user['email_address']);  
+        $email->setSubject($subject);
+        $email->setMessage($message);
+        
+       if($email->send()){
+          return "ok"; 
+       } else {
+            $data = $email->printDebugger(['headers']);
+            return ($data);
+       }
+    }
+
 }
 
 ?>

@@ -7,6 +7,7 @@ use App\Models\GroupModel;
 use App\Models\GroupMappingModel;
 use App\Models\AccountModel;
 use App\Models\ResetModel;
+use App\Models\EmailModel;
 
 use CodeIgniter\I18n\Time;
 
@@ -228,6 +229,7 @@ class SignupController extends Controller
     public function init_reset(){
         $userModel = new UserModel();
         $resetModel = new ResetModel();
+        $emailModel = new EmailModel();
         // check email
         $email_to_reset = $this->request->getVar('email');
         $user_to_reset = $userModel->where('user_email',$email_to_reset)->first();
@@ -249,16 +251,14 @@ class SignupController extends Controller
             'expires'  => $expires
         ];
 
-        print_r($reset_data);
-
         $query_string = http_build_query(['selector' => $selector, 'validator' => bin2hex($token)]);
 
-        $link = site_url('/reset-password'.$query_string);
-        print_r($link);
-        
+        $link = site_url('/reset-password?'.$query_string);
+    
         $resetModel->save($reset_data);
 
         //email the reset link
+        $emailModel->sendResetEmail($user_to_reset,$link,'en');
 
         }
        
