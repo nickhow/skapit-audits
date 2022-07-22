@@ -262,7 +262,7 @@ class SignupController extends Controller
 
         }
        
-        $session->setFlashdata('msg', 'If a user with the provided email exists we will send a reset token shortly.'.$link);
+        $session->setFlashdata('msg', 'If a user with the provided email exists we will send a reset token shortly.');
         //return message and show page
         $redirect = '/request-reset';
         return redirect()->to($redirect);
@@ -323,7 +323,10 @@ class SignupController extends Controller
                 ];
                 
                 $user_to_reset = $userModel->where('user_email',$email_to_reset)->first();
-                $userModel->update($user_to_reset['id'],$data);
+                
+                print_r($user_to_reset['id']);
+
+                //$userModel->update($user_to_reset['id'],$data);
 
                 //Delete the reset token
                 $resetModel->where('id',$reset_request['id'])->delete();
@@ -333,8 +336,8 @@ class SignupController extends Controller
         }
 
         //return message and show page then redirect to login
-        $redirect = '/signin';
-        return redirect()->to($redirect);
+       // $redirect = '/signin';
+       // return redirect()->to($redirect);
 
         } else {
             helper(['form']);
