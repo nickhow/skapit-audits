@@ -39,36 +39,41 @@ class AccountCrud extends Controller
         //Uses the method with the join
         if($admin){
         //    $data['accounts'] = $accountModel->getAccountsWithGroup();
-
             $accounts = $accountModel->findAll();
-            $data['accounts'] = [];
-            foreach ($accounts as $account){
-
-                $group = $groupModel->where('id',$account['group_id'])->first();
-                $all_audits = $accountAuditModel->where('account_id',$account['id'])->findColumn('audit_id');
-                
-                if(is_null($all_audits)){
-                    $latest_audit = "";
-                } else {
-                    $latest_audit = $auditModel->whereIn('id',$all_audits)->orderBy('created_date','DESC')->first();
-                }
-
-                $collected_data = [
-                    'account' => $account,
-                    'group' => $group,
-                    'audit' => $latest_audit,
-                ];
-                array_push($data['accounts'], $collected_data);
-            }
             echo view('templates/header');
             
         } elseif($session->get('enable_groups')){
-            $data['accounts'] = $accountModel->getAccountsWithGroupsById($user['group_id']);
+            //$data['accounts'] = $accountModel->getAccountsWithGroupsById($user['group_id']);
+            $accounts = $accountModel->getAccountsWithGroupsById($user['group_id']);
             echo view('templates/header-group');
         } else {
-            $data['accounts'] = $accountModel->getAccountsWithGroupById($user['group_id']);
+            //$data['accounts'] = $accountModel->getAccountsWithGroupById($user['group_id']);
+            $accounts = $accountModel->getAccountsWithGroupById($user['group_id']);
             echo view('templates/header-group');
         }
+
+        $data['accounts'] = [];
+        foreach ($accounts as $account){
+
+            $group = $groupModel->where('id',$account['group_id'])->first();
+            $all_audits = $accountAuditModel->where('account_id',$account['id'])->findColumn('audit_id');
+            
+            if(is_null($all_audits)){
+                $latest_audit = "";
+            } else {
+                $latest_audit = $auditModel->whereIn('id',$all_audits)->orderBy('created_date','DESC')->first();
+            }
+
+            $collected_data = [
+                'account' => $account,
+                'group' => $group,
+                'audit' => $latest_audit,
+            ];
+            array_push($data['accounts'], $collected_data);
+        }
+
+
+
         
         echo view('view_accounts_new', $data);
         echo view('templates/footer');

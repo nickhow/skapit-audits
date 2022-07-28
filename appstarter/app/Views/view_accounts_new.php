@@ -29,7 +29,9 @@
        </thead>
        <tbody>
           <?php if($accounts): ?>
-          <?php foreach($accounts as $account): ?>
+          
+          <?php foreach($accounts as $account):   ?>  
+
           <tr>
              <td>
                 <div class="row">

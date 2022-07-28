@@ -90,7 +90,12 @@
                         </div>
                         <div class="d-grid">
                              <button type="submit" class="btn btn-primary">Sign in</button>
-                        </div>     
+                        </div>
+                        <div class="row p-2">
+                            <div class="col text-end">
+                                <a href="<?= site_url('request-reset') ?>"><i class="text-secondary">Reset password</i></a>
+                            </div>
+                        </div>
                     </form>
                 
                 </div>

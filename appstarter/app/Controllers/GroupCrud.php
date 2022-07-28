@@ -49,6 +49,7 @@ class GroupCrud extends Controller
         $groupModel = new GroupModel();
         $groupMappingModel = new GroupMappingModel();
         $session = session();
+        $db = db_connect();
         
         helper(['form']);
         $rules = [
@@ -129,7 +130,9 @@ class GroupCrud extends Controller
             }
             
             $groupModel->insert($data);
-            $group_id = $groupModel->where('name', $this->request->getVar('group_name'))->first();   //  $groupModel->select('id')->where ...
+
+            $group_id = $db->insertID();
+            //$group_id = $groupModel->where('name', $this->request->getVar('group_name'))->first();   //  $groupModel->select('id')->where ...
             
             
             // If it is a sub group, add the mapping in now.

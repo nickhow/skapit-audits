@@ -138,6 +138,13 @@ $routes->get('/user/(:num)/delete', 'ProfileController::delete/$1');
 $routes->get('user/(:num)', 'ProfileController::singleUser/$1');
 $routes->post('user/update', 'ProfileController::update');
 
+$routes->get('/register','SignupController::selfserve');
+$routes->post('/register','SignupController::store_selfserve');
+
+$routes->get('/request-reset','SignupController::reset_request');
+$routes->get('/password-reset/(:alphanum)/(:alphanum)','SignupController::reset_password/$1/$2');
+$routes->post('/password-reset/(:alphanum)/(:alphanum)','SignupController::process_reset/$1/$2');
+
 $routes->get('/privacy-policy', 'AuditCrud::privacyPolicy');
 $routes->get('/privacy-policy/(:segment)', 'AuditCrud::privacyPolicy/$1');
 

@@ -8,7 +8,7 @@ class UserModel extends Model
 
     protected $primaryKey = 'id';
     
-    protected $allowedFields = ['name','username','password','is_admin', 'is_hotelcheck', 'group_id', 'account_id','created_date','alias', ];
+    protected $allowedFields = ['name','username','password','is_admin', 'is_hotelcheck', 'group_id', 'account_id','created_date','alias', 'user_email' ];
     
 }
 

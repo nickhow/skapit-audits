@@ -41,6 +41,11 @@
                     </div>
 
                     <div class="form-group pt-2">
+                    <label>Email</label>
+                        <input type="email" name="email" placeholder="Email" value="<?= set_value('email') ?>" class="form-control" >
+                    </div>
+
+                    <div class="form-group pt-2">
                     <label>Username</label>
                         <input type="username" name="username" placeholder="Username" value="<?= set_value('username') ?>" class="form-control" >
                     </div>
