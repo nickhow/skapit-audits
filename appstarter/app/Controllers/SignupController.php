@@ -200,12 +200,11 @@ class SignupController extends Controller
                     'name' => $this->request->getVar('name'),
                     'email'  => $this->request->getVar('email'),
                     'group_id'  => $group_id,
-                    'is_group_manager'  => $this->request->getVar('is_group_manager'),
+                    'is_group_manager'  => 1,
                     'phone'  => $this->request->getVar('phone'),
                     'accommodation_name'  => $this->request->getVar('accommodation_name'),
                     'resort'  => $this->request->getVar('resort'),
-                    'country'  => $this->request->getVar('country'),
-                    'notes'  => $this->request->getVar('notes'),
+                    'country'  => $this->request->getVar('country')
                 ];
                 $accountModel->save($account_data);
                 $account_id = $db->insertID();
