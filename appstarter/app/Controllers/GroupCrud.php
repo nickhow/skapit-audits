@@ -49,6 +49,7 @@ class GroupCrud extends Controller
         $groupModel = new GroupModel();
         $groupMappingModel = new GroupMappingModel();
         $session = session();
+        $db = db_connect();
         
         helper(['form']);
         $rules = [

@@ -176,7 +176,8 @@ class SignupController extends Controller
           
         if($this->validate($rules, $errors)){
             $userModel = new UserModel();
-   
+            $db = db_connect();
+            
             $group_id = 0;
             $account_id = 0;
 
