@@ -9,6 +9,7 @@ use App\Models\AccountModel;
 use App\Models\ResetModel;
 use App\Models\EmailModel;
 use App\Models\AuditModel;
+use App\Models\AccountAuditModel;
 
 
 use CodeIgniter\I18n\Time;
@@ -220,6 +221,7 @@ class SignupController extends Controller
                 //create the audit
 
                 $auditModel = new AuditModel();
+                $accountAuditModel = new AccountAuditModel();
 
                 $lang = $this->request->getVar('language');
                 if(isset($lang) && $lang !== ""){
