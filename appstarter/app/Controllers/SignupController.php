@@ -129,7 +129,6 @@ class SignupController extends Controller
                 $data['groups'] = $groupModel->orderBy('id', 'DESC')->findAll();
             }
                 
-            echo view('templates/header');
             echo view('signup', $data);
             echo view('templates/footer');
         }
@@ -141,7 +140,6 @@ class SignupController extends Controller
         helper(['form']);
         $data = [];
     
-        echo view('templates/header');
         echo view('self_serve',$data);
         echo view('templates/footer');
     }
