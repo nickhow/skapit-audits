@@ -209,7 +209,17 @@ class SignupController extends Controller
             }
             
             //group - make group
-
+            if($this->request->getVar('type') == "group") {
+                $groupModel = new AccountModel();
+                $group_data = [
+                    'name' => $this->request->getVar('groupname'),
+                    'is_payable' => 1,
+                    'payable_amount' => 50,  // default payment amount is €50
+                    'uses_sub_groups' => 0,  // default is not to allow sub groups
+                    'is_sub_group' => 0,     // default is that this is not a sub group
+                ];
+                $groupModel->save($group_data);
+            }
 
             //head to signin
             $redirect = '/signin';

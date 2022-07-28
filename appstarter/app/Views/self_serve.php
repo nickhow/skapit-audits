@@ -44,7 +44,7 @@
                     </div>
 
                     <!-- Private property or group :: show/hide the relevant bits of form -->
-                    <div class="form-group pt-2">
+                    <div class="form-group pt-4 pb-2">
                         <label>What type of account do you require?</label>
                         <select id="type" name="type" class="form-select">
                             <option value="private" selected >I only need to audit a single accomodation </option>
