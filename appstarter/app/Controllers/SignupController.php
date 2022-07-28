@@ -190,6 +190,7 @@ class SignupController extends Controller
             ];
 
             $userModel->save($data);
+            $user_id = $db->insertID();
 
             //single property - make account + audit
             if($this->request->getVar('type') == "private") {
@@ -206,6 +207,11 @@ class SignupController extends Controller
                     'notes'  => $this->request->getVar('notes'),
                 ];
                 $accountModel->save($account_data);
+                $account_id = $db->insertID();
+                $data = [
+                    'account_id' => $account_id,
+                ];
+                $userModel->update($user_id, $data);
             }
             
             //group - make group
@@ -219,6 +225,11 @@ class SignupController extends Controller
                     'is_sub_group' => 0,     // default is that this is not a sub group
                 ];
                 $groupModel->save($group_data);
+                $group_id = $db->insertID();
+                $data = [
+                    'group_id' => $group_id,
+                ];
+                $userModel->update($user_id, $data);
             }
 
             $session = session();
