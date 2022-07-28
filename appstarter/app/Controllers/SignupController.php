@@ -210,7 +210,7 @@ class SignupController extends Controller
             
             //group - make group
             if($this->request->getVar('type') == "group") {
-                $groupModel = new AccountModel();
+                $groupModel = new groupModel();
                 $group_data = [
                     'name' => $this->request->getVar('groupname'),
                     'is_payable' => 1,
