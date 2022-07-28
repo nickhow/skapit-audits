@@ -221,6 +221,7 @@ class SignupController extends Controller
                 $groupModel->save($group_data);
             }
 
+            $session = session();
             $session->setFlashdata('msg', 'Your account has been created, please login.');
 
             //head to signin
