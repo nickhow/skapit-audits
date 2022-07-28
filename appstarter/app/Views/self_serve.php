@@ -57,6 +57,16 @@
                     <div id="private_wrapper">
                         <h2>The Property</h2>
                         <div class="form-group pt-2">
+                            <label>Audit Language</label>
+                            <select name="language" id="language" class="form-select">
+                                <option value="en">English</option>
+                                <option value="fr">Français</option>
+                                <option value="de">Deutsch</option>
+                                <option value="it">Italiano</option>
+                                <option value="es">Español</option>
+                            </select>
+                        </div>
+                        <div class="form-group pt-2">
                             <label>Contact Phone Number</label>
                             <input type="text" name="phone" placeholder="Phone" value="<?= set_value('phone') ?>" class="form-control" >
                         </div>

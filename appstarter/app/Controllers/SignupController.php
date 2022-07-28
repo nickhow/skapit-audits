@@ -8,6 +8,8 @@ use App\Models\GroupMappingModel;
 use App\Models\AccountModel;
 use App\Models\ResetModel;
 use App\Models\EmailModel;
+use App\Models\AuditModel;
+
 
 use CodeIgniter\I18n\Time;
 
@@ -212,6 +214,59 @@ class SignupController extends Controller
                     'account_id' => $account_id,
                 ];
                 $userModel->update($user_id, $data);
+
+
+
+                //create the audit
+
+                $auditModel = new AuditModel();
+
+                $lang = $this->request->getVar('language');
+                if(isset($lang) && $lang !== ""){
+                    
+                    //Generate the ID
+                    $id = $auditModel->generateID();     
+
+                    //Get the account
+                    $data['account'] = $accountModel->where('id', $account_id)->first();
+                    
+                    //payment defaults
+                    $isPayable = 1;
+                    $payableAmount = '50.00';
+                
+                    //Collect audit data
+                    $auditData = [
+                        'id' => $id,
+                        'language' => $this->request->getVar('language'),
+                        'sent_date' => Time::now('Europe/London', 'en_GB'),
+                        'created_date' => Time::now('Europe/London', 'en_GB'),
+                        'status' => 'sent',
+                        'is_payable' => $isPayable,
+                        'payable_amount' => $payableAmount,
+                        'audit_owner_id' => $user_id
+                    ];
+
+                    //Collect accountAudit data
+                    $accountAuditData = [
+                        'audit_id' => $id,
+                        'account_id' => $account_id
+                    ];
+                    
+                    //Insert data for the audit        
+                    $auditModel->insert($auditData);
+                    $accountAuditModel->insert($accountAuditData);
+
+                    //Email the account about the audit
+                    $url =  site_url("/audit/".$id);
+                    $values = array($data['name'], $url,$data['accommodation_name'],$data['resort'],$data['country']);
+                    
+                    $emailModel = new EmailModel();
+                    $emailModel->sendNewAudit($auditData['language'],$data['email'],$values,$intro);
+                }
+
+                // end new test bit
+
+
             }
             
             //group - make group
