@@ -221,6 +221,8 @@ class SignupController extends Controller
                 $groupModel->save($group_data);
             }
 
+            $session->setFlashdata('msg', 'Your account has been created, please login.');
+
             //head to signin
             $redirect = '/signin';
 
@@ -279,7 +281,7 @@ class SignupController extends Controller
 
         }
        
-        $session->setFlashdata('msg', 'If a user with the provided email exists we will send a reset token shortly.'.$link );
+        $session->setFlashdata('msg', 'If a user with the provided email exists we will send a reset token shortly.');
         //return message and show page
         $redirect = '/request-reset';
         return redirect()->to($redirect);
