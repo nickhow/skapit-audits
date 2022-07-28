@@ -259,11 +259,12 @@ class SignupController extends Controller
                     $accountAuditModel->insert($accountAuditData);
 
                     //Email the account about the audit
+                    $intro = "" // self serve doesn't get to customise the intro
                     $url =  site_url("/audit/".$id);
                     $values = array($data['name'], $url,$data['accommodation_name'],$data['resort'],$data['country']);
                     
                     $emailModel = new EmailModel();
-                    $emailModel->sendNewAudit($auditData['language'],$data['email'],$values,$intro);
+                    $emailModel->sendNewAudit($auditData['language'],$data['account']['email'],$values,$intro);
                 }
 
                 // end new test bit
