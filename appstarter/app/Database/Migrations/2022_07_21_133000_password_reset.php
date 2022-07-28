@@ -27,10 +27,7 @@ class AddPasswordReset extends Migration
                 'type'       => 'varchar',
                 'constraint' => '64',
             ],
-            'expires'       => [
-                'type'       => 'bigint',
-                'constraint' => '20',
-            ],
+            'expires datetime',
         ]);
         $this->forge->addKey('id', true);
         $this->forge->createTable('password_reset_tokens');
