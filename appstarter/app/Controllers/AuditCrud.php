@@ -1142,7 +1142,7 @@ class AuditCrud extends Controller
     
     // CSV for Hotel Check
     public function generateCSV(){
-        //build a csv of all completed, not reviewed audits.
+        //build a csv of all reviewed audits paid & unpaid - previously only displayed paid audits.
         $db = db_connect();
         $sql = "SELECT 
                 accounts.email AS 'Hotel Email',
@@ -1155,11 +1155,16 @@ class AuditCrud extends Controller
                 accounts.resort AS 'City', 
                 'Yes' AS 'Audit with Grade', 
                 'Yes' AS 'Audit results to be shared at audits bank', 
-                audits.language AS 'Language'
+                audits.language AS 'Language',
+                CASE
+                    WHEN audits.paid = 1 THEN 'Paid'
+                    WHEN audits.paid = 0 THEN 'Unpaid'
+                    ELSE 'Undefined'
+                END AS Paid
                 FROM accounts INNER JOIN account_audits ON account_audits.account_id = accounts.id
                 INNER JOIN audits ON audits.id = account_audits.audit_id
                 WHERE audits.status = 'reviewed'
-                AND audits.paid = 0" ;
+                " ;   //AND audits.paid = 0
                 
         return $data = $db->query($sql)->getResultArray();  //getResult(); //depending on required format assoc. array or db object
     

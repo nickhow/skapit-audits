@@ -59,7 +59,7 @@
                 <h3>Reviewed Audits</h3>
             </div>
             <div class="col-12 col-md-5 col-lg-4 text-center text-md-end">
-                <div class="btn btn-outline-primary px-5" onclick="emailFile()">Email Unpaid Audits CSV</div>
+                <div class="btn btn-outline-primary px-5" onclick="emailFile()">Email Completed Audits CSV</div>
             </div>
         </div>
    
