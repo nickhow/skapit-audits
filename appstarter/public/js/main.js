@@ -139,8 +139,8 @@ function updateProgress(target){
 
         //Question 107 hides 130
         if( document.getElementById('Q107') !== null ){
-            window.addEventListener('load',function(){updateForm('Q107','No',['Q130'] )});
-            document.getElementById('Q107').addEventListener('change',function(){updateForm('Q107','No',['Q130'] )});
+            window.addEventListener('load',function(){updateFormShow('Q107','Yes',['Q130'] )});
+            document.getElementById('Q107').addEventListener('change',function(){updateFormShow('Q107','Yes',['Q130'] )});
         }
         
         //take a question number and answer -> hide an array of questions
@@ -215,6 +215,82 @@ function updateProgress(target){
                 });
             }
         }
+
+
+
+                //take a question number and answer -> show an array of questions
+                function updateFormShow(trigger,answer,targets){
+                    var current_question_element = document.getElementById(trigger);
+                    var current_answer;
+        
+                    //if type is input
+                    if(current_question_element.tagName =="INPUT"){
+                        current_answer = current_question_element.value;
+                    }
+                    //if type is select
+                    if(current_question_element.tagName =="SELECT"){
+                        current_answer = current_question_element.options[current_question_element.selectedIndex].getAttribute('data-response');
+                    }
+                    
+                    if(current_answer == answer){ //show questions 
+                    
+                        targets.filter( element => document.getElementById(element) !== null ).forEach(function(element){ //remove targets not in this form
+                        
+                            var hiddenEl = document.getElementById(element).closest(".row, .my-3");  // get the question row - parent to all Q elements
+        
+                            var hiddenInput = hiddenEl.querySelectorAll('input');
+                            hiddenInput.forEach(element => element.value="N/A");
+                            
+                            var hiddenSelect = hiddenEl.querySelectorAll('select');
+                            hiddenSelect.forEach(function(element){
+                               for (var i = 0; i < element.options.length; i++) {
+                                    var dr = element.options[i].getAttribute('data-response');
+        
+                                    if(dr == "N/A") {
+        
+                                        element.value = element.options[i].value;
+                                        element.options[i].selected = 'selected'; //select NA so we can fold the section when completed
+                    
+                                    }
+                                }
+        
+                            });
+                        hiddenEl.style.display="block";       
+                        updateProgress(document.getElementById(element).closest(".accordion-collapse").id); //update the progress bar
+                    
+                        });
+                        
+                    } else {
+                        
+                        targets.filter( element => document.getElementById(element) !== null ).forEach(function(element){ //Show questions and mark as unanswered
+                            var hiddenEl = document.getElementById(element).closest(".row, .my-3");
+                            hiddenEl.style.display="none";
+                            
+                            var hiddenEls = hiddenEl.querySelectorAll('select, input');
+                         
+                                hiddenEls.forEach(function(element){
+                                    
+                                    if(!isLocked){ // only clean the answers to the unhidden questions if the form is still being completed
+                                    
+                                        if(document.getElementById("A"+element.value) !== null){
+                                            
+                                            if(element.value == "131"){
+                                                // skip this one, N/A is used differently
+                                                
+                                            } else if(document.getElementById("A"+element.value).getAttribute('data-response') == "N/A"){
+                                                element.value="Unanswered";
+                                               
+                                            }
+                                        }
+                                    }
+                                    
+                                });
+               
+                            updateProgress(document.getElementById(element).closest(".accordion-collapse").id); //update the progress bar
+                        });
+                    }
+                }
+
         
         function deleteFile(file_name){
             $.ajax({
