@@ -232,7 +232,7 @@ function updateProgress(target){
                         current_answer = current_question_element.options[current_question_element.selectedIndex].getAttribute('data-response');
                     }
                     
-                    if(current_answer == answer){ //show questions 
+                    if(current_answer !== answer){ //Hide questions and remove answers
                     
                         targets.filter( element => document.getElementById(element) !== null ).forEach(function(element){ //remove targets not in this form
                         
@@ -255,7 +255,7 @@ function updateProgress(target){
                                 }
         
                             });
-                        hiddenEl.style.display="block";       
+                        hiddenEl.style.display="none";       
                         updateProgress(document.getElementById(element).closest(".accordion-collapse").id); //update the progress bar
                     
                         });
@@ -264,7 +264,7 @@ function updateProgress(target){
                         
                         targets.filter( element => document.getElementById(element) !== null ).forEach(function(element){ //Show questions and mark as unanswered
                             var hiddenEl = document.getElementById(element).closest(".row, .my-3");
-                            hiddenEl.style.display="none";
+                            hiddenEl.style.display="block";
                             
                             var hiddenEls = hiddenEl.querySelectorAll('select, input');
                          
