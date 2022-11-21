@@ -135,6 +135,13 @@ function updateProgress(target){
             window.addEventListener('load',function(){updateForm('Q111','No',['Q112','Q113','Q114'] )});
             document.getElementById('Q111').addEventListener('change',function(){updateForm('Q111','No',['Q112','Q113','Q114'] )});
         }
+
+
+        //Question 107 hides 130
+        if( document.getElementById('Q107') !== null ){
+            window.addEventListener('load',function(){updateForm('Q107','Yes',['Q130'] )});
+            document.getElementById('Q107').addEventListener('change',function(){updateForm('Q107','Yes',['Q130'] )});
+        }
         
         //take a question number and answer -> hide an array of questions
         function updateForm(trigger,answer,targets){

@@ -5039,6 +5039,51 @@
             </div>
         </div>
         <?php } ?>
+
+        <?php  /* Question 107 pt 2 => record id is 130 */ $question = $questions[129]; ?> 
+        <?php if($question['hide_for_1'] && $audit_obj['type'] == 1
+        || $question['hide_for_2'] && $audit_obj['type'] == 2
+        || $question['hide_for_3'] && $audit_obj['type'] == 3
+        || $question['hide_for_4'] && $audit_obj['type'] == 4
+        || $question['hide_for_5'] && $audit_obj['type'] == 5
+        ) {
+            //set the value for this answer to 0 (not N/A)
+            ?>
+            <input type="hidden" name="<?php echo $question['id'] ?>" value="ignore">
+            <?php
+        } else { ?>
+        <div class="row my-3">
+            <div class="col">
+                <div class="form-group"> 
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <?php if($question['has_custom_answer']){ ?>
+                        <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-general-body')"/>
+                    <?php   } else { ?>
+                        <select name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-select" onchange="updateProgress('form-accordion-general-body')">
+                        <?php //create all the answer options and choose the prev. saved option if there is one.
+                            foreach($question['answers'] as $answer) { 
+                                
+                                //if it's the unanswered one do it different -> value as not the id, but something identifiable later
+                                if($answer['en_ans'] === "Unanswered") {
+                                    echo "<option value='Unanswered'";
+                                    if(!$question['response'] || $question['response'] == 0) { echo "selected"; }
+                                    echo " >".ucfirst($answer['answer'])."</option>";
+                                } else {
+                                    echo "<option id='A" . $answer['id'] ."' value='" . $answer['id'] ."'"; 
+                                    echo "data-response='".$answer['en_ans']."'";
+                                    if($question['response']) {
+                                        if($answer['id'] === $question['response']['answer_id']){ echo "selected"; } 
+                                    } 
+                                    echo ">" . ucfirst($answer['answer']) . "</option>";
+                                } 
+                            }
+                        ?>
+                        </select>
+                      <?php  } ?>
+                </div>
+            </div>
+        </div>
+        <?php } ?>
         
         <?php  /* Question 108 */ $question = $questions[107]; ?> 
         <?php if($question['hide_for_1'] && $audit_obj['type'] == 1
