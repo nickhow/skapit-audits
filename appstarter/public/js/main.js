@@ -233,7 +233,7 @@ function updateProgress(target){
                     }
                     
                     if(current_answer !== answer){ //Hide questions and remove answers
-                        console.log("not my answer ... ");
+                        //console.log("not my answer ... ");
                         targets.filter( element => document.getElementById(element) !== null ).forEach(function(element){ //remove targets not in this form
                         
                             var hiddenEl = document.getElementById(element).closest(".row, .my-3");  // get the question row - parent to all Q elements
@@ -261,7 +261,7 @@ function updateProgress(target){
                         });
                         
                     } else {
-                        console.log("this is my answer ... ");
+                        //console.log("this is my answer ... ");
                         targets.filter( element => document.getElementById(element) !== null ).forEach(function(element){ //Show questions and mark as unanswered
                             var hiddenEl = document.getElementById(element).closest(".row, .my-3");
                             hiddenEl.style.display="block";
