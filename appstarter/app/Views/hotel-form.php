@@ -5266,7 +5266,7 @@
         </div>
         <?php } ?>
 
-        <?php  /* Question 132 */ $question = $questions[131x]; ?> 
+        <?php  /* Question 132 */ $question = $questions[131]; ?> 
         <?php if($question['hide_for_1'] && $audit_obj['type'] == 1
         || $question['hide_for_2'] && $audit_obj['type'] == 2
         || $question['hide_for_3'] && $audit_obj['type'] == 3
