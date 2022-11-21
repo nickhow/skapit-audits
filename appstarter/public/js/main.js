@@ -139,8 +139,8 @@ function updateProgress(target){
 
         //Question 107 hides 130
         if( document.getElementById('Q107') !== null ){
-            window.addEventListener('load',function(){updateForm('Q107','Yes',['Q130'] )});
-            document.getElementById('Q107').addEventListener('change',function(){updateForm('Q107','Yes',['Q130'] )});
+            window.addEventListener('load',function(){updateForm('Q107','No',['Q130'] )});
+            document.getElementById('Q107').addEventListener('change',function(){updateForm('Q107','No',['Q130'] )});
         }
         
         //take a question number and answer -> hide an array of questions
