@@ -113,12 +113,12 @@ class AuditCrud extends Controller
     }
     
     // show audits list
-    public function index($chase_time = 7){
+    public function index($chase_time = 7, $force_hc_view = false){
        
         $db = db_connect();
         $session = session();
         $admin = $session->get('is_admin');
-        $hotelcheck = $session->get('is_hotelcheck');
+        $hotelcheck = ( $session->get('is_hotelcheck') || $force_hc_view ) ? 1 ; 0 ; //allows us to use the audits/hc url to force the hc view for admin
         $account_id = $session->get('account_id');
         $group_id = $session->get('group_id');
         $loggedin = $session->get('isLoggedIn');
