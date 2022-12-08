@@ -54,14 +54,14 @@ class Email extends BaseConfig
      *
      * @var string
      */
-    public $SMTPUser = getenv('email.sender');
+    public $SMTPUser;
 
     /**
      * SMTP Password
      *
      * @var string
      */
-    public $SMTPPass = getenv('email.password');
+    public $SMTPPass;
 
     /**
      * SMTP Port

@@ -25,25 +25,12 @@ class Database extends Config
      */
     public $defaultGroup = 'default';
 
-    /**
-     * The default database connection.
-     *
-     * skiapite_dev
-     * fx6QhvFWa8Sya4j
-     * skiapite_dev_audit
-     * 
-     * skiapite_audit
-     * zPcQNtRCCw8iyfH
-     * skiapite_audit
-     * 
-     * @var array
-     */
     public $default = [
         'DSN'      => '',
         'hostname' => 'localhost',
-		'username' => getenv('db.username'),
-		'password' => getenv('db.password'),
-		'database' => getenv('db.database'),
+		'username' => '',
+		'password' => '',
+		'database' => '',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
         'pConnect' => false,
