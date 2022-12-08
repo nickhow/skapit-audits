@@ -103,7 +103,7 @@
     <div class="mt-3">
         <div class="row">
             <div class="col-12">
-                <h3>Sent Audits</h3>
+                <h3>Sent Audits (<?= count($with_hotel['sent']) + count($with_hotel['open']) + count($with_hotel['progress']);  ?>) </h3>
             </div>
         </div>
         <div class="container">
@@ -117,13 +117,13 @@
                 <div class="col-12 col-lg-8">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="sent-tab" data-bs-toggle="tab" data-bs-target="#sent" type="button" role="tab" aria-controls="sent" aria-selected="true">Sent</button>
+                            <button class="nav-link active" id="sent-tab" data-bs-toggle="tab" data-bs-target="#sent" type="button" role="tab" aria-controls="sent" aria-selected="true">Sent (<?= count($with_hotel['sent']); ?>)</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="open-tab" data-bs-toggle="tab" data-bs-target="#open" type="button" role="tab" aria-controls="open" aria-selected="false">Open</button>
+                            <button class="nav-link" id="open-tab" data-bs-toggle="tab" data-bs-target="#open" type="button" role="tab" aria-controls="open" aria-selected="false">Open (<?= count($with_hotel['open']); ?>)</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="progress-tab" data-bs-toggle="tab" data-bs-target="#progress" type="button" role="tab" aria-controls="progress" aria-selected="false">In Progress</button>
+                            <button class="nav-link" id="progress-tab" data-bs-toggle="tab" data-bs-target="#progress" type="button" role="tab" aria-controls="progress" aria-selected="false">In Progress (<?= count($with_hotel['progress']); ?>)</button>
                         </li>
                     </ul>
                     
@@ -236,9 +236,9 @@
 var cData = JSON.parse(`<?php echo json_encode($counts); ?>`);
 const data = {
   labels: [
-    'Sent',
-    'Open',
-    'In Progress'
+    `Sent (${cData['sent']})`,
+    `Open( ${cData['open']})`,
+    `In Progress (${cData['progress']})`
   ],
   datasets: [{
     label: 'Audits',
