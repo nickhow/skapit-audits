@@ -54,14 +54,14 @@ class Email extends BaseConfig
      *
      * @var string
      */
-    public $SMTPUser = 'messaging@skapit.com';
+    public $SMTPUser = getenv('email.sender');
 
     /**
      * SMTP Password
      *
      * @var string
      */
-    public $SMTPPass = 'sV~9DDgw2cGkxcW';
+    public $SMTPPass = getenv('email.password');
 
     /**
      * SMTP Port

@@ -41,9 +41,9 @@ class Database extends Config
     public $default = [
         'DSN'      => '',
         'hostname' => 'localhost',
-		'username' => 'skiapite_dev',
-		'password' => 'fx6QhvFWa8Sya4j',
-		'database' => 'skiapite_dev_audit',
+		'username' => getenv('db.username'),
+		'password' => getenv('db.password'),
+		'database' => getenv('db.database'),
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
         'pConnect' => false,
