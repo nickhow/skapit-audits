@@ -23,8 +23,4 @@ while ($row = mysqli_fetch_row($result)){
         echo "Failed to insert for id: ".$row[0]."\n";
     }
 }
-
-
-
-
 ?>
