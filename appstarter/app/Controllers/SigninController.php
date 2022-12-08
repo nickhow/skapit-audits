@@ -34,7 +34,7 @@ class SigninController extends Controller
                 $ses_data = [
                     'id' => $data['id'],
                     'name' => $data['name'],
-                    'email' => $data['email'],
+                    'email' => $data['user_email'],
                     'is_admin' => $data['is_admin'],
                     'is_hotelcheck' => $data['is_hotelcheck'],
                     'group_id'=> $data['group_id'],
