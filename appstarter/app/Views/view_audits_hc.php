@@ -117,13 +117,13 @@
                 <div class="col-12 col-lg-8">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="sent-tab" data-bs-toggle="tab" data-bs-target="#sent" type="button" role="tab" aria-controls="sent" aria-selected="true">Sent <?= count($with_hotel['sent'] ?></button>
+                            <button class="nav-link active" id="sent-tab" data-bs-toggle="tab" data-bs-target="#sent" type="button" role="tab" aria-controls="sent" aria-selected="true">Sent <?= count($with_hotel['sent']); ?></button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="open-tab" data-bs-toggle="tab" data-bs-target="#open" type="button" role="tab" aria-controls="open" aria-selected="false">Open <?= count($with_hotel['open'] ?></button>
+                            <button class="nav-link" id="open-tab" data-bs-toggle="tab" data-bs-target="#open" type="button" role="tab" aria-controls="open" aria-selected="false">Open <?= count($with_hotel['open']); ?></button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="progress-tab" data-bs-toggle="tab" data-bs-target="#progress" type="button" role="tab" aria-controls="progress" aria-selected="false">In Progress <?= count($with_hotel['progress'] ?></button>
+                            <button class="nav-link" id="progress-tab" data-bs-toggle="tab" data-bs-target="#progress" type="button" role="tab" aria-controls="progress" aria-selected="false">In Progress <?= count($with_hotel['progress']); ?></button>
                         </li>
                     </ul>
                     
