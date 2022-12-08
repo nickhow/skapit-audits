@@ -118,7 +118,7 @@ class AuditCrud extends Controller
         $db = db_connect();
         $session = session();
         $admin = $session->get('is_admin');
-        $hotelcheck = ( $session->get('is_hotelcheck') || $force_hc_view ) ? 1 , 0 ; //allows us to use the audits/hc url to force the hc view for admin
+        $hotelcheck = ( $session->get('is_hotelcheck') || $force_hc_view ) ? 1 : 0 ; //allows us to use the audits/hc url to force the hc view for admin
         $account_id = $session->get('account_id');
         $group_id = $session->get('group_id');
         $loggedin = $session->get('isLoggedIn');
