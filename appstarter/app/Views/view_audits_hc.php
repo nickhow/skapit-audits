@@ -236,7 +236,7 @@
 var cData = JSON.parse(`<?php echo json_encode($counts); ?>`);
 const data = {
   labels: [
-    'Sent ('+$counts['sent']+')',
+    "Sent ($counts['sent'])",
     'Open',
     'In Progress'
   ],
