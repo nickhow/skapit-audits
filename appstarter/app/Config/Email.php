@@ -56,12 +56,14 @@ class Email extends BaseConfig
      */
     public $SMTPUser;
 
+
     /**
      * SMTP Password
      *
      * @var string
      */
     public $SMTPPass;
+
 
     /**
      * SMTP Port
