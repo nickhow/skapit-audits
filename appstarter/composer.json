@@ -7,7 +7,7 @@
     "require": {
         "php": "^7.3 || ^8.0",
         "codeigniter4/framework": "^4",
-        "dompdf/dompdf": "^1.2",
+        "dompdf/dompdf": "^2.0.1",
         "stripe/stripe-php": "^7.114",
         "mpdf/mpdf": "^8.0"
     },
