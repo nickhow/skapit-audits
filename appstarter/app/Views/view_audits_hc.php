@@ -171,7 +171,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach($with_hotel['sent'] as $audit): ?>
+                                        <?php foreach($with_hotel['open'] as $audit): ?>
                                         <tr>
                                             <td><?php echo ucfirst($audit['accommodation_name']); ?></td>
                                             <td><?php echo ucfirst($audit['resort']); ?></td>
@@ -200,7 +200,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach($with_hotel['sent'] as $audit): ?>
+                                        <?php foreach($with_hotel['progress'] as $audit): ?>
                                         <tr>
                                             <td><?php echo ucfirst($audit['accommodation_name']); ?></td>
                                             <td><?php echo ucfirst($audit['resort']); ?></td>
