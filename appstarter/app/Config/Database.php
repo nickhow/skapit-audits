@@ -25,7 +25,6 @@ class Database extends Config
      */
     public $defaultGroup = 'default';
 
-
     public $default = [
         'DSN'      => '',
         'hostname' => 'localhost',
