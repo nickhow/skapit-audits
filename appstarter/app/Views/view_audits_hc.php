@@ -237,8 +237,8 @@ var cData = JSON.parse(`<?php echo json_encode($counts); ?>`);
 const data = {
   labels: [
     `Sent (${cData['sent']})`,
-    'Open( ${cData['open']})`',
-    'In Progress (${cData['progress']})`'
+    `Open( ${cData['open']})`,
+    `In Progress (${cData['progress']})`
   ],
   datasets: [{
     label: 'Audits',
