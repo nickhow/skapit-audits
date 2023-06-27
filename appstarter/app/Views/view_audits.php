@@ -30,6 +30,7 @@
           <tr>
              <th>View</th>
              <th>Accommodation Name</th>
+             <th>Resort</th>
              <th>First Contacted</th>
              <th>Last Contacted</th>
              <th>Status</th>
@@ -48,6 +49,7 @@
                 <a href="<?php echo base_url('audit/'.$audit['id']);?>" target="_blank"><div class="btn btn-secondary btn-sm">View Audit</div></a>
               </td>
               <td><a href="<?php echo base_url('account/'.$audit['account_id']); ?>" target="_blank"><?php echo ucfirst($audit['accommodation_name']); ?></a></td>
+              <td><?php echo ucfirst($audit['resort']); ?></td> 
               <td><?php echo date('d/m/Y', strtotime($audit['created_date'])); ?></td>
               <td><?php echo date('d/m/Y', strtotime($audit['sent_date'])); ?></td>
               <td>   
