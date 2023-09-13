@@ -14,7 +14,7 @@ class AddeJhAuditScore extends Migration
                 'constraint' => '300',
             ],
             'expiry_date_ejh timestamp NOT NULL DEFAULT "0000-00-00 00:00:00"',
-            ['total_score_ejh'       => [
+            'total_score_ejh'       => [
                 'type'       => 'INT',
                 'constraint' => '11',
             ],

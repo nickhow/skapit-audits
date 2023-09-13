@@ -13,7 +13,7 @@ class AddeJhResponseScore extends Migration
                 'type'       => 'INT',
                 'constraint' => '11',
             ],
-            ['score_ejh'       => [
+            'score_ejh'       => [
                 'type'       => 'INT',
                 'constraint' => '11',
                 'default'    => null,
