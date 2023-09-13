@@ -578,7 +578,7 @@
         //per question check both scores and if either is classifies for highlight then call highlight
         var ba = question.querySelector(".ba_score");
         var abta = question.querySelector(".abta_score");
-        var abta = question.querySelector(".ejh_score");
+        var ejh = question.querySelector(".ejh_score");
         
         if( ba.value >= 100015 || abta.value >= 100015 || ejh.value >= 100015){
             highlight(question,'good');
