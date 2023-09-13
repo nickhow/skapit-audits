@@ -119,16 +119,15 @@
                 
                 <div class="col-12 my-3">
                 <div class="row">
-                    <div class="col-12 col-md-6">
+                    <div class="col-12 col-md-4">
                         <label>BA Total Score</label>
                         <input type="number" id="ba_total" name="audit_score_ba" class="form-control" value="<?php if(!isset($audit_obj['total_score_ba'])){ echo 0;/*$ba_total_score; */}else{ echo $audit_obj['total_score_ba'];} ?>">
                     </div>
-                            
-                    <div class="col-12 col-md-6">
+                    <div class="col-12 col-md-4">
                         <label>ABTA Total Score</label>
                         <input type="number" id="abta_total" name="audit_score_abta" class="form-control" value="<?php if(!isset($audit_obj['total_score_abta'])){ echo 0;/*$abta_total_score; */}else{ echo $audit_obj['total_score_abta'];} ?>">
                     </div>
-                    <div class="col-12 col-md-6">
+                    <div class="col-12 col-md-4">
                         <label>EJH Total Score</label>
                         <input type="number" id="ejh_total" name="audit_score_ejh" class="form-control" value="<?php if(!isset($audit_obj['total_score_ejh'])){ echo 0;/*$ejh_total_score; */}else{ echo $audit_obj['total_score_ejh'];} ?>">
                     </div>
@@ -240,32 +239,32 @@
     
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-12 col-md-3">
+                            <div class="col-12 col-md-2">
                                 <label>BA Suggested Score</label>
                                 <input type="number" name="<?php echo $response['id']?>[suggested_score_ba] " class="form-control" readonly value="<?php echo $response['suggested_score_ba'];  ?>">
                             </div>
                             
-                            <div class="col-12 col-md-3">
+                            <div class="col-12 col-md-2">
                                 <label>ABTA Suggested Score</label>
                                 <input type="number" name="<?php echo $response['id']?>[suggested_score_abta] " class="form-control" readonly value="<?php echo $response['suggested_score_abta'];  ?>">
                             </div>
 
-                            <div class="col-12 col-md-3">
+                            <div class="col-12 col-md-2">
                                 <label>EJH Suggested Score</label>
                                 <input type="number" name="<?php echo $response['id']?>[suggested_score_ejh] " class="form-control" readonly value="<?php echo $response['suggested_score_ejh'];  ?>">
                             </div>                           
                             
-                            <div class="col-12 col-md-3">
+                            <div class="col-12 col-md-2">
                                 <label>BA Score</label>
                                 <input type="number" name="<?php echo $response['id']?>[score_ba]" class="form-control ba_score" value="<?php if(!isset($response['score_ba'])){ echo $response['suggested_score_ba']; }else{ echo $response['score_ba'];}  ?>">
                             </div>
                             
-                            <div class="col-12 col-md-3">
+                            <div class="col-12 col-md-2">
                                 <label>ABTA Score</label>
                                 <input type="number" name="<?php echo $response['id']?>[score_abta] " class="form-control abta_score" value="<?php if(!isset($response['score_abta'])){ echo $response['suggested_score_abta']; }else{ echo $response['score_abta'];}  ?>">
                             </div>
 
-                            <div class="col-12 col-md-3">
+                            <div class="col-12 col-md-2">
                                 <label>EJH Score</label>
                                 <input type="number" name="<?php echo $response['id']?>[score_ejh] " class="form-control ejh_score" value="<?php if(!isset($response['score_ejh'])){ echo $response['suggested_score_ejh']; }else{ echo $response['score_ejh'];}  ?>">
                             </div>
