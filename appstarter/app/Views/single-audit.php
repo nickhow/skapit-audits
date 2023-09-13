@@ -105,13 +105,18 @@
                                         <td><?php echo date('d/m/Y', strtotime($audit_obj['expiry_date_abta']));?></td>
                                       </tr>
                                       <tr>
+                                        <td>EJH</td>
+                                        <td><?php echo ucFirst($audit_obj['result_ejh'])?></td>
+                                        <td><?php echo date('d/m/Y', strtotime($audit_obj['expiry_date_ejh']));?></td>
+                                      </tr>
+                                      <tr>
                                     </tbody>
                                     </table>
                                   </div>
                                   
                               </div>
 
-                              <?php if( $audit_obj['result_ba'] == "unsuitable" || $audit_obj['result_abta'] == "unsuitable") : ?>
+                              <?php if( $audit_obj['result_ba'] == "unsuitable" || $audit_obj['result_abta'] == "unsuitable" || $audit_obj['result_ejh'] == "unsuitable") : ?>
                                 <div class="py-2">
                                   <a href="<?= site_url('audit/'.$audit_obj['id'].'/resubmit') ?>"><div class="btn btn-danger">Re-open this audit for another submission</div></a>
                                 </div>

@@ -26,10 +26,11 @@
                              <b>Audit result:</b>
                         </div>
                         <div class="col-12">
-                             <h2><?php echo "BA: ". ucFirst($audit_obj['result_ba']);?></h2>
-                              <h2><?php echo "ABTA: ". ucFirst($audit_obj['result_abta']);?></h2>
+                            <h2><?php echo "BA: ". ucFirst($audit_obj['result_ba']);?></h2>
+                            <h2><?php echo "ABTA: ". ucFirst($audit_obj['result_abta']);?></h2>
+                            <h2><?php echo "EJH: ". ucFirst($audit_obj['result_ejh']);?></h2>
                         </div>
-                         <p>This result expires on <?php echo  date('d/m/Y', strtotime($audit_obj['expiry_date_ba']));?> for BA, and <?php echo  date('d/m/Y', strtotime($audit_obj['expiry_date_abta']));?> for ABTA.</p>
+                         <p>This result expires on <?php echo  date('d/m/Y', strtotime($audit_obj['expiry_date_ba']));?> for BA, <?php echo  date('d/m/Y', strtotime($audit_obj['expiry_date_abta']));?> for ABTA and <?php echo  date('d/m/Y', strtotime($audit_obj['expiry_date_ejh']));?> for EJH.</p>
                     </div>
                    
                 </div>

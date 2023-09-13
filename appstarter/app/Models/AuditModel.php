@@ -11,10 +11,10 @@ class AuditModel extends Model
     protected $allowedFields = [
         'id', 'type','waiver_signed','
         waiver_signed_date','comment',
-        'total_score_ba','total_score_abta',
-        'status','result_ba','result_abta',
+        'total_score_ba','total_score_abta','total_score_ejh',
+        'status','result_ba','result_abta','result_ejh',
         'sent_date','last_updated','completed_date',
-        'audited_date','expiry_date_ba','expiry_date_abta',
+        'audited_date','expiry_date_ba','expiry_date_abta','expiry_date_ejh',
         'language', 'created_date','next_chase','paid',
         'waiver_extra_info_included', 'waiver_extra_info', 'waiver_name', 'waiver_job_title','waiver_email',
         'is_payable','is_paid', 'payment_id', 'payable_amount','added_to_salesforce','highlight_failures','is_resubmission', 'audit_owner_id',

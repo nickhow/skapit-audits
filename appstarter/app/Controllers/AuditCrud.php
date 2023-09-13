@@ -105,9 +105,9 @@ class AuditCrud extends Controller
         
         $chart_data['new_completed'] = $db->query("SELECT COUNT(`id`) AS count from audits WHERE status = 'complete' AND (DATEDIFF('".$today."', `completed_date`) < 7)")->getRow();
         $chart_data['new_reviewed'] = $db->query("SELECT COUNT(`id`) AS count from audits WHERE status = 'reviewed' AND (DATEDIFF('".$today."', `audited_date`) < 7)")->getRow();
-        $chart_data['new_pass'] = $db->query("SELECT COUNT(`id`) AS count from audits WHERE status = 'reviewed' AND (result_ba='suitable' OR result_abta='suitable') AND (DATEDIFF('".$today."', `audited_date`) < 7)")->getRow();
-        $chart_data['total_reviewed'] = $db->query("SELECT COUNT(`id`) AS count from audits WHERE status = 'reviewed' AND (result_ba='suitable' OR result_abta='suitable') AND (expiry_date_ba > '".$today."' OR expiry_date_ba > '".$today."')" )->getRow();
-        $chart_data['expire_soon'] = $db->query("SELECT COUNT(`id`) AS count from audits WHERE status = 'reviewed' AND result_ba='suitable' AND result_abta='suitable' AND ( (DATEDIFF('".$today."', `expiry_date_ba`) > -30) OR (DATEDIFF('".$today."', `expiry_date_abta`) > -30) ) " )->getRow();
+        $chart_data['new_pass'] = $db->query("SELECT COUNT(`id`) AS count from audits WHERE status = 'reviewed' AND (result_ba='suitable' OR result_abta='suitable' OR result_ejh='suitable') AND (DATEDIFF('".$today."', `audited_date`) < 7)")->getRow();
+        $chart_data['total_reviewed'] = $db->query("SELECT COUNT(`id`) AS count from audits WHERE status = 'reviewed' AND (result_ba='suitable' OR result_abta='suitable' OR result_ejh='suitable') AND (expiry_date_ba > '".$today."' OR expiry_date_ba > '".$today."' OR expiry_date_ejh > '".$today."')" )->getRow();
+        $chart_data['expire_soon'] = $db->query("SELECT COUNT(`id`) AS count from audits WHERE status = 'reviewed' AND result_ba='suitable' AND result_abta='suitable' AND result_ejh='suitable' AND ( (DATEDIFF('".$today."', `expiry_date_ba`) > -30) OR (DATEDIFF('".$today."', `expiry_date_abta`) > -30) OR (DATEDIFF('".$today."', `expiry_date_ejh`) > -30) ) " )->getRow();
 
        echo view('dashboard_stats', $chart_data);
     }
@@ -130,7 +130,7 @@ class AuditCrud extends Controller
         
         if($admin){
             $sql = "
-                SELECT audits.id AS 'id', audits.type AS 'type', audits.status AS 'status', audits.result_ba AS 'result_ba', audits.result_abta AS 'result_abta', accounts.id AS 'account_id', accounts.accommodation_name AS 'accommodation_name', accounts.resort AS 'resort', audits.last_updated AS 'last_updated', audits.sent_date AS 'sent_date', audits.created_date AS 'created_date', audits.added_to_salesforce, users.alias AS 'alias'
+                SELECT audits.id AS 'id', audits.type AS 'type', audits.status AS 'status', audits.result_ba AS 'result_ba', audits.result_abta AS 'result_abta', audits.result_ejh AS 'result_ejh', accounts.id AS 'account_id', accounts.accommodation_name AS 'accommodation_name', accounts.resort AS 'resort', audits.last_updated AS 'last_updated', audits.sent_date AS 'sent_date', audits.created_date AS 'created_date', audits.added_to_salesforce, users.alias AS 'alias'
                 FROM audits
                 INNER JOIN account_audits on account_audits.audit_id = audits.id
                 INNER JOIN accounts on account_audits.account_id = accounts.id
@@ -154,7 +154,7 @@ class AuditCrud extends Controller
             
             //reviewed ones
             $sql = "
-                    SELECT audits.id AS 'id', audits.type AS 'type', accounts.accommodation_name AS 'accommodation_name', audits.audited_date AS 'audited_date', audits.result_ba AS 'result_ba', audits.result_abta AS 'result_abta', audits.paid AS 'paid'
+                    SELECT audits.id AS 'id', audits.type AS 'type', accounts.accommodation_name AS 'accommodation_name', audits.audited_date AS 'audited_date', audits.result_ba AS 'result_ba', audits.result_abta AS 'result_abta', audits.result_ejh AS 'result_ejh', audits.paid AS 'paid'
                     FROM audits
                     INNER JOIN account_audits on account_audits.audit_id = audits.id
                     INNER JOIN accounts on account_audits.account_id = accounts.id
@@ -196,7 +196,7 @@ class AuditCrud extends Controller
             
             if(session()->get('enable_groups')){
                 $sql = "
-                    SELECT audits.id AS 'id', audits.type AS 'type', audits.status AS 'status', audits.result_ba AS 'result_ba', audits.result_abta AS 'result_abta', accounts.id AS 'account_id', accounts.accommodation_name AS 'accommodation_name', audits.last_updated AS 'last_updated', audits.sent_date AS 'sent_date', audits.created_date AS 'created_date'
+                    SELECT audits.id AS 'id', audits.type AS 'type', audits.status AS 'status', audits.result_ba AS 'result_ba', audits.result_abta AS 'result_abta', audits.result_ejh AS 'result_ejh', accounts.id AS 'account_id', accounts.accommodation_name AS 'accommodation_name', audits.last_updated AS 'last_updated', audits.sent_date AS 'sent_date', audits.created_date AS 'created_date'
                     FROM audits
                     INNER JOIN account_audits on account_audits.audit_id = audits.id
                     INNER JOIN accounts on account_audits.account_id = accounts.id
@@ -204,7 +204,7 @@ class AuditCrud extends Controller
                 ";
             } else {
                 $sql = "
-                    SELECT audits.id AS 'id', audits.type AS 'type', audits.status AS 'status', audits.result_ba AS 'result_ba', audits.result_abta AS 'result_abta', accounts.id AS 'account_id', accounts.accommodation_name AS 'accommodation_name', audits.last_updated AS 'last_updated', audits.sent_date AS 'sent_date', audits.created_date AS 'created_date'
+                    SELECT audits.id AS 'id', audits.type AS 'type', audits.status AS 'status', audits.result_ba AS 'result_ba', audits.result_abta AS 'result_abta', audits.result_ejh AS 'result_ejh', accounts.id AS 'account_id', accounts.accommodation_name AS 'accommodation_name', audits.last_updated AS 'last_updated', audits.sent_date AS 'sent_date', audits.created_date AS 'created_date'
                     FROM audits
                     INNER JOIN account_audits on account_audits.audit_id = audits.id
                     INNER JOIN accounts on account_audits.account_id = accounts.id
@@ -215,7 +215,7 @@ class AuditCrud extends Controller
         $data['audits'] = $db->query($sql)->getResultArray();
         } else { // should be an account user
             $sql = "
-                SELECT audits.id AS 'id', audits.type AS 'type', audits.status AS 'status', audits.result_ba AS 'result_ba', audits.result_abta AS 'result_abta', accounts.id AS 'account_id', accounts.accommodation_name AS 'accommodation_name', audits.last_updated AS 'last_updated', audits.sent_date AS 'sent_date', audits.created_date AS 'created_date'
+                SELECT audits.id AS 'id', audits.type AS 'type', audits.status AS 'status', audits.result_ba AS 'result_ba', audits.result_abta AS 'result_abta', audits.result_ejh AS 'result_ejh', accounts.id AS 'account_id', accounts.accommodation_name AS 'accommodation_name', audits.last_updated AS 'last_updated', audits.sent_date AS 'sent_date', audits.created_date AS 'created_date'
                 FROM audits
                 INNER JOIN account_audits on account_audits.audit_id = audits.id
                 INNER JOIN accounts on account_audits.account_id = accounts.id
@@ -252,7 +252,7 @@ class AuditCrud extends Controller
         $group_id = $session->get('group_id');
         $today = date('Y-m-d');
         $sql = "
-                SELECT audits.id AS 'id', audits.type AS 'type', audits.result_ba AS 'result_ba', audits.result_abta AS 'result_abta', accounts.accommodation_name AS 'accommodation_name', audits.audited_date AS 'audited_date'
+                SELECT audits.id AS 'id', audits.type AS 'type', audits.result_ba AS 'result_ba', audits.result_abta AS 'result_abta', audits.result_ejh AS 'result_ejh', accounts.accommodation_name AS 'accommodation_name', audits.audited_date AS 'audited_date'
                 FROM audits
                 INNER JOIN account_audits on account_audits.audit_id = audits.id
                 INNER JOIN accounts on account_audits.account_id = accounts.id
@@ -279,16 +279,17 @@ class AuditCrud extends Controller
         $group_id = $session->get('group_id');
         $today = date('Y-m-d');
         $sql = "
-                SELECT audits.id AS 'id', audits.type AS 'type', audits.result_ba AS 'result_ba', audits.result_abta AS 'result_abta', accounts.accommodation_name AS 'accommodation_name', audits.expiry_date_ba, audits.expiry_date_abta
+                SELECT audits.id AS 'id', audits.type AS 'type', audits.result_ba AS 'result_ba', audits.result_abta AS 'result_abta', audits.result_ejh AS 'result_ejh', accounts.accommodation_name AS 'accommodation_name', audits.expiry_date_ba, audits.expiry_date_abta, audits.expiry_date_ejh
                 FROM audits
                 INNER JOIN account_audits on account_audits.audit_id = audits.id
                 INNER JOIN accounts on account_audits.account_id = accounts.id
                 WHERE status = 'reviewed'
                 AND result_ba='suitable' 
                 AND result_abta='suitable'
-                AND ( (DATEDIFF('".$today."', `expiry_date_ba`) > -30) OR (DATEDIFF('".$today."', `expiry_date_abta`) > -30) )
+                AND result_ejh='suitable',
+                AND ( (DATEDIFF('".$today."', `expiry_date_ba`) > -30) OR (DATEDIFF('".$today."', `expiry_date_abta`) > -30) OR (DATEDIFF('".$today."', `expiry_date_ejh`) > -30) )
         ";
-        
+
         if(!$admin){
             $sql.="AND account_audits.group_id = '".$group_id."'";
             echo view('templates/header-group');
@@ -305,7 +306,7 @@ class AuditCrud extends Controller
     public function unpaid(){
         $db = db_connect();
         $sql = "
-                SELECT audits.id AS 'id', audits.type AS 'type', audits.result_ba AS 'result_ba', audits.result_abta AS 'result_abta', accounts.accommodation_name AS 'accommodation_name', audits.audited_date AS 'audited_date', audits.paid AS 'paid'
+                SELECT audits.id AS 'id', audits.type AS 'type', audits.result_ba AS 'result_ba', audits.result_abta AS 'result_abta', audits.result_ejh AS 'result_ejh', accounts.accommodation_name AS 'accommodation_name', audits.audited_date AS 'audited_date', audits.paid AS 'paid'
                 FROM audits
                 INNER JOIN account_audits on account_audits.audit_id = audits.id
                 INNER JOIN accounts on account_audits.account_id = accounts.id
@@ -528,9 +529,11 @@ class AuditCrud extends Controller
         $scores = $answerModel->db->table('answers')->getWhere(['id'=>$answer_id])->getResult(); 
         $score_ba = 0;
         $score_abta = 0;
+        $score_ejh = 0;
         foreach($scores as $score){
             $score_ba = $score->score_ba;
             $score_abta =  $score->score_abta;
+            $score_ejh = $score->score_ejh;
         }
 
         //populate the reponse data
@@ -538,8 +541,10 @@ class AuditCrud extends Controller
             'answer_id' =>  $answer_id,
             'suggested_score_ba' => $score_ba,
             'suggested_score_abta' => $score_abta,
+            'suggested_score_ejh' => $score_ejh,
             'score_ba' => $score_ba,
             'score_abta' => $score_abta,
+            'score_ejh' => $score_ejh,
             'custom_answer' => $this->request->getVar('custom_answer'),
         ];
         
@@ -564,10 +569,13 @@ class AuditCrud extends Controller
             'comment'  => $this->request->getVar('audit_comment'),
             'total_score_ba'  => $this->request->getVar('audit_score_ba'),
             'total_score_abta'  => $this->request->getVar('audit_score_abta'),
+            'total_score_ejh'  => $this->request->getVar('audit_score_ejh'),
             'result_ba'  => $this->request->getVar('audit_result_ba'),
-            'result_abta'  => $this->request->getVar('audit_result_abta'),            
+            'result_abta'  => $this->request->getVar('audit_result_abta'),   
+            'result_ejh' => $this->request->getVar('audit_result_ejh'),          
             'expiry_date_ba'  => date('Y-m-d H:i:s', strtotime($this->request->getVar('expiry_date_ba'))) ,
             'expiry_date_abta'  => date('Y-m-d H:i:s', strtotime($this->request->getVar('expiry_date_abta'))) ,
+            'expiry_date_ejh' => date('Y-m-d H:i:s', strtotime($this->request->getVar('expiry_date_ejh'))) ,
         ];
         $auditModel->update($audit_id, $data);
         
@@ -579,7 +587,7 @@ class AuditCrud extends Controller
                     //skip this one
                     continue;
             }
-            if( !isset($this->request->getVar($response['id'])['score_ba']) || !isset($this->request->getVar($response['id'])['score_abta']) ){
+            if( !isset($this->request->getVar($response['id'])['score_ba']) || !isset($this->request->getVar($response['id'])['score_abta']) || !isset($this->request->getVar($response['id'])['score_ejh']) ){
                 print_r($this->request->getVar($response['id']));
                 print_r("I broke ... ");
                 print_r($response);
@@ -589,6 +597,7 @@ class AuditCrud extends Controller
             $data = [
             'score_ba' => $this->request->getVar($response['id'])['score_ba'],
             'score_abta' => $this->request->getVar($response['id'])['score_abta'],
+            'score_ejh' => $this->request->getVar($response['id'])['score_ejh'],
             'comment' => $this->request->getVar($response['id'])['comment'],
             ];
            $responseModel->update($response['id'], $data);
@@ -628,7 +637,7 @@ class AuditCrud extends Controller
             $emailaddresses = (getenv('skapit'));
                 
             $url =  site_url('/audit/'.$audit_id);
-            $values = array( $account['accommodation_name'], $audit['type'], $account['resort'],$audit['result_ba'],$audit['result_abta'], $url);
+            $values = array( $account['accommodation_name'], $audit['type'], $account['resort'],$audit['result_ba'],$audit['result_abta'],$audit['result_ejh'], $url);
             
             //generates the PDF
             $this->salesforceResultPDF($audit_id); 
@@ -789,7 +798,7 @@ class AuditCrud extends Controller
             
                 foreach ($query->getResultArray() as $row){
                     $row['answers'] = $db->query("SELECT id, question_id, ".$data['audit_obj']['language']." AS 'answer', answer AS 'en_ans'  FROM answers WHERE question_id = '".$row['id']."' ORDER BY precedence ASC")->getResultArray();
-    /* or this? */  $row['response'] = $responseModel->where(['audit_id' => $id, 'question_id' => $row['id']])->first();
+                    $row['response'] = $responseModel->where(['audit_id' => $id, 'question_id' => $row['id']])->first();
                     $results[] = $row;
                 }
             
@@ -958,9 +967,11 @@ class AuditCrud extends Controller
                             $scores = $answerModel->db->table('answers')->getWhere(['id'=>$answer_id])->getResult(); 
                             $score_ba = 0;
                             $score_abta = 0;
+                            $score_ejh = 0;
                             foreach($scores as $score){
                                 $score_ba = $score->score_ba;
                                 $score_abta =  $score->score_abta;
+                                $score_ejh = $score->score_ejh;
                             }
                             
                             //populate the reponse data
@@ -970,6 +981,7 @@ class AuditCrud extends Controller
                                 'answer_id' => $answer_id,
                                 'suggested_score_ba' => $score_ba,
                                 'suggested_score_abta' => $score_abta,
+                                'suggested_score_ejh' => $score_ejh,
                                 'custom_answer' => $custom_answer,
                             ];
                                 
@@ -988,6 +1000,7 @@ class AuditCrud extends Controller
                                    $response += [
                                         'score_ba' => null,
                                         'score_abta' => null,
+                                        'score_ejh' => null,
                                     ];
                                 }
 
@@ -1237,7 +1250,7 @@ class AuditCrud extends Controller
         $results = array();
 
         $query = $db->query("
-        SELECT questions.question, answers.en, responses.comment, responses.answer_id, responses.custom_answer, responses.score_ba, responses.score_abta 
+        SELECT questions.question, answers.en, responses.comment, responses.answer_id, responses.custom_answer, responses.score_ba, responses.score_abta, responses.score_ejh 
         FROM `responses` 
         INNER JOIN questions ON questions.id = responses.question_id 
         INNER JOIN answers ON answers.id = responses.answer_id 
@@ -1247,10 +1260,10 @@ class AuditCrud extends Controller
 
             $line = [];
             $line['highlight'] = "none";
-            if($row['score_ba'] <= -100015 || $row['score_abta'] <= -100015) {
+            if($row['score_ba'] <= -100015 || $row['score_abta'] <= -100015 || $row['score_ejh'] <= -100015) {
                 $line['highlight'] = "fail";
             }
-            if($row['score_ba'] >= 100015 || $row['score_abta'] >= 100015) {
+            if($row['score_ba'] >= 100015 || $row['score_abta'] >= 100015 || $row['score_abta'] >= 100015) {
                 $line['highlight'] = "pass";
             }
             

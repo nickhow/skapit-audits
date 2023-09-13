@@ -10,6 +10,7 @@
              <th>Accommodation Name</th>
              <th>BA Audit Expiring On</th>
              <th>ABTA Audit Expiring On</th>
+             <th>EJH Audit Expiring On</th>
           </tr>
        </thead>
        <tbody>
@@ -21,6 +22,7 @@
               <td><?php echo ucfirst($audit['accommodation_name']); ?></td>
               <td><?php echo date('d/m/Y', strtotime($audit['expiry_date_ba'])); ?></td>
               <td><?php echo date('d/m/Y', strtotime($audit['expiry_date_abta'])); ?></td>
+              <td><?php echo date('d/m/Y', strtotime($audit['expiry_date_ejh'])); ?></td>
           </tr>
          <?php endforeach; ?>
          <?php endif; ?>

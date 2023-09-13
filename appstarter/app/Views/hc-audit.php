@@ -128,6 +128,10 @@
                         <label>ABTA Total Score</label>
                         <input type="number" id="abta_total" name="audit_score_abta" class="form-control" value="<?php if(!isset($audit_obj['total_score_abta'])){ echo 0;/*$abta_total_score; */}else{ echo $audit_obj['total_score_abta'];} ?>">
                     </div>
+                    <div class="col-12 col-md-6">
+                        <label>EJH Total Score</label>
+                        <input type="number" id="ejh_total" name="audit_score_ejh" class="form-control" value="<?php if(!isset($audit_obj['total_score_ejh'])){ echo 0;/*$ejh_total_score; */}else{ echo $audit_obj['total_score_ejh'];} ?>">
+                    </div>
                 </div>
                 
                 <div class="row">
@@ -145,6 +149,13 @@
                             <option value="unsuitable" <?php  if($audit_obj['result_abta']) { if($audit_obj['result_abta'] === 'unsuitable'){ echo "selected"; } } ?> >Unsuitable</option>
                         </select>
                     </div>
+                    <div class="col-6 col-md-4">
+                        <label>Result (EJH)</label>
+                        <select name="audit_result_ejh" id="audit_result_ejh" class="form-select">
+                            <option value="suitable" <?php  if($audit_obj['result_ejh']) { if($audit_obj['result_ejh'] === 'suitable'){ echo "selected"; } } ?>>Suitable</option>
+                            <option value="unsuitable" <?php  if($audit_obj['result_ejh']) { if($audit_obj['result_ejh'] === 'unsuitable'){ echo "selected"; } } ?> >Unsuitable</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-6 col-md-4">
@@ -154,6 +165,10 @@
                     <div class="col-6 col-md-4">
                         <label>Expiry Date (ABTA)</label>
                         <input type="date" id="expiry_date_abta" name="expiry_date_abta" class="form-control" value="<?php echo date('Y-m-d', strtotime($audit_obj['expiry_date_abta'])); ?>">
+                    </div>
+                    <div class="col-6 col-md-4">
+                        <label>Expiry Date (EJH)</label>
+                        <input type="date" id="expiry_date_ejh" name="expiry_date_ejh" class="form-control" value="<?php echo date('Y-m-d', strtotime($audit_obj['expiry_date_ejh'])); ?>">
                     </div>
                 </div>
                 
@@ -175,6 +190,7 @@
             <?php 
                 $ba_total_score = "0";
                 $abta_total_score = "0";
+                $ejh_total_score = "0";
             ?>
             
             <?php foreach ($response_obj as $response){ ?>
@@ -233,6 +249,11 @@
                                 <label>ABTA Suggested Score</label>
                                 <input type="number" name="<?php echo $response['id']?>[suggested_score_abta] " class="form-control" readonly value="<?php echo $response['suggested_score_abta'];  ?>">
                             </div>
+
+                            <div class="col-12 col-md-3">
+                                <label>EJH Suggested Score</label>
+                                <input type="number" name="<?php echo $response['id']?>[suggested_score_ejh] " class="form-control" readonly value="<?php echo $response['suggested_score_ejh'];  ?>">
+                            </div>                           
                             
                             <div class="col-12 col-md-3">
                                 <label>BA Score</label>
@@ -242,6 +263,11 @@
                             <div class="col-12 col-md-3">
                                 <label>ABTA Score</label>
                                 <input type="number" name="<?php echo $response['id']?>[score_abta] " class="form-control abta_score" value="<?php if(!isset($response['score_abta'])){ echo $response['suggested_score_abta']; }else{ echo $response['score_abta'];}  ?>">
+                            </div>
+
+                            <div class="col-12 col-md-3">
+                                <label>EJH Score</label>
+                                <input type="number" name="<?php echo $response['id']?>[score_ejh] " class="form-control ejh_score" value="<?php if(!isset($response['score_ejh'])){ echo $response['suggested_score_ejh']; }else{ echo $response['score_ejh'];}  ?>">
                             </div>
                         </div>
                         <div class="row">
@@ -262,6 +288,9 @@
                 }
                 if(is_numeric($response['suggested_score_abta'])){
                     $abta_total_score += $response['suggested_score_abta'];
+                }  
+                if(is_numeric($response['suggested_score_ejh'])){
+                    $ejh_total_score += $response['suggested_score_ejh'];
                 }  
                 
             } ?>
@@ -418,27 +447,40 @@
             }
         }
         document.getElementById('abta_total').value = abta_total;
-        
+
+        var ejh_total=0;
+        for(var i=0;i<ejh_scores.length;i++){
+            if(parseInt(ejh_scores[i].value)){
+                ejh_total += parseInt(ejh_scores[i].value);
+            }
+        }
+        document.getElementById('ejh_total').value = ejh_total;
+
         const types = {
         '1': {
               ba: 147,
               abta: 139,
+              ejh: 00, /* NEEDS UPDATING */
             },
         '2': {
               ba: 181,
               abta: 174,
+              ejh: 00, /* NEEDS UPDATING */
             },
         '3': {
               ba: 178,
               abta: 170,
+              ejh: 00, /* NEEDS UPDATING */
             },
         '4': {
               ba: 178,
               abta: 170,
+              ejh: 00, /* NEEDS UPDATING */
             },
         '5': {
               ba: 185,
               abta: 177,
+              ejh: 00, /* NEEDS UPDATING */
             },
         };
         
@@ -461,6 +503,17 @@
             document.getElementById('audit_result_abta').value = "unsuitable"
             document.getElementById('expiry_date_abta').value = date;
         }
+
+        if(types['<?php echo $audit_obj['type']; ?>']['ejh'] <= ejh_total) {
+            var date = formatDate(new Date(),3);
+            document.getElementById('audit_result_ejh').value = "suitable";
+            document.getElementById('expiry_date_ejh').value = date;
+        } else {
+            var date = formatDate(new Date(),0);
+            document.getElementById('audit_result_ejh').value = "unsuitable"
+            document.getElementById('expiry_date_ejh').value = date;
+        }
+
     }
     
     window.addEventListener('load',function(){checkScores()});
@@ -525,10 +578,11 @@
         //per question check both scores and if either is classifies for highlight then call highlight
         var ba = question.querySelector(".ba_score");
         var abta = question.querySelector(".abta_score");
+        var abta = question.querySelector(".ejh_score");
         
-        if( ba.value >= 100015 || abta.value >= 100015){
+        if( ba.value >= 100015 || abta.value >= 100015 || ejh.value >= 100015){
             highlight(question,'good');
-        } else if( ba.value <= -100015 || abta.value <= -100015){
+        } else if( ba.value <= -100015 || abta.value <= -100015 || ejh.value <= -100015){
             highlight(question,'bad');
         } else {
             highlight(question,'');

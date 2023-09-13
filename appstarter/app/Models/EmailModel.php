@@ -100,7 +100,7 @@ class EmailModel extends Model
      * Expects:
      *  Language code  i.e. en
      *  Email address - Can be single, comma-delimited list
-     *  Array containing : property name, type, resort, result_ba, result_abta, URL
+     *  Array containing : property name, type, resort, result_ba, result_abta, result_ejh URL
      * 
      * TODO : Add to the tags / values the btn url so that is also env specific - currently hardcoded in email template to the live url
      **/
@@ -115,7 +115,7 @@ class EmailModel extends Model
         $attachment = $audit_id.".pdf";
         
         //Tags to search the text for -> this needs to be aligned to the $values[] Array
-        $tags = array("__name__","__type__","__resort__","__result_ba__","__result_abta__","__url__");
+        $tags = array("__name__","__type__","__resort__","__result_ba__","__result_abta__","__result_ejh__","__url__");
         
         $message = str_replace($tags,$values,$message);
         $text = str_replace($tags,$values,$text);

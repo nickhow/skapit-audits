@@ -69,6 +69,11 @@
                                 <td><?php echo strtoupper($audit['result_abta']); ?></td>
                                 <td><?php echo date('Y-m-d', strtotime($audit['expiry_date_abta'])); ?></td>
                             </tr>
+                            <tr>
+                                <td><b>easyJet</b></td>
+                                <td><?php echo strtoupper($audit['result_ejh']); ?></td>
+                                <td><?php echo date('Y-m-d', strtotime($audit['expiry_date_ejh'])); ?></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

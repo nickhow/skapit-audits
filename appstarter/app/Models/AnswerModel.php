@@ -8,7 +8,7 @@ class AnswerModel extends Model
 
     protected $primaryKey = 'id';
     
-    protected $allowedFields = ['question_id', 'answer', 'score_ba', 'score_abta', 'en', 'fr','de','es','it','precedence' ];
+    protected $allowedFields = ['question_id', 'answer', 'score_ba', 'score_abta', 'score_ejh', 'en', 'fr','de','es','it','precedence' ];
 
     
 }

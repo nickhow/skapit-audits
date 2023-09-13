@@ -62,6 +62,15 @@
                         <?php else: ?>
                             <span class="text-warning text-center">Unknown</span>
                         <?php endif ?>
+                        <br/>
+                        EJH: 
+                        <?php if($audit['result_ejh'] == "suitable"): ?>
+                            <span class="text-primary text-center"><?php echo ucFirst($audit['result_ejh']); ?></span>
+                        <?php elseif ($audit['result_ejh'] == "unsuitable"): ?>
+                            <span class="text-danger text-center"><?php echo ucFirst($audit['result_ejh']); ?></span>
+                        <?php else: ?>
+                            <span class="text-warning text-center">Unknown</span>
+                        <?php endif ?>
                      <?php elseif($audit['status'] === "reviewing"): ?>
                         <span class="text-warning text-center">Reviewing</span>
                     <?php else: ?>
