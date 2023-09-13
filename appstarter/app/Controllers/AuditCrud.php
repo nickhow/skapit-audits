@@ -286,7 +286,7 @@ class AuditCrud extends Controller
                 WHERE status = 'reviewed'
                 AND result_ba='suitable' 
                 AND result_abta='suitable'
-                AND result_ejh='suitable',
+                AND result_ejh='suitable'
                 AND ( (DATEDIFF('".$today."', `expiry_date_ba`) > -30) OR (DATEDIFF('".$today."', `expiry_date_abta`) > -30) OR (DATEDIFF('".$today."', `expiry_date_ejh`) > -30) )
         ";
 
