@@ -430,7 +430,8 @@
     function checkScores(){
         var ba_scores = document.getElementsByClassName('ba_score');
         var abta_scores = document.getElementsByClassName('abta_score');
-          
+        var ejh_scores = document.getElementsByClassName('ejh_score');
+
         var ba_total=0;
         for(var i=0;i<ba_scores.length;i++){
             if(parseInt(ba_scores[i].value)){
