@@ -8,7 +8,8 @@ class UpdateReviewedEmail extends Migration
 {
     public function up()
     {        
-        $html = `<html>
+        $html = <<<HTML
+        <html>
 
         <body>
         
@@ -234,7 +235,7 @@ class UpdateReviewedEmail extends Migration
         </body>
         
         </html>
-        `;
+        HTML;
         
          $sql = 'UPDATE `emails` SET `html` = ? WHERE id = ?';
          $this->db->query($sql, [$html, 6]);
