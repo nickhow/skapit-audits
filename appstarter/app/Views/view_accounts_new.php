@@ -103,6 +103,7 @@
                                     <tr>
                                         <td><p class="m-0"><small>Exp.  <?php echo date('d/m/Y', strtotime($account['audit']['expiry_date_ba'])); ?></small></p></td>
                                         <td><p class="m-0"><small>Exp.  <?php echo date('d/m/Y', strtotime($account['audit']['expiry_date_abta'])); ?></small></p></td>
+                                        <td><p class="m-0"><small>Exp.  <?php echo date('d/m/Y', strtotime($account['audit']['expiry_date_ejh'])); ?></small></p></td>
                                     </tr>
                                 </tbody>
                             </table>
