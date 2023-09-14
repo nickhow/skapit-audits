@@ -237,8 +237,8 @@ class UpdateReviewedEmail extends Migration
         </html>
         EOT;
         
-         $sql = 'UPDATE `emails` SET `html` = ? WHERE id = ?';
-         $this->db->query($sql, [$html, 6]);
+         $sql = "UPDATE `emails` SET `html` = ".$html." WHERE id = 6";
+         $this->db->query($sql);
     }
 
     public function down()
