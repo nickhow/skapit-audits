@@ -69,29 +69,29 @@
                     <?php elseif($audit['status'] === "reviewed"): ?>
                         BA: 
                         <?php if($audit['result_ba'] == "suitable"): ?>
-                            <span class="text-primary text-center"><?php // echo ucFirst($audit['result_ba']); ?><i class="fas fa-check"></i></span>
+                            <span class="text-primary text-center"><?php  echo ucFirst($audit['result_ba']); ?><!--<i class="fas fa-times"></i>--></i></span>
                         <?php elseif ($audit['result_ba'] == "unsuitable"): ?>
-                            <span class="text-danger text-center"><?php // echo ucFirst($audit['result_ba']); ?><i class="fas fa-times"></i></span>
+                            <span class="text-danger text-center"><?php  echo ucFirst($audit['result_ba']); ?><!--<i class="fas fa-times"></i>--></span>
                         <?php else: ?>
-                            <span class="text-warning text-center"><i class="fas fa-question"></i></span> <!-- Unknown -->
+                            <span class="text-warning text-center"><!--<i class="fas fa-question"></i>--> Unknown</span> <!-- Unknown -->
                         <?php endif ?>
                         <br/>
                         ABTA: 
                         <?php if($audit['result_abta'] == "suitable"): ?>
-                            <span class="text-primary text-center"><?php // echo ucFirst($audit['result_abta']); ?><i class="fas fa-check"></i></span>
+                            <span class="text-primary text-center"><?php  echo ucFirst($audit['result_abta']); ?><!--<i class="fas fa-times"></i>--></i></span>
                         <?php elseif ($audit['result_abta'] == "unsuitable"): ?>
-                            <span class="text-danger text-center"><?php // echo ucFirst($audit['result_abta']); ?><i class="fas fa-times"></i></span>
+                            <span class="text-danger text-center"><?php  echo ucFirst($audit['result_abta']); ?><!--<i class="fas fa-times"></i>--></span>
                         <?php else: ?>
-                            <span class="text-warning text-center"><i class="fas fa-question"></i></span> <!-- Unknown -->
+                            <span class="text-warning text-center"><!--<i class="fas fa-question"></i>--> Unknown</span> <!-- Unknown -->
                         <?php endif ?>
                         <br/>
                         EJH: 
                         <?php if($audit['result_ejh'] == "suitable"): ?>
-                            <span class="text-primary text-center"><?php // echo ucFirst($audit['result_ejh']); ?><i class="fas fa-check"></i></span>
+                            <span class="text-primary text-center"><?php  echo ucFirst($audit['result_ejh']); ?><!--<i class="fas fa-times"></i>--></span>
                         <?php elseif ($audit['result_ejh'] == "unsuitable"): ?>
-                            <span class="text-danger text-center"><?php // echo ucFirst($audit['result_ejh']); ?><i class="fas fa-times"></i></span>
+                            <span class="text-danger text-center"><?php  echo ucFirst($audit['result_ejh']); ?><!--<i class="fas fa-times"></i>--></span>
                         <?php else: ?>
-                            <span class="text-warning text-center"><i class="fas fa-question"></i></span> <!-- Unknown -->
+                            <span class="text-warning text-center"><!--<i class="fas fa-question"></i>--> Unknown</span> <!-- Unknown -->
                         <?php endif ?>
                         
                      <?php elseif($audit['status'] === "reviewing"): ?>
