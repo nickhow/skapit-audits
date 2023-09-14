@@ -30,7 +30,7 @@ cd audits/dev/appstarter
 composer update
 
 ## If there are DB changes to deploy
-php spark migrate // something about the last version ...
+php spark migrate // updates the ones not in the database migrations table.
 php spark migrate:rollback (if needed)
 
 
