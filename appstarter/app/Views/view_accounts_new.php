@@ -90,6 +90,15 @@
                                                 ABTA: <span class="text-warning text-center">Unknown</span>
                                             <?php endif; ?>
                                         </td>
+                                        <td>
+                                            <?php if($account['audit']['result_ejh'] == "suitable"): ?>
+                                                EJH: <span class="text-primary text-center"><?php echo ucFirst($account['audit']['result_ejh']); ?></span>
+                                            <?php elseif ($account['audit']['result_ejh'] == "unsuitable"): ?>
+                                                EJH: <span class="text-danger text-center"><?php echo ucFirst($account['audit']['result_ejh']); ?></span>
+                                            <?php else: ?>
+                                                EJH: <span class="text-warning text-center">Unknown</span>
+                                            <?php endif; ?>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td><p class="m-0"><small>Exp.  <?php echo date('d/m/Y', strtotime($account['audit']['expiry_date_ba'])); ?></small></p></td>
