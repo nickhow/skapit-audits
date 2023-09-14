@@ -234,7 +234,7 @@ class UpdateReviewedEmail extends Migration
         </body>
         
         </html>
-        `
+        `;
         
          $sql = 'UPDATE `emails` SET `html` = ? WHERE id = ?';
          $db->query($sql, [$html, 6]);
