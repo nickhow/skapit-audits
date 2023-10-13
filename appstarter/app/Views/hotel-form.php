@@ -154,7 +154,12 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    
+                    <?php if($question['has_helper'] || true) { ?>
+                        <a href="https://google.com" target="_blank" style="font-size: smaller;">Help with this <i class="fa fa-question-circle"><i></i></i></a>
+                    <?php } ?>
+                    
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-understanding-property-body')"/>
                     <?php   } else { ?>
