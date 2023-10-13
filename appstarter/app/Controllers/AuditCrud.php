@@ -893,7 +893,7 @@ class AuditCrud extends Controller
         
         $canCommit = true; //flag for completed form or not.
         
-            //save --> reload form
+        //save --> reload form
             echo "save ... ";
                 if($this->request->getVar('waiver') == "on"){
                     echo "waiver ... ";
@@ -915,6 +915,10 @@ class AuditCrud extends Controller
                    
                    
                    // WAIVER SUBMITTED ... do we need payment, or can we push through to completion now?
+
+                    $audit_id = $this->request->getVar('id');
+                    $audit = $auditModel->find($audit_id);
+
                     if($audit['is_payable']){
                         $data = [
                             'status' => 'pending_payment',
