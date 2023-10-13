@@ -10,6 +10,7 @@ class QuestionController extends Controller
     // show question list
     public function index(){
         $questionModel = new QuestionModel();
+
         $data['questions'] = $questionModel->orderBy('question_number', 'ASC')->findAll();
         
         echo view('templates/header');
@@ -20,7 +21,7 @@ class QuestionController extends Controller
     // show single question
     public function singleQuestion($id = null){
         $questionModel = new QuestionModel();
-
+        $uploadModel = new UploadModel();
         $helper_location = 'helper_images/'.$id;
 
         $data['question_obj'] = $questionModel->where('id', $id)->first();
@@ -35,8 +36,8 @@ class QuestionController extends Controller
     // update question data
     public function update(){
         $questionModel = new QuestionModel();
-        $session = session();
         $uploadModel = new UploadModel();
+        $session = session();
         $has_helper = 0;
 
         $id = $this->request->getVar('id');
