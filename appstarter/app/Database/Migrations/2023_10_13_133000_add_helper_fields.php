@@ -8,7 +8,8 @@ class AddHelperFields extends Migration
 {
     public function up()
     {
-        $this->forge->addField([
+
+        $fields = [
             'has_helper' => [
                 'type'       => 'tinyint',
                 'constraint' => '1',
@@ -18,7 +19,7 @@ class AddHelperFields extends Migration
                 'constraint' => '500',
                 'comment'    => 'URL for helper image or video',
             ],
-        ]);
+        ];
         $this->forge->addColumn('questions', $fields);
     }
 
