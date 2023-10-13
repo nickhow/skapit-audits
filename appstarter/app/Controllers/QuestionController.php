@@ -41,7 +41,7 @@ class QuestionController extends Controller
         $has_helper = 0;
 
         $id = $this->request->getVar('id');
-        $file = $this->request->getFiles('helper_image');
+        $file = $this->request->getFile('helper_image');
 
         if($file->isValid()){
             $location = 'helper_images'.$id;
