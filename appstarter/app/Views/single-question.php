@@ -35,11 +35,24 @@
         <label>Italian</label>
         <input type="text" name="it" class="form-control" value="<?php echo $question_obj['it']; ?>">
       </div>
-
+      
       <div class="form-group pt-2">
-        <label>Helper URL</label>
+        <label>Question Helper (Optionally upload an image or supply a link to a video)</label>
         <input type="text" name="helper_url" class="form-control" value="<?php echo $question_obj['helper_url']; ?>">
+
+        <input type="file" name="helper_image" />
+      </div>  
+      
+      <div id="<?php echo $file['file_name']; ?>">
+        <p class="fs-5"><span class="text-primary">Current file: </span><?php echo $file['original_name']; ?></p>
+        <div class="row">
+          <div class="col-12 col-md-4 p-0">
+            <a href="<?php  echo base_url()."/uploads/helper_images/".$question_obj['id']."/".$file['file_name']; ?>" target='_blank' ><div class="col-12 btn btn-sm btn-secondary">View</div></a>
+          </div>
+          <div class="col-12 col-md-4 mx-3 btn btn-sm btn-outline-danger" onclick="deleteFile('<?php  echo $file['file_name'] ?>')">Delete</div>
+        </div>
       </div>
+
 
       <div class="form-group py-3">
         <a href="<?php echo base_url('groups'); ?>" class="btn btn-outline-dark btn-block"><i class="fas fa-arrow-left"></i> Back</a>

@@ -2,6 +2,8 @@
 namespace App\Controllers;
 use App\Models\QuestionModel;
 use CodeIgniter\Controller;
+use App\Models\UploadModel;
+
 
 class QuestionController extends Controller
 {
@@ -18,8 +20,13 @@ class QuestionController extends Controller
     // show single question
     public function singleQuestion($id = null){
         $questionModel = new QuestionModel();
+
+        $helper_location = 'helper_images/'.$id;
+
         $data['question_obj'] = $questionModel->where('id', $id)->first();
-        
+        $data['file'] = $uploadModel->where('audit_id',$helper_location)->findAll();
+
+
         echo view('templates/header');
         echo view('single-question', $data);
         echo view('templates/footer');
@@ -29,14 +36,23 @@ class QuestionController extends Controller
     public function update(){
         $questionModel = new QuestionModel();
         $session = session();
-
+        $uploadModel = new UploadModel();
         $has_helper = 0;
+
+        $id = $this->request->getVar('id');
+        $file = $this->request->getFiles('helper_image');
+
+        if($file->isValid()){
+            $location = 'helper_images'.$id;
+            $uploadModel->uploadFile($file, $location);
+            $has_helper = 1;
+        }
 
         if($this->request->getVar('helper_url') != ""){
             $has_helper = 1;
         }
 
-        $id = $this->request->getVar('id');
+       
         $data = [
             'question' => $this->request->getVar('question'),
             'en' => $this->request->getVar('en'),
