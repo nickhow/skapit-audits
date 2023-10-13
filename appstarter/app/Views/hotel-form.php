@@ -157,7 +157,7 @@
                     <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
                     
                     <?php if($question['has_helper'] || true) { ?>
-                        <a href="https://google.com" target="_blank" style="font-size: smaller;">Help with this <i class="fa fa-question-circle"><i></i></i></a>
+                        <a href="https://google.com" target="_blank" style="font-size: smaller;">Help with this <i class="fa fa-question-circle"></i></a>
                     <?php } ?>
                     
                     <?php if($question['has_custom_answer']){ ?>
