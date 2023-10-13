@@ -30,10 +30,10 @@ class QuestionController extends Controller
         $questionModel = new QuestionModel();
         $session = session();
 
-        $has_helper=0;
+        $has_helper = 0;
 
         if($this->request->getVar('helper_url') != ""){
-            $has_helper = 1
+            $has_helper = 1;
         }
 
         $id = $this->request->getVar('id');
