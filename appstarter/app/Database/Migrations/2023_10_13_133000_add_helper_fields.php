@@ -28,7 +28,7 @@ class AddHelperFields extends Migration
             'has_helper',
             'helper_url',
         ];
-        $this->forge->dropColumn('questions', $fields)
+        $this->forge->dropColumn('questions', $fields);
     }
 }
 ?>
