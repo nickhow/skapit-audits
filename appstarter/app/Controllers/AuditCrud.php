@@ -744,13 +744,20 @@ class AuditCrud extends Controller
         }
         
         //If no waiver signed - show the waiver
-        if(!$data['audit_obj']['waiver_signed']){
-            echo view('waiver',$data);
-        } 
+        //if(!$data['audit_obj']['waiver_signed']){
+        //    echo view('waiver',$data);
+        //} 
+        
         //If no type chosen - show the type selection
-        elseif(!$data['audit_obj']['type']){
+        if(!$data['audit_obj']['type']){  //was elseif ...
             echo view('type',$data);
         }
+
+        //If the form has been submitted, no waiver.
+        elseif($data['audit_obj']['status'] == "pending_waiver" ){
+            echo view('waiver',$data);
+        } 
+
         //The form has been submitted, now needs payment
         elseif($data['audit_obj']['status'] == "pending_payment" && !$data['audit_obj']['is_paid']){
             echo view('checkout',$data);
@@ -891,7 +898,7 @@ class AuditCrud extends Controller
                 if($this->request->getVar('waiver') == "on"){
                     echo "waiver ... ";
                     $data = [
-                        'status' => 'open',
+                        //'status' => 'open',
                         'waiver_signed' => '1',
                         'waiver_signed_date' =>Time::now('Europe/London', 'en_GB'),
                         'last_updated' => Time::now('Europe/London', 'en_GB'),
@@ -903,8 +910,56 @@ class AuditCrud extends Controller
                     ];
                     
                     //reloads the form page - if it is complete it needs a new message -> goes to the locked for review screen, maybe soften that message. If it was saved it should alert to success / failure.
+                    //NOT SURE WHAT THE ABOVE COMMENT IS ABOUT
+                   
+                   
+                   
+                   // WAIVER SUBMITTED ... do we need payment, or can we push through to completion now?
+                    if($audit['is_payable']){
+                        $data = [
+                            'status' => 'pending_payment',
+                            'last_updated' => Time::now('Europe/London', 'en_GB'),
+                        ];
+                    } else { // an audit that is complete and did not need payment
+                        $data = [
+                            'status' => 'complete',
+                            'completed_date' => Time::now('Europe/London', 'en_GB'),
+                            'last_updated' => Time::now('Europe/London', 'en_GB'),
+                            'highlight_failures' => 0,
+                        ];
+                    
+                        $account_audit = $accountAuditModel->where('audit_id',$audit['id'])->first();
+                        $account = $accountModel->where('id',$account_audit['account_id'])->first();
+            
+                        //send email to hotelcheck and fraser
+                        $emailaddresses = (getenv('hotelcheck'));
+                        
+                        //Email the account about the audit
+                        $url =  site_url("/audit/".$id."/review");
+                        $values = array( $account['accommodation_name'], $audit['type'], $account['resort'], $url);
+                        
+                        $emailModel = new EmailModel();
+                        $emailModel->sendCompletedAudit("en",$emailaddresses,$values);
+                        
+                        //reloads the form page - if it is complete it needs a new message -> goes to the locked for review screen, maybe soften that message. If it was saved it should alert to success / failure.
+                        $text = $textModel->limit(1)->getWhere(['name'=>'audit_completed']);
+                        $lang = $audit['language'];
+                            $flashData = [
+                                'msg'  => $text->getRow()->$lang,
+                            'style' => 'alert-success',
+                        ];
+                        $session->setFlashdata($flashData);
+                    }
+
+                    echo ' committing to db';
+                    $auditModel->update($id,$data);
+                    
+                    //reload audit in new state
+                    return $this->response->redirect(site_url('/audit/'.$id));
+
                 } elseif ($this->request->getVar('type')){
                     $data = [
+                        'status' => 'open',
                         'type' => $this->request->getVar('type'),
                         'last_updated' => Time::now('Europe/London', 'en_GB'),
                     ];
@@ -1045,48 +1100,16 @@ class AuditCrud extends Controller
                 ];
                 $session->setFlashdata($flashData);
                 return $this->response->redirect(site_url('/audit/'.$id));
-            }
-            
+            } else { //can submit, move to waiver...
+                $data = [
+                    'status' => 'pending_waiver',
+                    'last_updated' => Time::now('Europe/London', 'en_GB'),
+                ];
+            } 
             
             //complete --> submit for review, lock form
             echo "complete ... ";
             
-            
-            if($audit['is_payable']){
-                $data = [
-                    'status' => 'pending_payment',
-                    'last_updated' => Time::now('Europe/London', 'en_GB'),
-                ];
-            } else { // an audit that is complete and did not need payment
-                $data = [
-                    'status' => 'complete',
-                    'completed_date' => Time::now('Europe/London', 'en_GB'),
-                    'last_updated' => Time::now('Europe/London', 'en_GB'),
-                    'highlight_failures' => 0,
-                ];
-            
-                $account_audit = $accountAuditModel->where('audit_id',$audit['id'])->first();
-                $account = $accountModel->where('id',$account_audit['account_id'])->first();
-    
-                //send email to hotelcheck and fraser
-                $emailaddresses = (getenv('hotelcheck'));
-                
-                //Email the account about the audit
-                $url =  site_url("/audit/".$id."/review");
-                $values = array( $account['accommodation_name'], $audit['type'], $account['resort'], $url);
-                
-                $emailModel = new EmailModel();
-                $emailModel->sendCompletedAudit("en",$emailaddresses,$values);
-                
-                //reloads the form page - if it is complete it needs a new message -> goes to the locked for review screen, maybe soften that message. If it was saved it should alert to success / failure.
-                $text = $textModel->limit(1)->getWhere(['name'=>'audit_completed']);
-                $lang = $audit['language'];
-                    $flashData = [
-                        'msg'  => $text->getRow()->$lang,
-                    'style' => 'alert-success',
-                ];
-                $session->setFlashdata($flashData);
-            }
         }
 
         echo ' committing to db';
