@@ -791,7 +791,7 @@ class AuditCrud extends Controller
                     $session->setFlashdata('locked', true);
                 }
                 //you might be an admin, but the form is not submitted yet ... it's a free-for-all
-                $query = $db->query("SELECT id, ".$data['audit_obj']['language']." AS 'question', hide_for_1, hide_for_2, hide_for_3, hide_for_4, hide_for_5, question_number, has_custom_answer FROM questions ORDER BY question_number ASC");
+                $query = $db->query("SELECT id, ".$data['audit_obj']['language']." AS 'question', hide_for_1, hide_for_2, hide_for_3, hide_for_4, hide_for_5, question_number, has_custom_answer, has_helper, helper_url FROM questions ORDER BY question_number ASC");
                 $results = array();
             
                 foreach ($query->getResultArray() as $row){

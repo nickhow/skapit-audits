@@ -29,6 +29,13 @@ class QuestionController extends Controller
     public function update(){
         $questionModel = new QuestionModel();
         $session = session();
+
+        $has_helper=0;
+
+        if($this->request->getVar('helper_url') != ""){
+            $has_helper = 1
+        }
+
         $id = $this->request->getVar('id');
         $data = [
             'question' => $this->request->getVar('question'),
@@ -37,6 +44,8 @@ class QuestionController extends Controller
             'de' => $this->request->getVar('de'),
             'fr' => $this->request->getVar('fr'),
             'it' => $this->request->getVar('it'),
+            'helper_url' => $this->request->getVar('helper_url'),
+            'has_helper' => $has_helper,
         ];
         $questionModel->update($id, $data);
         $session->setFlashdata('msg', 'Question updated.');
