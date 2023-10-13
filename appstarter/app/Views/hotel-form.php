@@ -156,8 +156,8 @@
                 <div class="form-group"> 
                     <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
                     
-                    <?php if($question['has_helper'] || true) { ?>
-                        <a href="https://google.com" target="_blank" style="font-size: smaller;">Help with this <i class="fa fa-question-circle"></i></a>
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;">Help with this <i class="fa fa-question-circle"></i></a>
                     <?php } ?>
                     
                     <?php if($question['has_custom_answer']){ ?>
