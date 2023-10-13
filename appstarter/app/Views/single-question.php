@@ -36,6 +36,11 @@
         <input type="text" name="it" class="form-control" value="<?php echo $question_obj['it']; ?>">
       </div>
 
+      <div class="form-group pt-2">
+        <label>Helper URL</label>
+        <input type="text" name="helper_url" class="form-control" value="<?php echo $question_obj['helper_url']; ?>">
+      </div>
+
       <div class="form-group py-3">
         <a href="<?php echo base_url('groups'); ?>" class="btn btn-outline-dark btn-block"><i class="fas fa-arrow-left"></i> Back</a>
         <button type="submit" class="btn btn-primary btn-block px-5 mx-2">Save Changes</button>

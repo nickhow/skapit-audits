@@ -11,6 +11,7 @@
           <tr>
              <th>Question Number</th>
              <th>Question</th>
+             <th>Has Helper</th>
              <th>Actions</th>
           </tr>
        </thead>
@@ -20,6 +21,7 @@
           <tr>
              <td><?php echo $question['question_number']; ?></td>
              <td><?php echo $question['question']; ?></td>
+             <td><?php if($question['has_helper']) {echo "Yes"; }else{ echo "No"; } ?></td>
              <td>
                   <div class="row">
                       <div class="col text-center">
