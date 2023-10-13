@@ -3,7 +3,7 @@
         <div class="row justify-content-md-center ">
           <div class="col-10 col-md-8 col-lg-6 p-4 bg-white rounded">
               <h2>Update Question</h2>
-    <form method="post" id="update_question" name="update_question" action="<?= site_url('/update-question') ?>">
+    <form method="post" id="update_question" name="update_question" enctype="multipart/form-data" action="<?= site_url('/update-question') ?>">
       <input type="hidden" name="id" id="id" value="<?php echo $question_obj['id']; ?>">
 
       <div class="form-group pt-2">
