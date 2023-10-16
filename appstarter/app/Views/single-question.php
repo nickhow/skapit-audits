@@ -41,6 +41,9 @@
         <input type="text" name="helper_url" class="form-control" value="<?php echo $question_obj['helper_url']; ?>">
 
         <input type="file" name="helper_image" />
+
+        <input type="hidden" id="helper_image_deleted" name="helper_image_deleted" />
+
       </div>  
       
       <?php if($file){ ?>
@@ -124,6 +127,7 @@
                 
                 },
                 success: function(msg) {
+                    document.getElementById('helper_image_deleted').value = TRUE;
                     console.log(msg);
                     document.getElementById(file_name).remove();
                     

@@ -49,6 +49,10 @@ class QuestionController extends Controller
             $has_helper = 1;
         }
 
+        if(!$this->request->getVar('helper_image_deleted')){
+            $has_helper = 1;
+        }
+
         if($this->request->getVar('helper_url') != ""){
             $has_helper = 1;
         }
