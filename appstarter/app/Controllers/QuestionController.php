@@ -49,7 +49,7 @@ class QuestionController extends Controller
             $has_helper = 1;
         }
 
-        if($this->request->getVar('helper_image_exists')){
+        if($this->request->getVar('helper_image_exists') === TRUE){
             $has_helper = 1;
         }
 
