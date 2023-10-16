@@ -128,6 +128,7 @@
                 },
                 success: function(msg) {
                     document.getElementById('helper_image_exists').value = 0;
+                    document.getElementById('helper_url').value = '';
                     console.log(msg);
                     document.getElementById(file_name).remove();
                     

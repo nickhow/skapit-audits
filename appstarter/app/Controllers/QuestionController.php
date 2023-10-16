@@ -39,6 +39,7 @@ class QuestionController extends Controller
         $uploadModel = new UploadModel();
         $session = session();
         $has_helper = 0;
+        $url = $this->request->getVar('helper_url');
 
         $id = $this->request->getVar('id');
         $file = $this->request->getFile('helper_image');
@@ -47,6 +48,7 @@ class QuestionController extends Controller
             $location = 'helper_images/'.$id;
             $uploadModel->uploadFile($file, $location);
             $has_helper = 1;
+            $url = base_url()."/uploads/helper_images/".$id."/".$file['file_name'];
         }
 
         if($this->request->getVar('helper_image_exists') == 1){
@@ -65,7 +67,7 @@ class QuestionController extends Controller
             'de' => $this->request->getVar('de'),
             'fr' => $this->request->getVar('fr'),
             'it' => $this->request->getVar('it'),
-            'helper_url' => $this->request->getVar('helper_url'),
+            'helper_url' => $url,
             'has_helper' => $has_helper,
         ];
         $questionModel->update($id, $data);
