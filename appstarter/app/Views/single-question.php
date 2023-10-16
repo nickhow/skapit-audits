@@ -43,7 +43,7 @@
         <input type="file" name="helper_image" />
       </div>  
       
-      <?php if($file){ var_dump($_POST); ?>
+      <?php if($file){ var_dump($_SESSION); ?>
       
         <div id="<?php echo $file['file_name']; ?>">
         <p class="fs-5"><span class="text-primary">Current file: </span><?php echo $file['original_name']; ?></p>
