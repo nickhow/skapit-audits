@@ -46,9 +46,9 @@ class QuestionController extends Controller
 
         if($file->isValid()){
             $location = 'helper_images/'.$id;
-            $uploadModel->uploadFile($file, $location);
+            $filename = $uploadModel->uploadFile($file, $location);
             $has_helper = 1;
-            $url = base_url()."/uploads/helper_images/".$id."/".$file['file_name'];
+            $url = base_url()."/uploads/helper_images/".$id."/".$filename;
         }
 
         if($this->request->getVar('helper_image_exists') == 1){
