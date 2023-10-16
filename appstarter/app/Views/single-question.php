@@ -42,7 +42,7 @@
 
         <input type="file" name="helper_image" />
 
-        <input type="hidden" id="helper_image_exists" name="helper_image_exists" value="<?php $file ? echo TRUE : echo FALSE; ?>" />
+        <input type="hidden" id="helper_image_exists" name="helper_image_exists" value="<?= $file ? TRUE : FALSE; ?>" />
 
       </div>
       
