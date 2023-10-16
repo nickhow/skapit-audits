@@ -127,7 +127,7 @@
                 
                 },
                 success: function(msg) {
-                    document.getElementById('helper_image_exists').value = FALSE;
+                    document.getElementById('helper_image_exists').value = false;
                     console.log(msg);
                     document.getElementById(file_name).remove();
                     
