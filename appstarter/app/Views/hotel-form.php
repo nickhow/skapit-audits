@@ -155,10 +155,9 @@
             <div class="col">
                 <div class="form-group"> 
                     <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
-                    
                     <?php if($question['has_helper']) { ?>
                         <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
-                    <?php } ?>
+                    <?php } ?> 
                     
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-understanding-property-body')"/>
@@ -204,7 +203,10 @@
         <div class="row my-3" id="section-firealarm">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-understanding-property-body')"/>
                     <?php   } else { ?>
@@ -249,7 +251,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-understanding-property-body')"/>
                     <?php   } else { ?>
@@ -294,7 +299,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-understanding-property-body')"/>
                     <?php   } else { ?>
@@ -353,7 +361,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-legal-body')"/>
                     <?php   } else { ?>
@@ -398,7 +409,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-legal-body')"/>
                     <?php   } else { ?>
@@ -443,7 +457,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-legal-body')"/>
                     <?php   } else { ?>
@@ -488,7 +505,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onchange="updateProgress('form-accordion-legal-body')"/>
                     <?php   } else { ?>
@@ -546,7 +566,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -591,7 +614,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -636,7 +662,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -681,7 +710,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -726,7 +758,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -771,7 +806,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -816,7 +854,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -861,7 +902,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -906,7 +950,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -951,7 +998,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -996,7 +1046,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -1041,7 +1094,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -1086,7 +1142,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -1131,7 +1190,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -1176,7 +1238,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -1221,7 +1286,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -1266,7 +1334,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -1311,7 +1382,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -1356,7 +1430,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -1401,7 +1478,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -1446,7 +1526,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -1491,7 +1574,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -1536,7 +1622,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -1581,7 +1670,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -1626,7 +1718,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -1671,7 +1766,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -1716,7 +1814,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -1761,7 +1862,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -1806,7 +1910,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -1855,7 +1962,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -1900,7 +2010,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -1945,7 +2058,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -1990,7 +2106,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -2035,7 +2154,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -2080,7 +2202,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -2125,7 +2250,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -2170,7 +2298,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -2215,7 +2346,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -2260,7 +2394,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -2306,7 +2443,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -2351,7 +2491,10 @@
         <div class="row my-3" id="section-firealarm">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -2396,7 +2539,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -2441,7 +2587,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -2486,7 +2635,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -2531,7 +2683,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -2576,7 +2731,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -2621,7 +2779,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -2666,7 +2827,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -2711,7 +2875,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -2756,7 +2923,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -2801,7 +2971,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -2846,7 +3019,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fire-body')"/>
                     <?php   } else { ?>
@@ -2891,7 +3067,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onchange="updateProgress('form-accordion-fire-body')" />
                     <?php   } else { ?>
@@ -2938,7 +3117,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onchange="updateProgress('form-accordion-fire-body')" />
                     <?php   } else { ?>
@@ -2999,7 +3181,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-hygiene-body')"/>
                     <?php   } else { ?>
@@ -3044,7 +3229,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-hygiene-body')"/>
                     <?php   } else { ?>
@@ -3089,7 +3277,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-hygiene-body')"/>
                     <?php   } else { ?>
@@ -3134,7 +3325,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-hygiene-body')"/>
                     <?php   } else { ?>
@@ -3179,7 +3373,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-hygiene-body')"/>
                     <?php   } else { ?>
@@ -3224,7 +3421,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-hygiene-body')"/>
                     <?php   } else { ?>
@@ -3269,7 +3469,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-hygiene-body')"/>
                     <?php   } else { ?>
@@ -3314,7 +3517,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onchange="updateProgress('form-accordion-hygiene-body')"/>
                     <?php   } else { ?>
@@ -3372,7 +3578,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-pool-body')"/>
                     <?php   } else { ?>
@@ -3417,7 +3626,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-pool-body')"/>
                     <?php   } else { ?>
@@ -3462,7 +3674,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-pool-body')"/>
                     <?php   } else { ?>
@@ -3507,7 +3722,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-pool-body')"/>
                     <?php   } else { ?>
@@ -3552,7 +3770,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-pool-body')"/>
                     <?php   } else { ?>
@@ -3597,7 +3818,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-pool-body')"/>
                     <?php   } else { ?>
@@ -3642,7 +3866,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-pool-body')"/>
                     <?php   } else { ?>
@@ -3687,7 +3914,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-pool-body')"/>
                     <?php   } else { ?>
@@ -3732,7 +3962,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-pool-body')"/>
                     <?php   } else { ?>
@@ -3777,7 +4010,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-pool-body')"/>
                     <?php   } else { ?>
@@ -3822,7 +4058,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-pool-body')"/>
                     <?php   } else { ?>
@@ -3867,7 +4106,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-pool-body')"/>
                     <?php   } else { ?>
@@ -3912,7 +4154,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-pool-body')"/>
                     <?php   } else { ?>
@@ -3957,7 +4202,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-pool-body')"/>
                     <?php   } else { ?>
@@ -4002,7 +4250,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-pool-body')"/>
                     <?php   } else { ?>
@@ -4047,7 +4298,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onchange="updateProgress('form-accordion-pool-body')" />
                     <?php   } else { ?>
@@ -4106,7 +4360,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="text" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fuel-body')"/>
                     <?php   } else { ?>
@@ -4151,7 +4408,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fuel-body')"/>
                     <?php   } else { ?>
@@ -4196,7 +4456,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fuel-body')"/>
                     <?php   } else { ?>
@@ -4241,7 +4504,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fuel-body')"/>
                     <?php   } else { ?>
@@ -4286,7 +4552,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fuel-body')"/>
                     <?php   } else { ?>
@@ -4331,7 +4600,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fuel-body')"/>
                     <?php   } else { ?>
@@ -4376,7 +4648,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fuel-body')"/>
                     <?php   } else { ?>
@@ -4421,7 +4696,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fuel-body')"/>
                     <?php   } else { ?>
@@ -4466,7 +4744,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fuel-body')"/>
                     <?php   } else { ?>
@@ -4511,7 +4792,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fuel-body')"/>
                     <?php   } else { ?>
@@ -4556,7 +4840,10 @@
         <div class="row my-3" id="section-firealarm">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fuel-body')"/>
                     <?php   } else { ?>
@@ -4601,7 +4888,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fuel-body')"/>
                     <?php   } else { ?>
@@ -4646,7 +4936,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fuel-body')"/>
                     <?php   } else { ?>
@@ -4691,7 +4984,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fuel-body')"/>
                     <?php   } else { ?>
@@ -4736,7 +5032,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-fuel-body')"/>
                     <?php   } else { ?>
@@ -4781,7 +5080,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onchange="updateProgress('form-accordion-fuel-body')" />
                     <?php   } else { ?>
@@ -4839,7 +5141,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-general-body')"/>
                     <?php   } else { ?>
@@ -4884,7 +5189,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-general-body')"/>
                     <?php   } else { ?>
@@ -4929,7 +5237,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-general-body')"/>
                     <?php   } else { ?>
@@ -4974,7 +5285,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-general-body')"/>
                     <?php   } else { ?>
@@ -5019,7 +5333,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-general-body')"/>
                     <?php   } else { ?>
@@ -5064,7 +5381,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-general-body')"/>
                     <?php   } else { ?>
@@ -5109,7 +5429,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-general-body')"/>
                     <?php   } else { ?>
@@ -5154,7 +5477,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="text" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-general-body')"/>
                     <?php   } else { ?>
@@ -5199,7 +5525,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-general-body')"/>
                     <?php   } else { ?>
@@ -5244,7 +5573,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onchange="updateProgress('form-accordion-general-body')"/>
                     <?php   } else { ?>
@@ -5290,7 +5622,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onchange="updateProgress('form-accordion-general-body')"/>
                     <?php   } else { ?>
@@ -5335,7 +5670,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onchange="updateProgress('form-accordion-general-body')"/>
                     <?php   } else { ?>
@@ -5397,7 +5735,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-waterpark-body')"/>
                     <?php   } else { ?>
@@ -5442,7 +5783,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-waterpark-body')"/>
                     <?php   } else { ?>
@@ -5487,7 +5831,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-waterpark-body')"/>
                     <?php   } else { ?>
@@ -5532,7 +5879,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onchange="updateProgress('form-accordion-waterpark-body')"/>
                     <?php   } else { ?>
@@ -5591,7 +5941,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-viral-body')"/>
                     <?php   } else { ?>
@@ -5636,7 +5989,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-viral-body')"/>
                     <?php   } else { ?>
@@ -5681,7 +6037,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-viral-body')"/>
                     <?php   } else { ?>
@@ -5726,7 +6085,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-viral-body')"/>
                     <?php   } else { ?>
@@ -5771,7 +6133,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-viral-body')"/>
                     <?php   } else { ?>
@@ -5816,7 +6181,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-viral-body')"/>
                     <?php   } else { ?>
@@ -5861,7 +6229,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-viral-body')"/>
                     <?php   } else { ?>
@@ -5906,7 +6277,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-viral-body')"/>
                     <?php   } else { ?>
@@ -5951,7 +6325,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-viral-body')"/>
                     <?php   } else { ?>
@@ -5996,7 +6373,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onchange="updateProgress('form-accordion-viral-body')" />
                     <?php   } else { ?>
@@ -6041,7 +6421,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-viral-body')"/>
                     <?php   } else { ?>
@@ -6100,7 +6483,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-carbon-body')"/>
                     <?php   } else { ?>
@@ -6145,7 +6531,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-carbon-body')"/>
                     <?php   } else { ?>
@@ -6190,7 +6579,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onfocusout="updateProgress('form-accordion-carbon-body')"/>
                     <?php   } else { ?>
@@ -6235,7 +6627,10 @@
         <div class="row my-3">
             <div class="col">
                 <div class="form-group"> 
-                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label>
+                    <label class="pb-2"><b><?php echo ucfirst($question['question']) ?></b></label> 
+                    <?php if($question['has_helper']) { ?>
+                        <a href="<?=$question['helper_url']?>" target="_blank" style="font-size: smaller;"><?= $text['help_text'] ?> <i class="fa fa-question-circle"></i></a>
+                    <?php } ?>
                     <?php if($question['has_custom_answer']){ ?>
                         <input type="number" name="<?php echo $question['id'] ?>" id="Q<?php echo $question['id'] ?>" class="form-control" value ="<?php if($question['response']) { echo $question['response']['custom_answer']; } ?>" onchange="updateProgress('form-accordion-carbon-body')"/>
                     <?php   } else { ?>
