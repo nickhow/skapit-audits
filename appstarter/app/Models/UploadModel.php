@@ -32,6 +32,8 @@ class UploadModel extends Model
                 'description' => $description,
             ];
             $this->insert($filedata);
+
+            return $file->getName();
     }
     
     
