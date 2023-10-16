@@ -115,3 +115,19 @@
       })
     }
   </script>
+  <script>
+          function deleteFile(file_name){
+            $.ajax({
+                url: 'https://audit.ski-api-technologies.com/remove-file/'+file_name,
+                type: 'POST',
+                data: {
+                
+                },
+                success: function(msg) {
+                    console.log(msg);
+                    document.getElementById(file_name).remove();
+                    
+                }               
+            });
+      }
+</script>
