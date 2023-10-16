@@ -46,7 +46,7 @@
       <?php if($file){ var_dump($file); ?>
       
         <div id="<?php // echo $file['file_name']; ?>">
-        <p class="fs-5"><span class="text-primary">Current file: </span><?php echo // $file['original_name']; ?></p>
+        <p class="fs-5"><span class="text-primary">Current file: </span><?php // echo $file['original_name']; ?></p>
         <div class="row">
           <div class="col-12 col-md-4 p-0">
             <a href="<?php //  echo base_url()."/uploads/helper_images/".$question_obj['id']."/".$file['file_name']; ?>" target='_blank' ><div class="col-12 btn btn-sm btn-secondary">View</div></a>
