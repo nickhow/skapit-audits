@@ -42,13 +42,14 @@
 
         <input type="file" name="helper_image" />
 
-        <input type="hidden" id="helper_image_deleted" name="helper_image_deleted" />
+        <input type="hidden" id="helper_image_exists" name="helper_image_exists" />
 
       </div>  
       
       <?php if($file){ ?>
       
         <div id="<?php echo $file['file_name']; ?>">
+        <script> document.getElementById('helper_image_exists').value = TRUE; </script>
         <p class="fs-5"><span class="text-primary">Current file: </span><?php  echo $file['original_name']; ?></p>
         <div class="row">
           <div class="col-12 col-md-4 p-0">
