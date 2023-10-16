@@ -118,7 +118,7 @@
   <script>
           function deleteFile(file_name){
             $.ajax({
-                url: 'https://audit.ski-api-technologies.com/remove-file/'+file_name,
+                url: '<?= base_url() ?>/remove-file/'+file_name,
                 type: 'POST',
                 data: {
                 
