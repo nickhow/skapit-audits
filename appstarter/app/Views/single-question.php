@@ -42,7 +42,7 @@
 
         <input type="file" name="helper_image" />
 
-        <input type="hidden" id="helper_image_exists" name="helper_image_exists" value="<?= $file ? TRUE : FALSE; ?>" />
+        <input type="hidden" id="helper_image_exists" name="helper_image_exists" value="<?= $file ? 1 : 0; ?>" />
 
       </div>
       
@@ -127,7 +127,7 @@
                 
                 },
                 success: function(msg) {
-                    document.getElementById('helper_image_exists').value = false;
+                    document.getElementById('helper_image_exists').value = 0;
                     console.log(msg);
                     document.getElementById(file_name).remove();
                     
