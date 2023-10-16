@@ -38,7 +38,7 @@
       
       <div class="form-group pt-2">
         <label>Question Helper (Optionally upload an image or supply a link to a video)</label>
-        <input type="text" name="helper_url" class="form-control" value="<?php echo $question_obj['helper_url']; ?>">
+        <input type="text" name="helper_url" id="helper_url" class="form-control" value="<?php echo $question_obj['helper_url']; ?>">
 
         <input type="file" name="helper_image" />
 
