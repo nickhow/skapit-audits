@@ -25,7 +25,7 @@ class QuestionController extends Controller
         $helper_location = 'helper_images/'.$id;
 
         $data['question_obj'] = $questionModel->where('id', $id)->first();
-        $data['file'] = $uploadModel->where('audit_id',$helper_location)->findAll();
+        $data['file'] = $uploadModel->where('audit_id',$helper_location)->first();
 
 
         echo view('templates/header');
