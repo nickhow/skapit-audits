@@ -292,10 +292,10 @@ function updateProgress(target){
                                     
                                         if(document.getElementById("A"+element.value) !== null){
                                             
-                                            if(element.value == "131"){
+                                            if(element.value == "131"){ // SHOULD THIS NOT BE A131 ?? 
                                                 // skip this one, N/A is used differently
                                                 
-                                            } else if(element.value == "103" || element.value == "104" ){
+                                            } else if(element.value == "A103" || element.value == "A104" ){
                                                 element.value=0;
 
                                             } else if(document.getElementById("A"+element.value).getAttribute('data-response') == "N/A"){
