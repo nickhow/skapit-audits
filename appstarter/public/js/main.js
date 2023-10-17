@@ -117,6 +117,12 @@ function updateProgress(target){
             window.addEventListener('load',function(){updateForm('Q36','No',['Q37'] )});
             document.getElementById('Q36').addEventListener('change',function(){updateForm('Q36','No',['Q37'] )});
         }
+
+        //Question 62 hides Q64, Q66, Q68, Q69 **NEW**
+        if( document.getElementById('Q62') !== null ){
+            window.addEventListener('load',function(){updateForm('Q62','No',['Q64','Q66','Q68','Q69'] )});
+            document.getElementById('Q62').addEventListener('change',function(){updateForm('Q62','No',['Q64','Q66','Q68','Q69'] )});
+        }
         
         //Question 70 hides Q71 .. Q85
         if( document.getElementById('Q70') !== null ){
@@ -124,10 +130,16 @@ function updateProgress(target){
             document.getElementById('Q70').addEventListener('change',function(){updateForm('Q70','0',['Q71','Q72','Q73','Q74','Q75','Q76','Q77','Q78','Q79','Q80','Q81','Q82','Q83','Q84','Q85'] )});
         }
         
-        //Question 102 hides Q103 .. Q108
+        //Question 99 hides Q100 **NEW**
+        if( document.getElementById('Q99') !== null ){
+            window.addEventListener('load',function(){updateForm('Q99','No',['Q100'] )});
+            document.getElementById('Q99').addEventListener('change',function(){updateForm('Q99','No',['Q100'] )});
+        }
+
+        //Question 102 hides Q103 .. Q108 **Newly extended - to what is (and was) in the comment ... ?? Concerned the NA will break on 103.
         if( document.getElementById('Q102') !== null ){
-            window.addEventListener('load',function(){updateForm('Q102','No',['Q104','Q106'] )});
-            document.getElementById('Q102').addEventListener('change',function(){updateForm('Q102','No',['Q104','Q106'] )});
+            window.addEventListener('load',function(){updateForm('Q102','No',['Q103','Q104','Q105','Q106','Q107','Q108'] )});
+            document.getElementById('Q102').addEventListener('change',function(){updateForm('Q102','No',['Q103','Q104','Q105','Q106','Q107','Q108'] )});
         }
         
         //Question 111 hides Q112 .. Q114
