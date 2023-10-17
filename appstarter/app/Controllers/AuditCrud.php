@@ -1451,6 +1451,8 @@ class AuditCrud extends Controller
 
             } //end response loop
             
+            $this->easyJetTotals($audit['id']);
+
         } //end audit loop
 
     }
@@ -1475,10 +1477,10 @@ class AuditCrud extends Controller
          //loop the audits (either 1 or all)
          foreach( $audits as $audit){
 
-            //I need the audit type
+            //Get the audit type
             $type = $audit['type'];
 
-            //I need the type thresholds
+            //Set up the thresholds
             $thresholds = [
                 '1' => 170,
                 '2' => 170,
@@ -1487,14 +1489,10 @@ class AuditCrud extends Controller
                 '5' => 170,
             ];
 
-            //I need the audit total score            
+            //Get the total score            
             $total_score = $responseModel->selectSum('score_ejh')->where('audit_id',$audit['id'])->first(); //returns as array
 
-            //I need the possible results
-            //unsuitable
-            //suitable
-
-            //get the result and expiry date
+            //Define the result and expiry date
             $result = ($total_score['score_ejh'] > $thresholds[$type]) ? "suitable" : "unsuitable" ;
             $expiry = ($result == 'suitable') ? date('Y-m-d H:i:s', strtotime('+3 years') ) : date('Y-m-d H:i:s') ;
         
