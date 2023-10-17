@@ -186,20 +186,9 @@ function updateProgress(target){
                         
                         //treat 103 and 104 differently, they should be 0 not N/A
                         console.log(element);
-                        if(element.value == '103'){
-                            console.log('ran value without Q');
-                            element => element.value= 0 ;
-                        }
-                        else if(element.value == '103'){
-                            console.log('ran value without Q');
-                            element => element.value= 0 ;
-                        }
-                        else if(element == '103' || element == '104'){
-                            console.log('ran el only without Q');
-                            element => element.value= 0 ;
-                        } else if(element == 'Q103' || element == 'Q104'){
+                        if(element == 'Q103' || element == 'Q104'){ // this works!
                             console.log('ran el only with Q');
-                            element => element.value= 0 ;
+                            element.value = 0 ; //this less so ... 
                         } else {
                             element => element.value="N/A";
                         }
