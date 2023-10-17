@@ -233,7 +233,7 @@ function updateProgress(target){
                                         // skip this one, N/A is used differently
                                         
                                     } else if(element == "Q103" || element.value == "Q105" ){
-                                        console.log('setting unanswered ...' + element);
+                                        console.log('setting unanswered ...' & element);
                                         element.value = "";
 
                                     }  else if(document.getElementById("A"+element.value).getAttribute('data-response') == "N/A"){
