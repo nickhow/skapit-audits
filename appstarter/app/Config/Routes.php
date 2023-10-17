@@ -80,7 +80,9 @@ $routes->post('audit/(:alphanum)/pay', 'AuditCrud::markPaid/$1');
 
 // these are temporary ones.
 $routes->get('rescore/(:alphanum)', 'AuditCrud::scoreeasyJet/$1');
+$routes->get('rescore', 'AuditCrud::scoreeasyJet/');
 $routes->get('total/(:alphanum)', 'AuditCrud::easyJetTotals/$1');
+$routes->get('total', 'AuditCrud::easyJetTotals/');
 
 $routes->get('audits/hc', 'AuditCrud::index/7/true');
 
