@@ -1,5 +1,13 @@
 
 
+## ** EASYJET **
+run the migration, make sure the easyJet ones run as they might not due to earlier start date than reflow changes
+Use the /rescore/ endpoint to trigger the rescore. Optionally supply and ID to run the rescore on a single audit
+Manually report from the database the results for Amy and Robyn.
+
+
+
+
 ## ** NEW INSTALLATION **
 
 ## Cpanel Git Version control
