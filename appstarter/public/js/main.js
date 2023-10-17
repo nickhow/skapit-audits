@@ -188,7 +188,7 @@ function updateProgress(target){
                         console.log(element);
                         if(element == 'Q103' || element == 'Q104'){ // this works!
                             console.log('ran el only with Q');
-                            element.value = 0 ; //this less so ... 
+                            element.value = '0' ; //this less so ... 
                         } else {
                             element => element.value="N/A";
                         }
