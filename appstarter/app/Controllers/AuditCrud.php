@@ -1442,8 +1442,12 @@ class AuditCrud extends Controller
             foreach ($responses as $response) {
 
                 //get the suggested score
-                $ejh_score = $answers[$response['answer_id']]['score_ejh'];
+                //$ejh_score = $answerModel->where('id',$response['answer_id'])->first(); ['score_ejh'];
                 
+                print_r ($answers);
+
+                exit();
+
                 //update the response record to include this score
                 $data = [
                     'suggested_score_ejh' => $score_ejh,
