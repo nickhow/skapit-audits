@@ -1420,7 +1420,7 @@ class AuditCrud extends Controller
 
         $audits;
 
-        if $audit_id {
+        if ($audit_id) {
             //specified single audit
             $audits[0] = $auditModel->where('id',$audit_id)->first();
 
