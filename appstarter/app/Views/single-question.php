@@ -3,7 +3,7 @@
         <div class="row justify-content-md-center ">
           <div class="col-10 col-md-8 col-lg-6 p-4 bg-white rounded">
               <h2>Update Question</h2>
-    <form method="post" id="update_question" name="update_question" action="<?= site_url('/update-question') ?>">
+    <form method="post" id="update_question" name="update_question" enctype="multipart/form-data" action="<?= site_url('/update-question') ?>">
       <input type="hidden" name="id" id="id" value="<?php echo $question_obj['id']; ?>">
 
       <div class="form-group pt-2">
@@ -35,6 +35,31 @@
         <label>Italian</label>
         <input type="text" name="it" class="form-control" value="<?php echo $question_obj['it']; ?>">
       </div>
+      
+      <div class="form-group pt-2">
+        <label>Question Helper (Optionally upload an image or supply a link to a video)</label>
+        <input type="text" name="helper_url" id="helper_url" class="form-control" value="<?php echo $question_obj['helper_url']; ?>">
+
+        <input type="file" name="helper_image" />
+
+        <input type="hidden" id="helper_image_exists" name="helper_image_exists" value="<?= $file ? 1 : 0; ?>" />
+
+      </div>
+      
+      <?php if($file){ ?>
+      
+        <div id="<?php echo $file['file_name']; ?>">
+        <p class="fs-5"><span class="text-primary">Current file: </span><?php  echo $file['original_name']; ?></p>
+        <div class="row">
+          <div class="col-12 col-md-4 p-0">
+            <a href="<?php echo base_url()."/uploads/helper_images/".$question_obj['id']."/".$file['file_name']; ?>" target='_blank' ><div class="col-12 btn btn-sm btn-secondary">View</div></a>
+          </div>
+          <div class="col-12 col-md-4 mx-3 btn btn-sm btn-outline-danger" onclick="deleteFile('<?php echo $file['file_name'] ?>')">Delete</div>
+          </div>
+        </div>
+      <?php } ?>
+
+
 
       <div class="form-group py-3">
         <a href="<?php echo base_url('groups'); ?>" class="btn btn-outline-dark btn-block"><i class="fas fa-arrow-left"></i> Back</a>
@@ -43,7 +68,7 @@
     </form>
   </div>
 
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/additional-methods.min.js"></script>
   <script>
@@ -93,3 +118,21 @@
       })
     }
   </script>
+  <script>
+          function deleteFile(file_name){
+            $.ajax({
+                url: '<?= base_url() ?>/remove-file/'+file_name,
+                type: 'POST',
+                data: {
+                
+                },
+                success: function(msg) {
+                    document.getElementById('helper_image_exists').value = 0;
+                    document.getElementById('helper_url').value = '';
+                    console.log(msg);
+                    document.getElementById(file_name).remove();
+                    
+                }               
+            });
+      }
+</script>
