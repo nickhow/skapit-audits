@@ -1438,6 +1438,11 @@ class AuditCrud extends Controller
             //loop the responses
             foreach ($responses as $response) {
 
+                //if unanswered, move on
+                if(!$response['answer_id'] || $response['answer_id'] == 0){
+                    continue;
+                }
+
                 //get the suggested score
                 $answers = $answerModel->where('id',$response['answer_id'])->first(); 
                 $score_ejh = $answers['score_ejh'];
