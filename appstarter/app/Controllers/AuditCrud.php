@@ -1454,6 +1454,65 @@ class AuditCrud extends Controller
         } //end audit loop
 
     }
+
+    public function easyJetTotals($audit_id = null){ 
     
+        $auditModel = new AuditModel();
+        $responseModel = new ResponseModel();
+        $answerModel = new AnswerModel();
+
+        $audits;
+
+        if ($audit_id) {
+            //specified single audit
+            $audits[0] = $auditModel->where('id',$audit_id)->first();
+
+        } else {
+            // get all audits
+            $audits = $auditModel->findAll();
+        }
+
+         //loop the audits (either 1 or all)
+         foreach( $audits as $audit){
+
+            //I need the audit type
+            $type = $audit['type'];
+
+            //I need the type thresholds
+            $thresholds = [
+                '1' => '170',
+                '2' => '170',
+                '3' => '170',
+                '4' => '170',
+                '5' => '170',
+            ];
+
+            //I need the audit total score
+            $db = db_connect();
+            $total_score = $db->query(" SELECT SUM(score_ejh) FROM responses WHERE audit_id = '" .$audit['id']. "' ")->getResult();
+            
+            //I need the possible results
+            //unsuitable
+            //suitable
+
+            $result = ($total_score > $thresholds[$type]) ? "suitable" : "unsuitable" ;
+            
+            var date = formatDate(new Date(),3); //OK = +3 years
+            var date = formatDate(new Date(),0); //KO = today
+            $expiry = ($result == 'suitable') ? date('Y-m-d H:i:s', strtotime('+3 years') ) : date('Y-m-d H:i:s') ;
+        
+
+            $data = [
+                'expiry_date_ejh' => $expiry,
+                'result_ejh' => $result,
+                'total_score_ejh' => $total_score,
+            ];
+
+            $auditModel->update($audit['id'], $data);
+
+         } //end audit loop
+
+    }
+
 }
 ?>

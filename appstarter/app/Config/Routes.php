@@ -78,8 +78,9 @@ $routes->post('update-audit', 'AuditCrud::edit');
 $routes->get('audit/(:alphanum)/delete', 'AuditCrud::delete/$1');
 $routes->post('audit/(:alphanum)/pay', 'AuditCrud::markPaid/$1');
 
-// this is a temporary one.
+// these are temporary ones.
 $routes->get('audit/rescore/(:alphanum)', 'AuditCrud::scoreeasyJet/$1');
+$routes->get('audit/total/(:alphanum)', 'AuditCrud::easyJetTotals/$1');
 
 $routes->get('audits/hc', 'AuditCrud::index/7/true');
 
