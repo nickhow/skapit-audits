@@ -186,7 +186,7 @@ function updateProgress(target){
                         
                         //treat 103 and 105 differently, they should be 0 not N/A
                         console.log(element);
-                        if(element == 'Q103' || element == 'Q105'){ // this works!
+                        if(element == 'Q103' || element == 'Q105'|| element == 'Q108' ){ // this works!
                             console.log('ran el only with Q');
                             element => element.value="0";
                         } else {
@@ -232,7 +232,7 @@ function updateProgress(target){
                                     if(element.value == "131"){
                                         // skip this one, N/A is used differently
                                         
-                                    } else if(element == "Q103" || element.value == "Q105" ){
+                                    } else if(element == "Q103" || element == "Q105" || element == "Q108"){
                                         console.log('setting unanswered ...' & element);
                                         element.value = "";
 
