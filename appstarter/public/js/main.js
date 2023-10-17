@@ -136,7 +136,7 @@ function updateProgress(target){
             document.getElementById('Q99').addEventListener('change',function(){updateForm('Q99','No',['Q100'] )});
         }
 
-        //Question 102 hides Q103 .. Q108 **Newly extended - to what is (and was) in the comment ... ?? Concerned the NA will break on 103 + 104.
+        //Question 102 hides Q103 .. Q108 **Newly extended - to what is (and was) in the comment ... ?? Concerned the NA will break on 103 + 105.
         if( document.getElementById('Q102') !== null ){
             window.addEventListener('load',function(){updateForm('Q102','No',['Q103','Q104','Q105','Q106','Q107','Q108'] )});
             document.getElementById('Q102').addEventListener('change',function(){updateForm('Q102','No',['Q103','Q104','Q105','Q106','Q107','Q108'] )});
@@ -184,11 +184,11 @@ function updateProgress(target){
                     var hiddenInput = hiddenEl.querySelectorAll('input');
                     hiddenInput.forEach(function(){
                         
-                        //treat 103 and 104 differently, they should be 0 not N/A
+                        //treat 103 and 105 differently, they should be 0 not N/A
                         console.log(element);
-                        if(element == 'Q103' || element == 'Q104'){ // this works!
+                        if(element == 'Q103' || element == 'Q105'){ // this works!
                             console.log('ran el only with Q');
-                            element.value = '0' ; //this less so ... 
+                            element => element.value="0";
                         } else {
                             element => element.value="N/A";
                         }
@@ -232,12 +232,8 @@ function updateProgress(target){
                                     if(element.value == "131"){
                                         // skip this one, N/A is used differently
                                         
-                                    } else if(element.value == "Q103" || element.value == "Q104" ){
-                                        console.log('ran 234 with Q');
-                                        element.value = "";
-
-                                    }  else if(element.value == "103" || element.value == "104" ){
-                                        console.log('ran 238 without Q');
+                                    } else if(element == "Q103" || element.value == "Q105" ){
+                                        console.log('setting unanswered ...' + element);
                                         element.value = "";
 
                                     }  else if(document.getElementById("A"+element.value).getAttribute('data-response') == "N/A"){
