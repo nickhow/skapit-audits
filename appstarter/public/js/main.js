@@ -185,7 +185,12 @@ function updateProgress(target){
                     hiddenInput.forEach(element => element.value="N/A");
 
                      //treat 103 and 104 differently, they should be 0 not N/A
+                    if(hiddenInput.id == '103' || hiddenInput.id == '104'){
+                        console.log('ran 189 without Q');
+                        hiddenInput.forEach(element => element.value= 0 );
+                    }
                     if(hiddenInput.id == 'Q103' || hiddenInput.id == 'Q104'){
+                        console.log('ran 193 with Q');
                         hiddenInput.forEach(element => element.value= 0 );
                     }
                     
@@ -226,9 +231,14 @@ function updateProgress(target){
                                         // skip this one, N/A is used differently
                                         
                                     } else if(element.value == "Q103" || element.value == "Q104" ){
+                                        console.log('ran 234 with Q');
                                         element.value = "";
 
-                                    } else if(document.getElementById("A"+element.value).getAttribute('data-response') == "N/A"){
+                                    }  else if(element.value == "103" || element.value == "104" ){
+                                        console.log('ran 238 without Q');
+                                        element.value = "";
+
+                                    }  else if(document.getElementById("A"+element.value).getAttribute('data-response') == "N/A"){
                                         element.value="Unanswered";
                                        
                                     }
