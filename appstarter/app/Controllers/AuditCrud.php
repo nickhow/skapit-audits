@@ -1411,6 +1411,51 @@ class AuditCrud extends Controller
         return $this->response->redirect(site_url('/audit/'.$newAuditId));
 
     }
+
+
+    public function scoreeasyJet($audit_id = null){
+        $auditModel = new AuditModel();
+        $responseModel = new ResponseModel();
+        $answerModel = new AnswerModel();
+
+        $audits;
+
+        if $audit_id {
+            //specified single audit
+            $audits[0] = $auditModel->where('id',$audit_id)->first();
+
+        } else {
+            // get all audits
+            $audits = $auditModel->findAll();
+        }
+
+        //get all the answers
+        $answers = $answerModel->findAll();
+
+        //loop the audits (either 1 or all)
+        foreach( $audits as $audit){
+
+            //get the responses for this audit
+            $responses  = $responseModel->where('audit_id',$audit['id']);
+
+            //loop the responses
+            foreach ($responses as $response) {
+
+                //get the suggested score
+                $ejh_score = $answers[$response['answer_id']]['score_ejh'];
+                
+                //update the response record to include this score
+                $data = [
+                    'suggested_score_ejh' => $score_ejh,
+                    'score_ejh' => $score_ejh,
+                ];
+                $responseModel->update($response['id'], $data);
+
+            } //end response loop
+            
+        } //end audit loop
+
+    }
     
 }
 ?>

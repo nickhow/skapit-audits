@@ -460,27 +460,27 @@
         '1': {
               ba: 147,
               abta: 139,
-              ejh: 00, /* NEEDS UPDATING */
+              ejh: 139, /* NEEDS UPDATING */
             },
         '2': {
               ba: 181,
               abta: 174,
-              ejh: 00, /* NEEDS UPDATING */
+              ejh: 174, /* NEEDS UPDATING */
             },
         '3': {
               ba: 178,
               abta: 170,
-              ejh: 00, /* NEEDS UPDATING */
+              ejh: 170, /* NEEDS UPDATING */
             },
         '4': {
               ba: 178,
               abta: 170,
-              ejh: 00, /* NEEDS UPDATING */
+              ejh: 170, /* NEEDS UPDATING */
             },
         '5': {
               ba: 185,
               abta: 177,
-              ejh: 00, /* NEEDS UPDATING */
+              ejh: 177, /* NEEDS UPDATING */
             },
         };
         
