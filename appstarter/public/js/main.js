@@ -261,7 +261,7 @@ function updateProgress(target){
                             
                             //treat 103 and 104 differently, they should be 0 not N/A
                             if(hiddenInput.id == 'Q103' || hiddenInput.id == 'Q104'){
-                                hiddenInput.forEach(element => element.value="0");
+                                hiddenInput.forEach(element => element.value="1");
                             }
 
                             var hiddenSelect = hiddenEl.querySelectorAll('select');
@@ -301,7 +301,7 @@ function updateProgress(target){
                                                 // skip this one, N/A is used differently
                                                 
                                             } else if(element.value == "103" || element.value == "104" ){
-                                                element.value = "";
+                                                element.value = "2";
 
                                             } else if(document.getElementById("A"+element.value).getAttribute('data-response') == "N/A"){
                                                 element.value="Unanswered";
