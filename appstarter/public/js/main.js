@@ -185,10 +185,10 @@ function updateProgress(target){
                     hiddenInput.forEach(function(){
                     //treat 103 and 104 differently, they should be 0 not N/A
                         console.log(element);
-                        if(element.id == '103' || element.id == '104'){
+                        if(element == '103' || element == '104'){
                             console.log('ran 189 without Q');
                             element => element.value= 0 ;
-                        } else if(element.id == 'Q103' || element.id == 'Q104'){
+                        } else if(element == 'Q103' || element == 'Q104'){
                             element => element.value= 0 ;
                         } else {
                             element => element.value="N/A";
