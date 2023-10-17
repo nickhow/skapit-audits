@@ -183,12 +183,22 @@ function updateProgress(target){
 
                     var hiddenInput = hiddenEl.querySelectorAll('input');
                     hiddenInput.forEach(function(){
-                    //treat 103 and 104 differently, they should be 0 not N/A
+                        
+                        //treat 103 and 104 differently, they should be 0 not N/A
                         console.log(element);
-                        if(element == '103' || element == '104'){
-                            console.log('ran 189 without Q');
+                        if(element.value == '103'){
+                            console.log('ran value without Q');
+                            element => element.value= 0 ;
+                        }
+                        else if(element.value == '103'){
+                            console.log('ran value without Q');
+                            element => element.value= 0 ;
+                        }
+                        else if(element == '103' || element == '104'){
+                            console.log('ran el only without Q');
                             element => element.value= 0 ;
                         } else if(element == 'Q103' || element == 'Q104'){
+                            console.log('ran el only with Q');
                             element => element.value= 0 ;
                         } else {
                             element => element.value="N/A";
