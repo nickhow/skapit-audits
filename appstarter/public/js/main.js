@@ -184,7 +184,7 @@ function updateProgress(target){
                     var hiddenInput = hiddenEl.querySelectorAll('input');
                     hiddenInput.forEach(function(){
                     //treat 103 and 104 differently, they should be 0 not N/A
-
+                        console.log(element);
                         if(element.id == '103' || element.id == '104'){
                             console.log('ran 189 without Q');
                             element => element.value= 0 ;
