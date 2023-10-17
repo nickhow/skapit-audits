@@ -188,7 +188,7 @@ function updateProgress(target){
                         if(element.id == '103' || element.id == '104'){
                             console.log('ran 189 without Q');
                             element => element.value= 0 ;
-                        } else if(hiddenInput.id == 'Q103' || hiddenInput.id == 'Q104'){
+                        } else if(element.id == 'Q103' || element.id == 'Q104'){
                             element => element.value= 0 ;
                         } else {
                             element => element.value="N/A";
