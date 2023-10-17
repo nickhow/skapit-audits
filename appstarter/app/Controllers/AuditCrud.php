@@ -1429,9 +1429,6 @@ class AuditCrud extends Controller
             $audits = $auditModel->findAll();
         }
 
-        //get all the answers
-        $answers = $answerModel->findAll();
-
         //loop the audits (either 1 or all)
         foreach( $audits as $audit){
 
@@ -1442,11 +1439,8 @@ class AuditCrud extends Controller
             foreach ($responses as $response) {
 
                 //get the suggested score
-                //$ejh_score = $answerModel->where('id',$response['answer_id'])->first(); ['score_ejh'];
-                
-                print_r ($answers);
-
-                exit();
+                $answers = $answerModel->where('id',$response['answer_id'])->first(); 
+                $score_ejh = $answers['score_ejh'];
 
                 //update the response record to include this score
                 $data = [
