@@ -1480,18 +1480,14 @@ class AuditCrud extends Controller
 
             //I need the type thresholds
             $thresholds = [
-                '1' => '170',
-                '2' => '170',
-                '3' => '170',
-                '4' => '170',
-                '5' => '170',
+                '1' => 170,
+                '2' => 170,
+                '3' => 170,
+                '4' => 170,
+                '5' => 170,
             ];
 
-            //I need the audit total score
-            $db = db_connect();
-            $id = $audit['id'];
-            //$total_score = $db->query("SELECT SUM (`score_ejh`) FROM responses WHERE audit_id ='$id'")->getResult();
-            
+            //I need the audit total score            
             $total_score = $responseModel->selectSum('score_ejh')->where('audit_id',$audit['id'])->first();
 
             //I need the possible results
