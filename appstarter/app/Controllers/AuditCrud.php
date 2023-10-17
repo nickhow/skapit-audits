@@ -1475,10 +1475,15 @@ class AuditCrud extends Controller
         }
 
          //loop the audits (either 1 or all)
-         foreach( $audits as $audit){
+         foreach( $audits as $audit ){
 
             //Get the audit type
             $type = $audit['type'];
+
+            //if there is no type it's still open, let's move on
+            if(!$type || $type == ''){ 
+                continue;
+            }
 
             //Set up the thresholds
             $thresholds = [
