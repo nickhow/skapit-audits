@@ -1489,7 +1489,7 @@ class AuditCrud extends Controller
 
             //I need the audit total score
             $db = db_connect();
-            $total_score = $db->query(" SELECT SUM(score_ejh) FROM responses WHERE audit_id = '" .$audit['id']. "' ")->getResult();
+            $total_score = $db->query("SELECT SUM(score_ejh) FROM responses WHERE audit_id ='".$audit['id']."'")->getResult();
             
             //I need the possible results
             //unsuitable
