@@ -259,6 +259,11 @@ function updateProgress(target){
                             var hiddenInput = hiddenEl.querySelectorAll('input');
                             hiddenInput.forEach(element => element.value="N/A");
                             
+                            //treat 103 and 104 differently, they should be 0 not N/A
+                            if(hiddenInput.id == 'Q103' || hiddenInput.id == 'Q104'){
+                                hiddenInput.forEach(element => element.value="0");
+                            }
+
                             var hiddenSelect = hiddenEl.querySelectorAll('select');
                             hiddenSelect.forEach(function(element){
                                for (var i = 0; i < element.options.length; i++) {
@@ -292,11 +297,11 @@ function updateProgress(target){
                                     
                                         if(document.getElementById("A"+element.value) !== null){
                                             
-                                            if(element.value == "131"){ // SHOULD THIS NOT BE A131 ?? 
+                                            if(element.value == "131"){ 
                                                 // skip this one, N/A is used differently
                                                 
-                                            } else if(element.value == "A103" || element.value == "A104" ){
-                                                element.value=0;
+                                            } else if(element.value == "103" || element.value == "104" ){
+                                                element.value = "";
 
                                             } else if(document.getElementById("A"+element.value).getAttribute('data-response') == "N/A"){
                                                 element.value="Unanswered";
