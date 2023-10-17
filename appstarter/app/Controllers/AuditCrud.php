@@ -1494,6 +1494,8 @@ class AuditCrud extends Controller
             //unsuitable
             //suitable
 
+            echo ("score: $total_score vs threshold: $thresholds[$type]");
+
             //get the result and expiry date
             $result = ($total_score > $thresholds[$type]) ? "suitable" : "unsuitable" ;
             $expiry = ($result == 'suitable') ? date('Y-m-d H:i:s', strtotime('+3 years') ) : date('Y-m-d H:i:s') ;
