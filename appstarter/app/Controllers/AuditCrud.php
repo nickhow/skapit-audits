@@ -1488,27 +1488,21 @@ class AuditCrud extends Controller
             ];
 
             //I need the audit total score            
-            $total_score = $responseModel->selectSum('score_ejh')->where('audit_id',$audit['id'])->first();
+            $total_score = $responseModel->selectSum('score_ejh')->where('audit_id',$audit['id'])->first(); //returns as array
 
             //I need the possible results
             //unsuitable
             //suitable
-            echo ("SCORE ");
-            print_r ($total_score);
-
-            echo ("TARGET ");
-            print_r ( $thresholds[$type]);
-            
 
             //get the result and expiry date
-            $result = ($total_score > $thresholds[$type]) ? "suitable" : "unsuitable" ;
+            $result = ($total_score['score_ejh'] > $thresholds[$type]) ? "suitable" : "unsuitable" ;
             $expiry = ($result == 'suitable') ? date('Y-m-d H:i:s', strtotime('+3 years') ) : date('Y-m-d H:i:s') ;
         
             //update the audit with the result
             $data = [
                 'expiry_date_ejh' => $expiry,
                 'result_ejh' => $result,
-                'total_score_ejh' => $total_score,
+                'total_score_ejh' => $total_score['score_ejh'],
             ];
 
             $auditModel->update($audit['id'], $data);
