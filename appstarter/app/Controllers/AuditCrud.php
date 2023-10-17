@@ -1492,7 +1492,7 @@ class AuditCrud extends Controller
             $id = $audit['id'];
             //$total_score = $db->query("SELECT SUM (`score_ejh`) FROM responses WHERE audit_id ='$id'")->getResult();
             
-            $total_score = $responseModel->selectSum('score_ejh')->where('audit_id',$audit['id']);
+            $total_score = $responseModel->selectSum('score_ejh')->where('audit_id',$audit['id'])->first();
 
             //I need the possible results
             //unsuitable
