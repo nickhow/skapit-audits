@@ -184,10 +184,8 @@ function updateProgress(target){
                     var hiddenInput = hiddenEl.querySelectorAll('input');
                     hiddenInput.forEach(function(){
                         
-                        //treat 103 and 105 differently, they should be 0 not N/A
-                        console.log(element);
-                        if(element == 'Q103' || element == 'Q105'|| element == 'Q108' ){ // this works!
-                            console.log('ran el only with Q');
+                        //treat 103, 105 & 108 differently, they should be 0 not N/A
+                        if(element == 'Q103' || element == 'Q105'|| element == 'Q108' ){ 
                             document.getElementById(element).value="0";
                         } else {
                             element => element.value="N/A";
@@ -233,9 +231,8 @@ function updateProgress(target){
                                         // skip this one, N/A is used differently
                                         
                                     } else if(element == "Q103" || element == "Q105" || element == "Q108"){
-                                        console.log('setting unanswered ...' & element);
-                                        element.value = "";
-
+                                        document.getElementById(element).value="0";
+                                        
                                     }  else if(document.getElementById("A"+element.value).getAttribute('data-response') == "N/A"){
                                         element.value="Unanswered";
                                        
