@@ -295,6 +295,9 @@ function updateProgress(target){
                                             if(element.value == "131"){
                                                 // skip this one, N/A is used differently
                                                 
+                                            } else if(element.value == "103" || element.value == "104" ){
+                                                element.value=0;
+
                                             } else if(document.getElementById("A"+element.value).getAttribute('data-response') == "N/A"){
                                                 element.value="Unanswered";
                                                
