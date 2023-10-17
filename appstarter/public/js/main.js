@@ -182,17 +182,20 @@ function updateProgress(target){
                     var hiddenEl = document.getElementById(element).closest(".row, .my-3");  // get the question row - parent to all Q elements
 
                     var hiddenInput = hiddenEl.querySelectorAll('input');
-                    hiddenInput.forEach(element => element.value="N/A");
+                    hiddenInput.forEach(function(){
+                    //treat 103 and 104 differently, they should be 0 not N/A
 
-                     //treat 103 and 104 differently, they should be 0 not N/A
-                    if(hiddenInput.id == '103' || hiddenInput.id == '104'){
+                    if(element.id == '103' || element.id == '104'){
                         console.log('ran 189 without Q');
-                        hiddenInput.forEach(element => element.value= 0 );
+                        element => element.value= 0 ;
+                    } else if(hiddenInput.id == 'Q103' || hiddenInput.id == 'Q104'){
+                        element => element.value= 0 ;
+                    } else {
+                        element => element.value="N/A";
                     }
-                    if(hiddenInput.id == 'Q103' || hiddenInput.id == 'Q104'){
-                        console.log('ran 193 with Q');
-                        hiddenInput.forEach(element => element.value= 0 );
-                    }
+                    );
+
+
                     
                     var hiddenSelect = hiddenEl.querySelectorAll('select');
                     hiddenSelect.forEach(function(element){
