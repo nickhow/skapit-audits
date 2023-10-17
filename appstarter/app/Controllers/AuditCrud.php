@@ -1436,10 +1436,7 @@ class AuditCrud extends Controller
         foreach( $audits as $audit){
 
             //get the responses for this audit
-            $responses  = $responseModel->where('audit_id',$audit['id']);
-
-            print_r ($responses);
-            exit;
+            $responses  = $responseModel->where('audit_id',$audit['id'])->findAll();
 
             //loop the responses
             foreach ($responses as $response) {
