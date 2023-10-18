@@ -221,7 +221,7 @@ function updateProgress(target){
                     hiddenEl.style.display="block";
 
                     console.log("element "+element); //element is the id like Q111
-                    console.log("hiddenEl "+hiddenEl.id); //hiddenEl is the element
+                    console.log("hiddenEl "+hiddenEl); //hiddenEl is the div element
                     
                     var hiddenEls = hiddenEl.querySelectorAll('select, input');
                  
@@ -254,7 +254,7 @@ function updateProgress(target){
                             
                         });
        
-                    updateProgress(document.getElementById(element).closest(".accordion-collapse").id); //update the progress bar
+                //   updateProgress(document.getElementById(element).closest(".accordion-collapse").id); //update the progress bar
                 });
             }
         }
