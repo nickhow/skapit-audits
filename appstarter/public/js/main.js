@@ -186,7 +186,7 @@ function updateProgress(target){
                         
                         //treat 103, 105 & 108 differently, they should be 0 not N/A
                         if(element == 'Q103' || element == 'Q105'|| element == 'Q108' ){ 
-                            console.log("setting " + element + " value to 0");
+                        //    console.log("setting " + element + " value to 0");
                             document.getElementById(element).value="0";
                         } else {
                             element => element.value="N/A";
@@ -231,7 +231,9 @@ function updateProgress(target){
                             console.log("looking at element id "+element.id);
                             
                             if(!isLocked){ // only clean the answers to the unhidden questions if the form is still being completed
-                            
+
+                                console.log("Not locked ... ");
+
                                 if(document.getElementById("A"+element.value) !== null){
                                     console.log("answer not null");
                                     
@@ -250,7 +252,11 @@ function updateProgress(target){
                                     } else{ 
                                         console.log("No conditions satisfied, answer is "+document.getElementById("A"+element.value).getAttribute('data-response'));
                                     }
+                                } else {
+                                    console.log("answer is null,");
                                 }
+                            } else {
+                                console.log("Audit is locked!");
                             }
                             
                         });
