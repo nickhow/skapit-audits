@@ -234,31 +234,23 @@ function updateProgress(target){
 
                                 console.log("Not locked ... ");
                                 console.log("checking value of A"+element.value);
-                                
-                                if(document.getElementById("A"+element.value) !== null){
-                                    console.log("answer not null");
+
+                                //First check for these specific questions
+                                if((element.id == "Q103" || element.id == "Q105" || element.id == "Q108") && element.value == 0){ //check if it's 0 input value on these questions
+                                    console.log("setting " + element + " value to blank");
+                                    document.getElementById(element).value="";
+
+                                } else if(document.getElementById("A"+element.value) !== null){ //Otherwise, normal behaviour - check the answer, value here is that of selected select-option. 
                                     
                                     if(element.value == "131"){ //answer id of 131 (Q37 N/a)
                                         // skip this one, N/A is used differently
-                                        console.log("answer is 131");
 
-                                    } else if((element.id == "Q103" || element.id == "Q105" || element.id == "Q108")  ){ // && document.getElementById(element.id).value == 0
-                                        console.log("setting " + element + " value to blank");
-                                        //if its these particular questions and the answer is 0 - reset it.
-                                        document.getElementById(element).value="";
-                                        
-                                    }  else if(document.getElementById("A"+element.value).getAttribute('data-response') == "N/A"){
+                                    } else if(document.getElementById("A"+element.value).getAttribute('data-response') == "N/A"){
                                         element.value="Unanswered";
-                                        console.log("Answer updated");
-                                    } else{ 
-                                        console.log("No conditions satisfied, answer is "+document.getElementById("A"+element.value).getAttribute('data-response'));
-                                    }
-                                } else {
-                                    console.log("answer is null,");
-                                }
-                            } else {
-                                console.log("Audit is locked!");
-                            }
+                                        
+                                    } 
+                                } 
+                            } 
                             
                         });
        
