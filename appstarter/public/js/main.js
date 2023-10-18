@@ -212,7 +212,7 @@ function updateProgress(target){
             
                 });
                 
-            } else {// not interested in hiding it
+            } else {// not interested in hiding it, make sure it is showing and reset answers
                 
                 targets.filter( element => document.getElementById(element) !== null ).forEach(function(element){ //Show questions and mark as unanswered
                     var hiddenEl = document.getElementById(element).closest(".row, .my-3");
@@ -229,7 +229,7 @@ function updateProgress(target){
                                     if(element.value == "131"){ //answer id of 131 (Q37 N/a)
                                         // skip this one, N/A is used differently
                                         
-                                    } else if((element.id == "Q103" || element.id == "Q105" || element.id == "Q108") && document.getElementById(element.id).value == 0 ){
+                                    } else if((element.id == "Q103" || element.id == "Q105" || element.id == "Q108")  ){ // && document.getElementById(element.id).value == 0
                                         console.log("setting " + element + " value to blank");
                                         //if its these particular questions and the answer is 0 - reset it.
                                         document.getElementById(element).value="";
