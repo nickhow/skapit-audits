@@ -217,6 +217,7 @@ function updateProgress(target){
                 console.log(targets);
 
                 targets.filter( element => document.getElementById(element) !== null ).forEach(function(element){ //Show questions and mark as unanswered
+                    
                     var hiddenEl = document.getElementById(element).closest(".row, .my-3");
                     hiddenEl.style.display="block";
 
@@ -254,10 +255,11 @@ function updateProgress(target){
                             
                         });
        
-                //   updateProgress(document.getElementById(element).closest(".accordion-collapse").id); //update the progress bar
+                    console.log("going into update with this ... "+document.getElementById(element).closest(".accordion-collapse").id);
+                   updateProgress(document.getElementById(element).closest(".accordion-collapse").id); //update the progress bar
                 });
                 //end of filtered loop of hide/show - now try updateProgress ...
-                updateProgress(document.getElementById(element).closest(".accordion-collapse").id); //update the progress bar
+                //updateProgress(document.getElementById(element).closest(".accordion-collapse").id); //update the progress bar
             }
         }
 
