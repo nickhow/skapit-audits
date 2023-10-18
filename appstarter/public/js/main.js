@@ -256,6 +256,8 @@ function updateProgress(target){
        
                 //   updateProgress(document.getElementById(element).closest(".accordion-collapse").id); //update the progress bar
                 });
+                //end of filtered loop of hide/show - now try updateProgress ...
+                updateProgress(document.getElementById(element).closest(".accordion-collapse").id); //update the progress bar
             }
         }
 
