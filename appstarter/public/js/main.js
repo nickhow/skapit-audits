@@ -220,8 +220,8 @@ function updateProgress(target){
                     var hiddenEl = document.getElementById(element).closest(".row, .my-3");
                     hiddenEl.style.display="block";
 
-                    console.log("element "+element);
-                    console.log("hiddenEl "+hiddenEl);
+                    console.log("element "+element); //element is the id like Q111
+                    console.log("hiddenEl "+hiddenEl.id); //hiddenEl is the element
                     
                     var hiddenEls = hiddenEl.querySelectorAll('select, input');
                  
