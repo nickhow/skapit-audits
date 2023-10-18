@@ -38,10 +38,8 @@ function updateProgress(target){
                 bsCollapse.hide();
                 
                 if(isLocked){
-                    console.log('isLocked - adding completed');
                     targetEl.previousElementSibling.firstElementChild.classList.add("completed");
                 } else {
-                    console.log('not locked - adding completed-pending');
                     targetEl.previousElementSibling.firstElementChild.classList.add("completed-pending");
                 }
                 
@@ -155,7 +153,7 @@ function updateProgress(target){
             document.getElementById('Q107').addEventListener('change',function(){updateFormShow('Q107','Yes',['Q130'] )});
         }
 
-        //Question 107 hides 130
+        //Question 131 hides 132
         if( document.getElementById('Q131') !== null ){
             window.addEventListener('load',function(){updateFormShow('Q131','Yes',['Q132'] )});
             document.getElementById('Q131').addEventListener('change',function(){updateFormShow('Q131','Yes',['Q132'] )});
@@ -212,8 +210,6 @@ function updateProgress(target){
                 });
                 
             } else {// not interested in hiding it, make sure it is showing and reset answers
-                
-                console.log(targets);
 
                 targets.filter( element => document.getElementById(element) !== null ).forEach(function(element){ //Show questions and mark as unanswered
                     
@@ -266,7 +262,7 @@ function updateProgress(target){
                     }
                     
                     if(current_answer !== answer){ //Hide questions and remove answers
-                        //console.log("not my answer ... ");
+
                         targets.filter( element => document.getElementById(element) !== null ).forEach(function(element){ //remove targets not in this form
                         
                             var hiddenEl = document.getElementById(element).closest(".row, .my-3");  // get the question row - parent to all Q elements
@@ -299,7 +295,7 @@ function updateProgress(target){
                         });
                         
                     } else {
-                        //console.log("this is my answer ... ");
+                        
                         targets.filter( element => document.getElementById(element) !== null ).forEach(function(element){ //Show questions and mark as unanswered
                             var hiddenEl = document.getElementById(element).closest(".row, .my-3");
                             hiddenEl.style.display="block";
