@@ -238,7 +238,7 @@ function updateProgress(target){
                                 //First check for these specific questions
                                 if((element.id == "Q103" || element.id == "Q105" || element.id == "Q108") && element.value == 0){ //check if it's 0 input value on these questions
                                     console.log("setting " + element + " value to blank");
-                                    document.getElementById(element).value="";
+                                    document.getElementById(element.id).value = "";
 
                                 } else if(document.getElementById("A"+element.value) !== null){ //Otherwise, normal behaviour - check the answer, value here is that of selected select-option. 
                                     
