@@ -186,7 +186,7 @@ function updateProgress(target){
                         
                         //treat 103, 105 & 108 differently, they should be 0 not N/A
                         if(element == 'Q103' || element == 'Q105'|| element == 'Q108' ){ 
-                            console.log("setting "&element&" value to 0");
+                            console.log("setting " + element + " value to 0");
                             document.getElementById(element).value="0";
                         } else {
                             element => element.value="N/A";
@@ -226,11 +226,11 @@ function updateProgress(target){
                             
                                 if(document.getElementById("A"+element.value) !== null){
                                     
-                                    if(element.value == "131"){
+                                    if(element.value == "131"){ //answer id of 131 (Q37 N/a)
                                         // skip this one, N/A is used differently
                                         
-                                    } else if((element == "Q103" || element == "Q105" || element == "Q108") && document.getElementById(element).value == 0 ){
-                                        console.log("setting "&element&" value to blank");
+                                    } else if((element.id == "Q103" || element.id == "Q105" || element.id == "Q108") && document.getElementById(element.id).value == 0 ){
+                                        console.log("setting " + element + " value to blank");
                                         //if its these particular questions and the answer is 0 - reset it.
                                         document.getElementById(element).value="";
                                         
