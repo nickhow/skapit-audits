@@ -186,7 +186,6 @@ function updateProgress(target){
                         
                         //treat 103, 105 & 108 differently, they should be 0 not N/A
                         if(element == 'Q103' || element == 'Q105'|| element == 'Q108' ){ 
-                        //    console.log("setting " + element + " value to 0");
                             document.getElementById(element).value="0";
                         } else {
                             element => element.value="N/A";
@@ -220,24 +219,15 @@ function updateProgress(target){
                     
                     var hiddenEl = document.getElementById(element).closest(".row, .my-3");
                     hiddenEl.style.display="block";
-
-                    console.log("element "+element); //element is the id like Q111
-                    console.log("hiddenEl "+hiddenEl); //hiddenEl is the div element
                     
                     var hiddenEls = hiddenEl.querySelectorAll('select, input');
                  
                         hiddenEls.forEach(function(element){
-
-                            console.log("looking at element id "+element.id);
                             
                             if(!isLocked){ // only clean the answers to the unhidden questions if the form is still being completed
 
-                                console.log("Not locked ... ");
-                                console.log("checking value of A"+element.value);
-
                                 //First check for these specific questions
                                 if((element.id == "Q103" || element.id == "Q105" || element.id == "Q108") && element.value == 0){ //check if it's 0 input value on these questions
-                                    console.log("setting " + element + " value to blank");
                                     document.getElementById(element.id).value = "";
 
                                 } else if(document.getElementById("A"+element.value) !== null){ //Otherwise, normal behaviour - check the answer, value here is that of selected select-option. 
@@ -253,12 +243,9 @@ function updateProgress(target){
                             } 
                             
                         });
-       
-                    console.log("going into update with this ... "+document.getElementById(element).closest(".accordion-collapse").id);
                    updateProgress(document.getElementById(element).closest(".accordion-collapse").id); //update the progress bar
                 });
                 //end of filtered loop of hide/show - now try updateProgress ...
-                //updateProgress(document.getElementById(element).closest(".accordion-collapse").id); //update the progress bar
             }
         }
 
@@ -287,9 +274,9 @@ function updateProgress(target){
                             var hiddenInput = hiddenEl.querySelectorAll('input');
                             hiddenInput.forEach(element => element.value="N/A");
                             
-                            //treat 103 and 105 and 108 differently  //TEST THIS
-                            if(element == 'Q103' || element == 'Q105' || element == 'Q108'){
-                                document.getElementById(element).value="";
+                            //treat 103 and 105 and 108 differently
+                            if(element.id == 'Q103' || element.id == 'Q105' || element.id == 'Q108'){
+                                document.getElementById(element.id).value = "";
                             }
 
                             var hiddenSelect = hiddenEl.querySelectorAll('select');
@@ -328,8 +315,8 @@ function updateProgress(target){
                                             if(element.value == "131"){ 
                                                 // skip this one, N/A is used differently
                                                 
-                                            } else if(element == "Q103" || element == "Q105" || element == "Q108" ){ //TEST THIS - and add comments for future
-                                                document.getElementById(element).value = "";
+                                            } else if(element.id == "Q103" || element.id == "Q105" || element.id == "Q108" ){
+                                                document.getElementById(element.id).value = "";
 
                                             } else if(document.getElementById("A"+element.value).getAttribute('data-response') == "N/A"){
                                                 element.value="Unanswered";
