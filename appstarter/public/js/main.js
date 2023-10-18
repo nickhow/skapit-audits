@@ -219,6 +219,9 @@ function updateProgress(target){
                 targets.filter( element => document.getElementById(element) !== null ).forEach(function(element){ //Show questions and mark as unanswered
                     var hiddenEl = document.getElementById(element).closest(".row, .my-3");
                     hiddenEl.style.display="block";
+
+                    console.log("element "+element);
+                    console.log("hiddenEl "+hiddelEl);
                     
                     var hiddenEls = hiddenEl.querySelectorAll('select, input');
                  
