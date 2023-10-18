@@ -221,7 +221,7 @@ function updateProgress(target){
                     hiddenEl.style.display="block";
 
                     console.log("element "+element);
-                    console.log("hiddenEl "+hiddelEl);
+                    console.log("hiddenEl "+hiddenEl);
                     
                     var hiddenEls = hiddenEl.querySelectorAll('select, input');
                  
