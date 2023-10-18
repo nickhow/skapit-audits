@@ -79,7 +79,7 @@ function updateProgress(target){
                 bsCollapse.show(); //pin it open
                 
                 sections[target] = 'incomplete';
-                targetEl.previousElementSibling.firstElementChild.classList.remove("completed, completed-pending");
+                targetEl.previousElementSibling.firstElementChild.classList.remove("completed,completed-pending");
                 var progress = document.getElementById('progressBar');
                 var now = parseInt(progress.getAttribute('aria-valuenow'));
                 var newProgress = now-=10;
