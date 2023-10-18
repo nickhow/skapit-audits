@@ -221,14 +221,18 @@ function updateProgress(target){
                     var hiddenEls = hiddenEl.querySelectorAll('select, input');
                  
                         hiddenEls.forEach(function(element){
+
+                            console.log("looking at element "+element);
                             
                             if(!isLocked){ // only clean the answers to the unhidden questions if the form is still being completed
                             
                                 if(document.getElementById("A"+element.value) !== null){
+                                    console.log("answer not null");
                                     
                                     if(element.value == "131"){ //answer id of 131 (Q37 N/a)
                                         // skip this one, N/A is used differently
-                                        
+                                        console.log("answer is 131");
+
                                     } else if((element.id == "Q103" || element.id == "Q105" || element.id == "Q108")  ){ // && document.getElementById(element.id).value == 0
                                         console.log("setting " + element + " value to blank");
                                         //if its these particular questions and the answer is 0 - reset it.
@@ -236,7 +240,9 @@ function updateProgress(target){
                                         
                                     }  else if(document.getElementById("A"+element.value).getAttribute('data-response') == "N/A"){
                                         element.value="Unanswered";
-                                       
+                                        console.log("Answer updated");
+                                    } else{ 
+                                        console.log("No conditions satisfied, answer is "+document.getElementById("A"+element.value).getAttribute('data-response'));
                                     }
                                 }
                             }
