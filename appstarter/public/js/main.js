@@ -186,14 +186,13 @@ function updateProgress(target){
                         
                         //treat 103, 105 & 108 differently, they should be 0 not N/A
                         if(element == 'Q103' || element == 'Q105'|| element == 'Q108' ){ 
+                            console.log("setting "&element&" value to 0");
                             document.getElementById(element).value="0";
                         } else {
                             element => element.value="N/A";
                         }
                     });
 
-
-                    
                     var hiddenSelect = hiddenEl.querySelectorAll('select');
                     hiddenSelect.forEach(function(element){
                        for (var i = 0; i < element.options.length; i++) {
@@ -213,7 +212,7 @@ function updateProgress(target){
             
                 });
                 
-            } else {
+            } else {// not interested in hiding it
                 
                 targets.filter( element => document.getElementById(element) !== null ).forEach(function(element){ //Show questions and mark as unanswered
                     var hiddenEl = document.getElementById(element).closest(".row, .my-3");
@@ -230,8 +229,10 @@ function updateProgress(target){
                                     if(element.value == "131"){
                                         // skip this one, N/A is used differently
                                         
-                                    } else if(element == "Q103" || element == "Q105" || element == "Q108"){
-                                        document.getElementById(element).value="0";
+                                    } else if((element == "Q103" || element == "Q105" || element == "Q108") && document.getElementById(element).value == 0 ){
+                                        console.log("setting "&element&" value to blank");
+                                        //if its these particular questions and the answer is 0 - reset it.
+                                        document.getElementById(element).value="";
                                         
                                     }  else if(document.getElementById("A"+element.value).getAttribute('data-response') == "N/A"){
                                         element.value="Unanswered";
@@ -272,9 +273,9 @@ function updateProgress(target){
                             var hiddenInput = hiddenEl.querySelectorAll('input');
                             hiddenInput.forEach(element => element.value="N/A");
                             
-                            //treat 103 and 104 differently, they should be 0 not N/A
-                            if(hiddenInput.id == 'Q103' || hiddenInput.id == 'Q104'){
-                                hiddenInput.forEach(element => element.value= 0 );
+                            //treat 103 and 105 and 108 differently  //TEST THIS
+                            if(element == 'Q103' || element == 'Q105' || element == 'Q108'){
+                                document.getElementById(element).value="";
                             }
 
                             var hiddenSelect = hiddenEl.querySelectorAll('select');
@@ -313,8 +314,8 @@ function updateProgress(target){
                                             if(element.value == "131"){ 
                                                 // skip this one, N/A is used differently
                                                 
-                                            } else if(element.value == "Q103" || element.value == "Q104" ){
-                                                element.value = "";
+                                            } else if(element == "Q103" || element == "Q105" || element == "Q108" ){ //TEST THIS - and add comments for future
+                                                document.getElementById(element).value = "";
 
                                             } else if(document.getElementById("A"+element.value).getAttribute('data-response') == "N/A"){
                                                 element.value="Unanswered";
