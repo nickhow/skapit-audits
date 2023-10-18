@@ -233,7 +233,8 @@ function updateProgress(target){
                             if(!isLocked){ // only clean the answers to the unhidden questions if the form is still being completed
 
                                 console.log("Not locked ... ");
-
+                                console.log("checking value of A"+element.value);
+                                
                                 if(document.getElementById("A"+element.value) !== null){
                                     console.log("answer not null");
                                     
