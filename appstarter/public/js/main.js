@@ -214,6 +214,8 @@ function updateProgress(target){
                 
             } else {// not interested in hiding it, make sure it is showing and reset answers
                 
+                console.log(targets);
+
                 targets.filter( element => document.getElementById(element) !== null ).forEach(function(element){ //Show questions and mark as unanswered
                     var hiddenEl = document.getElementById(element).closest(".row, .my-3");
                     hiddenEl.style.display="block";
@@ -222,7 +224,7 @@ function updateProgress(target){
                  
                         hiddenEls.forEach(function(element){
 
-                            console.log("looking at element "+element);
+                            console.log("looking at element id "+element.id);
                             
                             if(!isLocked){ // only clean the answers to the unhidden questions if the form is still being completed
                             
