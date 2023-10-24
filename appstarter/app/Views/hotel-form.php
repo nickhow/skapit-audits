@@ -339,7 +339,7 @@
         <div class="accordion-item">
             <h2 class="accordion-header" id="form-accordion-fire">
               <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#form-accordion-fire-body" aria-expanded="true" aria-controls="form-accordion-fire-body">
-                <?php echo "3. ".$text['section_fire']; ?>
+                <?php echo "2. ".$text['section_fire']; ?>
               </button>
             </h2>
         
@@ -2954,7 +2954,7 @@
         <div class="accordion-item">
             <h2 class="accordion-header" id="form-accordion-hygiene">
               <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#form-accordion-hygiene-body" aria-expanded="true" aria-controls="form-accordion-hygiene-body">
-                <?php echo "4. ".$text['section_hygiene']; ?>
+                <?php echo "3. ".$text['section_hygiene']; ?>
               </button>
             </h2>
         
@@ -3352,7 +3352,7 @@
         <div class="accordion-item">
             <h2 class="accordion-header" id="form-accordion-pool">
               <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#form-accordion-pool-body" aria-expanded="true" aria-controls="form-accordion-pool-body">
-                <?php echo "5. ".$text['section_pool']; ?>
+                <?php echo "4. ".$text['section_pool']; ?>
               </button>
             </h2>
         
@@ -4133,7 +4133,7 @@
         <div class="accordion-item">
             <h2 class="accordion-header" id="form-accordion-fuel">
               <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#form-accordion-fuel-body" aria-expanded="true" aria-controls="form-accordion-fuel-body">
-                <?php echo "6. ".$text['section_fuel']; ?>
+                <?php echo "5. ".$text['section_fuel']; ?>
               </button>
             </h2>
         
@@ -4915,7 +4915,7 @@
         <div class="accordion-item">
             <h2 class="accordion-header" id="form-accordion-general">
               <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#form-accordion-general-body" aria-expanded="true" aria-controls="form-accordion-general-body">
-                <?php echo "7. ".$text['section_general']; ?>
+                <?php echo "6. ".$text['section_general']; ?>
               </button>
             </h2>
         
@@ -5508,7 +5508,7 @@
         <div class="accordion-item">
             <h2 class="accordion-header" id="form-accordion-waterpark">
               <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#form-accordion-waterpark-body" aria-expanded="true" aria-controls="form-accordion-waterpark-body">
-                <?php echo "8. ".$text['section_waterpark']; ?>
+                <?php echo "7. ".$text['section_waterpark']; ?>
               </button>
             </h2>
         
@@ -5714,7 +5714,7 @@
         <div class="accordion-item">
             <h2 class="accordion-header" id="form-accordion-viral">
               <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#form-accordion-viral-body" aria-expanded="true" aria-controls="form-accordion-viral-body">
-                <?php echo "9. ".$text['section_viral']; ?>
+                <?php echo "8. ".$text['section_viral']; ?>
               </button>
             </h2>
         
@@ -6256,7 +6256,7 @@
         <div class="accordion-item">
             <h2 class="accordion-header" id="form-accordion-carbon">
               <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#form-accordion-carbon-body" aria-expanded="true" aria-controls="form-accordion-carbon-body">
-                <?php echo "10. ".$text['section_carbon']; ?>
+                <?php echo "9. ".$text['section_carbon']; ?>
               </button>
             </h2>
         
@@ -6479,7 +6479,7 @@
       <div class="accordion-item">
             <h2 class="accordion-header" id="form-accordion-legal">
               <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#form-accordion-legal-body" aria-expanded="true" aria-controls="form-accordion-legal-body">
-                <?php echo "2. ".$text['section_legal']; ?>
+                <?php echo "10. ".$text['section_legal']; ?>
               </button>
             </h2>
         
