@@ -198,6 +198,18 @@ function updateProgress(target){
             document.getElementById('Q74').addEventListener('change',function(){updateForm('Q74','No',['Q75'] );});
         }      
 
+        //TO TEST
+                //Question 136 hides Q74, Q75 **NEW**
+                if( document.getElementById('Q136') !== null ){
+                    window.addEventListener('load',function(){updateForm('Q136','N/A',['Q74','Q75'] );});
+                    document.getElementById('Q136').addEventListener('change',function(){updateForm('Q136','N/A',['Q74','Q75'] );});
+                }
+                //Question 74 hides Q75 **NEW**
+                if( document.getElementById('Q74') !== null ){
+                    window.addEventListener('load',function(){updateForm('Q74','N/A',['Q75'] );});
+                    document.getElementById('Q74').addEventListener('change',function(){updateForm('Q74','N/A',['Q75'] );});
+                } 
+
 
 
         //Question 107 shows 130
