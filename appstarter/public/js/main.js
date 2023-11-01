@@ -102,13 +102,24 @@ function updateProgress(target){
                 updateProgress(key)
             }
         });
-    
+
+        //Question 10 hides Q11 **NEW**
+        if( document.getElementById('Q10') !== null ){
+            window.addEventListener('load',function(){updateForm('Q10','No',['Q11'] )});
+            document.getElementById('Q10').addEventListener('change',function(){updateForm('Q10','No',['Q11'] )});
+        }
+
         //Question 24 hides Q25
         if( document.getElementById('Q24') !== null ){
             window.addEventListener('load',function(){updateForm('Q24','No',['Q25'] )});
             document.getElementById('Q24').addEventListener('change',function(){updateForm('Q24','No',['Q25'] )});
         }
 
+        //Question 33 hides Q34, Q35 **NEW**
+        if( document.getElementById('Q33') !== null ){
+            window.addEventListener('load',function(){updateForm('Q33','No',['Q34','Q35'] )});
+            document.getElementById('Q33').addEventListener('change',function(){updateForm('Q33','No',['Q34','Q35'] )});
+        }
         
         //Question 36 hides Q37
         if( document.getElementById('Q36') !== null ){
@@ -126,6 +137,24 @@ function updateProgress(target){
         if( document.getElementById('Q70') !== null ){
             window.addEventListener('load',function(){updateForm('Q70','0',['Q71','Q72','Q73','Q74','Q75','Q76','Q77','Q78','Q79','Q80','Q81','Q82','Q83','Q84','Q85'] )});
             document.getElementById('Q70').addEventListener('change',function(){updateForm('Q70','0',['Q71','Q72','Q73','Q74','Q75','Q76','Q77','Q78','Q79','Q80','Q81','Q82','Q83','Q84','Q85'] )});
+        }
+
+        //Question 88 hides Q89, Q90 **NEW**
+        if( document.getElementById('Q88') !== null ){
+            window.addEventListener('load',function(){updateForm('Q88','No',['Q89','Q90'] )});
+            document.getElementById('Q88').addEventListener('change',function(){updateForm('Q88','No',['Q89','Q90'] )});
+        }
+
+        //Question 93 hides Q94, Q95 **NEW**
+        if( document.getElementById('Q93') !== null ){
+            window.addEventListener('load',function(){updateForm('Q93','No',['Q94','Q95'] )});
+            document.getElementById('Q93').addEventListener('change',function(){updateForm('Q93','No',['Q94','Q95'] )});
+        }
+
+        //Question 96 hides Q97, Q98 **NEW**
+        if( document.getElementById('Q96') !== null ){
+            window.addEventListener('load',function(){updateForm('Q96','No',['Q97','Q98'] )});
+            document.getElementById('Q96').addEventListener('change',function(){updateForm('Q96','No',['Q97','Q98'] )});
         }
         
         //Question 99 hides Q100 **NEW**
@@ -146,18 +175,62 @@ function updateProgress(target){
             document.getElementById('Q111').addEventListener('change',function(){updateForm('Q111','No',['Q112','Q113','Q114'] )});
         }
 
+        //Question 126 hides Q127, Q128 **NEW**
+        if( document.getElementById('Q126') !== null ){
+            window.addEventListener('load',function(){updateForm('Q126','No',['Q127','Q128'] )});
+            document.getElementById('Q126').addEventListener('change',function(){updateForm('Q126','No',['Q127','Q128'] )});
+        }
 
-        //Question 107 hides 130
+        //Question 134 hides Q59, Q60 **NEW**
+        if( document.getElementById('Q134') !== null ){
+            window.addEventListener('load',function(){updateForm('Q134','No',['Q59','Q60'] )});
+            document.getElementById('Q134').addEventListener('change',function(){updateForm('Q134','No',['Q59','Q60'] )});
+        }  
+
+        //Question 136 hides Q74, Q75 **NEW**
+        if( document.getElementById('Q136') !== null ){
+            window.addEventListener('load',function(){updateForm('Q136','No',['Q74','Q75'] )});
+            document.getElementById('Q136').addEventListener('change',function(){updateForm('Q136','No',['Q74','Q75'] )});
+        }
+        //Question 74 hides Q75 **NEW**
+        if( document.getElementById('Q74') !== null ){
+            window.addEventListener('load',function(){updateForm('Q74','No',['Q75'] )});
+            document.getElementById('Q74').addEventListener('change',function(){updateForm('Q74','No',['Q75'] )});
+        }      
+
+
+
+        //Question 107 shows 130
         if( document.getElementById('Q107') !== null ){
             window.addEventListener('load',function(){updateFormShow('Q107','Yes',['Q130'] )});
             document.getElementById('Q107').addEventListener('change',function(){updateFormShow('Q107','Yes',['Q130'] )});
         }
 
-        //Question 131 hides 132
+        //Question 131 shows 132
         if( document.getElementById('Q131') !== null ){
             window.addEventListener('load',function(){updateFormShow('Q131','Yes',['Q132'] )});
             document.getElementById('Q131').addEventListener('change',function(){updateFormShow('Q131','Yes',['Q132'] )});
         }
+
+        //Question 135 shows 72 **NEW**
+        if( document.getElementById('Q135') !== null ){
+            window.addEventListener('load',function(){updateFormShow('Q135','Yes',['Q72'] )});
+            document.getElementById('Q135').addEventListener('change',function(){updateFormShow('Q135','Yes',['Q72'] )});
+        }
+        //Question 135 shows 73 **NEW**
+        if( document.getElementById('Q135') !== null ){
+            window.addEventListener('load',function(){updateFormShow('Q135','No',['Q73'] )});
+            document.getElementById('Q135').addEventListener('change',function(){updateFormShow('Q135','No',['Q73'] )});
+        }
+
+        //Question 137 shows Q86, Q87 **NEW**
+        if( document.getElementById('Q137') !== null ){
+            window.addEventListener('load',function(){updateFormShow('Q137','Yes',['Q86','Q87'] )});
+            document.getElementById('Q137').addEventListener('change',function(){updateFormShow('Q137','Yes',['Q86','Q87'] )});
+        }
+
+
+
         
         //take a question number and answer -> hide an array of questions
         function updateForm(trigger,answer,targets){
