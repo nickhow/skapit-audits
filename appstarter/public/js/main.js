@@ -407,11 +407,11 @@ function updateProgress(target){
                         }
                     }
 
-        console.log("proceed: "+proceed);
+        if(trigger == 'Q135') {console.log("proceed: "+proceed);}
 
                     if(proceed){ //Hide questions and remove answers
 //END NEW LOGIC
-        console.log("proceeding for "+trigger);
+        if(trigger == 'Q135') {console.log("proceeding for "+trigger);}
 
                         targets.filter( element => document.getElementById(element) !== null ).forEach(function(element){ //remove targets not in this form
                         
