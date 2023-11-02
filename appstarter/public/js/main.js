@@ -273,17 +273,14 @@ function updateProgress(target){
                 //if not a key, then we need to do somthing to default hide the Qs
                 //I need to deliver the trigger Q, the target ans (which is not the current answer), and the targets.
 
-                var keys = map.keys();
-                keys.foreach(function(key){
-
+                for (let [key, value] of map) {
+                    console.log(key + " is " + value);
                     var targets = map.get(current_answer);
                     updateFormShow(trigger,key, targets);
-
-                });
+                }
 
             }
         
-           
 
         }
         
