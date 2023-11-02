@@ -274,8 +274,9 @@ function updateProgress(target){
                 //I need to deliver the trigger Q, the target ans (which is not the current answer), and the targets.
 
                 for (let [key, value] of map) {
-                    console.log(key + " is " + value);
                     var targets = map.get(current_answer);
+
+                    console.log("trigger " + trigger + "key " + key + "targets " + targets);
                     updateFormShow(trigger,key, targets);
                 }
 
@@ -406,7 +407,7 @@ function updateProgress(target){
 
 // NEW LOGIC
                     var proceed = false;
-                    console.log("answer: "+answer);
+
                     //check if we have an array or single value, then check if the current answer is one we need to act on.
                     if(Array.isArray(answer)){
                         if(!answer.includes(current_answer)) {
@@ -418,11 +419,11 @@ function updateProgress(target){
                         }
                     }
 
-        if(trigger == 'Q135') {console.log("proceed: "+proceed);}
+
 
                     if(proceed){ //Hide questions and remove answers
 //END NEW LOGIC
-        if(trigger == 'Q135') {console.log("proceeding for "+trigger);}
+
 
                         targets.filter( element => document.getElementById(element) !== null ).forEach(function(element){ //remove targets not in this form
 
@@ -461,8 +462,6 @@ function updateProgress(target){
                         targets.filter( element => document.getElementById(element) !== null ).forEach(function(element){ //Show questions and mark as unanswered
                             var hiddenEl = document.getElementById(element).closest(".row, .my-3");
                             hiddenEl.style.display="block";
-                            
-                            if(trigger == 'Q135') {console.log(targets);}
 
                             var hiddenEls = hiddenEl.querySelectorAll('select, input');
                          
