@@ -212,15 +212,15 @@ function updateProgress(target){
 
 
         //TEST THIS - I DOUBT BOTH WORK -- and where is the if no - is the depth displayed q?
-        //Question 135 shows 72 or 73 **NEW**
+        //Question 135 shows 72 or 138 **NEW**
         if( document.getElementById('Q135') !== null ){
             window.addEventListener('load',function(){
                 updateFormShow('Q135','Yes',['Q72'] );
-                updateFormShow('Q135','No',['Q73'] );
+                updateFormShow('Q135','No',['Q138'] );
             });
             document.getElementById('Q135').addEventListener('change',function(){
                 updateFormShow('Q135','Yes',['Q72'] );
-                updateFormShow('Q135','No',['Q73'] );
+                updateFormShow('Q135','No',['Q138'] );
             });
         }
 
