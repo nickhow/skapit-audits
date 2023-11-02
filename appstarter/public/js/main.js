@@ -189,28 +189,18 @@ function updateProgress(target){
 
         //Question 136 hides Q74, Q75 **NEW**
         if( document.getElementById('Q136') !== null ){
-            window.addEventListener('load',function(){updateForm('Q136','No',['Q74','Q75'] );});
-            document.getElementById('Q136').addEventListener('change',function(){updateForm('Q136','No',['Q74','Q75'] );});
+            window.addEventListener('load',function(){
+
+                updateForm('Q136',['No','N/A'],['Q74','Q75'] ); // I need this to run for both NA and No without doing one after the other ...  same for 74 hides 75.
+                // maybe supply an array and add a check to see if we can test for array or single value and then loop accordingly?
+            });
+            document.getElementById('Q136').addEventListener('change',function(){updateForm('Q136',['No','N/A'],['Q74','Q75'] );});
         }
         //Question 74 hides Q75 **NEW**
         if( document.getElementById('Q74') !== null ){
             window.addEventListener('load',function(){updateForm('Q74','No',['Q75'] );});
             document.getElementById('Q74').addEventListener('change',function(){updateForm('Q74','No',['Q75'] );});
         }      
-
-        //TO TEST
-                //Question 136 hides Q74, Q75 **NEW**
-                if( document.getElementById('Q136') !== null ){
-                    window.addEventListener('load',function(){updateForm('Q136','N/A',['Q74','Q75'] );});
-                    document.getElementById('Q136').addEventListener('change',function(){updateForm('Q136','N/A',['Q74','Q75'] );});
-                }
-                //Question 74 hides Q75 **NEW**
-                if( document.getElementById('Q74') !== null ){
-                    window.addEventListener('load',function(){updateForm('Q74','N/A',['Q75'] );});
-                    document.getElementById('Q74').addEventListener('change',function(){updateForm('Q74','N/A',['Q75'] );});
-                } 
-
-
 
         //Question 107 shows 130
         if( document.getElementById('Q107') !== null ){
@@ -258,8 +248,25 @@ function updateProgress(target){
                 current_answer = current_question_element.options[current_question_element.selectedIndex].getAttribute('data-response');
             }
             
-            if(current_answer == answer){ //Hide questions and remove answers
+            var proceed = false;
+
+            //check if we have an array or single value, then check if the current answer is one we need to act on.
+            if(answer.isArray()){
+                if(answer.includes(current_answer)) {
+                    proceed = true;
+                }
+            } else {
+                if(current_answer == answer){
+                    proceed = true;
+                }
+            }
             
+            console.log("proceed: ".proceed);
+            
+            if(proceed){ //Hide questions and remove answers
+            
+                console.log("proceeding...");
+
                 targets.filter( element => document.getElementById(element) !== null ).forEach(function(element){ //remove targets not in this form
                 
                     var hiddenEl = document.getElementById(element).closest(".row, .my-3");  // get the question row - parent to all Q elements
