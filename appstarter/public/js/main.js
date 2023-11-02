@@ -267,9 +267,23 @@ function updateProgress(target){
 
                 //push to the show function
                 updateFormShow(trigger,current_answer,targets);
+
+            } else {
+
+                //if not a key, then we need to do somthing to default hide the Qs
+                //I need to deliver the trigger Q, the target ans (which is not the current answer), and the targets.
+
+                var keys = map.keys();
+                keys.foreach(function(key){
+
+                    var targets = map.get(current_answer);
+                    updateFormShow(trigger,key, targets);
+
+                });
+
             }
         
-            //if not a key, then move on
+           
 
         }
         
