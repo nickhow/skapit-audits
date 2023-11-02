@@ -189,17 +189,13 @@ function updateProgress(target){
 
         //Question 136 hides Q74, Q75 **NEW**
         if( document.getElementById('Q136') !== null ){
-            window.addEventListener('load',function(){
-
-                updateForm('Q136',['No','N/A'],['Q74','Q75'] ); // I need this to run for both NA and No without doing one after the other ...  same for 74 hides 75.
-                // maybe supply an array and add a check to see if we can test for array or single value and then loop accordingly?
-            });
+            window.addEventListener('load',function(){updateForm('Q136',['No','N/A'],['Q74','Q75'] ); });
             document.getElementById('Q136').addEventListener('change',function(){updateForm('Q136',['No','N/A'],['Q74','Q75'] );});
         }
         //Question 74 hides Q75 **NEW**
         if( document.getElementById('Q74') !== null ){
-            window.addEventListener('load',function(){updateForm('Q74','No',['Q75'] );});
-            document.getElementById('Q74').addEventListener('change',function(){updateForm('Q74','No',['Q75'] );});
+            window.addEventListener('load',function(){updateForm('Q74',['No','N/A'],['Q75'] );});
+            document.getElementById('Q74').addEventListener('change',function(){updateForm('Q74',['No','N/A'],['Q75'] );});
         }      
 
         //Question 107 shows 130
