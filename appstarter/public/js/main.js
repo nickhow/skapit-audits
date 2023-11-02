@@ -251,7 +251,7 @@ function updateProgress(target){
             var proceed = false;
 
             //check if we have an array or single value, then check if the current answer is one we need to act on.
-            if(answer.isArray()){
+            if(Array.isArray(answer)){
                 if(answer.includes(current_answer)) {
                     proceed = true;
                 }
