@@ -135,8 +135,8 @@ function updateProgress(target){
         
         //Question 70 hides Q71 .. Q85 & NEW 135, 136
         if( document.getElementById('Q70') !== null ){
-            window.addEventListener('load',function(){updateForm('Q70','0',['Q71','Q72','Q73','Q74','Q75','Q76','Q77','Q78','Q79','Q80','Q81','Q82','Q83','Q84','Q85','Q135','Q136'] );});
-            document.getElementById('Q70').addEventListener('change',function(){updateForm('Q70','0',['Q71','Q72','Q73','Q74','Q75','Q76','Q77','Q78','Q79','Q80','Q81','Q82','Q83','Q84','Q85','Q135','Q136'] );});
+            window.addEventListener('load',function(){updateForm('Q70','0',['Q71','Q72','Q73','Q74','Q75','Q76','Q77','Q78','Q79','Q80','Q81','Q82','Q83','Q84','Q85','Q135','Q136','138'] );});
+            document.getElementById('Q70').addEventListener('change',function(){updateForm('Q70','0',['Q71','Q72','Q73','Q74','Q75','Q76','Q77','Q78','Q79','Q80','Q81','Q82','Q83','Q84','Q85','Q135','Q136','138'] );});
         }
 
         //Question 88 hides Q89, Q90 **NEW**
