@@ -212,15 +212,27 @@ function updateProgress(target){
 
 
         //TEST THIS - I DOUBT BOTH WORK -- and where is the if no - is the depth displayed q?
+
+        //new function to perfom some logic first, use map
+
         //Question 135 shows 72 or 138 **NEW**
         if( document.getElementById('Q135') !== null ){
             window.addEventListener('load',function(){
-                updateFormShow('Q135','Yes',['Q72'] );
-                updateFormShow('Q135','No',['Q138'] );
+                
+                var map = new Map();
+                map.set('Yes', ['Q72']);
+                map.set('No', ['Q138']);
+                updateFormShowLogical('Q135',map);
+             //   updateFormShow('Q135','Yes',['Q72'] );
+             //   updateFormShow('Q135','No',['Q138'] );
             });
             document.getElementById('Q135').addEventListener('change',function(){
-                updateFormShow('Q135','Yes',['Q72'] );
-                updateFormShow('Q135','No',['Q138'] );
+                var map = new Map();
+                map.set('Yes', ['Q72']);
+                map.set('No', ['Q138']);
+                updateFormShowLogical('Q135',map);
+            //    updateFormShow('Q135','Yes',['Q72'] );
+            //    updateFormShow('Q135','No',['Q138'] );
             });
         }
 
@@ -231,7 +243,35 @@ function updateProgress(target){
         }
 
 
+        //add logical function, trigger, map ( key value array [answer => [targets], ..  ] )
+        function updateFormShowLogical(trigger, map){
+            var current_question_element = document.getElementById(trigger);
+            var current_answer;
 
+            //if type is input
+            if(current_question_element.tagName =="INPUT"){
+                current_answer = current_question_element.value;
+            }
+            //if type is select
+            if(current_question_element.tagName =="SELECT"){
+                current_answer = current_question_element.options[current_question_element.selectedIndex].getAttribute('data-response');
+            }
+
+            //now check the map for the answer as a key, if exists - run the show function based on the targets in the map
+
+            //if the key exists
+            if(map.has(current_answer)){
+
+                //get the targets
+                var targets = map.get(current_answer);
+
+                //push to the show function
+                updateFormShow(trigger,current_answer,targets);
+            }
+        
+            //if not a key, then move on
+
+        }
         
         //take a question number and answer -> hide an array of questions
         function updateForm(trigger,answer,targets){
