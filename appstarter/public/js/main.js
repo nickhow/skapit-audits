@@ -261,11 +261,11 @@ function updateProgress(target){
                 }
             }
             
-            console.log("proceed: ".proceed);
+            console.log("proceed: "+proceed);
             
             if(proceed){ //Hide questions and remove answers
             
-                console.log("proceeding...");
+                console.log("proceeding for "+trigger);
 
                 targets.filter( element => document.getElementById(element) !== null ).forEach(function(element){ //remove targets not in this form
                 
