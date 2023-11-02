@@ -388,15 +388,21 @@ function updateProgress(target){
                     if(current_question_element.tagName =="SELECT"){
                         current_answer = current_question_element.options[current_question_element.selectedIndex].getAttribute('data-response');
                     }
+//OLD LOGIC
+               //     if(current_answer !== answer){ //Hide questions and remove answers
+                
+
+
+// NEW LOGIC
                     var proceed = false;
 
                     //check if we have an array or single value, then check if the current answer is one we need to act on.
                     if(Array.isArray(answer)){
-                        if(answer.includes(current_answer)) {
+                        if(!answer.includes(current_answer)) {
                             proceed = true;
                         }
                     } else {
-                        if(current_answer == answer){
+                        if(current_answer !== answer){
                             proceed = true;
                         }
                     }
@@ -404,7 +410,7 @@ function updateProgress(target){
         console.log("proceed: "+proceed);
 
                     if(proceed){ //Hide questions and remove answers
-
+//END NEW LOGIC
         console.log("proceeding for "+trigger);
 
                         targets.filter( element => document.getElementById(element) !== null ).forEach(function(element){ //remove targets not in this form
