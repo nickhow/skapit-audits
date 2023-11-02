@@ -259,11 +259,13 @@ function updateProgress(target){
 
             //now check the map for the answer as a key, if exists - run the show function based on the targets in the map
 
+            var targets;
+
             //if the key exists
             if(map.has(current_answer)){
 
                 //get the targets
-                var targets = map.get(current_answer);
+                targets = map.get(current_answer);
 
                 //push to the show function
                 updateFormShow(trigger,current_answer,targets);
@@ -274,9 +276,8 @@ function updateProgress(target){
                 //I need to deliver the trigger Q, the target ans (which is not the current answer), and the targets.
 
                 for (let [key, value] of map) {
-                    var targets = map.get(current_answer);
 
-                    console.log("trigger " + trigger + "key " + key + "targets " + targets);
+                    console.log("trigger " + trigger + "key " + key + "targets " + value);
                     updateFormShow(trigger,key, targets);
                 }
 
