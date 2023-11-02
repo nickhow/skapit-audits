@@ -395,7 +395,7 @@ function updateProgress(target){
 
 // NEW LOGIC
                     var proceed = false;
-
+                    console.log("answer: "+answer);
                     //check if we have an array or single value, then check if the current answer is one we need to act on.
                     if(Array.isArray(answer)){
                         if(!answer.includes(current_answer)) {
@@ -414,8 +414,6 @@ function updateProgress(target){
         if(trigger == 'Q135') {console.log("proceeding for "+trigger);}
 
                         targets.filter( element => document.getElementById(element) !== null ).forEach(function(element){ //remove targets not in this form
-                        
-                            console.log(targets);
 
                             var hiddenEl = document.getElementById(element).closest(".row, .my-3");  // get the question row - parent to all Q elements
         
@@ -429,8 +427,6 @@ function updateProgress(target){
 
                             var hiddenSelect = hiddenEl.querySelectorAll('select');
                             hiddenSelect.forEach(function(element){
-
-                                console.log("select to be hidden is "+element);
 
                                for (var i = 0; i < element.options.length; i++) {
                                     var dr = element.options[i].getAttribute('data-response');
@@ -455,6 +451,8 @@ function updateProgress(target){
                             var hiddenEl = document.getElementById(element).closest(".row, .my-3");
                             hiddenEl.style.display="block";
                             
+                            if(trigger == 'Q135') {console.log(targets);}
+
                             var hiddenEls = hiddenEl.querySelectorAll('select, input');
                          
                                 hiddenEls.forEach(function(element){
