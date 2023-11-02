@@ -415,8 +415,6 @@ function updateProgress(target){
         
                             var hiddenInput = hiddenEl.querySelectorAll('input');
                             hiddenInput.forEach(element => element.value="N/A");
-                            
-                            console.log("input to be hidden is "+hiddenInput);
 
                             //treat 103 and 105 and 108 differently
                             if(element.id == 'Q103' || element.id == 'Q105' || element.id == 'Q108'){
@@ -424,8 +422,10 @@ function updateProgress(target){
                             }
 
                             var hiddenSelect = hiddenEl.querySelectorAll('select');
-                            console.log("select to be hidden is "+hiddenSelect);
                             hiddenSelect.forEach(function(element){
+
+                                console.log("select to be hidden is "+element);
+
                                for (var i = 0; i < element.options.length; i++) {
                                     var dr = element.options[i].getAttribute('data-response');
         
