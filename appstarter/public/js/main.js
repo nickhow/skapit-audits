@@ -409,17 +409,22 @@ function updateProgress(target){
 
                         targets.filter( element => document.getElementById(element) !== null ).forEach(function(element){ //remove targets not in this form
                         
+                            console.log(targets);
+
                             var hiddenEl = document.getElementById(element).closest(".row, .my-3");  // get the question row - parent to all Q elements
         
                             var hiddenInput = hiddenEl.querySelectorAll('input');
                             hiddenInput.forEach(element => element.value="N/A");
                             
+                            console.log("input to be hidden is "+hiddenInput);
+
                             //treat 103 and 105 and 108 differently
                             if(element.id == 'Q103' || element.id == 'Q105' || element.id == 'Q108'){
                                 document.getElementById(element.id).value = "";
                             }
 
                             var hiddenSelect = hiddenEl.querySelectorAll('select');
+                            console.log("select to be hidden is "+hiddenSelect);
                             hiddenSelect.forEach(function(element){
                                for (var i = 0; i < element.options.length; i++) {
                                     var dr = element.options[i].getAttribute('data-response');
