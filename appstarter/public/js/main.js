@@ -210,15 +210,18 @@ function updateProgress(target){
             document.getElementById('Q131').addEventListener('change',function(){updateFormShow('Q131','Yes',['Q132'] );});
         }
 
-        //Question 135 shows 72 **NEW**
+
+        //TEST THIS - I DOUBT BOTH WORK -- and where is the if no - is the depth displayed q?
+        //Question 135 shows 72 or 73 **NEW**
         if( document.getElementById('Q135') !== null ){
-            window.addEventListener('load',function(){updateFormShow('Q135','Yes',['Q72'] );});
-            document.getElementById('Q135').addEventListener('change',function(){updateFormShow('Q135','Yes',['Q72'] );});
-        }
-        //Question 135 shows 73 **NEW**
-        if( document.getElementById('Q135') !== null ){
-            window.addEventListener('load',function(){updateFormShow('Q135','No',['Q73'] );});
-            document.getElementById('Q135').addEventListener('change',function(){updateFormShow('Q135','No',['Q73'] );});
+            window.addEventListener('load',function(){
+                updateFormShow('Q135','Yes',['Q72'] );
+                updateFormShow('Q135','No',['Q73'] );
+            });
+            document.getElementById('Q135').addEventListener('change',function(){
+                updateFormShow('Q135','Yes',['Q72'] );
+                updateFormShow('Q135','No',['Q73'] );
+            });
         }
 
         //Question 137 shows Q86, Q87 **NEW**
@@ -348,8 +351,20 @@ function updateProgress(target){
                     if(current_question_element.tagName =="SELECT"){
                         current_answer = current_question_element.options[current_question_element.selectedIndex].getAttribute('data-response');
                     }
+                    var proceed = false;
+
+                    //check if we have an array or single value, then check if the current answer is one we need to act on.
+                    if(Array.isArray(answer)){
+                        if(answer.includes(current_answer)) {
+                            proceed = true;
+                        }
+                    } else {
+                        if(current_answer == answer){
+                            proceed = true;
+                        }
+                    }
                     
-                    if(current_answer !== answer){ //Hide questions and remove answers
+                    if(proceed){ //Hide questions and remove answers
 
                         targets.filter( element => document.getElementById(element) !== null ).forEach(function(element){ //remove targets not in this form
                         
