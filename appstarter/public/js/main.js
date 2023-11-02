@@ -220,16 +220,16 @@ function updateProgress(target){
             window.addEventListener('load',function(){
                 
                 var map = new Map();
-                map.set('Yes', ['Q72']);
-                map.set('No', ['Q138']);
+                map.set('Yes', ['Q72','00']);
+                map.set('No', ['Q138','00']);
                 updateFormShowLogical('Q135',map);
              //   updateFormShow('Q135','Yes',['Q72'] );
              //   updateFormShow('Q135','No',['Q138'] );
             });
             document.getElementById('Q135').addEventListener('change',function(){
                 var map = new Map();
-                map.set('Yes', ['Q72']);
-                map.set('No', ['Q138']);
+                map.set('Yes', ['Q72','00']);
+                map.set('No', ['Q138','00']);
                 updateFormShowLogical('Q135',map);
             //    updateFormShow('Q135','Yes',['Q72'] );
             //    updateFormShow('Q135','No',['Q138'] );
