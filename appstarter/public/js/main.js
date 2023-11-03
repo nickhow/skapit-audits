@@ -213,7 +213,7 @@ function updateProgress(target){
 
         //TEST THIS - I DOUBT BOTH WORK -- and where is the if no - is the depth displayed q?
 
-        //new function to perfom some logic first, use map  -- map value not kept as an array, is then converted to string when getting values ... 
+        //new function to perfom some logic first, use map  -- almost there, not hiding Yes Q on change to No and vice versa. NA or Unanswered clears efficiently.
 
         //Question 135 shows 72 or 138 **NEW**
         if( document.getElementById('Q135') !== null ){
@@ -261,15 +261,19 @@ function updateProgress(target){
 
             var targets;
 
+            for (let [key, value] of map) {
+                updateFormShow(trigger,key,value);
+            }
+
+        /*
+            
             //if the key exists
             if(map.has(current_answer)){
 
                 //get the targets
                 targets = map.get(current_answer);
 
-                console.log("targets type " + typeof targets);
-
-                //push to the show function
+                //push to the show function which will show the new question, but not hide any opened questions as not included in targets like normal functions do.
                 updateFormShow(trigger,current_answer,targets);
 
             } else {
@@ -279,12 +283,11 @@ function updateProgress(target){
 
                 for (let [key, value] of map) {
 
-                    console.log("trigger " + trigger + " key " + key + " targets " + value + " type " + typeof value); // targets here resolved as string not array - this is a problem.
-                    updateFormShow(trigger,key, value);
+                    updateFormShow(trigger,key,value);
                 }
 
             }
-        
+        */
 
         }
         
