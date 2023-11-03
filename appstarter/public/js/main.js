@@ -215,12 +215,12 @@ function updateProgress(target){
 
         //new function to perfom some logic first, use map  -- almost there, not hiding Yes Q on change to No and vice versa. NA or Unanswered clears efficiently.
 
-        //Question 135 shows 72 or 138 **NEW**
+        //Question 135 shows 72 and 78 (which can later show 79) or 138 **NEW**
         if( document.getElementById('Q135') !== null ){
             window.addEventListener('load',function(){
                 
                 var map = new Map();
-                map.set('Yes', ['Q72']);
+                map.set('Yes', ['Q72','Q78']);
                 map.set('No', ['Q138']);
                 updateFormShowLogical('Q135',map);
              //   updateFormShow('Q135','Yes',['Q72'] );
@@ -228,13 +228,19 @@ function updateProgress(target){
             });
             document.getElementById('Q135').addEventListener('change',function(){
                 var map = new Map();
-                map.set('Yes', ['Q72']);
+                map.set('Yes', ['Q72','Q78']);
                 map.set('No', ['Q138']);
                 updateFormShowLogical('Q135',map);
             //    updateFormShow('Q135','Yes',['Q72'] );
             //    updateFormShow('Q135','No',['Q138'] );
             });
         }
+
+        //Question 78 shows Q79 **NEW**
+        if( document.getElementById('Q78') !== null ){
+            window.addEventListener('load',function(){updateFormShow('Q78','Yes',['Q79'] );});
+            document.getElementById('Q137').addEventListener('change',function(){updateFormShow('Q78','Yes',['Q79'] );});
+        }        
 
         //Question 137 shows Q86, Q87 **NEW**
         if( document.getElementById('Q137') !== null ){
