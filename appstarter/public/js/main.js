@@ -239,7 +239,7 @@ function updateProgress(target){
         //Question 78 shows Q79 **NEW**
         if( document.getElementById('Q78') !== null ){
             window.addEventListener('load',function(){updateFormShow('Q78','Yes',['Q79'] );});
-            document.getElementById('Q137').addEventListener('change',function(){updateFormShow('Q78','Yes',['Q79'] );});
+            document.getElementById('Q78').addEventListener('change',function(){updateFormShow('Q78','Yes',['Q79'] );});
         }        
 
         //Question 137 shows Q86, Q87 **NEW**
