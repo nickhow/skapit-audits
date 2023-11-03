@@ -267,6 +267,8 @@ function updateProgress(target){
                 //get the targets
                 targets = map.get(current_answer);
 
+                console.log("targets type " + typeof targets);
+
                 //push to the show function
                 updateFormShow(trigger,current_answer,targets);
 
