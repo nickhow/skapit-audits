@@ -245,6 +245,12 @@ function updateProgress(target){
 
         //add logical function, trigger, map ( key value array [answer => [targets], ..  ] )
         function updateFormShowLogical(trigger, map){
+
+            for (let [key, value] of map) {
+                updateFormShow(trigger,key,value);
+            }
+
+        /*
             var current_question_element = document.getElementById(trigger);
             var current_answer;
 
@@ -261,12 +267,6 @@ function updateProgress(target){
 
             var targets;
 
-            for (let [key, value] of map) {
-                updateFormShow(trigger,key,value);
-            }
-
-        /*
-            
             //if the key exists
             if(map.has(current_answer)){
 
