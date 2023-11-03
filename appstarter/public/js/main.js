@@ -280,7 +280,7 @@ function updateProgress(target){
                 for (let [key, value] of map) {
 
                     console.log("trigger " + trigger + " key " + key + " targets " + value + " type " + typeof value); // targets here resolved as string not array - this is a problem.
-                    updateFormShow(trigger,key, targets);
+                    updateFormShow(trigger,key, value);
                 }
 
             }
