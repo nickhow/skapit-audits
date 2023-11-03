@@ -213,23 +213,23 @@ function updateProgress(target){
 
         //TEST THIS - I DOUBT BOTH WORK -- and where is the if no - is the depth displayed q?
 
-        //new function to perfom some logic first, use map
+        //new function to perfom some logic first, use map  -- map value not kept as an array, is then converted to string when getting values ... 
 
         //Question 135 shows 72 or 138 **NEW**
         if( document.getElementById('Q135') !== null ){
             window.addEventListener('load',function(){
                 
                 var map = new Map();
-                map.set('Yes', ['Q72','00']);
-                map.set('No', ['Q138','00']);
+                map.set('Yes', ['Q72']);
+                map.set('No', ['Q138']);
                 updateFormShowLogical('Q135',map);
              //   updateFormShow('Q135','Yes',['Q72'] );
              //   updateFormShow('Q135','No',['Q138'] );
             });
             document.getElementById('Q135').addEventListener('change',function(){
                 var map = new Map();
-                map.set('Yes', ['Q72','00']);
-                map.set('No', ['Q138','00']);
+                map.set('Yes', ['Q72']);
+                map.set('No', ['Q138']);
                 updateFormShowLogical('Q135',map);
             //    updateFormShow('Q135','Yes',['Q72'] );
             //    updateFormShow('Q135','No',['Q138'] );
@@ -277,7 +277,7 @@ function updateProgress(target){
 
                 for (let [key, value] of map) {
 
-                    console.log("trigger " + trigger + "key " + key + "targets " + value);
+                    console.log("trigger " + trigger + " key " + key + " targets " + value + " type " + typeof value); // targets here resolved as string not array - this is a problem.
                     updateFormShow(trigger,key, targets);
                 }
 
