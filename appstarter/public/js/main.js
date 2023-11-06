@@ -240,7 +240,7 @@ function updateProgress(target){
                 map.set('Yes', ['Q72','Q78','Q79']);
                 map.set('No', ['Q138']);
                 updateFormShowLogical('Q135',map);
-                
+                updateProgress('form-accordion-pool-body');
             //    updateFormShow('Q135','Yes',['Q72'] );
             //    updateFormShow('Q135','No',['Q138'] );
             });
