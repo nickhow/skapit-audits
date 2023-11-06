@@ -24,7 +24,8 @@ function updateProgress(target){
         section_questions.forEach(function(element){
             if( element.value == "Unanswered" || element.value === "" ) {
                 complete = false;
-                console.log("Section not complete because "+element);
+                console.log("Section not complete because "+element.id);
+                console.log("element value: "+element.value);
             }
         });
         if(complete){
