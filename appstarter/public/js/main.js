@@ -31,13 +31,15 @@ function updateProgress(target){
 
         console.log("complete status = "+complete);
 
+        var bsCollapse;
+
         if(complete){
             
             if(sections[target] == 'incomplete'){
                 //newly completed -> so update the progress and hide the section
                 sections[target] = 'complete';
                 
-                var bsCollapse = new bootstrap.Collapse(targetEl,{
+                bsCollapse = new bootstrap.Collapse(targetEl,{
                     toggle: false,
                 }); 
                 bsCollapse.hide();
@@ -61,11 +63,15 @@ function updateProgress(target){
             } else { //re-opened and edited ... still needs closing.
                
                 console.log("target to close: "+targetEl.id);
-                var bsCollapse = new bootstrap.Collapse(targetEl,{
+
+                bsCollapse = new bootstrap.Collapse(targetEl,{
                     toggle: false,
                 }); 
+
                 bsCollapse.hide();
-                console.log("re-opened section closed");                
+
+                console.log("re-opened section closed");  
+
                 if(target == "form-accordion-fire-body"){
                     offset = '85';
                     window.scroll(0, targetEl.offsetTop - offset);
@@ -77,7 +83,7 @@ function updateProgress(target){
             if(sections[target] == 'complete'){
                 //section has been uncompleted -> go back a step.
                 console.log("Uncompleted ... ");
-                var bsCollapse = new bootstrap.Collapse(targetEl,{
+                bsCollapse = new bootstrap.Collapse(targetEl,{
                     toggle: false,
                 }); 
                 bsCollapse.show(); //pin it open
