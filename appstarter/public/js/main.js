@@ -252,15 +252,20 @@ function updateProgress(target){
 
 
                 //Finally one last sodding sweep of the sections
-
+                console.log("RAN THE FINALE HERE");  
+                
                 var fsectionbodies = document.querySelectorAll('.accordion-body');
                 var fsections = [];
                 
                 fsectionbodies.forEach(function(element){
-                    var key = element.parentElement.id
+                    var key = element.parentElement.id;
                     fsections[key] = 'incomplete';
                 });
-                console.log("RAN THE FINALE HERE");  
+
+                for (const [key, value] of Object.entries(sections)) {
+                    updateProgress(key);
+                }
+                console.log("TO HERE"); 
                 
                 //AND ON WITH THE SHOW ... 
 
