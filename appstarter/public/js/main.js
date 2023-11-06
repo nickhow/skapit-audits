@@ -269,6 +269,10 @@ function updateProgress(target){
                 updateFormShow(trigger,key,value);
             }
 
+            console.log("logical func. update on closest collapse to "+trigger);
+            console.log("found element is "+ document.getElementById(trigger).closest(".accordion-collapse").id);
+            updateProgress(document.getElementById(trigger).closest(".accordion-collapse").id);
+
         /*
             var current_question_element = document.getElementById(trigger);
             var current_answer;
