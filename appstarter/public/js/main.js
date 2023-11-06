@@ -76,6 +76,9 @@ function updateProgress(target){
                     offset = '85';
                     window.scroll(0, targetEl.offsetTop - offset);
                 }
+
+                bsCollapse.hide();
+
             }
             
 
