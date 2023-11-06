@@ -262,14 +262,14 @@ function updateProgress(target){
         }
         
         //Finally one last sodding sweep of the sections
-
-        for (const [key, value] of Object.entries(sections)) {
-            updateProgress(key);
-        }
-
-
+        window.addEventListener('load',function(){
+            for (const [key, value] of Object.entries(sections)) {
+                updateProgress(key);
+            }
+        });
 
         //AND ON WITH THE SHOW ... 
+
 
 
         //add logical function, trigger, map ( key value array [answer => [targets], ..  ] )
@@ -278,45 +278,6 @@ function updateProgress(target){
             for (let [key, value] of map) {
                 updateFormShow(trigger,key,value);
             }
-
-        /*
-            var current_question_element = document.getElementById(trigger);
-            var current_answer;
-
-            //if type is input
-            if(current_question_element.tagName =="INPUT"){
-                current_answer = current_question_element.value;
-            }
-            //if type is select
-            if(current_question_element.tagName =="SELECT"){
-                current_answer = current_question_element.options[current_question_element.selectedIndex].getAttribute('data-response');
-            }
-
-            //now check the map for the answer as a key, if exists - run the show function based on the targets in the map
-
-            var targets;
-
-            //if the key exists
-            if(map.has(current_answer)){
-
-                //get the targets
-                targets = map.get(current_answer);
-
-                //push to the show function which will show the new question, but not hide any opened questions as not included in targets like normal functions do.
-                updateFormShow(trigger,current_answer,targets);
-
-            } else {
-
-                //if not a key, then we need to do somthing to default hide the Qs
-                //I need to deliver the trigger Q, the target ans (which is not the current answer), and the targets.
-
-                for (let [key, value] of map) {
-
-                    updateFormShow(trigger,key,value);
-                }
-
-            }
-        */
 
         }
         
