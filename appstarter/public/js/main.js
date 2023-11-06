@@ -322,6 +322,12 @@ function updateProgress(target){
             if(Array.isArray(answer)){
                 if(answer.includes(current_answer)) {
                     proceed = true;
+
+                    if(trigger == "Q78"){
+                        console.log(current_answer+" is in my answer array" );
+                    }
+                } else {
+                    console.log(current_answer+" is not my answer array" );
                 }
             } else {
                 if(current_answer == answer){
