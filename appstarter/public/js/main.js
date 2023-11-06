@@ -350,6 +350,9 @@ function updateProgress(target){
                             document.getElementById(element).value="0";
                         } else {
                             element => element.value="N/A";
+                            if(trigger == "Q78"){
+                                console.log(element+" is set to N/A");
+                            }
                         }
                     });
 
@@ -362,10 +365,13 @@ function updateProgress(target){
 
                                 if(dr == "N/A" || dr.startsWith("N/A")) {  //extended to include starts with as Q34 hase data-response 'N/A  or not longer than 10 mts'
 
-                                element.value = element.options[i].value;
-                                element.options[i].selected = 'selected'; //select NA so we can fold the section when completed
-            
-                            }
+                                    element.value = element.options[i].value;
+                                    element.options[i].selected = 'selected'; //select NA so we can fold the section when completed
+
+                                    if(trigger == "Q78"){
+                                        console.log(element+" is set to N/A");
+                                    }
+                                } 
 
                             }
 
@@ -374,8 +380,13 @@ function updateProgress(target){
                     });
                 hiddenEl.style.display="none";    
                 console.log("progress update... after element.id: " + element);
+                
+                if(trigger == "Q78"){
+                    console.log("going into update... nearest accordion-collapse: "+document.getElementById(element).closest(".accordion-collapse").id);
+                }
                 updateProgress(document.getElementById(element).closest(".accordion-collapse").id); //update the progress bar
-            
+                
+
                 });
                 
             } else {// not interested in hiding it, make sure it is showing and reset answers
