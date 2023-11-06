@@ -259,7 +259,17 @@ function updateProgress(target){
                 updateProgress('form-accordion-pool-body');
 
             });
-        }    
+        }
+        
+        //Finally one last sodding sweep of the sections
+
+        for (const [key, value] of Object.entries(sections)) {
+            updateProgress(key);
+        }
+
+
+
+        //AND ON WITH THE SHOW ... 
 
 
         //add logical function, trigger, map ( key value array [answer => [targets], ..  ] )
@@ -268,10 +278,6 @@ function updateProgress(target){
             for (let [key, value] of map) {
                 updateFormShow(trigger,key,value);
             }
-
-            console.log("logical func. update on closest collapse to "+trigger);
-            console.log("found element is "+ document.getElementById(trigger).closest(".accordion-collapse").id);
-            updateProgress(document.getElementById(trigger).closest(".accordion-collapse").id);
 
         /*
             var current_question_element = document.getElementById(trigger);
