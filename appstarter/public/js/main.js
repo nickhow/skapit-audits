@@ -347,7 +347,7 @@ function updateProgress(target){
                        for (var i = 0; i < element.options.length; i++) {
                             var dr = element.options[i].getAttribute('data-response');
 
-                            if(dr == "N/A") {
+                            if(dr == "N/A" || dr.startsWith("N/A")) {  //extended to include starts with as Q34 hase data-response 'N/A  or not longer than 10 mts'
 
                                 element.value = element.options[i].value;
                                 element.options[i].selected = 'selected'; //select NA so we can fold the section when completed
