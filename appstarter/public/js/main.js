@@ -155,6 +155,15 @@ function updateProgress(target){
             document.getElementById('Q70').addEventListener('change',function(){updateForm('Q70','0',['Q71','Q72','Q73','Q74','Q75','Q76','Q77','Q78','Q79','Q80','Q81','Q82','Q83','Q84','Q85','Q135','Q136','138'] );});
         }
 
+        //Question 78 hide Q79 **NEW**
+        if( document.getElementById('Q78') !== null ){
+            window.addEventListener('load',function(){updateForm('Q78',['No','N/A'],['Q79'] );});
+            document.getElementById('Q78').addEventListener('change',function(){updateForm('Q78',['No','N/A'],['Q79'] );});
+
+            updateProgress('form-accordion-pool-body');
+
+        }    
+
         //Question 88 hides Q89, Q90 **NEW**
         if( document.getElementById('Q88') !== null ){
             window.addEventListener('load',function(){updateForm('Q88','No',['Q89','Q90'] );});
@@ -232,11 +241,6 @@ function updateProgress(target){
             document.getElementById('Q131').addEventListener('change',function(){updateFormShow('Q131','Yes',['Q132'] );});
         }
 
-
-        //TEST THIS - I DOUBT BOTH WORK -- and where is the if no - is the depth displayed q?
-
-        //new function to perfom some logic first, use map  -- almost there, not hiding Yes Q on change to No and vice versa. NA or Unanswered clears efficiently.
-
         //Question 135 shows 72 and 78 (which can later show 79) or 138 **NEW**
         if( document.getElementById('Q135') !== null ){
             window.addEventListener('load',function(){
@@ -245,8 +249,7 @@ function updateProgress(target){
                 map.set('Yes', ['Q72','Q78','Q79']);
                 map.set('No', ['Q138']);
                 updateFormShowLogical('Q135',map);
-             //   updateFormShow('Q135','Yes',['Q72'] );
-             //   updateFormShow('Q135','No',['Q138'] );
+
             });
             document.getElementById('Q135').addEventListener('change',function(){
                 var map = new Map();
@@ -254,21 +257,9 @@ function updateProgress(target){
                 map.set('No', ['Q138']);
                 updateFormShowLogical('Q135',map);
                 updateProgress('form-accordion-pool-body');
-            //    updateFormShow('Q135','Yes',['Q72'] );
-            //    updateFormShow('Q135','No',['Q138'] );
+
             });
-        }
-
-        //Question 78 hide Q79 **NEW**
-        if( document.getElementById('Q78') !== null ){
-            window.addEventListener('load',function(){updateForm('Q78',['No','N/A'],['Q79'] );});
-            document.getElementById('Q78').addEventListener('change',function(){updateForm('Q78',['No','N/A'],['Q79'] );});
-
-            updateProgress('form-accordion-pool-body');
-
-        }        
-
-
+        }    
 
 
         //add logical function, trigger, map ( key value array [answer => [targets], ..  ] )
