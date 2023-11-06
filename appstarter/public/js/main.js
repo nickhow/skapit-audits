@@ -28,6 +28,9 @@ function updateProgress(target){
                 console.log("element value: "+element.value);
             }
         });
+
+        console.log("complete status = "+complete);
+
         if(complete){
             
             if(sections[target] == 'incomplete'){
