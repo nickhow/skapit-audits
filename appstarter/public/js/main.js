@@ -259,17 +259,17 @@ function updateProgress(target){
                 updateProgress('form-accordion-pool-body');
 
             });
-        }
-        
-        //Finally one last sodding sweep of the sections
-        window.addEventListener('load',function(){
+
+            //Finally one last sodding sweep of the sections
+
             for (const [key, value] of Object.entries(sections)) {
                 updateProgress(key);
             }
-        });
+            console.log("RAN THE FINALE HERE");  
+            
+            //AND ON WITH THE SHOW ... 
 
-        //AND ON WITH THE SHOW ... 
-
+        }
 
 
         //add logical function, trigger, map ( key value array [answer => [targets], ..  ] )
