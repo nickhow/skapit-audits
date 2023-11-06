@@ -364,7 +364,7 @@ function updateProgress(target){
 
                     });
                 hiddenEl.style.display="none";    
-                console.log("progress update...");   
+                console.log("progress update... after element.id: " + element.id);
                 updateProgress(document.getElementById(element).closest(".accordion-collapse").id); //update the progress bar
             
                 });
@@ -399,7 +399,7 @@ function updateProgress(target){
                             } 
                             
                         });
-                    console.log("progress update...");
+                        console.log("progress update... after element.id: " + element.id);
                    updateProgress(document.getElementById(element).closest(".accordion-collapse").id); //update the progress bar
                 });
                 //end of filtered loop of hide/show - now try updateProgress ...
@@ -473,7 +473,7 @@ function updateProgress(target){
         
                             });
                         hiddenEl.style.display="none";
-                        console.log("progress update...");       
+                        console.log("progress update... after element.id: " + element.id);  
                         updateProgress(document.getElementById(element).closest(".accordion-collapse").id); //update the progress bar
                     
                         });
@@ -506,7 +506,7 @@ function updateProgress(target){
                                     }
                                     
                                 });
-                            sconsole.log("progress update...");
+                            console.log("progress update... after element.id: " + element.id);
                             updateProgress(document.getElementById(element).closest(".accordion-collapse").id); //update the progress bar
                         });
                     }
