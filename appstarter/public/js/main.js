@@ -60,6 +60,7 @@ function updateProgress(target){
                 
             } else { //re-opened and edited ... still needs closing.
                
+                console.log("target to close: "+targetEl.id);
                 var bsCollapse = new bootstrap.Collapse(targetEl,{
                     toggle: false,
                 }); 
