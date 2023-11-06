@@ -38,7 +38,7 @@ function updateProgress(target){
                     toggle: false,
                 }); 
                 bsCollapse.hide();
-                
+                console.log("section closed");
                 if(isLocked){
                     targetEl.previousElementSibling.firstElementChild.classList.add("completed");
                 } else {
@@ -61,7 +61,7 @@ function updateProgress(target){
                     toggle: false,
                 }); 
                 bsCollapse.hide();
-                                
+                console.log("section closed");                
                 if(target == "form-accordion-fire-body"){
                     offset = '85';
                     window.scroll(0, targetEl.offsetTop - offset);
@@ -77,7 +77,7 @@ function updateProgress(target){
                     toggle: false,
                 }); 
                 bsCollapse.show(); //pin it open
-                
+                console.log("section openned");
                 sections[target] = 'incomplete';
                 targetEl.previousElementSibling.firstElementChild.classList.remove("completed,completed-pending");
                 var progress = document.getElementById('progressBar');
