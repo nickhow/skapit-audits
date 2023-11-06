@@ -347,7 +347,7 @@ function updateProgress(target){
                        for (var i = 0; i < element.options.length; i++) {
                             var dr = element.options[i].getAttribute('data-response');
 
-                            if(dr){ //check not null before proceeding.
+                            if(dr !== null){ //check not null before proceeding.
 
                                 if(dr == "N/A" || dr.startsWith("N/A")) {  //extended to include starts with as Q34 hase data-response 'N/A  or not longer than 10 mts'
 
