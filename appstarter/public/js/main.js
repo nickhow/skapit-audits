@@ -238,8 +238,8 @@ function updateProgress(target){
 
         //Question 78 hide Q79 **NEW**
         if( document.getElementById('Q78') !== null ){
-            window.addEventListener('load',function(){updateForm('Q78','No',['Q79'] );});
-            document.getElementById('Q78').addEventListener('change',function(){updateForm('Q78','No',['Q79'] );});
+            window.addEventListener('load',function(){updateForm('Q78',['No','N/A'],['Q79'] );});
+            document.getElementById('Q78').addEventListener('change',function(){updateForm('Q78',['No','N/A'],['Q79'] );});
         }        
 
         //Question 137 shows Q86, Q87 **NEW**
