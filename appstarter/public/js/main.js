@@ -200,6 +200,12 @@ function updateProgress(target){
             document.getElementById('Q74').addEventListener('change',function(){updateForm('Q74',['No','N/A'],['Q75'] );});
         }      
 
+        //Question 137 shows Q86, Q87 **NEW**
+        if( document.getElementById('Q137') !== null ){
+            window.addEventListener('load',function(){updateFormShow('Q137','Yes',['Q86','Q87'] );});
+            document.getElementById('Q137').addEventListener('change',function(){updateFormShow('Q137','Yes',['Q86','Q87'] );});
+        }
+
         //Question 107 shows 130
         if( document.getElementById('Q107') !== null ){
             window.addEventListener('load',function(){updateFormShow('Q107','Yes',['Q130'] );});
@@ -244,11 +250,7 @@ function updateProgress(target){
             document.getElementById('Q78').addEventListener('change',function(){updateForm('Q78',['No','N/A'],['Q79'] );});
         }        
 
-        //Question 137 shows Q86, Q87 **NEW**
-        if( document.getElementById('Q137') !== null ){
-            window.addEventListener('load',function(){updateFormShow('Q137','Yes',['Q86','Q87'] );});
-            document.getElementById('Q137').addEventListener('change',function(){updateFormShow('Q137','Yes',['Q86','Q87'] );});
-        }
+
 
 
         //add logical function, trigger, map ( key value array [answer => [targets], ..  ] )
