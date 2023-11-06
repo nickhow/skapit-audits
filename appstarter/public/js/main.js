@@ -220,7 +220,7 @@ function updateProgress(target){
             window.addEventListener('load',function(){
                 
                 var map = new Map();
-                map.set('Yes', ['Q72','Q78']);
+                map.set('Yes', ['Q72','Q78','Q79']);
                 map.set('No', ['Q138']);
                 updateFormShowLogical('Q135',map);
              //   updateFormShow('Q135','Yes',['Q72'] );
@@ -228,7 +228,7 @@ function updateProgress(target){
             });
             document.getElementById('Q135').addEventListener('change',function(){
                 var map = new Map();
-                map.set('Yes', ['Q72','Q78']);
+                map.set('Yes', ['Q72','Q78','Q79']);
                 map.set('No', ['Q138']);
                 updateFormShowLogical('Q135',map);
             //    updateFormShow('Q135','Yes',['Q72'] );
@@ -236,10 +236,10 @@ function updateProgress(target){
             });
         }
 
-        //Question 78 shows Q79 **NEW**
+        //Question 78 hide Q79 **NEW**
         if( document.getElementById('Q78') !== null ){
-            window.addEventListener('load',function(){updateFormShow('Q78','Yes',['Q79'] );});
-            document.getElementById('Q78').addEventListener('change',function(){updateFormShow('Q78','Yes',['Q79'] );});
+            window.addEventListener('load',function(){updateForm('Q78','No',['Q79'] );});
+            document.getElementById('Q78').addEventListener('change',function(){updateForm('Q78','No',['Q79'] );});
         }        
 
         //Question 137 shows Q86, Q87 **NEW**
