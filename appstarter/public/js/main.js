@@ -258,7 +258,7 @@ function updateProgress(target){
                 updateFormShowLogical('Q135',map);
                 updateProgress('form-accordion-pool-body');
 
-            });
+            
 
             //Finally one last sodding sweep of the sections
 
@@ -268,7 +268,7 @@ function updateProgress(target){
             console.log("RAN THE FINALE HERE");  
             
             //AND ON WITH THE SHOW ... 
-
+        });
         }
 
 
