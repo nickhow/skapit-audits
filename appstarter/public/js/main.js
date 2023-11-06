@@ -253,9 +253,13 @@ function updateProgress(target){
 
                 //Finally one last sodding sweep of the sections
 
-                for (const [key, value] of Object.entries(sections)) {
-                    updateProgress(key);
-                }
+                var fsectionbodies = document.querySelectorAll('.accordion-body');
+                var fsections = [];
+                
+                fsectionbodies.forEach(function(element){
+                    var key = element.parentElement.id
+                    fsections[key] = 'incomplete';
+                });
                 console.log("RAN THE FINALE HERE");  
                 
                 //AND ON WITH THE SHOW ... 
