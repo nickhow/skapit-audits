@@ -24,6 +24,7 @@ function updateProgress(target){
         section_questions.forEach(function(element){
             if( element.value == "Unanswered" || element.value === "" ) {
                 complete = false;
+                console.log("Section not complete because "+element);
             }
         });
         if(complete){
@@ -70,7 +71,7 @@ function updateProgress(target){
         } else {
             if(sections[target] == 'complete'){
                 //section has been uncompleted -> go back a step.
-                
+                console.log("Uncompleted ... ");
                 var bsCollapse = new bootstrap.Collapse(targetEl,{
                     toggle: false,
                 }); 
@@ -440,7 +441,6 @@ function updateProgress(target){
 
                     if(proceed){ //Hide questions and remove answers
 //END NEW LOGIC
-
 
                         targets.filter( element => document.getElementById(element) !== null ).forEach(function(element){ //remove targets not in this form
 
