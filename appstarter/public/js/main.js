@@ -240,6 +240,7 @@ function updateProgress(target){
                 map.set('Yes', ['Q72','Q78','Q79']);
                 map.set('No', ['Q138']);
                 updateFormShowLogical('Q135',map);
+                
             //    updateFormShow('Q135','Yes',['Q72'] );
             //    updateFormShow('Q135','No',['Q138'] );
             });
@@ -249,6 +250,9 @@ function updateProgress(target){
         if( document.getElementById('Q78') !== null ){
             window.addEventListener('load',function(){updateForm('Q78',['No','N/A'],['Q79'] );});
             document.getElementById('Q78').addEventListener('change',function(){updateForm('Q78',['No','N/A'],['Q79'] );});
+
+            updateProgress('form-accordion-pool-body');
+
         }        
 
 
