@@ -41,7 +41,7 @@ function updateProgress(target){
                     toggle: false,
                 }); 
                 bsCollapse.hide();
-                console.log("section closed");
+                console.log("newly compete section closed");
                 if(isLocked){
                     targetEl.previousElementSibling.firstElementChild.classList.add("completed");
                 } else {
@@ -64,7 +64,7 @@ function updateProgress(target){
                     toggle: false,
                 }); 
                 bsCollapse.hide();
-                console.log("section closed");                
+                console.log("re-opened section closed");                
                 if(target == "form-accordion-fire-body"){
                     offset = '85';
                     window.scroll(0, targetEl.offsetTop - offset);
