@@ -101,8 +101,9 @@ function updateProgress(target){
         
         window.addEventListener('load',function(){
             for (const [key, value] of Object.entries(sections)) {
-                updateProgress(key)
+                updateProgress(key);
             }
+            console.log("FINISHED WINDOW LOAD FUNCTION");
         });
 
         //Question 10 hides Q11 **NEW**
