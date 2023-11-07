@@ -70,10 +70,16 @@ function updateProgress(target){
                 }
 
 
+                //this doesn't work - it stops it opening at all ... 
+                var wantToCollapse;
+
                 //check any previous transition doing the opposite action is compeleted as otherwise this instruction is ignored.
                 var name = "#"+target;
                 $(name).on('shown.bs.collapse', function (e) {
-                    bsCollapse.hide();
+                    if(wantToCollapse){
+                        bsCollapse.hide();
+                    }
+                    
                 });
                 
 
