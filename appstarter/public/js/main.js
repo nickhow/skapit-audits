@@ -40,6 +40,7 @@ function updateProgress(target){
                     toggle: false,
                 }); 
 
+                bsCollapse.hide();
                 var name = "#"+target;
                 $(name).on('shown.bs.collapse', function (e) {
                     bsCollapse.hide();
@@ -71,6 +72,9 @@ function updateProgress(target){
                     offset = '85';
                     window.scroll(0, targetEl.offsetTop - offset);
                 }
+
+                //try triggering the transition again incase there was not one already happening.
+                bsCollapse.hide();
                 //check any previous transition doing the opposite action is compeleted as otherwise this instruction is ignored.
                 var name = "#"+target;
                 $(name).on('shown.bs.collapse', function (e) {
@@ -88,6 +92,7 @@ function updateProgress(target){
                     toggle: false,
                 }); 
 
+                bsCollapse.show();
                 var name = "#"+target;
                 $(name).on('hidden.bs.collapse', function (e) {
                     bsCollapse.show();
