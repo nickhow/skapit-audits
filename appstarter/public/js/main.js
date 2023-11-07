@@ -97,6 +97,20 @@ function updateProgress(target){
         }
     }
 
+    const sectionbodies = document.querySelectorAll('.accordion-body');
+    const sections = [];
+    
+    sectionbodies.forEach(function(element){
+        var key = element.parentElement.id
+        sections[key] = 'incomplete';
+    });
+
+    window.addEventListener('load',function(){
+        for (const [key, value] of Object.entries(sections)) {
+            updateProgress(key);
+        }
+   
+    });
 
         //Question 10 hides Q11 **NEW**
         if( document.getElementById('Q10') !== null ){
@@ -253,22 +267,7 @@ function updateProgress(target){
         }
 
 
-
-        const sectionbodies = document.querySelectorAll('.accordion-body');
-        const sections = [];
-        
-        sectionbodies.forEach(function(element){
-            var key = element.parentElement.id
-            sections[key] = 'incomplete';
-        });
-
-        window.addEventListener('load',function(){
-            for (const [key, value] of Object.entries(sections)) {
-                updateProgress(key);
-            }
-       
-        });
-
+// TRY THIS HERE ... 
         for (const [key, value] of Object.entries(sections)) {
             updateProgress(key);
         }
