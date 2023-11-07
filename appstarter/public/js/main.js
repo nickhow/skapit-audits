@@ -74,8 +74,11 @@ function updateProgress(target){
                     offset = '85';
                     window.scroll(0, targetEl.offsetTop - offset);
                 }
-
-                bsCollapse.hide();
+                bsCollapse.on('shown.bs.collapse', function (e) {
+                    // Action to execute once the collapsible area is expanded
+                    bsCollapse.hide();
+                });
+                
 
             }
             
