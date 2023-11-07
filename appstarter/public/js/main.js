@@ -270,13 +270,16 @@ function updateProgress(target){
 // TRY THIS HERE ... 
 
         document.addEventListener('ready',function(){
-            const myTimeout = setTimeout(updateAllSections, 1000);
+            const myTimeout = setTimeout(updateAllSections, 2000);
+            console.log("done with doc event listener");
         });
 
         function updateAllSections(){
             for (const [key, value] of Object.entries(sections)) {
                 updateProgress(key);
+                console.log("updated section "+key);
             }
+            
         }
 
 
