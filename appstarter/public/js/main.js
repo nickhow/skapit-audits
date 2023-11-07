@@ -492,7 +492,10 @@ function updateProgress(target){
                                                
                                             }
                                         } else { // was null - so could be text answer.
-                                            element.value="";
+                                            if(element.value == "N/A"){ // if N/A then clear
+                                                element.value="";
+                                            }
+                                            
                                         }
                                     }
                                     
