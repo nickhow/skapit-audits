@@ -74,8 +74,9 @@ function updateProgress(target){
                     offset = '85';
                     window.scroll(0, targetEl.offsetTop - offset);
                 }
-                bsCollapse.on('shown.bs.collapse', function (e) {
-                    // Action to execute once the collapsible area is expanded
+                //check any previous transition doing the opposite action is compeleted as otherwise this instruction is ignored.
+                targetEl.on('shown.bs.collapse', function (e) {
+                   
                     bsCollapse.hide();
                 });
                 
