@@ -75,7 +75,8 @@ function updateProgress(target){
                     window.scroll(0, targetEl.offsetTop - offset);
                 }
                 //check any previous transition doing the opposite action is compeleted as otherwise this instruction is ignored.
-                targetEl.on('shown.bs.collapse', function (e) {
+                var name = "#"+target;
+                $(name).on('shown.bs.collapse', function (e) {
                    
                     bsCollapse.hide();
                 });
