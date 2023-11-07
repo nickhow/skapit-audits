@@ -158,14 +158,7 @@ function updateProgress(target){
             document.getElementById('Q70').addEventListener('change',function(){updateForm('Q70','0',['Q71','Q72','Q73','Q74','Q75','Q76','Q77','Q78','Q79','Q80','Q81','Q82','Q83','Q84','Q85','Q135','Q136','138'] );});
         }
 
-        //Question 78 hide Q79 **NEW**
-        if( document.getElementById('Q78') !== null ){
-            window.addEventListener('load',function(){updateForm('Q78',['No','N/A'],['Q79'] );});
-            document.getElementById('Q78').addEventListener('change',function(){updateForm('Q78',['No','N/A'],['Q79'] );});
-
-            updateProgress('form-accordion-pool-body');
-
-        }    
+  
 
         //Question 88 hides Q89, Q90 **NEW**
         if( document.getElementById('Q88') !== null ){
@@ -272,6 +265,13 @@ function updateProgress(target){
                 map.set('No', ['Q138']);
                 updateFormShowLogical('Q135',map);
             });
+
+            //Question 78 hide Q79 **NEW**
+            if( document.getElementById('Q78') !== null ){
+                window.addEventListener('load',function(){updateForm('Q78',['No','N/A'],['Q79'] );});
+                document.getElementById('Q78').addEventListener('change',function(){updateForm('Q78',['No','N/A'],['Q79'] );});
+
+            }  
 
 
         }
