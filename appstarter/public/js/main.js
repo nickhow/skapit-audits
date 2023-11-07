@@ -68,12 +68,6 @@ function updateProgress(target){
                     toggle: false,
                 }); 
 
-                console.log("opening the section");
-                bsCollapse.show();
-                console.log("open. Now closing the section");
-
-                bsCollapse.hide();
-
                 console.log("re-opened section closed");  
 
                 if(target == "form-accordion-fire-body"){
@@ -81,7 +75,7 @@ function updateProgress(target){
                     window.scroll(0, targetEl.offsetTop - offset);
                 }
 
-               
+                bsCollapse.hide();
 
             }
             
@@ -106,7 +100,6 @@ function updateProgress(target){
             }
         }
     }
-
     
         const sectionbodies = document.querySelectorAll('.accordion-body');
         const sections = [];
