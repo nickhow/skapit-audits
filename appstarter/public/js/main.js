@@ -112,13 +112,15 @@ function updateProgress(target){
     //    for (const [key, value] of Object.entries(sections)) {
     //      updateProgress(key);
     //    }
+        
+        
 
         setTimeout(function(){
             for (const [key, value] of Object.entries(sections)) {
                 updateProgress(key);
                 console.log("updated "+key);
             }
-        }, 2000);
+        }, 1000);
         
     });
 
