@@ -268,9 +268,17 @@ function updateProgress(target){
 
 
 // TRY THIS HERE ... 
-        for (const [key, value] of Object.entries(sections)) {
-            updateProgress(key);
+
+        document.addEventListener('ready',function(){
+            const myTimeout = setTimeout(updateAllSections, 1000);
+        });
+
+        function updateAllSections(){
+            for (const [key, value] of Object.entries(sections)) {
+                updateProgress(key);
+            }
         }
+
 
 
         //add logical function, trigger, map ( key value array [answer => [targets], ..  ] )
