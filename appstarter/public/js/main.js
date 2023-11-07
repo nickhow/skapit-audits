@@ -491,6 +491,8 @@ function updateProgress(target){
                                                 element.value="Unanswered";
                                                
                                             }
+                                        } else { // was null - so could be text answer.
+                                            element.value="";
                                         }
                                     }
                                     
