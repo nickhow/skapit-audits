@@ -105,11 +105,21 @@ function updateProgress(target){
         sections[key] = 'incomplete';
     });
 
+// TRY THIS HERE ... 
+
     window.addEventListener('load',function(){
-        for (const [key, value] of Object.entries(sections)) {
-            updateProgress(key);
-        }
-   
+
+    //    for (const [key, value] of Object.entries(sections)) {
+    //      updateProgress(key);
+    //    }
+
+        setTimeout(function(){
+            for (const [key, value] of Object.entries(sections)) {
+                updateProgress(key);
+                console.log("updated "+key);
+            }
+        }, 2000);
+        
     });
 
         //Question 10 hides Q11 **NEW**
@@ -265,25 +275,6 @@ function updateProgress(target){
 
 
         }
-
-
-// TRY THIS HERE ... 
-
-        document.addEventListener('ready',function(){
-            setTimeout(function(){
-                updateAllSections();
-            }, 2000);
-            console.log("done with doc event listener");
-        });
-
-        function updateAllSections(){
-            for (const [key, value] of Object.entries(sections)) {
-                updateProgress(key);
-                console.log("updated section "+key);
-            }
-            
-        }
-
 
 
         //add logical function, trigger, map ( key value array [answer => [targets], ..  ] )
