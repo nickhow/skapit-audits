@@ -24,12 +24,9 @@ function updateProgress(target){
         section_questions.forEach(function(element){
             if( element.value == "Unanswered" || element.value === "" ) {
                 complete = false;
-                console.log("Section not complete because "+element.id);
-                console.log("element value: "+element.value);
+
             }
         });
-
-        console.log("complete status = "+complete);
 
         var bsCollapse;
 
@@ -42,8 +39,12 @@ function updateProgress(target){
                 bsCollapse = new bootstrap.Collapse(targetEl,{
                     toggle: false,
                 }); 
-                bsCollapse.hide();
-                console.log("newly compete section closed");
+
+                var name = "#"+target;
+                $(name).on('shown.bs.collapse', function (e) {
+                    bsCollapse.hide();
+                });
+
                 if(isLocked){
                     targetEl.previousElementSibling.firstElementChild.classList.add("completed");
                 } else {
@@ -61,14 +62,10 @@ function updateProgress(target){
                 window.scroll(0, targetEl.offsetTop - offset);
                 
             } else { //re-opened and edited ... still needs closing.
-               
-                console.log("target to close: "+targetEl.id);
 
                 bsCollapse = new bootstrap.Collapse(targetEl,{
                     toggle: false,
-                }); 
-
-                console.log("re-opened section closed");  
+                });
 
                 if(target == "form-accordion-fire-body"){
                     offset = '85';
@@ -77,7 +74,6 @@ function updateProgress(target){
                 //check any previous transition doing the opposite action is compeleted as otherwise this instruction is ignored.
                 var name = "#"+target;
                 $(name).on('shown.bs.collapse', function (e) {
-                   
                     bsCollapse.hide();
                 });
                 
@@ -88,12 +84,17 @@ function updateProgress(target){
         } else {
             if(sections[target] == 'complete'){
                 //section has been uncompleted -> go back a step.
-                console.log("Uncompleted ... ");
                 bsCollapse = new bootstrap.Collapse(targetEl,{
                     toggle: false,
                 }); 
-                bsCollapse.show(); //pin it open
-                console.log("section openned");
+
+                var name = "#"+target;
+                $(name).on('hidden.bs.collapse', function (e) {
+                    bsCollapse.show();
+                });
+
+                //bsCollapse.show(); //pin it open
+
                 sections[target] = 'incomplete';
                 targetEl.previousElementSibling.firstElementChild.classList.remove("completed,completed-pending");
                 var progress = document.getElementById('progressBar');
@@ -118,7 +119,7 @@ function updateProgress(target){
             for (const [key, value] of Object.entries(sections)) {
                 updateProgress(key);
             }
-            console.log("FINISHED WINDOW LOAD FUNCTION");
+       
         });
 
         //Question 10 hides Q11 **NEW**
@@ -251,10 +252,6 @@ function updateProgress(target){
                 map.set('Yes', ['Q72','Q78','Q79']);
                 map.set('No', ['Q138']);
                 updateFormShowLogical('Q135',map);
-
-
-                //Finally one last sodding sweep of the sections
-                console.log("RAN THE FINALE HERE");  
                 
                 var fsectionbodies = document.querySelectorAll('.accordion-body');
                 var fsections = [];
@@ -266,10 +263,7 @@ function updateProgress(target){
 
                 for (const [key, value] of Object.entries(sections)) {
                     updateProgress(key);
-                }
-                console.log("TO HERE"); 
-                
-                //AND ON WITH THE SHOW ... 
+                } 
 
             });
             document.getElementById('Q135').addEventListener('change',function(){
@@ -314,12 +308,6 @@ function updateProgress(target){
             if(Array.isArray(answer)){
                 if(answer.includes(current_answer)) {
                     proceed = true;
-
-                    if(trigger == "Q78"){
-                        console.log(current_answer+" is in my answer array" );
-                    }
-                } else {
-                    console.log(current_answer+" is not my answer array" );
                 }
             } else {
                 if(current_answer == answer){
@@ -342,9 +330,7 @@ function updateProgress(target){
                             document.getElementById(element).value="0";
                         } else {
                             element => element.value="N/A";
-                            if(trigger == "Q78"){
-                                console.log(element+" is set to N/A");
-                            }
+
                         }
                     });
 
@@ -360,9 +346,6 @@ function updateProgress(target){
                                     element.value = element.options[i].value;
                                     element.options[i].selected = 'selected'; //select NA so we can fold the section when completed
 
-                                    if(trigger == "Q78"){
-                                        console.log(element+" is set to N/A");
-                                    }
                                 } 
 
                             }
@@ -371,11 +354,7 @@ function updateProgress(target){
 
                     });
                 hiddenEl.style.display="none";    
-                console.log("progress update... after element.id: " + element);
-                
-                if(trigger == "Q78"){
-                    console.log("going into update... nearest accordion-collapse: "+document.getElementById(element).closest(".accordion-collapse").id);
-                }
+
                 updateProgress(document.getElementById(element).closest(".accordion-collapse").id); //update the progress bar
                 
 
@@ -411,7 +390,7 @@ function updateProgress(target){
                             } 
                             
                         });
-                        console.log("progress update... after element.id: " + element);
+
                    updateProgress(document.getElementById(element).closest(".accordion-collapse").id); //update the progress bar
                 });
                 //end of filtered loop of hide/show - now try updateProgress ...
@@ -485,7 +464,7 @@ function updateProgress(target){
         
                             });
                         hiddenEl.style.display="none";
-                        console.log("progress update... after element.id: " + element);  
+    
                         updateProgress(document.getElementById(element).closest(".accordion-collapse").id); //update the progress bar
                     
                         });
@@ -518,7 +497,7 @@ function updateProgress(target){
                                     }
                                     
                                 });
-                            console.log("progress update... after element.id: " + element);
+                    
                             updateProgress(document.getElementById(element).closest(".accordion-collapse").id); //update the progress bar
                         });
                     }
