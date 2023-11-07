@@ -270,7 +270,9 @@ function updateProgress(target){
 // TRY THIS HERE ... 
 
         document.addEventListener('ready',function(){
-            const myTimeout = setTimeout(updateAllSections, 2000);
+            setTimeout(function(){
+                updateAllSections();
+            }, 2000);
             console.log("done with doc event listener");
         });
 
