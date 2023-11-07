@@ -41,10 +41,6 @@ function updateProgress(target){
                 }); 
 
                 bsCollapse.hide();
-                var name = "#"+target;
-                $(name).on('shown.bs.collapse', function (e) {
-                    bsCollapse.hide();
-                });
 
                 if(isLocked){
                     targetEl.previousElementSibling.firstElementChild.classList.add("completed");
@@ -73,8 +69,7 @@ function updateProgress(target){
                     window.scroll(0, targetEl.offsetTop - offset);
                 }
 
-                //try triggering the transition again incase there was not one already happening.
-                bsCollapse.hide();
+
                 //check any previous transition doing the opposite action is compeleted as otherwise this instruction is ignored.
                 var name = "#"+target;
                 $(name).on('shown.bs.collapse', function (e) {
@@ -93,10 +88,6 @@ function updateProgress(target){
                 }); 
 
                 bsCollapse.show();
-                var name = "#"+target;
-                $(name).on('hidden.bs.collapse', function (e) {
-                    bsCollapse.show();
-                });
 
                 //bsCollapse.show(); //pin it open
 
