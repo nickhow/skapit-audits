@@ -149,7 +149,7 @@ class EmailModel extends Model
         
         $email->clear(true); //reset $email to empty state (true - include attachments)
 
-        $email->setFrom('contact@skapit.com', 'Ski API Technolgies');
+        $email->setFrom('hands@skapit.com', 'SKAPIT Health & Safety');
         $email->setTo($emailAddresses);  
         $email->setSubject($subject);
         $email->setMessage($message);
@@ -174,7 +174,7 @@ class EmailModel extends Model
         $email = \Config\Services::email();
         $email->clear(true); //reset $email to empty state (true - include attachments)
         
-        $email->setFrom('contact@skapit.com', 'Ski API Technolgies');
+        $email->setFrom('hands@skapit.com', 'SKAPIT Health & Safety');
         //$email->setTo('a.lopez@hotelcheck-hsaudits.com');  // can be single, comma-delimited list 'a@me.com, b@me.com' or array ['a@me.com','b@me.com']
         $email->setTo($emailaddresses);
         $email->setSubject('Reviewed Audit Order');
@@ -195,7 +195,7 @@ class EmailModel extends Model
         $email = \Config\Services::email();
         $email->clear(true); //reset $email to empty state (true - include attachments)
 
-        $email->setFrom('contact@skapit.com', 'Ski API Technolgies');
+        $email->setFrom('hands@skapit.com', 'SKAPIT Health & Safety');
         
         $email->setTo($emailaddress);  // can be single, comma-delimited list 'a@me.com, b@me.com' or array ['a@me.com','b@me.com']
        
@@ -232,7 +232,7 @@ class EmailModel extends Model
 
         $email->clear(true); //reset $email to empty state (true - include attachments)
 
-        $email->setFrom('contact@skapit.com', 'Ski API Technolgies');
+        $email->setFrom('hands@skapit.com', 'SKAPIT Health & Safety');
         
         $email->setTo($emailaddress);  // can be single, comma-delimited list 'a@me.com, b@me.com' or array ['a@me.com','b@me.com']
        
@@ -293,7 +293,7 @@ class EmailModel extends Model
         
         $email->clear(true); //reset $email to empty state (true - include attachments)
 
-        $email->setFrom('contact@skapit.com', 'Ski API Technolgies');
+        $email->setFrom('hands@skapit.com', 'SKAPIT Health & Safety');
         $email->setTo($user['user_email']);  
         $email->setSubject($subject);
         $email->setMessage($message);
