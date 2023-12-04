@@ -1117,7 +1117,18 @@ class AuditCrud extends Controller
         }
 
         echo ' committing to db';
-        $auditModel->update($id,$data);
+
+        if(!$data){
+            $flashData = [
+                'msg'  => "Error with saving audit, if you've uploaded files please try saving with one file at a time or without the files.",
+                'style' => 'alert-danger',
+            ];
+            $session->setFlashdata($flashData);
+        } else {
+            $auditModel->update($id,$data);
+        }
+
+   
         
         return $this->response->redirect(site_url('/audit/'.$id));
 
