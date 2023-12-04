@@ -1125,7 +1125,8 @@ class AuditCrud extends Controller
                 'style' => 'alert-danger',
             ];
             $session->setFlashdata($flashData);
-            return $this->response->redirect()->back();
+           // return $this->response->redirect()->back();
+            return redirect()->back()->withInput();
         } 
         
         //now we update the audit data ...
