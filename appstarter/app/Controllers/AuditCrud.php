@@ -1119,7 +1119,7 @@ class AuditCrud extends Controller
 
         echo ' committing to db';
 
-        if(!isset($data || $id)){
+        if(!isset($data) || !isset($id)){
             $flashData = [
                 'msg'  => "Error with saving audit, if you've uploaded files please try saving with one file at a time or without the files.",
                 'style' => 'alert-danger',
