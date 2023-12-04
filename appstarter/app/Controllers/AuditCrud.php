@@ -1066,38 +1066,18 @@ class AuditCrud extends Controller
                     
                     $file = $this->request->getFile('file_operating_licence');
                     if ( $file->isValid()) {
-                        $file_ol = $uploadModel->uploadFile($file, $audit_id, 'file_operating_licence');
-                        if(!isset($file_ol)){
-                            $flashData = [
-                                'msg'  => "Error with saving OL file",
-                                'style' => 'alert-danger',
-                            ];
-                            $session->setFlashdata($flashData);
-                        }
+                        $uploadModel->uploadFile($file, $audit_id, 'file_operating_licence');
+                        
                     }
 
                     $file = $this->request->getFile('file_public_liability_insurance');
                     if ( $file->isValid()) {
-                        $file_pli = $uploadModel->uploadFile($file, $audit_id, 'file_public_liability_insurance');
-                        if(!isset($file_pli)){
-                            $flashData = [
-                                'msg'  => "Error with saving OL file",
-                                'style' => 'alert-danger',
-                            ];
-                            $session->setFlashdata($flashData);
-                        }
+                        $uploadModel->uploadFile($file, $audit_id, 'file_public_liability_insurance');
                     }                       
                     
                     $file = $this->request->getFile('file_fire_certificate');
                     if ( $file->isValid()) {
-                        $file_fc = $uploadModel->uploadFile($file, $audit_id, 'file_fire_certificate');
-                        if(!isset($file_fc)){
-                            $flashData = [
-                                'msg'  => "Error with saving OL file",
-                                'style' => 'alert-danger',
-                            ];
-                            $session->setFlashdata($flashData);
-                        }
+                        $uploadModel->uploadFile($file, $audit_id, 'file_fire_certificate');
                     }
                     
                     //reloads the form page - if it is complete it needs a new message -> goes to the locked for review screen, maybe soften that message. If it was saved it should alert to success / failure.
@@ -1138,10 +1118,22 @@ class AuditCrud extends Controller
         }
 
         echo ' committing to db';
+
+        if(!isset($data || $id)){
+            $flashData = [
+                'msg'  => "Error with saving audit, if you've uploaded files please try saving with one file at a time or without the files.",
+                'style' => 'alert-danger',
+            ];
+            $session->setFlashdata($flashData);
+            return $this->response->redirect->back();
+        } 
         
         //now we update the audit data ...
         $auditModel->update($id,$data);
-            
+        
+
+   
+        
         return $this->response->redirect(site_url('/audit/'.$id));
 
     }
