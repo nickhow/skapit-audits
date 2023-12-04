@@ -1067,6 +1067,7 @@ class AuditCrud extends Controller
                     $file = $this->request->getFile('file_operating_licence');
                     if ( $file->isValid()) {
                         $uploadModel->uploadFile($file, $audit_id, 'file_operating_licence');
+                        
                     }
 
                     $file = $this->request->getFile('file_public_liability_insurance');
@@ -1117,7 +1118,22 @@ class AuditCrud extends Controller
         }
 
         echo ' committing to db';
+
+        if(!isset($data) || !isset($id)){
+            $flashData = [
+                'msg'  => "Error with saving audit, if you've uploaded files please try saving with one file at a time or without the files.",
+                'style' => 'alert-danger',
+            ];
+            $session->setFlashdata($flashData);
+           // return $this->response->redirect()->back();
+            return redirect()->back()->withInput();
+        } 
+        
+        //now we update the audit data ...
         $auditModel->update($id,$data);
+        
+
+   
         
         return $this->response->redirect(site_url('/audit/'.$id));
 
