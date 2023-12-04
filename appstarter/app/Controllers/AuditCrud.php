@@ -1067,6 +1067,7 @@ class AuditCrud extends Controller
                     $file = $this->request->getFile('file_operating_licence');
                     if ( $file->isValid()) {
                         $uploadModel->uploadFile($file, $audit_id, 'file_operating_licence');
+                        
                     }
 
                     $file = $this->request->getFile('file_public_liability_insurance');
@@ -1124,7 +1125,7 @@ class AuditCrud extends Controller
                 'style' => 'alert-danger',
             ];
             $session->setFlashdata($flashData);
-            sleep(120); //sleep 2 seconds - might help push things through ... 
+            sleep(2); //sleep 2 seconds - might help push things through ... 
         } 
         
         //now we update the audit data ...
