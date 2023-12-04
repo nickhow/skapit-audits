@@ -1124,10 +1124,12 @@ class AuditCrud extends Controller
                 'style' => 'alert-danger',
             ];
             $session->setFlashdata($flashData);
-            $id = $this->request->getVar('id');
-        } else {
-            $auditModel->update($id,$data);
-        }
+            sleep(2); //sleep 2 seconds - might help push things through ... 
+        } 
+        
+        //now we update the audit data ...
+        $auditModel->update($id,$data);
+        
 
    
         
