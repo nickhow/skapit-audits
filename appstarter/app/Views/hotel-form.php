@@ -75,6 +75,7 @@
                     <div class="col-12">
                         <h2><?php echo "BA: ". ucFirst($audit_obj['result_ba']);?></h2>
                         <h2><?php echo "ABTA: ". ucFirst($audit_obj['result_abta']);?></h2>
+                        <h2><?php echo "dnata: ". ucFirst($audit_obj['result_dnata']);?></h2>
                     </div>
                 </div>
                 <div id="download_pdf" class="col-4 text-center align-self-center">
@@ -82,7 +83,11 @@
                 </div>
             </div>
 
-            <p>This result expires on <?php echo  date('d/m/Y', strtotime($audit_obj['expiry_date_ba']));?> for BA, and <?php echo  date('d/m/Y', strtotime($audit_obj['expiry_date_abta']));?> for ABTA.</p>
+            <p>
+                This result expires on <?php echo  date('d/m/Y', strtotime($audit_obj['expiry_date_ba']));?> for BA,
+                <?php echo  date('d/m/Y', strtotime($audit_obj['expiry_date_abta']));?> for ABTA
+                and <?php echo  date('d/m/Y', strtotime($audit_obj['expiry_date_dnata']));?> for dnata.
+            </p>
 
             </div>
             <div class="col-12 col-md-6">
@@ -7075,10 +7080,10 @@
                                 el.appendChild(text);
                                 parent.appendChild(el);
                                 
-                                if( responses[qid]['score_ba'] >= 100015 || responses[qid]['score_abta'] >= 100015){
+                                if( responses[qid]['score_ba'] >= 100015 || responses[qid]['score_abta'] >= 100015 || responses[qid]['score_dnata'] >= 100015 ){
                                     question.parentElement.parentElement.style.backgroundColor='rgb(0 141 11 / 50%)';
                                 }
-                                if( responses[qid]['score_ba'] <= -100015 || responses[qid]['score_abta'] <= -100015){
+                                if( responses[qid]['score_ba'] <= -100015 || responses[qid]['score_abta'] <= -100015 || responses[qid]['score_dnata'] <= -100015 ){
                                     question.parentElement.parentElement.style.backgroundColor='rgb(203 0 0 / 50%)';
                                     
                                     //make the accordion red
@@ -7124,7 +7129,7 @@
                                 el.appendChild(text);
                                 parent.appendChild(el);
                                 
-                                if( responses[qid]['score_ba'] <= -100015 || responses[qid]['score_abta'] <= -100015){
+                                if( responses[qid]['score_ba'] <= -100015 || responses[qid]['score_abta'] <= -100015 || responses[qid]['score_dnata'] <= -100015 ){
                                     question.parentElement.parentElement.style.backgroundColor='rgb(203 0 0 / 50%)';
                                     question.parentElement.parentElement.classList.add("error_question");
                                     
@@ -7161,13 +7166,14 @@
                                 el.innerHTML= '<div><b><i>Scores: </i></b>';
                                 el.innerHTML += ' BA: '+responses[qid]['score_ba'];
                                 el.innerHTML += ' ABTA: '+responses[qid]['score_abta'];
+                                el.innerHTML += ' dnata: '+responses[qid]['score_dnata'];
                                 el.innerHTML += '</div>'
                                 parent.appendChild(el);
                                 
-                                if( responses[qid]['score_ba'] >= 100015 || responses[qid]['score_abta'] >= 100015){
+                                if( responses[qid]['score_ba'] >= 100015 || responses[qid]['score_abta'] >= 100015 || responses[qid]['score_dnata'] >= 100015 ){
                                     question.parentElement.parentElement.style.backgroundColor='rgb(0 141 11 / 50%)';
                                 }
-                                if( responses[qid]['score_ba'] <= -100015 || responses[qid]['score_abta'] <= -100015){
+                                if( responses[qid]['score_ba'] <= -100015 || responses[qid]['score_abta'] <= -100015 || responses[qid]['score_dnata'] <= -100015 ){
                                     question.parentElement.parentElement.style.backgroundColor='rgb(203 0 0 / 50%)';
                                     
                                     //make the accordion red

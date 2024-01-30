@@ -90,10 +90,20 @@
                                                 ABTA: <span class="text-warning text-center">Unknown</span>
                                             <?php endif; ?>
                                         </td>
+                                        <td>
+                                            <?php if($account['audit']['result_dnata'] == "suitable"): ?>
+                                                dnata: <span class="text-primary text-center"><?php echo ucFirst($account['audit']['result_dnata']); ?></span>
+                                            <?php elseif ($account['audit']['result_dnata'] == "unsuitable"): ?>
+                                                dnata: <span class="text-danger text-center"><?php echo ucFirst($account['audit']['result_dnata']); ?></span>
+                                            <?php else: ?>
+                                                dnata: <span class="text-warning text-center">Unknown</span>
+                                            <?php endif; ?>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td><p class="m-0"><small>Exp.  <?php echo date('d/m/Y', strtotime($account['audit']['expiry_date_ba'])); ?></small></p></td>
                                         <td><p class="m-0"><small>Exp.  <?php echo date('d/m/Y', strtotime($account['audit']['expiry_date_abta'])); ?></small></p></td>
+                                        <td><p class="m-0"><small>Exp.  <?php echo date('d/m/Y', strtotime($account['audit']['expiry_date_dnata'])); ?></small></p></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -109,7 +119,7 @@
                                 <?php 
                                 if ( in_array($account['audit']['status'], array("sent", "open", "in progress", "pending_payment") ) ): ?>
                                         <a href="<?php echo base_url('audit/'.$account['audit']['id'].'/edit');?>"  class="text-secondary">Edit Audit</a>
-                                <?php elseif ( $account['audit']['status'] == "reviewed" && ( $account['audit']['result_ba'] == "unsuitable" || $account['audit']['result_abta'] == "unsuitable" )): ?>
+                                <?php elseif ( $account['audit']['status'] == "reviewed" && ( $account['audit']['result_ba'] == "unsuitable" || $account['audit']['result_abta'] == "unsuitable" || $account['audit']['result_dnata'] == "unsuitable" )): ?>
                                     <a href="<?php echo base_url('audit/'.$account['audit']['id'].'/resubmit');?>" class="text-danger">Resubmit</i></a>
                                 <?php endif; ?>
                             </div>

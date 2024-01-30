@@ -177,6 +177,15 @@
                                                         <?php echo "Exp.". date('d/m/Y', strtotime($audit['expiry_date_abta'])); ?>
                                                     </div>
                                                 </div>
+                                                <div class="row">
+                                                    <div class="col-2">dnata</div>
+                                                    <div class="col-5">
+                                                        <?php echo strtoupper($audit['result_dnata']); ?>
+                                                    </div>
+                                                    <div class="col-5 text-end">
+                                                        <?php echo "Exp.". date('d/m/Y', strtotime($audit['expiry_date_dnata'])); ?>
+                                                    </div>
+                                                </div>
                                             </div>
                                         <? break; 
                                     } ?>

@@ -12,6 +12,7 @@
              <th>Audited On</th>
              <th>Result BA</th>
              <th>Result ABTA</th>
+             <th>Result dnata</th>
           </tr>
        </thead>
        <tbody>
@@ -24,6 +25,7 @@
               <td><?php echo date('d/m/Y', strtotime($audit['audited_date'])); ?></td>
               <td><?php echo ucfirst($audit['result_ba']); ?></td>
               <td><?php echo ucfirst($audit['result_abta']); ?></td>
+              <td><?php echo ucfirst($audit['result_dnata']); ?></td>
           </tr>
          <?php endforeach; ?>
          <?php endif; ?>

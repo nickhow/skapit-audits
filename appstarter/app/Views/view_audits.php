@@ -84,6 +84,15 @@
                         <?php else: ?>
                             <span class="text-warning text-center">Unknown</span>
                         <?php endif ?>
+                        <br/>
+                        dnata: 
+                        <?php if($audit['result_dnata'] == "suitable"): ?>
+                            <span class="text-primary text-center"><?php echo ucFirst($audit['result_dnata']); ?></span>
+                        <?php elseif ($audit['result_dnata'] == "unsuitable"): ?>
+                            <span class="text-danger text-center"><?php echo ucFirst($audit['result_dnata']); ?></span>
+                        <?php else: ?>
+                            <span class="text-warning text-center">Unknown</span>
+                        <?php endif ?>
                      <?php elseif($audit['status'] === "reviewing"): ?>
                         <span class="text-warning text-center">Reviewing</span>
                     <?php else: ?>

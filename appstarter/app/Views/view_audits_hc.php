@@ -71,6 +71,7 @@
              <th>Audited Date</th>
              <th>Result BA</th>
              <th>Result ABTA</th>
+             <th>Result dnata</th>
              <th>Paid</th>
           </tr>
        </thead>
@@ -83,6 +84,7 @@
               <td><?php echo date('d/m/Y', strtotime($audit['audited_date'])); ?></td>
               <td><?php echo ucfirst($audit['result_ba']); ?></td>
               <td><?php echo ucfirst($audit['result_abta']); ?></td>
+              <td><?php echo ucfirst($audit['result_dnata']); ?></td>
               <td>
                     <?php if ($audit['paid']) {
                             echo "Paid";

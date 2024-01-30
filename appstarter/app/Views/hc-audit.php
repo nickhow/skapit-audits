@@ -119,14 +119,17 @@
                 
                 <div class="col-12 my-3">
                 <div class="row">
-                    <div class="col-12 col-md-6">
+                    <div class="col-12 col-md-4">
                         <label>BA Total Score</label>
                         <input type="number" id="ba_total" name="audit_score_ba" class="form-control" value="<?php if(!isset($audit_obj['total_score_ba'])){ echo 0;/*$ba_total_score; */}else{ echo $audit_obj['total_score_ba'];} ?>">
                     </div>
-                            
-                    <div class="col-12 col-md-6">
+                    <div class="col-12 col-md-4">
                         <label>ABTA Total Score</label>
                         <input type="number" id="abta_total" name="audit_score_abta" class="form-control" value="<?php if(!isset($audit_obj['total_score_abta'])){ echo 0;/*$abta_total_score; */}else{ echo $audit_obj['total_score_abta'];} ?>">
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <label>dnata Total Score</label>
+                        <input type="number" id="dnata_total" name="audit_score_dnata" class="form-control" value="<?php if(!isset($audit_obj['total_score_dnata'])){ echo 0;/*$dnata_total_score; */}else{ echo $audit_obj['total_score_dnata'];} ?>">
                     </div>
                 </div>
                 
@@ -145,6 +148,13 @@
                             <option value="unsuitable" <?php  if($audit_obj['result_abta']) { if($audit_obj['result_abta'] === 'unsuitable'){ echo "selected"; } } ?> >Unsuitable</option>
                         </select>
                     </div>
+                    <div class="col-6 col-md-4">
+                        <label>Result (dnata)</label>
+                        <select name="audit_result_dnata" id="audit_result_dnata" class="form-select">
+                            <option value="suitable" <?php  if($audit_obj['result_dnata']) { if($audit_obj['result_dnata'] === 'suitable'){ echo "selected"; } } ?>>Suitable</option>
+                            <option value="unsuitable" <?php  if($audit_obj['result_dnata']) { if($audit_obj['result_dnata'] === 'unsuitable'){ echo "selected"; } } ?> >Unsuitable</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-6 col-md-4">
@@ -154,6 +164,10 @@
                     <div class="col-6 col-md-4">
                         <label>Expiry Date (ABTA)</label>
                         <input type="date" id="expiry_date_abta" name="expiry_date_abta" class="form-control" value="<?php echo date('Y-m-d', strtotime($audit_obj['expiry_date_abta'])); ?>">
+                    </div>
+                    <div class="col-6 col-md-4">
+                        <label>Expiry Date (dnata)</label>
+                        <input type="date" id="expiry_date_dnata" name="expiry_date_dnata" class="form-control" value="<?php echo date('Y-m-d', strtotime($audit_obj['expiry_date_dnata'])); ?>">
                     </div>
                 </div>
                 
@@ -175,6 +189,7 @@
             <?php 
                 $ba_total_score = "0";
                 $abta_total_score = "0";
+                $dnata_total_score = "0";
             ?>
             
             <?php foreach ($response_obj as $response){ ?>
@@ -228,20 +243,26 @@
                                 <label>BA Suggested Score</label>
                                 <input type="number" name="<?php echo $response['id']?>[suggested_score_ba] " class="form-control" readonly value="<?php echo $response['suggested_score_ba'];  ?>">
                             </div>
-                            
                             <div class="col-12 col-md-3">
                                 <label>ABTA Suggested Score</label>
                                 <input type="number" name="<?php echo $response['id']?>[suggested_score_abta] " class="form-control" readonly value="<?php echo $response['suggested_score_abta'];  ?>">
+                            </div>
+                            <div class="col-12 col-md-3">
+                                <label>dnata Suggested Score</label>
+                                <input type="number" name="<?php echo $response['id']?>[suggested_score_dnata] " class="form-control" readonly value="<?php echo $response['suggested_score_dnata'];  ?>">
                             </div>
                             
                             <div class="col-12 col-md-3">
                                 <label>BA Score</label>
                                 <input type="number" name="<?php echo $response['id']?>[score_ba]" class="form-control ba_score" value="<?php if(!isset($response['score_ba'])){ echo $response['suggested_score_ba']; }else{ echo $response['score_ba'];}  ?>">
                             </div>
-                            
                             <div class="col-12 col-md-3">
                                 <label>ABTA Score</label>
                                 <input type="number" name="<?php echo $response['id']?>[score_abta] " class="form-control abta_score" value="<?php if(!isset($response['score_abta'])){ echo $response['suggested_score_abta']; }else{ echo $response['score_abta'];}  ?>">
+                            </div>
+                            <div class="col-12 col-md-3">
+                                <label>dnata Score</label>
+                                <input type="number" name="<?php echo $response['id']?>[score_dnata] " class="form-control dnata_score" value="<?php if(!isset($response['score_dnata'])){ echo $response['suggested_score_dnata']; }else{ echo $response['score_dnata'];}  ?>">
                             </div>
                         </div>
                         <div class="row">
@@ -263,7 +284,9 @@
                 if(is_numeric($response['suggested_score_abta'])){
                     $abta_total_score += $response['suggested_score_abta'];
                 }  
-                
+                if(is_numeric($response['suggested_score_dnata'])){
+                    $dnata_total_score += $response['suggested_score_dnata'];
+                }  
             } ?>
             </div>
             
@@ -402,6 +425,7 @@
     function checkScores(){
         var ba_scores = document.getElementsByClassName('ba_score');
         var abta_scores = document.getElementsByClassName('abta_score');
+        var dnata_scores = document.getElementsByClassName('dnata_score');
           
         var ba_total=0;
         for(var i=0;i<ba_scores.length;i++){
@@ -418,27 +442,40 @@
             }
         }
         document.getElementById('abta_total').value = abta_total;
+
+        var dnata_total=0;
+        for(var i=0;i<dnata_scores.length;i++){
+            if(parseInt(dnata_scores[i].value)){
+                dnata_total += parseInt(dnata_scores[i].value);
+            }
+        }
+        document.getElementById('dnata_total').value = dnata_total;
         
         const types = {
         '1': {
               ba: 147,
               abta: 139,
+              dnata: 139,
             },
         '2': {
               ba: 181,
               abta: 174,
+              dnata: 174,
             },
         '3': {
               ba: 178,
               abta: 170,
+              dnata: 170,
             },
         '4': {
               ba: 178,
               abta: 170,
+              dnata: 170,
             },
         '5': {
               ba: 185,
               abta: 177,
+              dnata: 177,
             },
         };
         
@@ -460,6 +497,16 @@
             var date = formatDate(new Date(),0);
             document.getElementById('audit_result_abta').value = "unsuitable"
             document.getElementById('expiry_date_abta').value = date;
+        }
+
+        if(types['<?php echo $audit_obj['type']; ?>']['dnata'] <= dnata_total) {
+            var date = formatDate(new Date(),3);
+            document.getElementById('audit_result_dnata').value = "suitable";
+            document.getElementById('expiry_date_dnata').value = date;
+        } else {
+            var date = formatDate(new Date(),0);
+            document.getElementById('audit_result_dnata').value = "unsuitable"
+            document.getElementById('expiry_date_dnata').value = date;
         }
     }
     
@@ -525,10 +572,11 @@
         //per question check both scores and if either is classifies for highlight then call highlight
         var ba = question.querySelector(".ba_score");
         var abta = question.querySelector(".abta_score");
+        var dnata = question.querySelector(".dnata_score");
         
-        if( ba.value >= 100015 || abta.value >= 100015){
+        if( ba.value >= 100015 || abta.value >= 100015 || dnata.value >= 100015){
             highlight(question,'good');
-        } else if( ba.value <= -100015 || abta.value <= -100015){
+        } else if( ba.value <= -100015 || abta.value <= -100015 || dnata.value <= -100015){
             highlight(question,'bad');
         } else {
             highlight(question,'');
