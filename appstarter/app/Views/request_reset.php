@@ -46,7 +46,7 @@
                            <?= session()->getFlashdata('msg') ?>
                         </div>
                     <?php endif;?>
-                    <form action="<?php echo base_url(); ?>SignupController/init_reset" method="post"> <!-- remove / before Signup -->
+                    <form action="<?php echo base_url(); ?>signup-controller/init_reset" method="post"> <!-- remove / before Signup change from SignupController to signup-controller-->
                         <div class="form-floating mb-3">
                           <input type="email" class="form-control" name="email" id="email" placeholder="Email">
                           <label for="email">Email</label>

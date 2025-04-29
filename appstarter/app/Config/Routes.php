@@ -5,9 +5,6 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->setAutoRoute(true);
-$routes->setAutoRouteImproved(false);
-$routes->setTranslateURIDashes(true);
 
 $routes->get('/', 'Home::index');
 $routes->get('/', 'AuditCrud::index');
