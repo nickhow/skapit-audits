@@ -28,7 +28,7 @@ class Email extends BaseConfig
     /**
      * SMTP Server Hostname
      */
-    public string $SMTPHost = 'smtp.office365.com';
+    public string $SMTPHost = 'mail.eco-holidays.org';
 
     /**
      * SMTP Username
@@ -43,7 +43,7 @@ class Email extends BaseConfig
     /**
      * SMTP Port
      */
-    public int $SMTPPort = 587; //25
+    public int $SMTPPort = 465; //25
 
     /**
      * SMTP Timeout (in seconds)
