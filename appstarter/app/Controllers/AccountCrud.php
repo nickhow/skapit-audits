@@ -499,7 +499,7 @@ class AccountCrud extends Controller
         helper('filesystem');
 
         if(session()->get('is_admin')){
-            $header = 'templates/header'; = 
+            $header = 'templates/header';
             //echo view('templates/header');
         }else{
             $header = 'templates/header-group';
