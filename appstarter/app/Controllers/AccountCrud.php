@@ -40,16 +40,19 @@ class AccountCrud extends Controller
         if($admin){
         //    $data['accounts'] = $accountModel->getAccountsWithGroup();
             $accounts = $accountModel->findAll();
-            echo view('templates/header');
+            $header = 'templates/header';
+            //echo view('templates/header');
             
         } elseif($session->get('enable_groups')){
             //$data['accounts'] = $accountModel->getAccountsWithGroupsById($user['group_id']);
             $accounts = $accountModel->getAccountsWithGroupsById($user['group_id']);
-            echo view('templates/header-group');
+            //echo view('templates/header-group');
+            $header = 'templates/header-group';
         } else {
             //$data['accounts'] = $accountModel->getAccountsWithGroupById($user['group_id']);
             $accounts = $accountModel->getAccountsWithGroupById($user['group_id']);
-            echo view('templates/header-group');
+            //echo view('templates/header-group');
+            $header = 'templates/header-group';
         }
 
         $data['accounts'] = [];
@@ -72,9 +75,7 @@ class AccountCrud extends Controller
             array_push($data['accounts'], $collected_data);
         }
 
-
-
-        
+        echo view($header);
         echo view('view_accounts_new', $data);
         echo view('templates/footer');
     }
@@ -90,16 +91,17 @@ class AccountCrud extends Controller
         helper(['form']);
         
         if(session()->get('is_admin')){
-            echo view('templates/header');
+            //echo view('templates/header');
+            $header = 'templates/header';
             $data['groups'] = $groupModel->findAll();
         }else{
-            echo view('templates/header-group');
-            
+            //echo view('templates/header-group');
+            $header = 'templates/header-group';
             $subGroups = $groupMappingModel->where('group_id',session()->get('group_id'))->findColumn('sub_group_id');
             $data['groups'] = $groupModel->whereIn('id',$subGroups)->orderBy('id','DESC')->findAll();
             
         }
-        
+        echo view($header);
         echo view('add_account',$data);
         echo view('templates/footer');
     }
@@ -497,12 +499,15 @@ class AccountCrud extends Controller
         helper('filesystem');
 
         if(session()->get('is_admin')){
-            echo view('templates/header');
+            $header = 'templates/header'; = 
+            //echo view('templates/header');
         }else{
-            echo view('templates/header-group');            
+            $header = 'templates/header-group';
+            //echo view('templates/header-group');            
         }
         $data['groups'] = $groupModel->getAllGroups();
 
+        echo view($header);
         echo view('add_account_upload',$data);
         echo view('templates/footer');
     }
