@@ -141,64 +141,64 @@
                                 </div>
                                 <div class="col-12">
                                     <?php if($audit['status'] == "complete" || $audit['status'] == "reviewed" ||  $audit['status'] == "reviewing" ): ?>
-                                    <?php switch ($audit['status']){
-                                        case 'reviewing': ?>
-                                            <div class="row">
-                                                <div class="col-6">Completed on <?php echo date('d/m/Y', strtotime($audit['completed_date'])); ?></div>
-                                                <div class="col-6 text-warning text-end">Under review</div>
-                                            </div>
-                                        <?php break;
-                                        case 'complete': ?>
-                                            <div class="row">
-                                                <div class="col-6">Completed on <?php echo date('d/m/Y', strtotime($audit['completed_date'])); ?></div>
-                                                <div class="col-6 text-warning text-end">Waiting for review</div>
-                                            </div>
-                                         <? break;
-                                        case 'reviewed': ?>
-                                            <div class="row">
-                                                <div class="col-12">Audited on <?php echo date('d/m/Y', strtotime($audit['audited_date'])); ?></div>
-                                            </div>
-                                            <div class="row py-2">
+                                        <?php switch ($audit['status']){
+                                            case 'reviewing': ?>
                                                 <div class="row">
-                                                    <div class="col-2">BA</div>
-                                                    <div class="col-5">
-                                                        <?php echo strtoupper($audit['result_ba']); ?>
-                                                    </div>
-                                                    <div class="col-5 text-end">
-                                                        <?php echo "Exp.". date('d/m/Y', strtotime($audit['expiry_date_ba'])); ?>
-                                                    </div>
+                                                    <div class="col-6">Completed on <?php echo date('d/m/Y', strtotime($audit['completed_date'])); ?></div>
+                                                    <div class="col-6 text-warning text-end">Under review</div>
                                                 </div>
+                                            <?php break;
+                                            case 'complete': ?>
                                                 <div class="row">
-                                                    <div class="col-2">ABTA</div>
-                                                    <div class="col-5">
-                                                        <?php echo strtoupper($audit['result_abta']); ?>
-                                                    </div>
-                                                    <div class="col-5 text-end">
-                                                        <?php echo "Exp.". date('d/m/Y', strtotime($audit['expiry_date_abta'])); ?>
-                                                    </div>
+                                                    <div class="col-6">Completed on <?php echo date('d/m/Y', strtotime($audit['completed_date'])); ?></div>
+                                                    <div class="col-6 text-warning text-end">Waiting for review</div>
                                                 </div>
-                                            </div>
-                                        <? break; 
-                                    } ?>
-                            
-                                    <div class="col-12 py-2">
-                                        <?php if($audit['is_payable'] == "1"): ?>
-                                            <div class"col-12">
-                                                <? if($audit['is_paid'] == "1"): ?>
+                                            <?php break;
+                                            case 'reviewed': ?>
+                                                <div class="row">
+                                                    <div class="col-12">Audited on <?php echo date('d/m/Y', strtotime($audit['audited_date'])); ?></div>
+                                                </div>
+                                                <div class="row py-2">
                                                     <div class="row">
-                                                        <div class="text-success col-6">Paid <i class='fa fa-check'></i></div>
-                                                        <div class="col-6 text-end"><a href="https://dashboard.stripe.com/test/payments/<? echo $audit['payment_id'] ?>" target="_blank">Payment</a></div>
+                                                        <div class="col-2">BA</div>
+                                                        <div class="col-5">
+                                                            <?php echo strtoupper($audit['result_ba']); ?>
+                                                        </div>
+                                                        <div class="col-5 text-end">
+                                                            <?php echo "Exp.". date('d/m/Y', strtotime($audit['expiry_date_ba'])); ?>
+                                                        </div>
                                                     </div>
-                                                <? else: ?>
-                                                    <p class="text-danger">Not Paid <i class='fa fa-times'></i></p>
-                                                <? endif ?>
-                                            </div>
-                                        <?php else: ?>
-                                            <div class="col-12">
-                                                <div class="text-success">Free Audit</div>
-                                            </div>
-                                        <? endif ?>
-                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-2">ABTA</div>
+                                                        <div class="col-5">
+                                                            <?php echo strtoupper($audit['result_abta']); ?>
+                                                        </div>
+                                                        <div class="col-5 text-end">
+                                                            <?php echo "Exp.". date('d/m/Y', strtotime($audit['expiry_date_abta'])); ?>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <?php break; 
+                                        } ?>
+                            
+                                        <div class="col-12 py-2">
+                                            <?php if($audit['is_payable'] == "1"): ?>
+                                                <div class"col-12">
+                                                    <?php if($audit['is_paid'] == "1"): ?>
+                                                        <div class="row">
+                                                            <div class="text-success col-6">Paid <i class='fa fa-check'></i></div>
+                                                            <div class="col-6 text-end"><a href="https://dashboard.stripe.com/test/payments/<? echo $audit['payment_id'] ?>" target="_blank">Payment</a></div>
+                                                        </div>
+                                                    <?php else: ?>
+                                                        <p class="text-danger">Not Paid <i class='fa fa-times'></i></p>
+                                                    <?php endif ?>
+                                                </div>
+                                            <?php else: ?>
+                                                <div class="col-12">
+                                                    <div class="text-success">Free Audit</div>
+                                                </div>
+                                            <?php endif ?>
+                                        </div>
                     
                                     <?php else: ?>
                                     <!-- incomplete -->
