@@ -323,17 +323,16 @@ class AccountCrud extends Controller
         
         //Get all the groups, for the drop down
         if(session()->get('is_admin')){
-            echo view('templates/header');
+            //echo view('templates/header');
+            $header = 'templates/header';
             $data['group_objects'] = $groupModel->orderBy('id', 'DESC')->findAll();
         }else{
-            echo view('templates/header-group');
-            
+            //echo view('templates/header-group');
+            $header = 'templates/header-group';
             $subGroups = $groupMappingModel->where('group_id',session()->get('group_id'))->findColumn('sub_group_id');
             $data['group_objects'] = $groupModel->whereIn('id',$subGroups)->orderBy('id','DESC')->findAll();
             
         }
-        
-        
         
         //Get this accounts latest audit
         $db = db_connect();
@@ -348,7 +347,7 @@ class AccountCrud extends Controller
         $query = $db->table('audits')->join('account_audits','audits.id = account_audits.audit_id', 'inner')->where('account_audits.account_id',$id)->get();
         $data['audits'] = $query->getResultArray();
         
-        
+        echo view ($header);
         echo view('single-account', $data);
         echo view('templates/footer');
     }
