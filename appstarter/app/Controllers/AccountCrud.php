@@ -58,7 +58,7 @@ class AccountCrud extends Controller
             $group = $groupModel->where('id',$account['group_id'])->first();
             $all_audits = $accountAuditModel->where('account_id',$account['id'])->findColumn('audit_id');
             
-            if(is_null($all_audits)){
+            if(empty($all_audits)){
                 $latest_audit = "";
             } else {
                 $latest_audit = $auditModel->whereIn('id',$all_audits)->orderBy('created_date','DESC')->first();
