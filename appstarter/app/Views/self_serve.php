@@ -21,7 +21,7 @@
                 </div>
                 <?php endif;?>
 
-                <form action="<?php echo base_url(); ?>/SignupController/store_selfserve" method="post">
+                <form action="<?php echo base_url(); ?>/signup-controller/store_selfserve" method="post">
                     <h2>About You</h2>
                     <div class="form-group pt-2">
                         <label>Name</label>

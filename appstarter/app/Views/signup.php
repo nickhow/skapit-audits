@@ -21,7 +21,7 @@
                 </div>
                 <?php endif;?>
 
-                <form action="<?php echo base_url(); ?>/SignupController/store" method="post">
+                <form action="<?php echo base_url(); ?>/signup-controller/store" method="post">
                     <div class="form-group pt-2">
                         <label>Name</label>
                         <input type="text" name="name" placeholder="Name" value="<?= set_value('name') ?>" class="form-control" >
