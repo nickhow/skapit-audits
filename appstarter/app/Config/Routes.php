@@ -8,7 +8,7 @@ use CodeIgniter\Router\RouteCollection;
 $routes->setAutoRoute(true);
 $routes->setTranslateURIDashes(false);
 
-$routes->get('/', 'Home::index');
+//$routes->get('/', 'Home::index');
 $routes->get('/', 'AuditCrud::index');
 $routes->get('', 'AuditCrud::index');
 $routes->get('/html-to-pdf','PDF::index');
