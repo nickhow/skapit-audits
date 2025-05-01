@@ -150,7 +150,7 @@ class GroupCrud extends Controller
                 'name'     => $this->request->getVar('group_manager_name'),
                 'username'    => $this->request->getVar('username'),
                 'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
-                'group_id' => $group_id['id']
+                'group_id' => $group_id //$group_id['id']
             ];
             $userModel->save($data);
             
