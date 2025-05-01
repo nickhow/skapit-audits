@@ -199,13 +199,13 @@ class AccountCrud extends Controller
 
         if($this->request->getVar('is_group_manager')){
             $userModel = new UserModel();
-            $data = [
+            $userdata = [
                 'name'     => $this->request->getVar('name'),
                 'username'    => $this->request->getVar('username'),
                 'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
                 'group_id' => $this->request->getVar('group_id')
             ];
-            $userModel->save($data);
+            $userModel->save($userdata);
         }
         
         //IF- do Audit now ...
