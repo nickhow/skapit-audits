@@ -563,7 +563,7 @@
             data: {
                 'audit_id': audit_id,
                 'comment': comment,
-                'account_id': '<? echo $property_obj['id']; ?>',
+                'account_id': '<?= $property_obj['id']; ?>',
             },
             success: function(msg) {
                 location.reload();
@@ -605,7 +605,7 @@
   <script>
       function deleteFile(file_name){
             $.ajax({
-                url: '<?php echo base_url(); ?>/remove-file/'+file_name,   
+                url: '<?= echo base_url(); ?>/remove-file/'+file_name,   
                 type: 'POST',
                 data: {
                 
