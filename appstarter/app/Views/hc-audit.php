@@ -219,7 +219,7 @@
                         </select>
                     </div>
                     </div>
-                <? } ?>
+                <?php } ?>
                
     
                     <div class="form-group">
@@ -252,7 +252,7 @@
                         </div>
                   </div>
                 </div>
-                <? } ?>
+                <?php } ?>
             
                     
             <?php

@@ -108,7 +108,7 @@ $routes->get('/register','SignupController::selfserve');
 $routes->post('/register','SignupController::store_selfserve');
 
 $routes->get('/request-reset','SignupController::reset_request');
-$routes->post('/SignupController/init_reset','SignupController::init_reset');
+$routes->post('/signup-controller/init_reset','SignupController::init_reset');
 $routes->get('/password-reset/(:alphanum)/(:alphanum)','SignupController::reset_password/$1/$2');
 $routes->post('/password-reset/(:alphanum)/(:alphanum)','SignupController::process_reset/$1/$2');
 
