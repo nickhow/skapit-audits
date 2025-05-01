@@ -26,10 +26,12 @@
                 <option value="0" <?php if( $account_obj['group_id'] == "0"){echo "selected";} ?>>No Group</option>
             <?php endif; ?>
             <?php
-                foreach($group_objects as $group) {
-                    $selected = "";
-                    if ( $account_obj['group_id'] === $group['id'])  { $selected="selected" ; }
-                    echo "<option value='".$group['id']."'". $selected ." >".$group['name']."</option>";
+                if (!empty($group_objects)){
+                    foreach($group_objects as $group) {
+                        $selected = "";
+                        if ( $account_obj['group_id'] === $group['id'])  { $selected="selected" ; }
+                        echo "<option value='".$group['id']."'". $selected ." >".$group['name']."</option>";
+                    }
                 }
             ?>
         </select>
