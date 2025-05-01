@@ -199,13 +199,27 @@
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/additional-methods.min.js"></script>
-  <script src='https://cdn.tiny.cloud/1/storhqrnsr6cvl7y316t629se8numd9vx3eejd804dxjmzz6/tinymce/5/tinymce.min.js' referrerpolicy="origin"></script>
-
+  <!--<script src='https://cdn.tiny.cloud/1/storhqrnsr6cvl7y316t629se8numd9vx3eejd804dxjmzz6/tinymce/5/tinymce.min.js' referrerpolicy="origin"></script>-->
+<!--
   <script>
       tinymce.init({
         selector: '#custom_intro_text'
       });
     </script>
+-->
+<!-- EasyMDE (Markdown Editor) -->
+<link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
+<script src="https://unpkg.com/easymde/dist/easymde.min.js"></script>
+<script>
+  const easyMDE = new EasyMDE({
+    element: document.getElementById("custom_intro_text"),
+    placeholder: "Enter a custom introduction...",
+    spellChecker: false,
+    status: false,
+    toolbar: ["bold", "italic", "heading", "|", "unordered-list", "ordered-list", "|", "preview"],
+  });
+</script>
+
 
     <script>
         function hideShowEmailText(){
@@ -326,8 +340,9 @@ function getEmailHtml(){
       if(document.getElementById('custom_intro').value == 0){
         intro = "";
       } else {
-        tinymce.triggerSave();
-        intro = document.getElementById('custom_intro_text').value;
+        //tinymce.triggerSave();
+        //intro = document.getElementById('custom_intro_text').value;
+        intro = easyMDE.value();
       }
       emailHtml = emailHtml.replace('__custom_intro__', intro);
       document.getElementById('showEmail').innerHTML = emailHtml;
