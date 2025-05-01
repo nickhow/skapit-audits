@@ -605,7 +605,7 @@
   <script>
       function deleteFile(file_name){
             $.ajax({
-                url: '<?= echo base_url(); ?>/remove-file/'+file_name,   
+                url: '<?= base_url(); ?>/remove-file/'+file_name,   
                 type: 'POST',
                 data: {
                 
