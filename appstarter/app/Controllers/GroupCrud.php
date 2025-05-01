@@ -139,7 +139,7 @@ class GroupCrud extends Controller
             if($is_sub_group == 1){
                 $mappingData = [
                     'group_id' =>  $master_group_id,
-                    'sub_group_id' => $group_id['id']
+                    'sub_group_id' => $group_id//$group_id['id]
                     ];
                 
                $groupMappingModel->insert($mappingData);
