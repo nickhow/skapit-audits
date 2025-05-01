@@ -36,7 +36,12 @@ class AccountModel extends Model
                                FROM $this->table
                                LEFT JOIN groups
                                ON ($this->table.group_id = groups.id)
-                               WHERE group_id IN ( SELECT sub_group_id FROM group_mapping WHERE group_id = ".$id.")"); 
+                               WHERE group_id IN ( 
+                                   SELECT sub_group_id 
+                                   FROM group_mapping 
+                                   WHERE group_id = ".$id."
+                                   UNION SELECT ".$id."
+                                   )"); 
         return $query->getResultArray();
         
     }
