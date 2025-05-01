@@ -337,7 +337,12 @@ class AccountCrud extends Controller
             //echo view('templates/header-group');
             $header = 'templates/header-group';
             $subGroups = $groupMappingModel->where('group_id',session()->get('group_id'))->findColumn('sub_group_id');
-            $data['group_objects'] = $groupModel->whereIn('id',$subGroups)->orderBy('id','DESC')->findAll();
+            //$data['group_objects'] = $groupModel->whereIn('id',$subGroups)->orderBy('id','DESC')->findAll();
+            if (!empty($subGroups)) {
+                $data['groups'] = $groupModel->whereIn('id', $subGroups)->orderBy('id', 'DESC')->findAll();
+            } else {
+                $data['groups'] = []; // or $groupModel->where('id', 0)->findAll(); if you want empty result
+            }
             
         }
         
