@@ -3,8 +3,8 @@
   <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Auditing System</title>
-  <link rel="shortcut icon" type="image/png" href="<?= site_url() ?>/images/skapit.png"/>
+  <title>simple-audit.com</title>
+  <link rel="shortcut icon" type="image/png" href="<?= site_url() ?>/images/logo.png"/>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
   
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
@@ -15,7 +15,7 @@
     <nav class="navbar navbar-expand-lg  navbar-dark bg-dark" style="z-index:999">
         <div class="container-fluid">
             <a class="navbar-brand" href="<?= site_url('')?>">
-              <img src="<?= site_url() ?>/images/skapit-logo.png" alt="SKAPIT Logo" width="" height="40" class="d-inline-block align-text-top">
+              <img src="<?= site_url() ?>/images/name-logo.png" alt="simple-audit Logo" width="" height="40" class="d-inline-block align-text-top">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
