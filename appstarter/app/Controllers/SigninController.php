@@ -25,12 +25,13 @@ class SigninController extends Controller
         $password = $this->request->getVar('password');
         
         $data = $userModel->where('username', $username)->first();
-        $group = $groupModel->where('id',$data['group_id'])->first();
-        if (empty($group)) {
-            $group['uses_sub_groups'] = false;
-        }
-
+        
         if($data){
+            $group = $groupModel->where('id',$data['group_id'])->first();
+            if (empty($group)) {
+                $group['uses_sub_groups'] = false;
+            }
+
             $pass = $data['password'];
             $authenticatePassword = password_verify($password, $pass);
             if($authenticatePassword){
