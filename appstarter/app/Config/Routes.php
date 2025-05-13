@@ -8,9 +8,7 @@ use CodeIgniter\Router\RouteCollection;
 $routes->setAutoRoute(true);
 $routes->setTranslateURIDashes(false);
 
-//$routes->get('/', 'Home::index');
-$routes->get('/', 'AuditCrud::index');
-$routes->get('', 'AuditCrud::index');
+$routes->get('/', 'Home::index');
 $routes->get('/html-to-pdf','PDF::index');
 $routes->post('audit/send/pdf/(:alphanum)','AuditCrud::salesforceResultPDF/$1');
 $routes->get('audit/send/pdf/(:alphanum)','AuditCrud::salesforceResultPDF/$1');
