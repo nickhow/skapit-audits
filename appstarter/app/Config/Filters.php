@@ -129,7 +129,7 @@ class Filters extends BaseFilters
                         ]
 	                ],
 	   'authguard' => ['before' => 
-                        ['','audits','audit',]
+                        ['audits','audit',] /** remove '' from here now we will have a landing page there **/
 	                   ],
         ];
 }
