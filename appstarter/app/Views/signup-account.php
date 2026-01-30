@@ -21,9 +21,10 @@
                 </div>
                 <?php endif;?>
 
-                <form action="<?php echo base_url(); ?>/signup-controller/store" method="post">
+                <form action="" method="post">
                     <input type="hidden" name="account_id" value="<?php echo $account_id ?>" />
                     <input type="hidden" name="name" value="<?php echo $account_name ?>" />
+                    <input type="hidden" name="email" value="<?php echo $account_email ?>" />
                     <div class="form-group pt-2">
                         <label>Username</label>
                         <input type="username" name="username" placeholder="Username" value="<?= set_value('username') ?>" class="form-control" >

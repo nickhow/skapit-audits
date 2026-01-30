@@ -1256,6 +1256,7 @@ class AuditCrud extends Controller
         $data = [
             'account_id' => $account['id'],
             'account_name' => $account['name'],
+            'account_email' => $account['email'],
         ];
         
         echo view('templates/header-hotel');
