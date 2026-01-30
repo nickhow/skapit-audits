@@ -127,6 +127,11 @@ class SignupController extends Controller
                 $redirect = '/users';
             }
             
+            echo view('view_audits', $data);
+            echo view('templates/footer');
+            return;
+
+
             return redirect()->to($redirect);
 
         }else{
