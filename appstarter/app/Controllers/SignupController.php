@@ -134,11 +134,6 @@ class SignupController extends Controller
                 $redirect = '/users';
             }
 
-            log_message('critical', 'TRIED TO SAVE DATA', $data);
-            print_r($data);
-            return;
-
-
             return redirect()->to($redirect);
 
         }else{
