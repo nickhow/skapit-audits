@@ -107,6 +107,8 @@ class SignupController extends Controller
                 'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT)
             ];
 
+            log_message('critical', 'NOT OK - TRIED TO SAVE DATA', $data);
+
             //$userModel->save($data);
             $ok = $userModel->save($data);
             if (!$ok) {
@@ -115,7 +117,7 @@ class SignupController extends Controller
                 $data['save_error'] = $userModel->db->error(); // DB error info
                 // re-load groups/header just like the validation-fail branch
                 // then re-render the form
-                log_message('error', 'NOT OK - TRIED TO SAVE DATA', $data);
+                log_message('critical', 'NOT OK - TRIED TO SAVE DATA', $data);
                 return;
             }
 
@@ -126,7 +128,7 @@ class SignupController extends Controller
                 $redirect = '/users';
             }
 
-            log_message('error', 'TRIED TO SAVE DATA', $data);
+            log_message('critical', 'TRIED TO SAVE DATA', $data);
             print_r($data);
             return;
 
