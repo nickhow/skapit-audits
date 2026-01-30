@@ -126,9 +126,9 @@ class SignupController extends Controller
             if(Session()->get('isAdmin')){
                 $redirect = '/users';
             }
-            
-            echo view('view_audits', $data);
-            echo view('templates/footer');
+
+            log_message('error', 'TRIED TO SAVE DATA', $data);
+            print_r($data);
             return;
 
 
