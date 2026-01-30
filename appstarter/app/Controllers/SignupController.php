@@ -46,8 +46,14 @@ class SignupController extends Controller
         echo view('templates/footer');
     }
     
-    public function store()
+    public function store($audit = null)
     {
+        log_message('critical', 'STORE HIT', [
+    'uri' => (string) current_url(),
+    'method' => $this->request->getMethod(),
+    'post' => $this->request->getPost(),
+]);
+
         helper(['form']);
         $rules = [
             'name'          => 'required|min_length[2]|max_length[50]',
