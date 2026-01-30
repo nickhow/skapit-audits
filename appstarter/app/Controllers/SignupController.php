@@ -162,6 +162,8 @@ class SignupController extends Controller
                 return $this->response->redirect(site_url('/'));
             }
 
+            log_message('critical', 'VALIDATION FAILED', $data);
+
             echo view('signup', $data);
             echo view('templates/footer');
         }
