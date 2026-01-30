@@ -100,7 +100,7 @@ $routes->get('user/(:num)', 'ProfileController::singleUser/$1');
 $routes->post('user/update', 'ProfileController::update');
 
 $routes->post('signin-controller/login-auth', 'SigninController::loginAuth');
-$routes->post('signup-controller/store', 'SignupController::store');
+$routes->post('/signup-controller/store', 'SignupController::store');
 $routes->post('signup-controller/store_selfserve', 'SignupController::store_selfserve');
 
 $routes->get('/register','SignupController::selfserve');
