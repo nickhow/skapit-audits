@@ -107,7 +107,19 @@ class SignupController extends Controller
                 'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT)
             ];
 
-            $userModel->save($data);
+            //$userModel->save($data);
+            $ok = $userModel->save($data);
+            if (!$ok) {
+                // Model validation or DB error
+                $data['validation'] = $userModel->errors(); // model-level errors
+                $data['save_error'] = $userModel->db->error(); // DB error info
+                // re-load groups/header just like the validation-fail branch
+                // then re-render the form
+                echo view('signup', $data);
+                echo view('templates/footer');
+                return;
+            }
+
 
             $redirect = '/audits';
             
