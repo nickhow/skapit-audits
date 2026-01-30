@@ -21,7 +21,7 @@
                 </div>
                 <?php endif;?>
 
-                <form action="" method="post">
+                <form action="<?php echo base_url(); ?>signup-controller/store_account" method="post">
                     <input type="hidden" name="account_id" value="<?php echo $account_id ?>" />
                     <input type="hidden" name="name" value="<?php echo $account_name ?>" />
                     <input type="hidden" name="email" value="<?php echo $account_email ?>" />
