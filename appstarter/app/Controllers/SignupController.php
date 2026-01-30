@@ -115,7 +115,7 @@ class SignupController extends Controller
                 $data['save_error'] = $userModel->db->error(); // DB error info
                 // re-load groups/header just like the validation-fail branch
                 // then re-render the form
-                echo view('signup', $data);
+                echo view('signup-account', $data);
                 echo view('templates/footer');
                 return;
             }
