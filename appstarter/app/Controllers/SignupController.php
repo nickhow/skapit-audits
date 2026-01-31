@@ -139,7 +139,7 @@ class SignupController extends Controller
         }else{
             helper(['form']);
             $data = [ //data to pass back to view (as per original register form)
-                'account_id' => $account_id,
+                'account_id' => $this->request->getVar('account_id'),
                 'account_name' => $this->request->getVar('name'),
                 'account_email' => $this->request->getVar('email'), 
             ];
