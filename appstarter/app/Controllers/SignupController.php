@@ -154,13 +154,13 @@ class SignupController extends Controller
                 $data['groups'] = $groupModel->whereIn('id',$groups)->orderBy('id', 'DESC')->findAll();
                 echo view('templates/header-group');
             } else {
-                return $this->response->redirect(site_url('/'));
+                // return $this->response->redirect(site_url('/'));  // Not sure why we kicked them out here ... ?
+                echo view('templates/header-hotel');
             }
-
-            log_message('critical', 'VALIDATION FAILED', $data);
-
-            echo view('signup', $data);
+            
+            echo view('signup-account',$data);
             echo view('templates/footer');
+            return;
         }
           
     }
