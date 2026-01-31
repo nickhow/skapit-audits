@@ -113,22 +113,9 @@ class SignupController extends Controller
                 'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT)
             ];
 
-            log_message('critical', 'NOT OK - TRIED TO SAVE DATA', $data);
-
-            //$userModel->save($data);
-            $ok = $userModel->save($data);
-            if (!$ok) {
-                // Model validation or DB error
-                $data['validation'] = $userModel->errors(); // model-level errors
-                $data['save_error'] = $userModel->db->error(); // DB error info
-                // re-load groups/header just like the validation-fail branch
-                // then re-render the form
-                log_message('critical', 'NOT OK - TRIED TO SAVE DATA', $data);
-                return;
-            }
-
-
-            $redirect = '/audits';
+            $userModel->save($data);
+            $session->setFlashdata('msg', 'Success! Please login to view your audit account.');
+            $redirect = '/signin';
             
             if(Session()->get('isAdmin')){
                 $redirect = '/users';
