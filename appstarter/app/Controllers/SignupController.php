@@ -109,7 +109,7 @@ class SignupController extends Controller
                 'username'  => $this->request->getVar('username'),
                 'user_email' => $this->request->getVar('email'),
                 'group_id'  => $group_id,
-                'account_id' => $account_id,
+                'account_id' => $account_id, 
                 'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT)
             ];
 
@@ -138,6 +138,11 @@ class SignupController extends Controller
 
         }else{
             helper(['form']);
+            $data = [ //data to pass back to view (as per original register form)
+                'account_id' => $account_id,
+                'account_name' => $this->request->getVar('name'),
+                'account_email' => $this->request->getVar('email'), 
+            ];
             $data['validation'] = $this->validator;
 
             $groupModel = new GroupModel();
