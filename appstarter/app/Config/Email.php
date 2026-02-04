@@ -33,12 +33,12 @@ class Email extends BaseConfig
     /**
      * SMTP Username
      */
-    public string $SMTPUser = env('email.smtpUser');;
+    public string $SMTPUser = env('email.smtpUser');
 
     /**
      * SMTP Password
      */
-    public string $SMTPPass = env('email.smtpPass');;
+    public string $SMTPPass = env('email.smtpPass');
 
     /**
      * SMTP Port
