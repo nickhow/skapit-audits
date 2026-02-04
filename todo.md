@@ -15,16 +15,8 @@
   - `appstarter/app/Config/Routes.php`
   - `appstarter/app/Config/Filters.php`
 
-## P1 — Signup flow correctness
-- [ ] Normalize user email field usage (`user_email` vs `email`) across:
-  - `appstarter/app/Controllers/SignupController.php`
-  - `appstarter/app/Models/UserModel.php`
-  - DB schema (if needed)
-- [ ] Fix audit‑account signup form to include required fields (email) and proper defaults:
-  - `appstarter/app/Controllers/AuditCrud.php`
-  - `appstarter/app/Views/signup-account.php`
 
-## P2 — Maintainability
+## P1 — Maintainability
 - [ ] Reduce controller SQL: move queries to models/services where practical.
 - [ ] Add basic tests for signup, login redirect, and CSRF‑protected forms.
 - [ ] Document expected auth/role flows in README or a short docs page.

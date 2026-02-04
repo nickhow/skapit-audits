@@ -28,7 +28,7 @@ class Email extends BaseConfig
     /**
      * SMTP Server Hostname
      */
-    public string $SMTPHost = 'mail.eco-holidays.org';
+    public string $SMTPHost = 'mail.simple-audit.com';
 
     /**
      * SMTP Username
