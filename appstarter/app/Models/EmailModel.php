@@ -149,7 +149,7 @@ class EmailModel extends Model
         
         $email->clear(true); //reset $email to empty state (true - include attachments)
 
-        $email->setFrom('noreply@eco-holidays.org', 'Travel Technology Company');
+        $email->setFrom('noreply@simple-audit.com', 'Simple Audit');
         $email->setTo($emailAddresses);  
         $email->setSubject($subject);
         $email->setMessage($message);
@@ -174,7 +174,7 @@ class EmailModel extends Model
         $email = \Config\Services::email();
         $email->clear(true); //reset $email to empty state (true - include attachments)
         
-        $email->setFrom('noreply@eco-holidays.org', 'Travel Technology Company');
+        $email->setFrom('noreply@simple-audit.com', 'Travel Technology Company');
         //$email->setTo('a.lopez@hotelcheck-hsaudits.com');  // can be single, comma-delimited list 'a@me.com, b@me.com' or array ['a@me.com','b@me.com']
         $email->setTo($emailaddresses);
         $email->setSubject('Reviewed Audit Order');
@@ -195,7 +195,7 @@ class EmailModel extends Model
         $email = \Config\Services::email();
         $email->clear(true); //reset $email to empty state (true - include attachments)
 
-        $email->setFrom('noreply@eco-holidays.org', 'Travel Technology Company');
+        $email->setFrom('noreply@simple-audit.com', 'Travel Technology Company');
         
         $email->setTo($emailaddress);  // can be single, comma-delimited list 'a@me.com, b@me.com' or array ['a@me.com','b@me.com']
        
@@ -232,7 +232,7 @@ class EmailModel extends Model
 
         $email->clear(true); //reset $email to empty state (true - include attachments)
 
-        $email->setFrom('noreply@eco-holidays.org', 'Travel Technology Company');
+        $email->setFrom('noreply@simple-audit.com', 'Travel Technology Company');
         
         $email->setTo($emailaddress);  // can be single, comma-delimited list 'a@me.com, b@me.com' or array ['a@me.com','b@me.com']
        
@@ -293,7 +293,7 @@ class EmailModel extends Model
         
         $email->clear(true); //reset $email to empty state (true - include attachments)
 
-        $email->setFrom('noreply@eco-holidays.org', 'Travel Technology Company');
+        $email->setFrom('noreply@simple-audit.com', 'Travel Technology Company');
         $email->setTo($user['user_email']);  
         $email->setSubject($subject);
         $email->setMessage($message);
