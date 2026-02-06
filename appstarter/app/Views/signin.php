@@ -79,7 +79,9 @@
                            <?= session()->getFlashdata('msg') ?>
                         </div>
                     <?php endif;?>
-                    <form action="<?php echo base_url(); ?>/signin-controller/login-auth" method="post"> <!--loginAuth-->
+                    <!--<form action="<?php echo base_url(); ?>/signin-controller/login-auth" method="post">--> <!--loginAuth-->
+                    <form method="post" action="<?= site_url('signin-controller/login-auth') ?>">
+
                         <div class="form-floating mb-3">
                           <input type="username" class="form-control" name="username" id="username" placeholder="Username" value="<?= set_value('username') ?>">
                           <label for="username">Username</label>

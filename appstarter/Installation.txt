@@ -7,6 +7,10 @@ php -r "readfile('https://getcomposer.org/installer');" | php -c php.ini
 
 the all composer commands are php composer.phar ... i.e. php composer.phar update
 
+
+with deployment runn this
+/home/simpleaudit/repository/deploy.sh
+
 ## Cpanel Git Version control
 Clone URL: https://github.com/nickhow/skapit-audits.git
 Path: audits/dev
